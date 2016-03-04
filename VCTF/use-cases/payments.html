@@ -1,0 +1,2976 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Payments Use Cases 1.0</title>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+    <script src="../common/biblio.js" class="remove"></script>
+    <script src='../respec-w3c-common.js' class='remove'></script>
+    <script src='../respec-webpayments.js' class='remove'></script>
+    <script src="../common/script/resolveReferences.js" class="remove"></script>
+    <script class='remove'>
+      var respecConfig = {
+          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+          specStatus:           "ED",
+
+          // the specification's short name, as in http://www.w3.org/TR/short-name/
+          shortName:            "web-payments-use-cases",
+
+          // if you wish the publication date to be other than today, set this
+          //publishDate:  "2015-07-15",
+
+          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+          // and its maturity status
+          // previousPublishDate:  "1977-03-15",
+          // previousMaturity:  "CG-DRAFT",
+
+          // if there a publicly available Editor's Draft, this is the link
+          edDraftURI:           "https://dvcs.w3.org/hg/webpayments/raw-file/default/latest/use-cases/index.html",
+
+          // if this is a LCWD, uncomment and set the end of its review period
+          // lcEnd: "2009-08-05",
+
+          // if you want to have extra CSS, append them to this list
+          // it is recommended that the respec.css stylesheet be kept
+          //extraCSS:             [],
+
+          // editors, add as many as you like
+          // only "name" is required
+          editors:  [
+              { name: "Manu Sporny", url: "https://manu.sporny.org/",
+                company: "Digital Bazaar", companyURL: "http://digitalbazaar.com/" },
+              { name: "Ian Jacobs", url: "http://www.w3.org/People/Jacobs/",
+                company: "W3C", companyURL: "http://www.w3.org/" },
+          ],
+
+          // authors, add as many as you like.
+          // This is optional, uncomment if you have authors as well as editors.
+          // only "name" is required. Same format as editors.
+
+          authors:  [
+              { name: "Ian Jacobs", url: "http://www.w3.org/People/Jacobs/",
+                company: "W3C", companyURL: "http://www.w3.org/" },
+              { name: "Manu Sporny", url: "https://manu.sporny.org/",
+                company: "Digital Bazaar", companyURL: "http://digitalbazaar.com/" },
+              { name: "Qian Sun", url: "",
+                company: "Alibaba", companyURL: "http://www.alibabagroup.com/" },
+              { name: "Cyril Vignet", url: "https://www.linkedin.com/pub/cyril-vignet/bb/704/423",
+                company: "Groupe BPCE", companyURL: "http://www.bpce.fr/" },
+              { name: "David Ezell", url: "http://example.org/",
+                company: "NACS", companyURL: "http://www.nacsonline.com/" },
+              { name: "David Jackson", url: "https://www.linkedin.com/in/davidjjackson",
+                company: "Oracle", companyURL: "http://www.oracle.com/" }
+          ],
+
+          otherLinks: [{
+            key: "Version control",
+            data: [{
+              value: "Github Repository",
+              href: "https://github.com/w3c/webpayments-ig"
+            }, {
+              value: "Issues",
+              href: "http://www.w3.org/Payments/IG/track/products/2"
+            }]
+          }],
+
+          // maximum level of table of contents
+          maxTocLevel: 3,
+
+          // name of the WG
+          wg:           "Web Payments Interest Group",
+
+
+	  
+          // This is an IG so will become a Note
+          noRecTrack: true,
+      
+          // URI of the public WG page
+          wgURI:        "http://www.w3.org/Payments/IG/",
+
+          // name of the public mailing to which comments are due
+          wgPublicList: "public-webpayments-comments",
+
+          // URI of the patent status for this WG, for Rec-track documents
+          // !!!! IMPORTANT !!!!
+          // This is important for Rec-track documents, do not copy a patent URI from a random
+          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+          // Team Contact.
+          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/73816/status",
+
+          //preProcess: [ webpayments.preProcess ]
+          //,
+          //alternateFormats: [ {uri: "diff-20150416.html", label: "diff to previous version"} ],
+
+      };
+      //respecEvents.sub('start-all', webpayments.preProcess.apply);
+    </script>
+    <style type="text/css">
+body {
+  line-height: 1.4em;
+}
+h4 {
+  color: #005A9C;
+}
+dl {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+dt,
+dd {
+  line-height: 1.42857143;
+}
+dl > dt:first-of-type {
+  font-weight: bold;
+}
+@media (min-width: 768px), print {
+  .dl-horizontal {
+    margin-bottom: 4em;
+  }
+  .dl-horizontal dt {
+    font-weight: normal;
+    float: left;
+    width: 160px;
+    clear: left;
+    overflow: hidden;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dl-horizontal dd {
+    margin-left: 180px;
+  }
+  .dl-horizontal dd > ul {
+    padding-left: 20px;
+    margin: 0px;
+  }
+}
+    </style>
+  </head>
+<body>
+
+  <section id='abstract'>
+    <p>
+This document is a prioritized list of Web payments use cases.
+Guided by these use cases, the W3C Web Payments Interest Group
+plans to derive architecture and associated technology
+requirements to integrate payments into the Open Web
+Platform. That work will form the basis of conversations with W3C
+groups and the broader payments industry about what standards
+(from W3C or other organizations) will be necessary to fulfill the
+use cases and make payments over the Web easier and more secure.
+    </p>
+  </section>
+
+  <section id='sotd'>
+    <p>
+This document is a work in progress and is being released early and often
+using an agile process; it is incomplete.
+    </p>
+    <p>
+The Web Payments IG has only had the opportunity to review a handful of the
+40+ use cases, 120+ requirements, hundreds of pages of
+payments research submitted to the group via various other standards group
+output such as ISO20022, research documents from X9 and the US Federal Reserve,
+documents from the Web Payments Community Group, and input from the
+general public. Our desire is to align with the larger payments industry
+when it's possible to do so. Expect this document to be rapidly iterated upon
+with that desire in mind.
+    </p>
+    <p>
+The following changes have been made since the last version of this document:
+    </p>
+    <ul>
+      <li>
+Reorganization of use cases by phases approved by the Web Payments IG.
+      </li>
+      <li>
+Removal of the "Goals" for each use case as they were repetitive and did not
+greatly aid understanding of the use case.
+      </li>
+      <li>
+Addition of Regulatory concerns to a number of the use cases.
+      </li>
+      <li>
+Addition of two more scenarios related to Direct Debit and Credit Transfer.
+      </li>
+      <li>
+Addition of "Relationship to Other Documents" section.
+      </li>
+      <li>
+Integration of a unified Web Payments Activity glossary.
+      </li>
+      <li>
+Addition of Escrow, Biometric, Know Your Customer (KYC), and
+Anti-Money Laundering (AML) use cases.
+      </li>
+      <li>
+Integration of feedback from the public, Web Payments Community Group, and
+Web Payments Interest Group.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Introduction</h2>
+
+    <p>
+ECommerce is thriving and continues to expand. However,
+fragmentation of payment systems is limiting the growth potential
+as are problems &mdash; both real and perceived &mdash; such as
+fraud and usability.
+    </p>
+
+    <p>
+Because the Web is ubiquitous, strengthening support for Web
+payments has the potential to create new opportunities for
+businesses and customers. Mobile devices are already transforming
+the industry by supplanting physical payment cards in proximity
+payments, voucher distribution, and identification when people
+authenticate to a scanner, point of sale, or access gate. Although
+we are seeing innovation in mobile payment systems, the lack of
+standards makes it more difficult to adapt to new payment
+approaches or integrate new payment providers.
+    </p>
+
+    <p>
+The W3C Web Payments Interest Group is developing a roadmap for standards to
+improve the interoperability of payments using Web technologies for both
+online and brick-and-mortar (offline) scenarios. This will help achieve
+greater interoperability among merchants and their customers,
+payment providers, software vendors, mobile operators, native mobile
+apps, and payment networks. The roadmap will include
+<a title="payment scheme">payment schemes</a> in use
+today (such as electronic checks, credit cards, direct debit, and
+cryptocurrencies) and those of the future. The roadmap will be derived from
+the use cases listed below.
+    </p>
+
+    <section>
+      <h3>Why This Work is Important</h3>
+      <p>
+The Web Payments work is not just about making payments easier, faster,
+more secure, and more innovative. There are many people around the world that
+today's financial system does not reach. These people are called the world's
+unbanked (or underbanked). The unbanked often live paycheck to paycheck, do
+not have access to savings accounts or low-fee check cashing services, lines
+of credit, or a way of saving for their future. Being unable to plan for one's
+financial future often results in a focus on the short-term, which creates a
+vicious cycle of not being able to escape one's situation. Not being able to
+participate in the financial system creates unintended inequities that create
+waste and result in a net loss for society.
+      </p>
+      <p>
+However, some of the shortcomings of today's financial system could be
+addressed via technological improvements. For example, there is a considerable
+overlap between the unbanked and underbanked population and access to advanced
+mobile phones and the Web. By providing financial services to people with
+mobile phones in a standardized way via the Web, we could see an improvement
+in the financial health of these individuals and their families.
+      </p>
+      <p>
+Extending the current financial system to reach further helps an ever
+increasing number of people plan for their future, focus on the long-term, and
+thus contributes to a greater net gain for society.
+      </p>
+    </section>
+
+    <section id="relationships">
+      <h2>Relationship to Other Documents</h2>
+      <p>
+This document is one part of a greater body of work around Web Payments that
+the <a href="https://www.w3.org/Payments/IG/">Web Payments Interest Group</a>
+at W3C is producing. These other documents include:
+      </p>
+
+      <ul>
+        <li>
+<a href="https://www.w3.org/Payments/IG/Vision">A Vision for Web Payments</a>
+describes the desirable properties of a Web Payments architecture.
+        </li>
+
+        <li>
+<a href="http://www.w3.org/TR/web-payments-use-cases/">Web Payments Use Cases
+1.0</a> (this document) is a prioritized list of all Web Payments scenarios
+that the Web Payments Interest Group expects the architecture to address
+in time.
+        </li>
+
+        <li>
+<a href="https://dvcs.w3.org/hg/webpayments/raw-file/default/latest/capabilities/index.html">
+Web Payments Capabilities 1.0</a>
+derives a set of capabilities from the use cases that, if standardized, will
+improve payments  on the Web.
+        </li>
+
+        <li>
+<a href="https://www.w3.org/Payments/IG/Roadmap">Web Payments Roadmap 1.0</a>
+proposes an implementation and deployment plan that will result in
+enhancements to the Open Web Platform that will achieve the scenarios outlined
+in the Use Cases document and the capabilities listed in the Capabilities
+document.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>How this Document is Organized</h3>
+
+      <p>
+This document is organized as follows:
+      </p>
+
+      <ul>
+          <li>
+<a href="#terminology">Section 2: Terminology</a> defines basic payment
+terminology.
+        </li>
+        <li>
+<a href="#an-overview-of-the-payment-phases">Section 3: An Overview of the
+Payment Phases</a> describes a common payment flow at a high level. The group
+expects to work on additional payment flows in future work.
+        </li>
+        <li>
+<a href="#a-simple-example-of-the-payment-phases">Section 4: A Simple
+Example of the Payment Phases</a> is a specific
+narrative, labeled according to the steps of section 3.
+<a href="#additional-examples-of-the-payment-phases">Section 7:
+Additional Examples of the Payment Phases</a> describes additional familiar
+narratives to give a more complete picture of how the payment phases apply.
+        </li>
+        <li>
+<a href="#assumptions">Section 5: Assumptions</a> highlights general
+assumptions that have been made about the use cases.
+        </li>
+        <li>
+<a href="#use-cases-1">Section 6: Use Cases</a> lists the use cases - short
+scenarios that cover diverse aspects of each payment step.
+        </li>
+      </ul>
+
+      <p>
+Each use case has:
+      </p>
+      <ul>
+          <li>
+A title and short description.
+        </li>
+        <li>
+A <em>Roadmap phase</em> which specifies the intended phase of the
+<a href="https://www.w3.org/Payments/IG/Roadmap">Web Payments Roadmap</a> that
+will enable the use case.
+        </li>
+        <li>
+A short <em>Motivation</em> statement to help explain why the use
+case has been included, including how it relates to similar use cases.
+        </li>
+      </ul>
+
+      <p>
+Each use case may also have notes on:
+      </p>
+
+      <ul>
+          <li>
+Security/Privacy. Security or privacy issues that may arise through this use
+case.
+        </li>
+        <li>
+Accessibility. Accessibility considerations (e.g., in multi-factor
+authentication, management of biometrics in the case of users with some
+disabilities).
+        </li>
+        <li>
+Regulatory. Regulatory considerations (e.g., anti-money laundering
+clearing, suspicious activity reporting, tax collection, trade compliance).
+        </li>
+        <li>
+Exceptions. Considerations in the case of specific exceptions (e.g., if a
+user pays with a voucher and the <a>transaction</a> fails, the user's voucher
+should be restored).
+        </li>
+      </ul>
+
+      <p class="issue">
+The group seeks input from security, privacy, and accessibility experts.
+Examples of desired groups to perform these reviews are, but are not
+limited to: W3C Privacy Interest Group,
+W3C Security Interest Group, W3C Web Accessibility Initiative and
+Protocols and Formats Working Group, US Federal Reserve Security Panels,
+X9 Security subgroups, and ISO security subgroups.
+      </p>
+
+      <p class="note">
+All character names appearing in this document are fictitious. Any resemblance
+to real persons, living or dead, is purely coincidental. Some organizations,
+products, and services appearing in this document are real and are included
+purely for pedagogic purposes and don't imply endorsement or approval of the
+Web Payments work in any way, shape, or form. For all other organizations,
+products, or services appearing in this document, any resemblance to real
+entities is purely coincidental.
+      </p>
+
+    </section>
+
+  </section>
+
+  <section>
+    <h2>Terminology</h2>
+
+    <div data-include="../common/terms.html"
+      data-oninclude="restrictReferences">
+    </div>
+
+  </section>
+
+  <section>
+    <h2>An Overview of the Payment Phases</h2>
+
+    <p>There are many types of <a>transaction</a>s in the world of payments,
+including person-to-business, business-to-business, business-to-person,
+government-to-person, person-to-government, and
+person-to-person. In this document we focus on the
+interactions between a <a>payer</a> and a <a>payee</a>,
+either of which could be a person, business, government, or software
+agent), which we organize into four phases:</p>
+
+    <p class="issue">
+The group would like feedback related to the general structure of the payment
+phases from individuals that worked on ISO20022, ISO12812, the
+European Payment Commission, and
+various X9 documents to ensure that the phases reflect business processes
+outlined in financial standardization initiatives. Feedback from the general
+public is also requested to see if non-payment professionals can navigate and
+understand the document without prior payment industry knowledge.
+    </p>
+
+    <ol>
+        <li>
+Negotiation of Payment Terms
+        </li>
+        <li>
+Negotiation of Payment Instruments
+        </li>
+        <li>
+Payment Processing
+        </li>
+        <li>
+Delivery of Product/Receipt and Refunds
+        </li>
+    </ol>
+
+<p>The descriptions below only discuss the interactions between the
+<a>payer</a> and the <a>payee</a>. We do not expose the low-level exchanges
+between banks, card associations, or other back-end "payment clearing" parties
+in a <a>transaction</a>. Those details will be discussed in the Interest
+Group's work on architecture and
+requirements.</p>
+
+ <p>Each phase below consists of a series of steps.
+The details of each step vary by <a>payment scheme</a>. Some steps may
+not be relevant at certain times (e.g., depending on
+<a>payment scheme</a> or <a>transaction</a> specifics).
+For example, some  <a title="purchase">purchases</a> do not involve a proof of
+funds or proof of hold. ACH and SEPA
+<a title="payment scheme">payment schemes</a> generally do not support the
+verification of available funds, thus in these
+<a title="payment scheme">payment schemes</a> the particular proof of funds
+step is skipped.
+In some cases, steps may happen in a slightly different order than described below.
+  </p>
+    <p>
+It is also important to note that these phases and steps may be interrupted
+at various times (e.g., one party drops out, or exceptions occur like
+insufficient funds or a regulatory block). While these phases are an
+approximation of the general flow of all payments, they are helpful in
+structuring the use cases such that it is easy to figure out to which part of
+the payment process a particular use case belongs.
+    </p>
+
+ <p>While these four phases may apply more or less well to a variety
+of other payment scenarios such as person-to-person
+payments, those topics are not the current focus of the group.  We
+plan to address them directly in <a href="#future-work">future
+work</a>.</p>
+
+    <section>
+      <h3>Negotiation of Payment Terms</h3>
+      <p>
+In the first phase of the payment process, the <a>payer</a> and the
+<a>payee</a> negotiate the terms of the payment.
+      </p>
+
+      <ul>
+          <li>
+<strong>Discovery of Offer</strong>. The <a>payer</a> discovers the
+<a title="payee">payee's</a> offer (e.g., by browsing a Web page or
+from a native application).
+        </li>
+        <li>
+<strong>Agreement on Terms</strong>. The <a>payer</a> and the
+<a>payee</a> agree to what will be purchased, for how much,
+in what currency, which <a title="payment scheme">payment schemes</a>
+or loyalty programs are acceptable, etc. The <a>payee</a> may require the
+<a>payer</a> to authenticate themselves. The <a>payee</a> may generate an
+invoice for the <a>payer</a>.
+        </li>
+        <li>
+<strong>Application of Marketing Elements</strong>. The <a>payer</a>
+discovers and applies any loyalty programs, coupons, and other special offers
+to the payment terms.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Negotiation of Payment Instruments</h3>
+      <p>
+In the second phase of the payment process, <a>payer</a> and
+<a>payee</a> determine which
+<a title="payment instrument">payment instruments</a> the
+<a>payer</a> will use to transfer funds to the <a>payee</a>.
+      </p>
+
+      <ul>
+          <li>
+<strong>Discovery of Accepted Schemes</strong>. The <a>payer</a>
+discovers the <a title="payment instrument">payment instruments</a> that
+are accepted by the <a>payee</a>.
+        </li>
+        <li>
+<strong>Selection of Payment Instruments</strong>. The <a>payer</a>
+selects one or more <a title="payment instrument">payment instruments</a>
+that are available to the <a>payer</a> and are accepted by the
+<a>payee</a>.
+        </li>
+        <li>
+<strong>Authentication to Access Instruments</strong>. The
+<a title="payer">payer's</a> access to the <a>payment instrument</a>
+is authenticated. The <a>payer</a> consents to pay. Note: This authentication
+with the <a>payment processor</a> is distinct from any authentication required
+by the <a>payee</a> (such as when a merchant requires a customer to
+have an account and log in to the merchant's Web site).
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Payment Processing</h3>
+      <p>
+The third phase of the payment process is used to initiate the transfer of
+funds. Depending on the <a>payment instrument</a>, the transfer of funds
+may be verified immediately or only after several days.
+      </p>
+       <ul>
+          <li>
+<strong>Initiation of Processing</strong>. Depending on the
+<a>payment instrument</a>, the <a>payer</a> (e.g., when using
+PayPal or Yandex Money), the <a>payee</a> (e.g., when using a credit card), or other
+party (e.g., bank) initiates processing.
+        </li>
+        <li>
+<strong>Verification of Available Funds</strong>. The <a>payer</a> may
+need to provide a proof of funds or a proof of hold to the <a>payee</a>
+before finalizing payment and delivery of the product.
+        </li>
+        <li>
+<strong>Authorization of Transfer</strong>. The <a>payee</a> receives
+proof that the transfer of funds has been authorized.
+        </li>
+        <li>
+<strong>Completion of Transfer</strong>. The <a>payment scheme</a>
+determines the details of payment clearing and settlement. Transfer times
+may vary from near-realtime to multiple days. The <a>payee</a>,
+the <a>payer</a>, and/or third parties (such as regulatory bodies) may be
+notified as each stage of the clearing and settlement process is completed.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Delivery of Product/Receipt and Refunds</h3>
+      <p>
+In the fourth phase of the payment process, the <a>transaction</a> is completed
+by providing the <a>payer</a> with a receipt and/or the product that
+was purchased.
+      </p>
+
+      <ul>
+          <li>
+<strong>Delivery of Product</strong>. The <a>payer</a> receives goods or
+services immediately, at a later date, automatically on a recurring basis,
+etc. depending on the terms of the <a>purchase</a>. A digital proof of
+payment may be required to access the product.
+        </li>
+        <li>
+<strong>Delivery of Receipt</strong>. Depending on the
+<a title="payment scheme">payment scheme(s)</a> chosen, there are
+various ways and times that a receipt may be delivered (e.g., credit card
+receipt, digital proof of <a>purchase</a>, or encrypted line-item receipt).
+        </li>
+        <li>
+<strong>Refunds</strong>. At times exceptions may occur (e.g., defective
+product or application of store return policy). In this case, the
+<a>payee</a> initiates payment to the <a>payer</a>. The refund may
+take different forms, including a refund to the <a title="payer">payer's</a>
+payment instrument, a refund using a different payment scheme, or store credit.
+        </li>
+      </ul>
+    </section>
+
+  </section>
+
+  <section>
+    <h2 id="phases-overview">A Simple Example of the Payment Phases</h2>
+    <p>
+The following scenario is provided to aid the reader in understanding how the
+phases of the payment process apply to a real world situation. In this scenario,
+we follow Jill, who seeks a new outfit for a party. She selects items from
+PayToParty, which is a brick-and-mortar store with an online presence.
+She chooses how to pay and the items are delivered to her home on the
+following day.
+    </p>
+
+    <p>
+See the appendix for <a href="#additional-examples">additional examples of
+the payment phases</a>.
+    </p>
+
+    <p class="issue">
+General feedback is requested on whether this section is helpful. We are
+attempting to ground the payment phases and steps in a real world use case.
+An alternative would be removing this section entirely if the preceding
+section suffices, or moving this narrative to section 7 with the other examples.
+    </p>
+
+    <section>
+      <h3>Negotiation of Purchase Terms</h3>
+      <ul>
+        <li>
+<strong>Discovery of Offer</strong>: Jill begins her <a>purchase</a> at
+home on her laptop, where she browses the items on the PayToParty Web
+site. On the way to work the next morning, she explores the catalog
+further from a native app on her smart phone. Jill can't decide
+whether the dress displayed online is
+<a href="https://en.wikipedia.org/wiki/The_dress_(viral_phenomenon)">
+blue with black stripes or white with gold stripes</a>,
+so during her lunch break, she drops into the
+PayToParty store near her office. She spots a few more items that
+she thinks she'd like to <a>purchase</a>, but decides to wait until later to
+make the <a>purchase</a>.
+        </li>
+
+        <li>
+<strong>Agreement on Terms</strong>: That same evening at home,
+Jill logs into her account on the PayToParty Web site, adding her
+chosen items to her shopping cart. The total price appears on the
+page.
+        </li>
+
+        <li>
+<strong>Application of Marketing Elements</strong>: As Jill prepares to
+check out, PayToParty notifies her of a discount for 10% if she uses
+the store's loyalty card to pay.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Negotiation of Payment Instruments</h3>
+      <ul>
+        <li>
+<strong>Discovery of Accepted Schemes</strong>: Given where Jill lives,
+PayToParty accepts payment by credit card, debit card, the PayToParty
+loyalty card, and PayPal, but not Jill's favorite cryptocurrency (which she
+uses on other sites).
+        </li>
+
+        <li>
+<strong>Selection of Payment Instruments</strong>: Jill pushes the
+"Pay Now to Party!" button and is presented with a number of options
+to pay, including her
+credit card, her PayToParty loyalty card (which is highlighted to remind her
+of the discount), and a PayPal account. There is also a gift card from
+PayToParty that she received for her birthday, but she chooses not to
+use it for this <a>purchase</a>.
+        </li>
+
+        <li>
+<strong>Authentication to Access Instruments</strong>: Jill selects
+the PayToParty loyalty card, the use of which is protected by two-factor
+authentication, and is asked to input a code that is sent to her phone
+before the <a>purchase</a> can be completed.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Payment Processing</h3>
+      <ul>
+        <li>
+<strong>Initiation of Processing</strong>. PayToParty receives a
+message from Jill's device authorizing the payment. PayToParty
+submits the message to their <a>payment processor</a>, requesting a
+proof of hold for the funds.
+        </li>
+        <li>
+<strong>Verification of Available Funds</strong>. PayToParty
+receives a proof of hold on Jill's funds for the <a>purchase</a> price of
+the goods. The PayToParty night-shift employees begin packing her purchased
+items for delivery the next day.
+        </li>
+        <li>
+<strong>Authorization of Transfer</strong>. Once Jill's package is ready to
+go, PayToParty exchanges the proof of hold for a proof of payment by
+re-submitting the request to the payment network. They receive a proof of
+payment from the <a>payment processor</a>.
+        </li>
+        <li>
+<strong>Completion of Transfer</strong>. Since Jill's PayToParty loyalty card
+operates as a credit card, PayToParty will receive the funds in their normal
+end of week settlement.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Delivery of Product/Receipt and Refunds</h3>
+      <ul>
+        <li>
+<strong>Delivery of Receipt</strong>. Jill's cloud-based wallet
+receives a detailed line-item digital receipt for the <a>purchase</a>.
+        </li>
+
+        <li>
+<strong>Delivery of Product</strong>. Jill's package goes out by courier the
+next morning and is on her doorstep before she leaves for work.
+        </li>
+      </ul>
+    </section>
+  </section>
+
+  <section>
+    <h2>Assumptions</h2>
+
+    <p>
+The use cases below rely on a number of assumptions that are not
+detailed in the use cases but that will be explored in more detail in
+the architecture and requirements documents.
+    </p>
+
+    <ul>
+        <li>
+<strong>Connectivity</strong>. Connectivity requirements vary according to
+use case. The types of connections a device may use include Internet
+connectivity, proxied connections through short-range radio transmissions,
+and proximity connections over a technology such as Near-Field Communication
+(NFC) or Bluetooth Low Energy (BTLE). Some use cases assume no
+connectivity (e.g., user is temporarily unable to connect to a mobile phone
+network or a WiFi hotspot).
+        </li>
+        <li>
+<strong>Registered Payment Instruments</strong>. In order for the
+<a>payer</a> to select and utilize
+<a title="payment instrument">payment instruments</a>, they must be
+registered in some way and discoverable by a browser, native application,
+or other software.
+        </li>
+        <li>
+<strong>Security</strong>. Keys, encryption, and other security technology
+must be used to secure sensitive information. It is important that sensitive
+information is not transmitted to parties that do not absolutely need to
+know the information in order to complete the <a>transaction</a>.</li>
+        <li>
+<strong>Identity</strong>. There will be an interoperable
+identifier used to identify the participants and accounts in a Web Payments
+transaction.
+        </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 id="use-cases">Use Cases</h2>
+
+    <p>
+This section examines the phases of payment, and the steps involved in each
+phase, through a variety of use cases. The purpose of this section is to
+elaborate on the variety of scenarios present in each step of the payment
+process.
+    </p>
+
+    <p class="issue">
+General feedback is requested related to the general structure of the
+use case snippets below. Are they focused enough to convey each topic listed?
+Is there information that should be added to each use case in general? Would
+more elaborate use cases be helpful? Would an attempt to minimize each existing
+use further be helpful in scanning the document more quickly?
+    </p>
+
+    <section>
+      <h3>Negotiation of Payment Terms</h3>
+      <p>
+      </p>
+
+      <section>
+        <h4>Discovery of Offer</h4>
+
+        <dl id="uc-website" class="dl-horizontal">
+          <dt>Website</dt>
+          <dd>
+Penny uses the HobbyCo website to select a $15 model train for <a>purchase</a>.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+A human being seeing a visual offer of sale on a website is the most common
+way offers are discovered on the Web today (2015).
+          </dd>
+        </dl>
+
+        <dl id="uc-pos-kiosk" class="dl-horizontal">
+          <dt>Point of Sale Kiosk</dt>
+          <dd>
+Cory shops for groceries at his local ChowMart, scans his loyalty card and
+all of the items he wants to <a>purchase</a> at the automated kiosk, requests
+a cash back amount, and is presented with a total amount.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Unifying point of sale interaction w/ the Web Payments architecture is
+vital for the success of this work.
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+At present kiosks are rarely accessible to blind people, people with low
+vision, people who use wheelchairs, or people with restricted mobility that
+makes touch interaction difficult or impossible. They don’t tend to offer
+speech output, any ability to zoom or customise colours, may be difficult to
+reach from a wheelchair/sitting position, and do not accept voice commands.
+Enabling as much of the payment interaction to move to a customer-held device
+with accessibility features would help alleviate a number of barriers that
+exist today.
+          </dd>
+          <dt>Privacy</dt>
+          <dd>
+Cory should exercise control over how much he wants the merchant
+to be able to track his activities. Programs like loyalty cards will
+likely involve agreement to more data with the merchant.<br/>
+Making kiosks that are used for financial transactions accessible introduces
+several challenges. Speech output may be overheard by people nearby, increased
+text size and/or visibility of content may make it easier for other people
+to read, and voice commands may also be overheard.
+          </dd>
+        </dl>
+
+        <dl id="uc-mobile" class="dl-horizontal">
+          <dt>Mobile</dt>
+          <dd>
+A mobile device can be used to discover an offer in a variety of ways:
+            <ul>
+              <li>
+Hani takes a taxi from the airport to his hotel. The taxi driver
+displays the total with his mobile device. Hani and the taxi driver
+touch their mobile devices to each other. The total appears on Hani's mobile
+device.
+              </li>
+              <li>
+There is a Quick Response Code (QR Code) printed on the bottom of a cup that
+Donna wants to buy. Donna uses her mobile phone app to capture the QR Code,
+view the price of the item, and add it to the list of items that she is buying
+from the store.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Unifying the way proximity mobile offers work with the Web Payments
+architecture would help ensure ubiquity.
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+An auditory cue notifying people that have low vision or are blind
+that a payment offer/invoice is awaiting their response as well as providing
+guidance on how close their payment device is to the payment terminal would
+be helpful.
+          </dd>
+          <dt>Exceptions</dt>
+          <dd>
+No mobile phone connectivity (e.g. visiting a different country or trip occurs
+outside the range of a mobile network).
+          </dd>
+        </dl>
+
+        <dl id="uc-freemium" class="dl-horizontal">
+          <dt>Freemium</dt>
+          <dd>
+Chaoxiang plays his favorite native app game and wants to upgrade his avatar
+with a few extra "power-ups". Clicking on a power-up displays the price.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Many of the very successful games these days run on the freemium model,
+but are tied to specific app stores. Providing an app-store agnostic
+mechanism to pay for items in freemium games would give players and
+developers more choices.
+          </dd>
+        </dl>
+
+        <dl id="uc-email" class="dl-horizontal">
+          <dt>Email</dt>
+          <dd>
+A GroupBuyCo customer receives an offer by email to <a>purchase</a> the deal
+of the day.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Unifying how people initiate payments from email, at a point of sale,
+and via a Web site will help ensure the ubiquity of the Web payment
+technology platform.
+          </dd>
+          <dt>Privacy / Security</dt>
+          <dd>
+It is important to recognize that initiating a payment from within an
+email application could lead to a wholly new category of phishing/fraud.
+          </dd>
+        </dl>
+
+        <dl id="uc-hold-funds" class="dl-horizontal">
+          <dt>Hold Funds</dt>
+          <dd>
+Renne checks into a hotel and is asked for a deposit for any damages
+to the room.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Some <a title="transaction">transactions</a>, such as a hold of funds,
+do not always reach completion and are primarily used
+to protect the <a>payee</a> from negligence on the part of the
+<a>payer</a> (e.g., such as a <a>payer</a> damaging a hotel room).
+          </dd>
+          <dt>Exceptions</dt>
+          <dd>
+Software acting on the <a title="payer">payer's</a> behalf may keep
+track of exactly how much money the <a>payer</a> has available and
+not allow them to process the offer.
+          </dd>
+        </dl>
+
+        <dl id="uc-preauth" class="dl-horizontal">
+          <dt>Pre-authorization</dt>
+          <dd>
+Krishna pulls up to a pump at a petrol station. His in-vehicle application
+recognizes the station location and the pump. The pump communicates which
+fuels it has and their price in an offer. Krishna's car asks if he wants to
+approve a fill up for up to €35.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Some offers are not aware of the final price but would rather set limits on
+the amount of the <a>purchase</a> before a particular metered good or service is
+delivered.
+          </dd>
+          <dt>Privacy</dt>
+          <dd>
+Due to the sensitivity of location data, individuals should be able to make
+small fuel <a title="purchase">purchases</a> in a way that respects their privacy.
+          </dd>
+          <dt>Security</dt>
+          <dd>
+Automated <a title="purchase">purchases</a> (e.g,. by a vehicle) may involve
+increased logging and security (e.g., a second factor of authentication).
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+If a pre-authorization is initiated by a software agent (such as a vehicle)
+due to a <a title="payer">payer's</a> negligence, the regulatory environment
+may assert that the software manufacturer is liable if the proper consent
+notifications were not displayed when the pre-authorization rule was activated.
+          </dd>
+        </dl>
+
+        <dl id="uc-machine-readability" class="dl-horizontal">
+          <dt>Machine Readability</dt>
+          <dd>
+BigBoxCo expresses their entire product catalog online as machine-readable
+information so that SearchCo may index their content more easily and direct
+more customer traffic to BigBoxCo's website.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Machine-readable offers will have a direct positive impact on store sales
+if they are indexed by search engines.
+          </dd>
+        </dl>
+
+        <dl id="uc-live-prices" class="dl-horizontal">
+          <dt>Live Market Prices</dt>
+          <dd>
+EnergyCo lists barrels of refined oil for sale on their website based on an
+algorithm that uses the cost of coal and crude oil as inputs. EnergyCo
+guarantees their prices for up to 24 hours from the posting date.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+The ability to express a non-repudiable offer as the basis of a legally
+enforceable contract will reduce <a>transaction</a> friction.
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+Listing inaccurate prices or not honoring prices could be prosecuted under
+certain regulatory regimes.
+          </dd>
+        </dl>
+
+        <dl id="uc-trialware" class="dl-horizontal">
+          <dt>Trialware</dt>
+          <dd>
+Amantha downloads the latest version of her favorite game and beats
+the first level. The game asks her if she'd like to buy the full game
+to play further levels.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+There is a fairly large trialware industry that could benefit from
+a simple way of executing a payment without requiring redirection
+to another site to enter account and payment details.
+          </dd>
+        </dl>
+
+        <dl id="uc-vehicle" class="dl-horizontal">
+          <dt>In-vehicle</dt>
+          <dd>
+Jeff listens to a lot of music on the way to work. The music station
+serves a digital offer along with the music stream. This enables Jeff to
+easily buy music that he really likes.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Car manufacturers and the entertainment industry may be interested in
+extending their sales channels into vehicles.
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+For safety reasons, the interface used to interact with the digital offer
+must not lead to an increase in vehicle accidents.
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+It may be illegal to provide services such as this if the vehicle is in
+motion or if it requires the driver to look away from the road.
+          </dd>
+        </dl>
+
+        <dl id="uc-memorable-ids" class="dl-horizontal">
+          <dt>Memorable Ids</dt>
+          <dd>
+Vern sends money to his friend Milena by typing in Milena's mobile phone number
+and the amount he wants to send.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Some countries, like the United Kingdom, maintain registries that map
+memorable identifiers like mobile phone numbers to bank accounts. These
+memorable payment identifiers can be used to transmit money from person to
+person using direct bank to bank transfers.
+          </dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h4>Agreement on Terms</h4>
+        <p>
+        </p>
+
+        <dl id="uc-one-time-payment" class="dl-horizontal">
+          <dt>One-time Payment</dt>
+          <dd>
+Jamie wishes to pay for a single article from a market analyst.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>It should be clear to a
+<a title="payer">payer</a> whether a
+<a>purchase</a> is one-time or recurring, prior to initiation of
+the payment.
+          </dd>
+        </dl>
+
+        <dl id="uc-registrationless" class="dl-horizontal">
+          <dt>Registration-less</dt>
+          <dd>
+Some <a title="payee">payees</a> would rather not require a <a>payer</a> to
+register at their site before initiating a purchase:
+            <ul>
+              <li>
+Sven wants to view a pay to read article and does so without needing to
+pre-register with the website.
+              </li>
+              <li>
+Reiko finds a blowtorch for sale at a local digital resale website and
+places money into escrow without needing to register with the website.
+              </li>
+              <li>
+Olaseni is listening to music in a local coffee shop and likes a song he hears.
+He initiates a purchase of the song from the local "music beacon" without
+needing to register with the coffee shop or the music service.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+There are a large number of "paywall" websites on the Web that require a
+customer to register before they may use the website. In many cases, if the
+site isn't regularly visited by the customer, they abandon the transaction
+when they see the paywall requirement. Providing a mechanism to sell an
+inexpensive item to a customer without requiring registration would be of
+great benefit to not only the merchants selling goods and services, but
+customers that would like to avoid lengthy registration processes.
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+People who are on the Autistic spectrum may require trust with the merchant
+to be established through a more formal means to prevent distress and
+abandonment of the transaction.
+          </dd>
+        </dl>
+
+        <dl id="uc-subscription" class="dl-horizontal">
+          <dt>Subscription</dt>
+          <dd>
+Larissa subscribes to a site that provides a monthly analysis of the world
+of finance.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1 (if time permits)</dd>
+          <dt>Motivation</dt>
+          <dd>
+<a title="payer">Payers</a> should be able to understand if a
+particular <a>purchase</a> is a recurring payment prior to initiating
+the payment.
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+Some regulations may require that subscriptions should be automatically
+canceled after the subscription time span unless explicitly renewed by
+a <a>payer</a>.
+          </dd>
+        </dl>
+
+        <dl id="uc-credentials" class="dl-horizontal">
+          <dt>Credentials</dt>
+          <dd>
+At times it is necessary to transmit personally identifiable information
+(e.g., about a qualification, achievement, personal quality, aspect of an
+<a>entity</a>'s background, or verifiable statement by an entity about
+another entity) in order to be cleared to make a purchase:
+            <ul>
+                <li>
+PharmCo will only sell regulated drugs to someone with proof
+of an active pharmacist's license.
+              </li>
+                <li>
+WineCo will only sell wine to someone with proof of being over the age of 21.
+              </li>
+                <li>
+BoomCo will only ship industrial explosives to a business that can
+provide evidence of construction permits, a contractor's license, and
+an explosives handling license.
+              </li>
+                <li>
+HomeLoanCo will not finalize a quote for a home mortgage without
+a credit score report and an audited finances report.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+There are certain types of  <a title="purchase">purchases</a> that cannot
+be initiated without a proper set of credentials. While this isn't fundamental
+to the payment process, it is an integral part of some <a>transaction</a>
+processes.
+          </dd>
+          <dt>Privacy / Security</dt>
+          <dd>It is important that people retain control over when
+	    and how their credentials are shared.</dd>
+          <dt>Regulatory</dt>
+          <dd>
+There are a large number of regulations covering the collection, storage, and
+usage of personally identifiable information. Any system designed to transmit
+or collect credentials must conform to all local and federal regulations
+related to identity and privacy.
+          </dd>
+          <dt>Exceptions</dt>
+          <dd>A <a>transaction</a> may fail if a required credential is not available.
+          </dd>
+        </dl>
+
+        <dl id="uc-privacy" class="dl-horizontal">
+          <dt>Privacy Protection</dt>
+          <dd>
+Tibor orders chocolates from CandyCo. CandyCo requests Tibor's
+tokenized shipping address to send him the candy. With Tibor's
+authorization, his payment software transmits a tokenized shipping address to
+BoomCo that the shipper can decipher. Tibor's privacy is protected from the
+candy store, which did not require any personally identifying information to
+complete the <a>transaction</a>.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Certain low-value <a>transaction</a>s shouldn't require the
+<a>payer</a> to divulge personal information that is not necessary
+to complete the <a>transaction</a>.
+          </dd>
+          <dt>Privacy</dt>
+          <dd>
+Non-essential, personally identifiable data should be anonymized and
+protected throughout the process.
+          </dd>
+        </dl>
+
+        <dl id="uc-need-to-know" class="dl-horizontal">
+          <dt>Need to Know</dt>
+          <dd>
+PayCo, a payment processor, is required to keep a certain amount of
+information on their customers
+for anti-money laundering / know your customer regulatory purposes. When a
+<a>payer</a> performs a <a>transaction</a> with a <a>payee</a>, PayCo
+would like to reduce the amount of information that's transmitted to the
+<a>payee</a> while ensuring that PayCo complies with regulations.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+There are types of information, such as personally identifiable information,
+that <a title="payee">payees</a> do not need to know for some
+transactions. Limiting sensitive information to be transmitted to entities
+involved in a payment on a purely need-to-know basis increases security
+while ensuring regulatory compliance.
+          </dd>
+        </dl>
+
+        <dl id="uc-invoices" class="dl-horizontal">
+          <dt>Invoices</dt>
+          <dd>
+There are a large variety of invoices that are used in the world:
+<ul>
+  <li>
+Sunan goes to SuperVoices to download a voiceover that he commissioned for
+his new pet sitting service. SuperVoices generates a detailed invoice for the
+service and provides it to Sunan.
+  </li>
+  <li>
+João is given an electronic
+<a href="https://en.wikipedia.org/wiki/Boleto">Boleto</a> by
+a technology website to pay for a new laptop.
+  </li>
+</ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+For certain <a title="payment scheme">payment schemes</a>, the <a>payer</a>
+will have to provide the payment service with a detailed digital invoice from
+the <a>payee</a> in order to initiate payment to the <a>payee</a>.
+          </dd>
+        </dl>
+
+        <dl id="uc-full-disclosure" class="dl-horizontal">
+          <dt>Full Disclosure</dt>
+          <dd>
+Marge wishes to renew her passport online which requires transmission
+of a fee and a great deal of information about her real-world identity.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Some <a>transaction</a>s will require very sensitive personally identifiable
+information to be transmitted by the <a>payer</a>.
+          </dd>
+          <dt>Privacy / Security</dt>
+          <dd>We must ensure adequate security for these highly sensitive
+      transactions to reduce the likelihood of phishing attacks.</dd>
+        </dl>
+
+    </section>
+
+      <section>
+        <h4>Application of Marketing Elements</h4>
+        <p>
+        </p>
+
+        <dl id="uc-coupons" class="dl-horizontal">
+          <dt>Coupons</dt>
+          <dd>
+JustPopcorn sends Marco a special discount offer given Marco's past
+<a title="purchase">purchases</a>. The offer takes the form of a coupon that
+may be applied during payment.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Providing a mechanism to apply digital coupons before a payment is initiated
+helps price-conscious customers as well as merchants attempting to research
+price sensitivity.
+          </dd>
+        </dl>
+
+        <dl id="uc-loyalty" class="dl-horizontal">
+          <dt>Loyalty Cards</dt>
+          <dd>
+Terry uses his FoodCo loyalty card when purchasing his weekly groceries, which
+gives him a discount on gas  <a title="purchase">purchases</a> performed at the
+FoodCo gas station.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Loyalty cards may be used at multiple locations to effect the price of a
+particular good.
+          </dd>
+        </dl>
+
+        <dl id="uc-store-credit" class="dl-horizontal">
+          <dt>Store Credit</dt>
+          <dd>
+When Fjörleif arrives as the self-checkout kiosk,
+she scans five dress shirts and two new pairs of dress pants.
+The kiosk mentions that Fjörleif could save 15% off of her <a>purchase</a>
+if she makes the <a>purchase</a> using store credit. She accepts the offer and
+a new store credit card is placed in her payment application on her mobile
+phone.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Merchants often provide discounts to customers if they sign up for a
+store-specific line of credit.
+          </dd>
+        </dl>
+
+      </section>
+
+    </section>
+
+    <section>
+      <h3>Negotiation of Payment Instruments</h3>
+      <p>
+      </p>
+
+
+      <section>
+        <h4>Discovery of Accepted Schemes</h4>
+        <p>
+        </p>
+
+        <dl id="uc-ubiquitous" class="dl-horizontal">
+          <dt>Ubiquitous Schemes</dt>
+          <dd>
+A game store Web site accepts payment via credit card, e-check, and
+operator billing.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+Ubiquitous <a title="payment scheme">payment schemes</a> should be supported
+without changes to how the schemes or payment instruments operate.
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+Often payment schemes have their own internal regulations as well as
+regulations at the local and federal level that cover the usage of the
+scheme.
+          </dd>
+        </dl>
+
+        <dl id="uc-emerging" class="dl-horizontal">
+          <dt>Emerging Schemes</dt>
+          <dd>
+CrowdFundCo supports Bitcoin, Ripple, Google Wallet, and PayPal.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+The same mechanism used to support existing
+<a title="payment scheme">payment schemes</a> should also
+support emerging <a title="payment scheme">payment schemes</a>.
+          </dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h4>Selection of Payment Instruments</h4>
+        <p>
+        </p>
+
+        <dl id="uc-discovery" class="dl-horizontal">
+          <dt>Discovery</dt>
+          <dd>
+Yanos has a multiple digital wallets: one on his mobile phone, two in the
+cloud (but on different websites), and one on his smart watch. Each one has
+a credit card that he may want to use for a credit card-based <a>purchase</a>.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+A <a>payer</a> will most likely use multiple digital wallets over time. It is
+important to ensure that the wallets that they use are presented to them in a
+consistent manner across devices.
+<span class="issue">The amount of wallet/payment instrument discovery
+flexibility that phase 1 should support is currently unknown.</span>
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+The consistent presentation of digital wallet interfaces also includes
+consistent accessibility hints that are exposed in an interoperable fashion so
+that devices that are accessability-aware can easily integrate with the
+transaction process.
+          </dd>
+          <dt>Privacy / Security</dt>
+          <dd>
+Discovery of digital wallets must be done in such a way as to ensure
+privacy protection.
+          </dd>
+        </dl>
+
+        <dl id="uc-payer-privacy" class="dl-horizontal">
+          <dt>Payer Privacy</dt>
+          <dd>We anticipate a range of privacy scenarios:
+            <ul>
+                <li>
+Lucio sends information about instruments he is willing to use to
+TrustedMerchant, who provides a discount for access to his information.
+              </li>
+                <li>
+Carla does not want to share information about the
+<a title="payment instrument">payment instruments</a> she uses with any
+merchants, so that information is not shared with any online merchants.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+Sharing or protecting data on the sorts of
+<a title="payment instrument">payment instruments</a> available to
+a <a>payer</a> should be a decision made by the <a>payer</a>.
+          </dd>
+          <dt>Privacy / Security</dt>
+          <dd>
+The types of <a title="payment instrument">payment instruments</a> available
+to a <a>payer</a> could be
+used to digitally fingerprint a <a>payer</a> even if they were using an
+pseudo-anonymous payment mechanism. Merchants and <a>payee</a>s may be legally
+obligated to protect this kind of <a>payer</a> payment information.
+          </dd>
+        </dl>
+
+        <dl id="uc-manual-selection" class="dl-horizontal">
+          <dt>Manual Selection</dt>
+          <dd>In many cases, the <a>payer</a> will select a payment instrument manually:
+            <ul>
+                <li>
+Marie has credit cards from three different institutions:
+one for work (from BankA), one personal card (from BankB), and one retail card
+(from PayCo). She wants to choose the right one depending on the context of her
+purchase.
+              </li>
+                <li>
+Claire has one debit card and multiple credit cards from the same bank.
+              </li>
+                <li>
+Veronique wants to use a cryptocurrency in some cases (e.g.,
+peer-to-peer payments).
+              </li>
+                <li>
+Seth participates in a loyalty program with his local grocery store and
+can apply a variety of digital coupons when he visits the store.
+<span class="issue">Is a loyalty card a payment instrument, or a credential?
+</span>
+              </li>
+                <li>
+David wants to be able to manually arrange available
+<a title="payment instrument">payment instruments</a> when they are presented
+to him. <span class="issue">Why does this need to be standardized?
+Isn't this just a part of the wallet UI?</span>
+              </li>
+              <li>
+Fergus wants to pay for a meal using two different payment instruments:
+cash and a company credit card. He'd like to pay $20.24 with the company
+credit card and provide a $5 tip with digital cash.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+There are scenarios, such as the first interaction/use of a payment instrument,
+where selection of the payment instrument won't be able to be performed
+automatically.
+          </dd>
+        </dl>
+
+        <dl id="uc-automatic-selection" class="dl-horizontal">
+          <dt>Automatic Selection</dt>
+          <dd>
+When a <a title="payer">payer's</a> personal preferences are known, it
+becomes possible to make selections for them automatically.
+
+            <ul>
+                <li>
+Jonny's payment software on his smart watch chooses the payment instrument that
+will provide him with the biggest cost savings for each <a>purchase</a> he makes
+throughout the week.
+              </li>
+                <li>
+PayCo wants Elizabeth to know that if she pays with the debit card preferred
+by PayCo (because of a lower <a>transaction</a> fee for PayCo),
+she will benefit from a discount.
+              </li>
+                <li>
+Whenever Mary shops at BigFreshGrocery she uses the same credit card.
+She wants payment to happen automatically with that card when she puts her
+phone near the checkout terminal as well as when purchasing groceries online
+from BigFreshGrocery.
+              </li>
+                <li>
+Lalana does not like to scroll. She wants the instruments she uses most
+often to appear at top of the displayed list of available payment instruments.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Payment solutions providers can make payments easier and faster through automation.
+          </dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h4>Authentication to Access Instruments</h4>
+        <p>
+        </p>
+
+        <dl id="uc-password" class="dl-horizontal">
+          <dt>Password Auth</dt>
+          <dd>
+When Suresh attempts to pay online, he is asked for a username and password
+by his payment service provider before the payment is approved.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+The most common mechanism for protecting access to payment instruments on the
+Web in 2015 is the use of a username and password.
+          </dd>
+        </dl>
+
+        <dl id="uc-multifactor" class="dl-horizontal">
+          <dt>Multi-Factor</dt>
+          <dd>
+We anticipate a range of authentication scenarios, leveraging a wide variety
+of approaches and device capabilities:
+            <ul>
+              <li>
+When Ian selects his debit card, he is prompted for a PIN.
+              </li>
+              <li>
+Horace presses the biometric fingerprint reader on his phone to authorize a
+purchase.
+              </li>
+              <li>
+An authentication code is sent to Tony's mobile phone as a text message
+to ensure that he is the one that initiated the payment. Once he enters the
+authentication code, the payment proceeds.
+              </li>
+              <li>
+Wes has configured his debit card to require a fingerprint scan from his
+mobile device and a Universal Two Factor (U2F) device to be used when
+performing a <a>purchase</a> over $1,000.
+              </li>
+              <li>
+Frederic taps his phone at the grocery store to pay, and BankA sends him a
+one-time password (OTP) on his mobile phone that he enters using a keypad at
+the checkout counter.
+              </li>
+              <li>
+Nadia's bank asks her to use her two-factor authentication device and at
+least one of their in-branch retinal scanners or palm-vein readers
+before she is allowed to withdraw $25,000.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>The payments architecture should support
+	    the authentication devices available today for
+multi-factor authentication, as well as those of the future.
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+Not everyone can provide fingerprints or detailed iris scans. Therefore, it
+is important to offer multiple forms of biometric verification to improve
+accessibility in addition to providing alternatives to biometric verification,
+such as strong two-factor verification.
+          </dd>
+        </dl>
+
+        <dl id="uc-kyc" class="dl-horizontal">
+          <dt>KYC</dt>
+          <dd>
+A number of Know Your Customer (KYC) requirements must be met when a financial
+service provider authorizes access to a particular <a>payment instrument</a>:
+            <ul>
+              <li>
+BigBank performs KYC clearing on a continuous basis to ensure that their
+customers are properly vetted before participating in financial transactions.
+              </li>
+              <li>
+Multigen, a wealth management company, must ensure that their customer's
+are accredited investors before allowing them to directly manage certain
+investments in their account.
+              </li>
+              <li>
+The Central Bank of Pakistan enables independent mobile resellers to
+perform minimal thumbprint-based KYC clearing in remote regions of the
+country.
+              </li>
+              <li>
+Pharmaxis, a medical drug reseller, requires that a customer is licensed to
+practice medicine and write prescriptions for Class 2 medications (highly
+addictive drugs with a known medical use) before a purchase is allowed to
+proceed.
+              </li>
+              <li>
+Dr. Kubo provides a set of explosives expert KYC credentials at the time of
+transaction to meet transaction requirements managed by the financial
+institution and merchant.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Authorization to access an instrument depends on more than just authenticating
+with the payment service provider, it may also require the <a>payee</a> to
+have other provable qualities before the transaction can proceed.
+          </dd>
+          <dt>Regulation</dt>
+          <dd>
+In many countries, a variety of regulations exist that require merchants and
+financial service providers to prove that they have vetted their customers
+before allowing a transaction to proceed.
+          </dd>
+        </dl>
+
+        <dl id="uc-" class="dl-horizontal">
+          <dt>AML</dt>
+          <dd>
+Financial service providers, and some merchants, are required to adhere to
+Anti-Money Laundering (AML) regulations by blocking transactions involving
+known bad actors or by reporting suspicious activity related to financial
+transactions:
+            <ul>
+              <li>
+Corresponda Bank's AML system notices an outgoing payment to an account listed
+as frozen by FinCEN and prevents the payment from proceeding.
+              </li>
+              <li>
+FasterPay, a payment service provider, notices tens of thousands of small
+transactions flowing from high-risk foreign accounts into a previously dormant
+domestic account and automatically files a Suspicious Activity Report.
+              </li>
+              <li>
+Eastern Group, an international remittance system, verifies that both the
+sender and a recipient of an international remittance are not on a watch
+list and have known accounts at the source and destination of funds
+before authorizing the transaction.
+              </li>
+              <li>
+The Flamingo, a casino, automatically files a Currency Transaction Report
+when one of its systems detects a customer withdrawing over $10,000 USD
+in winnings over the course of a day.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Financial service providers, and some merchants, are required to adhere to
+Anti-Money Laundering (AML) regulations by reporting suspicious activity
+related to financial transactions or by blocking transactions involving
+known bad actors.
+          </dd>
+          <dt>Exceptions</dt>
+          <dd>
+If a <a>payee</a> detects that a <a>payer</a> is on an applicable blacklist, the
+transaction must not proceed.
+          </dd>
+        </dl>
+
+          <dl id="uc-biometric" class="dl-horizontal">
+            <dt>Biometric</dt>
+            <dd>
+In current online and offline payment <a>transaction</a>s, biometric
+authentication can be used instead of password-based authentication:
+              <ul>
+                  <li>
+John registers his fingerprint with his payment provider so that he can
+just use a fingerprint to pay for low-value items.
+                </li>
+                  <li>
+Ruba registers her voiceprint and face with her payment provider for use
+in <a>transaction</a>s greater than $1,000.
+                </li>
+                  <li>
+Rico buys a $5,000 car for his daughter through an online dealership. His
+<a>payment processor</a> requires a password plus two forms of biometric
+identification. Rico doesn't have hands, so he uses a face and iris scan to
+perform the authentication.
+                </li>
+              </ul>
+            </dd>
+            <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+            <dt>Motivation</dt>
+            <dd>
+Biometrics can be utilized on point of sale terminals, mobile, and wearable
+devices. Web payment systems based on biometrics could achieve more reliable
+information security and convenience. Some forms of biometric authentication,
+like facial recognition, can also be used to augment password-based
+authentication mechanisms.
+            </dd>
+            <dt>Security / Privacy</dt>
+            <dd>
+              <ul>
+                  <li>
+An individual's privacy should be protected when performing any sort of
+biometric authentication.
+                </li>
+                  <li>
+Important data, such as the fingerprint template and private key, and
+sensitive code should be stored and executed in a Trusted Execution
+Environment (TEE).
+                </li>
+                  <li>
+The fingerprint authentication protocol, which is capable of transmitting a
+proof of fingerprint authentication credential, should not contain any
+personal fingerprint data.
+                </li>
+              </ul>
+            </dd>
+            <dt>Accessibility</dt>
+          <dd>
+Not everyone can provide fingerprints or detailed iris scans. Therefore, it
+is important to offer multiple forms of biometric verification to improve
+accessibility in addition to providing alternatives to biometric verification,
+such as strong two-factor verification.
+          </dd>
+          </dl>
+
+        <dl id="uc-risk-monitoring" class="dl-horizontal">
+          <dt>Risk Monitoring</dt>
+          <dd>
+Gao's payment processor service continuously monitor's his daily spending limit,
+daily withdrawal limit, and typical spending behavior and alerts him when a
+suspicious payment has been requested.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+As financial services have moved online, the number of Internet-based attacks
+on <a>payer</a> financial accounts have increased. One way to protect against
+these sorts of attacks is to perform continous risk monitoring.
+          </dd>
+        </dl>
+
+        <dl id="uc-joint" class="dl-horizontal">
+          <dt>Joint Accounts</dt>
+          <dd>
+ArcheryCorp's manufacturing division has a joint expense account that is
+shared among multiple employees to make purchases. The account is protected
+by an access control list as well as limits on the amount that each
+employee can spend without authorization by management.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+There are many types of accounts that are accessed via different payment
+instruments that can be shared in an organization. Access to the accounts
+are typically protected by one or more sets of authorization rules.
+          </dd>
+        </dl>
+      </section>
+
+    </section>
+
+    <section>
+      <h3>Payment Processing</h3>
+      <p>
+      </p>
+
+      <section>
+        <h4>Initiation of Processing</h4>
+        <p>
+        </p>
+
+        <p class="note">
+Before subjecting a person or organization to any financial <a>transaction</a>
+commitment (such as a web payment), they should be presented with the option
+of reversing, checking, or confirming their choice or submission. It should
+also be noted that this does not preclude certain <a>transaction</a> operations
+from being automated once they have been authorized by an <a>entity</a>.
+For more details, see the section on
+<a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#minimize-error-reversible">Error Prevention (Legal, Financial, Data)</a>
+in [[WCAG20]].
+        </p>
+
+        <dl id="uc-payee-initiated" class="dl-horizontal">
+          <dt>Payee-initiated</dt>
+          <dd>Some payments are initiated by the payee:
+            <ul>
+                <li>
+Richard choses to pay using a credit card at FlowerFriends. FlowerFriends
+initiates payment processing using their <a>payment processor</a> to contact the
+acquiring bank that handles credit card payments for FlowerFriends.
+              </li>
+                <li>
+Pitir has authorized RentSeekers to pull money out of his bank account on a
+monthly basis in order to pay his rent. RentSeekers initiates a payment using
+the ACH network to pull money from Pitir's bank account.
+              </li>
+              <li>
+Fiona shows a QR Code, which contains her payment details, to a cashier when
+she is checking out. The cashier scans the QR Code and initiates a payment
+using the details in the QR Code.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+Payee-initiated payments, also known as "pull payments" or
+"four corner model payments", are widely deployed and utilized today.
+          </dd>
+          <dt>Privacy / Security</dt>
+          <dd>
+One of the biggest security flaws of <a>payee</a>-initiated payments is that
+all the information necessary to initiate a <a>transaction</a> from the
+<a title="payer">payer's</a> financial account is typically transmitted
+to the <a>payee</a>. For example, credit card information along with
+expiration date, name, and CVV2 code are transmitted and could be intercepted
+by rogue software running on the <a title="payer">payer's</a> servers.
+Special attention should be paid to ensuring that this risky security
+model isn't supported by a Web Payments solution. For example, at a minimum,
+credit card tokenization such as EMVCo's solution should be supported
+alongside other tokenization solutions.
+          </dd>
+        </dl>
+
+        <dl id="uc-payer-initiated" class="dl-horizontal">
+          <dt>Payer-initiated</dt>
+          <dd>Some payments are initiated by the payer:
+            <ul>
+                <li>
+Once Sally has signed into PayPal to pay, PayPal initiates payment processing.
+              </li>
+                <li>
+Joakim uses his Bitcoin wallet to send money to his friend.
+              </li>
+                <li>
+Carson (in New York City) sends money to Vladimir (in Moscow) using
+his Ripple client, which converts the currency from US Dollars to Rubels in
+transit.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+Payer-initiated payments, also known as "push payments",
+"three corner model payments", or "peer-to-peer payments", are fundamentally
+more secure as no information is given to the <a>payee</a> that would
+allow them or an attacker to replay the <a>transaction</a> for a different
+amount or to a different <a>payee</a> at a later date.
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+There are a number of regulations that cover the protection of confidential
+customer data both from a payment scheme perspective as well as a federal
+level.
+          </dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h4>Verification of Available Funds</h4>
+        <p>
+        </p>
+
+        <dl id="uc-hold-verification" class="dl-horizontal">
+          <dt>Hold Verification</dt>
+          <dd>
+Renne checks into a hotel and is asked for a deposit for any damages to the
+room. She uses her phone to provide a proof-of-hold until she checks out of
+the hotel, at which time the hold on her funds will be released.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+Delivering services or products that are difficult to "undo," such
+as performing an oil change, dispensing fuel, or renting a car or hotel
+room are examples of situations which may require a two-part
+<a>transaction</a>.
+          </dd>
+        </dl>
+
+        <dl id="uc-funds-verification" class="dl-horizontal">
+          <dt>Funds Verification</dt>
+          <dd>
+When Mario wishes to <a>purchase</a> a race car through the manufacturer,
+the company that makes the car requires a proof of funds from Mario's bank
+in order for the customization of the car to proceed.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+A <a>payee</a> may want to limit access to certain services to only those
+who they know can afford the good or service because the act of
+providing an acceptable level of service to the <a>payee</a> during the
+pre-sale phase may be costly.
+          </dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h4>Authorization of Transfer</h4>
+        <p>
+        </p>
+
+        <dl id="uc-proofs" class="dl-horizontal">
+          <dt>Proofs</dt>
+          <dd>
+Goods and services may be released at different times depending on the type of
+<a>transaction</a> being performed:
+            <ul>
+                <li>
+Sung-hyun provides a proof of initiation of funds transfer to get access to
+an online streaming music service.
+              </li>
+                <li>
+Zhang Wei orders 10 large boxes of envelopes from an online shop in
+Tianjin. He uses an escrow service to provide a proof of escrow to the
+online shop in order to get them to initiate the shipment.
+              </li>
+                <li>
+To protect Tibor's privacy when he <a title="purchase">purchases</a> candy
+online, the store asks only for Tibor's verified shipping address and a
+proof of payment to send him the chocolates.
+              </li>
+                <li>
+RockinRadio, SmoothSounds, and classicallyClassic are independent, specialized
+music streaming services. They accept proof of <a>purchase</a> from each other
+to provide a track that is in their online streaming catalogue even if it was
+originally bought from another provider.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+At times, it is safe to release a good
+when the payment network acknowledges that the funds are on their way. At other
+times, it's not safe to release a good or service until it has been proven that
+the funds are sitting in the <a title="payee">payee's</a> financial
+account.
+          </dd>
+          <dt>Exceptions</dt>
+          <dd>
+If a particular expected proof is not provided, the <a>transaction</a> will most
+likely fail or transition into an alternate path.
+          </dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h4>Completion of Transfer</h4>
+        <p>
+        </p>
+
+        <dl id="uc-delay-variation" class="dl-horizontal">
+          <dt>Variation of Delay</dt>
+          <dd>When a <a>transaction</a> occurs, the time it takes to transmit and receive
+funds often vary according to the <a>payment scheme</a>:
+            <ul>
+                <li>
+Eman uses a credit card to buy some gifts for her parents. The shop has
+access to the funds in three days.
+              </li>
+                <li>
+Frank uses an electronic check to pay his rent. The rental agency has access
+to the funds in 7 days.
+              </li>
+                <li>
+Felicity has chosen Bitcoin to pay for glasses online. The store
+that sells the glasses has almost guaranteed access to the funds within
+15 minutes.
+              </li>
+                <li>
+Vanessa uses Ripple to <a>purchase</a> a new work outfit in US Dollars.
+Funds in Euros are available to OnlineWorkClothes within a few minutes.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Exceptions</dt>
+          <dd>
+If the funds are sent but never received, then the <a>payee</a> will
+select a recourse mechanism that is included in the last <a>transaction</a>
+message.
+          </dd>
+        </dl>
+
+        <dl id="uc-escrow" class="dl-horizontal">
+          <dt>Escrow</dt>
+          <dd>
+There are a number of considerations when providing escrow services to both
+<a title="payer">payers</a> and <a title="payee">payees</a>:
+            <ul>
+              <li>
+Jack has established an online store on a trusted third party website to
+sell pants. Mary wants to buy a pair of pants from Jack's online store.
+Mary doesn't trust Jack because she has never met him nor has she done
+business with him before. Jack doesn't trust Mary because he doesn't know
+if he will be paid after shipping the pants to Mary. Mary makes a purchase,
+selecting to put her money in escrow at the trusted third party. Jack is
+notified that the funds have been received by the trusted third party.
+Jack sends the pants to Mary via Express Mail. When Mary gets the pants,
+she will tell the trusted third party and they will move the funds
+to Jack's account.
+              </li>
+              <li>
+Escrow services in China sometimes provide a virtual financial account to
+<a title="payer">payers</a>. Money is typically transferred from the
+<a title="payer">payer's</a> bank account to the escrow service provider's
+bank to hold, but where the funds are still legally owned by the <a>payer</a>.
+When Hung transfers funds to an escrow service provider, his
+rights and responsibilities are exchanged with the escrow service provider
+at the same time as well as how various parties involved with the account
+can access and use the funds.
+              </li>
+            </ul>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+A trusted third party is typically helpful for non-instant transactions
+where neither the <a>payer</a> or the <a>payee</a> have an existing
+relationship. A trusted third party protects the <a>payer</a> by ensuring that
+the <a>payee</a> has been vetted and by guaranteeing product or a refund. The
+trusted third party protects the <a>payee</a> by ensuring that funds from the
+<a>payer</a> have been verified before releasing the product to them.
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+The use of money held in escrow accounts by the escrow service provider is
+covered by a number of consumer protection laws that restrict what the
+escrow service provider can do with the money. Expressing these restrictions
+in a way that enhances interoperability is desirable.
+          </dd>
+        </dl>
+
+        <dl id="uc-notifications" class="dl-horizontal">
+          <dt>Notifications</dt>
+          <dd>
+Gavin sends an electronic check to WaveMart. WaveMart receives a notification
+that payment has been initiated almost immediately. Four days later, WaveMart
+receives a notification from their bank that payment has been received.
+          </dd>
+          <dt>Roadmap phase</dt>
+        <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+It is difficult for an organization to know when a payment has been received
+without depending on proprietary software.
+          </dd>
+          <dt>Exceptions</dt>
+          <dd>
+It may also be important to be notified when a payment that was initiated
+has not been received, or when a payment has been reversed after it had been
+received.
+          </dd>
+        </dl>
+
+      </section>
+
+    </section>
+
+    <section>
+      <h3>Delivery of Product/Receipt and Refunds</h3>
+      <section>
+        <h4>Delivery of Product</h4>
+        <p>
+        </p>
+
+        <dl id="uc-physical-goods" class="dl-horizontal">
+          <dt>Physical Goods</dt>
+          <dd>
+Giralt orders a bicycle for his daughter through BikeSmart online and has it
+shipped to his home address.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+The <a>purchase</a> and delivery of physical goods via an online marketplace
+is one of the cornerstones of online commerce.
+          </dd>
+        </dl>
+
+        <dl id="uc-virtual-goods" class="dl-horizontal">
+          <dt>Virtual Goods</dt>
+          <dd>
+When Lilith buys music from a band at MusicBox and then goes to their
+Web site to download additional content, no registration is required, just a
+proof of <a>purchase</a> that is sent to the band's website, after which
+MusicBox provides Lilith a link to download the additional content.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1</dd>
+          <dt>Motivation</dt>
+          <dd>
+Delivery of product can happen on any site that accepts a proof of purchase
+that contains a recognized product identifier.
+          </dd>
+        </dl>
+
+        <dl id="uc-dropshipping" class="dl-horizontal">
+          <dt>Dropshipping</dt>
+          <dd>
+Takeru orders a new backpack online and has it shipped to a nearby department
+store for pickup.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+It is common in Japan and the United Kingdom to purchase items online and then
+have them shipped to a nearby department store to save on shipping.
+          </dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h4>Delivery of Receipt</h4>
+        <dl id="uc-electronic-receipts" class="dl-horizontal">
+          <dt>Electronic Receipts</dt>
+          <dd>
+Ashraf pulls up to a pump at a petrol station. He pays electronically using a
+credit card (via his phone). A machine-readable electronic receipt for
+the <a>purchase</a> from the gas station is transferred to his phone and
+displayed using his favorite expense tracking software.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1 (very basic receipt container and delivery protocol)</dd>
+          <dt>Motivation</dt>
+          <dd>
+Standardized, machine-readable electronic receipts make it easier to
+track expenses, prove that certain <a title="purchase">purchases</a> were
+made, file tax returns, and simplify management of unnecessary paper.
+          </dd>
+          <dt>Privacy</dt>
+          <dd>
+Many merchants want to ensure that receipts are not readable by any party
+between them and their customer.
+          </dd>
+          <dt>Security</dt>
+          <dd>
+Electronic receipts should be tamperproof such that the information can be
+verified to have come from the merchant issuing the receipt. One mechanism
+that could be employed would be the use of digital signatures over the
+contents of the electronic receipt.
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+Protecting digital receipts may have the unintended consequence of degrading
+or preventing their use with accessibility technology. It is important that
+protection measures do not prevent accessibility technology from reading
+pertinent information about the transaction.
+          </dd>
+        </dl>
+
+        <dl id="uc-physical-receipts" class="dl-horizontal">
+          <dt>Physical Receipts</dt>
+          <dd>
+Bongani reserves a bus ticket online using his mobile phone. At the bus
+terminal he taps his phone to a kiosk and receives a printed physical receipt
+that he can use on the bus.
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>Uncategorized</dd>
+          <dt>Motivation</dt>
+          <dd>
+There will be a transition period from the use of physical receipts and
+tickets to digital receipts. In some cases, physical receipts may never be
+replaced, so it is important to ensure that digital receipts have a mechanism
+to be transformed to physical receipts.
+          </dd>
+          <dt>Privacy / Security</dt>
+          <dd>
+Physical receipts should ensure that private information is not exposed on
+the receipt.
+          </dd>
+          <dt>Accessibility</dt>
+          <dd>
+Implementations should ensure that people who have visual disabilities have
+options such as Braille output for physical receipts alongside high-contrast /
+large print lettering.
+          </dd>
+        </dl>
+
+      </section>
+      <section>
+        <h4>Refunds</h4>
+        <dl id="uc-refund" class="dl-horizontal">
+          <dt>Basic Refund</dt>
+          <dd>
+At times, it becomes necessary to refund a <a title="payer">payer's</a>
+payment:
+            <ul>
+              <li>
+Pele buys a slice of pizza with a credit card at a local restaurant
+and is accidentally charged for five slices of pizza. He notices the
+mistake after he pays and requests a refund, which the restaurant
+manager approves. The overcharged funds are returned to his account.
+              </li>
+              <li>
+Teo claims that a blender he purchased online was faulty and returns
+the product to the merchant. The merchant provides the customer with a refund
+in the form of store credit based on the return policy.
+              </li>
+              <li>
+<span class="issue">Should we include a scenario where the refund is to a
+different payment scheme, e.g., cash?</span>
+              </li>
+              <li>
+A financial crimes regulator identifies a criminal syndicate that is
+operating via a number of fake identities. The fake identities are flagged
+and an electronic message is sent to all
+<a title="payment processor">payment processors</a> to reverse all
+payments sent to the fake identities.
+              </li>
+            </ul>
+          </dd>
+          <dt>Roadmap phase</dt>
+          <dd>1 (if time permits)</dd>
+          <dt>Motivation</dt>
+          <dd>
+Some <a>transaction</a>s are the result of human error or fault. In these
+cases, it is helpful to be able to reverse the <a>transaction</a> and provide
+a refund to the customer.
+          </dd>
+          <dt>Regulatory</dt>
+          <dd>
+Consumer protection laws and regulations affect the ways a customer can
+request a refund for a defective product or service.
+          </dd>
+        </dl>
+
+      </section>
+
+    </section>
+  </section>
+
+  <section>
+    <h2 id="additional-examples">Additional Examples of the Payment Phases</h2>
+    <p>
+Early in the document we provide an
+<a href="#a-simple-example-of-the-payment-phases">example of the payment
+phases</a>. In this appendix we provide further examples to
+illustrate the phase steps.
+    </p>
+
+    <p class="issue">
+Input is requested from experts at each organization providing services
+mentioned below as well as engineers and designers of technologies used below.
+Specifically, if the payment flows outlined below contain errors or omissions
+the group would like to be to ensure that the oversight is corrected as soon
+as possible.
+    </p>
+
+    <section>
+      <h3>Credit Card Payment (Visa, MasterCard)</h3>
+      <p>
+This scenario outlines a typical card purchase using the "four corner model".
+Janet is buying an handbag online from a resale shop.
+      </p>
+
+      <section class="notoc">
+        <h4>Negotiation of Purchase Terms</h4>
+        <ul>
+          <li>
+<strong>Discovery of Offer</strong>: Janet searches her favorite resale shop
+online to discover a gently used purse that she has always wanted.
+          </li>
+          <li>
+<strong>Agreement on Terms</strong>: Janet selects the purse and puts it into
+the shopping cart before others have a chance to buy it. She agrees with the
+shipping terms and adds an extended warranty for the product.
+          </li>
+          <li>
+<strong>Application of Marketing Elements</strong>: At the time of reviewing
+the shopping cart, she is asked if she would like the scarf which goes with
+the purse.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Negotiation of Payment Instruments</h4>
+        <ul>
+          <li>
+<strong>Discovery of Accepted Schemes</strong>: The site takes
+Discover, MasterCard, Visa, and debit cards along with secured money order,
+Bitcoin, Google Wallet, and ApplePay.
+          </li>
+
+          <li>
+<strong>Selection of Payment Instruments</strong>: Janet selects her Discover
+rewards credit card that is highlighted by default because she had used
+it for a previous purchase with the merchant.
+          </li>
+
+          <li>
+<strong>Authentication to Access Instruments</strong>: The merchant asks Janet
+for her zip code and the verification code on the back of the card.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Payment Processing</h4>
+        <ul>
+          <li>
+<strong>Initiation of Processing</strong>: The merchant initiates an
+payment authorization request to their <a>payment processor</a>.
+          </li>
+          <li>
+<strong>Verification of Available Funds</strong>: The payment authorization
+request is successful and the <a>payment processor</a> sends a response to the
+merchant acknowledging that the funds are now held until the merchant
+finalizes the payment.
+          </li>
+          <li>
+<strong>Authorization of Transfer</strong>: After the merchant has packed
+the bag for shipping, the merchant sends a message back to the
+<a>payment processor</a> to finalize the payment.
+          </li>
+          <li>
+<strong>Completion of Transfer</strong>: The funds are immediately deducted from
+Janet's line of credit. The funds take 3 days to be transferred to the
+merchant's bank account.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Delivery of Product/Receipt and Refunds</h4>
+        <ul>
+          <li>
+<strong>Delivery of Receipt</strong>: The seller sends her a digital receipt,
+which she receives by email and directly to her digital wallet. Her
+digital wallet forwards the receipt to her budgeting software. The digital
+wallet forwards the tracking number embedded in the digital receipt to
+her MyUPS Shipping Tracker mobile application.
+          </li>
+
+          <li>
+<strong>Delivery of Product</strong>: The merchant's shipping department packs
+and delivers the bag to the shipper, which then sends it to Janet.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <h3>Tokenized Payments (ApplePay / Venmo / CyberSource)</h3>
+      <p>
+The following scenario outlines payment using a mobile device and
+tokenization. The merchant has provided a mobile application that
+customers can download in the example below. This example may apply to
+various tokenization payment systems now in use, such as ApplePay,
+CyberSource, Venmo, and Square.
+      </p>
+
+      <section class="notoc">
+        <h4>Negotiation of Purchase Terms</h4>
+        <ul>
+          <li>
+<strong>Discovery of Offer</strong>: Tom uses the Terrific-Tools mobile
+app to select a new ax to purchase and finds a hickory handled model like the
+one his father had.
+          </li>
+
+          <li>
+<strong>Agreement on Terms</strong>: Tom selects the ax, which is in the
+price range he wanted.
+          </li>
+
+          <li>
+<strong>Application of Marketing Elements</strong>: <em>Not applicable to
+this particular use case.</em>
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Negotiation of Payment Instruments</h4>
+        <ul>
+          <li>
+<strong>Discovery of Accepted Schemes</strong>: The mobile app uses
+tokenized <a title="payment instrument">payment instruments</a> and the
+Terrific-Tools Application displays the options available.
+          </li>
+
+          <li>
+<strong>Selection of Payment Instruments</strong>: Tom chooses to pay
+with his tokenization-enabled MasterCard.
+          </li>
+
+          <li>
+<strong>Authentication to Access Instruments</strong>: Tom uses the
+fingerprint recognition feature of his device to authenticate his payment.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Payment Processing</h4>
+        <ul>
+          <li>
+<strong>Initiation of Processing</strong>: The mobile app creates an
+encrypted transaction and sends it to the payment processor. The payment
+processor decrypts the information and processes the transaction.
+          </li>
+          <li>
+<strong>Verification of Available Funds</strong>: <em>Not applicable to
+this particular use case.</em>
+          </li>
+          <li>
+<strong>Authorization of Transfer</strong>: The payment processor
+responds back to the mobile app with an approval.
+          </li>
+          <li>
+<strong>Completion of Transfer</strong>: The payment processor sends a
+transaction receipt to Terrific-Tools.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Delivery of Product/Receipt and Refunds</h4>
+        <ul>
+          <li>
+<strong>Delivery of Receipt</strong>: Terrific-Tools sends a transaction
+receipt to the mobile app.
+          </li>
+
+          <li>
+<strong>Delivery of Product</strong>: Terrific-Tools ships the ax to Tom.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <h3>Three Corner Model Payments (PayPal / Alipay / Google Wallet)</h3>
+      <p>
+The following scenario outlines an ideal payment experience using a
+<a>payer</a>-initiated payment, also known as a "push-payment" or
+"three corner model payment". In this scenario, Meihui is buying an airline
+ticket from a booking website and during the payment process she uses her
+fingerprint instead of a password to authorize the payment.
+      </p>
+
+      <section class="notoc">
+        <h4>Negotiation of Purchase Terms</h4>
+        <ul>
+          <li>
+<strong>Discovery of Offer</strong>: Meihui searches for a flight on
+the booking website. She finds a flight for the ideal price and time.
+          </li>
+
+          <li>
+<strong>Agreement on Terms</strong>: Meihui selects the flight and agrees to the
+terms and service associated with the ticket.
+          </li>
+
+          <li>
+<strong>Application of Marketing Elements</strong>: <em>Not applicable to
+this particular use case.</em>
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Negotiation of Payment Instruments</h4>
+        <ul>
+          <li>
+<strong>Discovery of Accepted Schemes</strong>: The booking website takes
+Alipay, Visa, MasterCard, and China UnionPay for payment.
+          </li>
+
+          <li>
+<strong>Selection of Payment Instruments</strong>: Meihui chooses Alipay for
+payment.
+          </li>
+
+          <li>
+<strong>Authentication to Access Instruments</strong>: Meihui logs in the Alipay
+with her account name and password. Meihui is told that she will pay for the
+airline ticket with 3,500 RMB and she confirms it. Meihui uses her fingerprint
+to approve the payment.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Payment Processing</h4>
+        <ul>
+          <li>
+<strong>Initiation of Processing</strong>: Meihui's Alipay wallet initiates
+the <a>transaction</a>.
+          </li>
+          <li>
+<strong>Verification of Available Funds</strong>: <em>Not applicable to
+this particular use case.</em>
+          </li>
+          <li>
+<strong>Authorization of Transfer</strong>: Alipay initiates the payment to
+the booking website based on Meihui's prior fingerprint-based authorization.
+          </li>
+          <li>
+<strong>Completion of Transfer</strong>: The booking website gets a message
+from Alipay that the transfer is complete.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Delivery of Product/Receipt and Refunds</h4>
+        <ul>
+          <li>
+<strong>Delivery of Receipt</strong>: The booking website sees that Meihui's
+airline ticket order has been paid and sends a receipt message to her
+digital wallet.
+          </li>
+
+          <li>
+<strong>Delivery of Product</strong>: The booking website sends an email to
+Meihui with the flight information including the airline, flight number,
+departure time, and gate number.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <h3>Cryptocurrency Payment (Bitcoin, Ripple)</h3>
+      <p>
+The following scenario outlines an ideal payment experience using Bitcoin, or a
+Bitcoin-like cryptocurrency. In this scenario, Lenne is buying a pair of
+alpaca socks from an online retailer using a "buy one, get one free" coupon.
+The socks are shipped to her home address.
+      </p>
+
+      <section class="notoc">
+        <h4>Negotiation of Purchase Terms</h4>
+        <ul>
+          <li>
+<strong>Discovery of Offer</strong>: Lenne searches for "warm socks,
+locally sourced" in her favorite search engine. A pair of Alpaca socks come up
+as the first hit as the Alpaca's are nearby where she lives and the online
+store (AlpacaToesCo) provides local delivery. She has a coupon in her
+digital wallet for the store, but forgot long ago that it is there.
+          </li>
+
+          <li>
+<strong>Agreement on Terms</strong>: Lenne goes to AlpacaToesCo and puts the
+socks in her online shopping cart and is shown the price. Lenne provides her
+shipping address to AlpacaToes.
+          </li>
+
+          <li>
+<strong>Application of Marketing Elements</strong>: When Lenne puts the socks
+in her online shopping cart, she's reminded of the "buy one, get one free"
+coupon she has in her wallet. She adds another pair of socks and continues
+with the checkout process.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Negotiation of Payment Instruments</h4>
+        <ul>
+          <li>
+<strong>Discovery of Accepted Schemes</strong>: The website takes Visa,
+Ripple, and Bitcoin for payment.
+          </li>
+
+          <li>
+<strong>Selection of Payment Instruments</strong>: Lenne has a Visa card
+as well as a local Ripple wallet and a cloud-based Bitcoin wallet. Lenne
+selects her cloud-based Bitcoin wallet.
+          </li>
+
+          <li>
+<strong>Authentication to Access Instruments</strong>: Since the value of the
+payment is less than $50, Lenne isn't asked for her two-factor authentication
+device to approve the <a>purchase</a>.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Payment Processing</h4>
+        <ul>
+          <li>
+<strong>Initiation of Processing</strong>: Lenne's cloud-based Bitcoin wallet
+provider initiates the <a>transaction</a>.
+          </li>
+          <li>
+<strong>Verification of Available Funds</strong>: <em>Not applicable to
+this particular use case.</em>
+          </li>
+          <li>
+<strong>Authorization of Transfer</strong>: AlpacaToesCo is sent a message
+from the Bitcoin cloud wallet notifying them that the transfer has been
+initiated. Lenne is told that she will receive a notification when the
+item is shipped.
+          </li>
+          <li>
+<strong>Completion of Transfer</strong>: AlpacaToesCo gets a message from the
+Bitcoin cloud wallet that the transfer is complete. A Bitcoin
+<a>transaction</a> ID is included in the message so that AlpacaToesCo can
+release the product when the appropriate number of verifications are made on
+the <a>transaction</a>.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Delivery of Product/Receipt and Refunds</h4>
+        <ul>
+          <li>
+<strong>Delivery of Receipt</strong>: AlpacaToesCo sees 6 verifications on the
+transaction in the Bitcoin blockchain and sends a receipt of sale to Lenne's
+cloud wallet. The store notifies Lenne that they have shipped her package.
+          </li>
+
+          <li>
+<strong>Delivery of Product</strong>: AlpacaToesCo ships the package of socks
+to Lenne and she receives them the next day.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <h3>Electronic Check Payment</h3>
+      <p><em>To be completed</em>.</p>
+    </section>
+
+    <section id="direct-debit">
+      <h3>Direct Debit (SEPA Direct Debit)</h3>
+      <p>
+The following scenario outlines an ideal payment experience using a
+Direct Debit (<a>payee-initiated payment</a>), also known as a
+pull payment in the context of a <a>four corner model</a> payment.
+In this scenario, Anna is signing up for electricity service via the
+service's website. During the payment process she will validate an electronic
+direct debit mandate.
+      </p>
+
+      <section class="notoc">
+        <h4>Negotiation of Purchase Terms</h4>
+        <ul>
+          <li>
+<strong>Discovery of Offer</strong>: Anna connects to a utility website. She
+wants to setup this new utility immediately before she moves in to a new flat.
+          </li>
+          <li>
+<strong>Agreement on Terms</strong>: Anna selects the contract she wants and
+agrees to the terms and service associated with the delivery of electricity.
+          </li>
+          <li>
+<strong>Application of Marketing Elements</strong>: <em>Not applicable to this
+particular use case.</em>
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Negotiation of Payment Instruments</h4>
+        <ul>
+          <li>
+<strong>Discovery of Accepted Schemes</strong>: The utility website takes
+Visa, MasterCard, and SEPA Direct Debit for payment.
+          </li>
+          <li>
+<strong>Selection of Payment Instruments</strong>: Anna chooses SEPA Direct
+Debit for payment.
+          </li>
+          <li>
+<strong>Authentication to Access Instruments</strong>: Anna provides
+all the mandatory data required for a valid electronic SEPA Direct Debit
+Mandate as well as the IBAN number associated with Anna's account. Anna is
+told that she is setting up a recurring payment with the utility and the
+payment will be automatically withdrawn at the end of the month based on
+her electricity consumption. She agrees to the automatic transfer by
+entering her secret PIN.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Payment Processing</h4>
+        <ul>
+          <li>
+<strong>Initiation of Processing</strong>: At the end of the month the utility
+invoice system will initiate the payment by sending an invoice by email
+that will be sent directly to Anna's payment service provider.
+          </li>
+          <li>
+<strong>Verification of Available Funds</strong>: <em>Not applicable to this
+particular use case.</em>
+          </li>
+          <li>
+<strong>Authorization of Transfer</strong>: Anna's payment service provider
+authorizes the transfer based on the reference ID that was validated by
+Anna during the <strong>Authentication to Access Instruments</strong> phase.
+          </li>
+          <li>
+<strong>Completion of Transfer</strong>: The utility website gets a message
+from its payment service provider that the transfer has been completed.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Delivery of Product/Receipt and Refunds</h4>
+        <ul>
+          <li>
+<strong>Delivery of Receipt</strong>: The utility website sees that Anna's
+direct debit mandate has been validated and sends a receipt message to her
+digital wallet.
+          </li>
+          <li>
+<strong>Delivery of Product</strong>: The utility website sends an email to
+Anna with the contract information based on the email provided in the
+Completion of Transfer message sent to her payment service provider.
+          </li>
+          <li>
+<strong>Refunds</strong>: Anna could request a refund by contacting her bank
+if something goes wrong with the Direct Debit.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="credit-transfer">
+      <h3>Credit Transfer (SEPAmail)</h3>
+      <p>
+The following scenario outlines an ideal payment experience using a
+<a>payer-initiated payment</a>, also known as a
+push payment in the context of a <a>four corner model</a> payment. In
+this scenario, Anna is buying a very expensive piece of furniture that costs
+far more than the maximum amount allowed by her payment card. She pays
+using her bank account via her bank's website.
+      </p>
+
+      <section class="notoc">
+        <h4>Negotiation of Purchase Terms</h4>
+        <ul>
+          <li>
+<strong>Discovery of Offer</strong>: Anna browses a Furniture website.
+She wants to buy a desk for her new flat.
+          </li>
+          <li>
+<strong>Agreement on Terms</strong>: Anna selects a heavy oak antique desk
+from the 17th century.
+          </li>
+          <li>
+<strong>Application of Marketing Elements</strong>: <em>Not applicable to this
+particular use case.</em>
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Negotiation of Payment Instruments</h4>
+        <ul>
+          <li>
+<strong>Discovery of Accepted Schemes</strong>: The furniture website takes
+Visa, MasterCard, and SEPA "Credit Transfer via SEPAmail" for payment.
+          </li>
+          <li>
+<strong>Selection of Payment Instruments</strong>: Anna chooses
+"Credit Transfer via SEPAmail" for payment and provides a tokenized version
+of her IBAN account number. The furniture website sends a "payment request"
+to its payment service provider which will forward it to Anna’s bank.
+          </li>
+          <li>
+<strong>Authentication to Access Instruments</strong>: Anna connects to her
+bank's website where the payment request is pending approval.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Payment Processing</h4>
+        <ul>
+          <li>
+<strong>Initiation of Processing</strong>: Anna approves the payment request.
+          </li>
+          <li>
+<strong>Verification of Available Funds</strong>: The availability of
+funds is verified by Anna's bank.
+          </li>
+          <li>
+<strong>Authorization of Transfer</strong>: The funds transfer is automatically
+authorized by Anna's bank.
+          </li>
+          <li>
+<strong>Completion of Transfer</strong>: Anna's bank sends the Credit Transfer,
+as well as a payment report (analogous to a signed receipt) to the furniture
+website's payment service provider. The furniture website gets a message
+(also known as a "payment advice") from its payment service provider that the
+transfer is complete depending of the Scheme of Credit Transfer used:
+within 24 hours for a SEPA Credit Transfer, often longer in International
+Credit Transfer outside Europe.
+          </li>
+        </ul>
+      </section>
+
+      <section class="notoc">
+        <h4>Delivery of Product/Receipt and Refunds</h4>
+        <ul>
+          <li>
+<strong>Delivery of Receipt</strong>: The furniture website sees that Anna's
+credit transfer has been received and sends a receipt by email to
+Anna based on the email address included in the payment report.
+          </li>
+          <li>
+<strong>Delivery of Product</strong>: The piece of furniture is shipped to
+Anna.
+          </li>
+          <li>
+<strong>Refunds</strong>: Anna must contact the furniture website directly
+since the credit transfer cannot be reversed since she initiated it.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+  </section>
+
+  <section class="appendix">
+    <h2>Future Work</h2>
+
+    <ul>
+      <li>
+Integration of US Federal Reserve Faster Payments Use Cases
+      </li>
+      <li>
+Integration of Bill and Melinda Gates Foundation Level One Project Use Cases
+      </li>
+      <li>
+Government Entitlement Disbursement
+      </li>
+      <li>
+Automatic Tax Payment
+      </li>
+      <li>
+Person to Person Cash Payment
+      </li>
+      <li>
+Government Entitlement Disbursement
+      </li>
+    </ul>
+
+  </section>
+
+  <section class="appendix">
+    <h2>Acknowledgements</h2>
+    <p>
+The editors wish to thank the participants of the
+<a href="http://www.w3.org/Payments/IG/">Web Payments Interest Group</a>
+for discussions about and contributions to this document, as well as the
+<a href="https://www.w3.org/community/webpayments/">Web Payments Community
+Group</a> for earlier work that informed this document.
+    </p>
+  </section>
+
+  </body>
+</html>
