@@ -420,7 +420,7 @@ dl.dl-horizontal > dd {
                   (<a>credential consumer</a>) that her <a>claim</a> is
                   valid.
                 </dd>
-                <dd>Barney is a physician, and has recently become board certified in his new state.
+                <dd>Barney is a physician, and has recently become board certified in his state.
                 The state's board issues Barney a digital certificate confirming that he is certified
                 to practice medicine in that state.  Barney can now use this certificate when writing
                 prescriptions and referrals, thereby improving accountability and verifiability.</dd>
@@ -462,7 +462,7 @@ dl.dl-horizontal > dd {
                       and quizzes that are evaluated and then he is issued a
                       badge.</li>
                   </ul>
-                </dd> -->
+                </dd>
                 <dd>Book Co. is a the leading provider of electronic textbooks to
                   higher-ed. A large percentage (near 75%) of integrations with
                   their partner institutions launch (open) an eTextbook through
@@ -487,7 +487,7 @@ dl.dl-horizontal > dd {
                 <dd>Educause conference issues digital badges to all conference
                   speakers through a claim code system. Conference speakers are
                   given a special code, that they input on the educause site
-                  which triggers a badge to be issued to them.</dd>
+                  which triggers a badge to be issued to them.</dd> -->
             </dl>
         </section>
 
@@ -581,15 +581,24 @@ dl.dl-horizontal > dd {
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for an <a>issuer</a> to include
-                personally identifable information about a <a>holder</a>.</dd>
+                personally identifable information about the <a>subject</a> of a
+                claim.</dd>
                 <dt>Motivation</dt>
-                <dd>In some cases, a <a>claim</a> needs to include other information
+                <dd>In some cases, a <a>claim</a> needs to include information
+                beyond the essential claim; information
                 which can be used to help verify the <a>identity</a>
-                of the <a>holder</a>.</dd>
+                of the <a>subject</a>.</dd>
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
-                <dd>In certain cases, for legal or other reasons,
+                <dd>Financial scenario</dd>
+                <dd>Education scenario</dd>
+                <dd>Healthcare scenario</dd>
+
+                <dd><span class="ednote">I don't find this nebulous scenario very
+                    compelling; we need something that makes it clear situations
+                    in which this might arise. -Shane</span>
+                In certain cases, for legal or other reasons,
                 it may be necessary to capture personally identifiable
                 information as part of the credential provisioning process. This
                 would not apply in all cases, but the credential standard would
@@ -620,6 +629,18 @@ dl.dl-horizontal > dd {
                 John has access to the account.  Some time later, John is moving to a new city and
                 decides to close that account.  Big Bank Co needs to revoke that claim as part of their
                 normal account closing process.</dd>
+                <dd>Barney was a board certified physician, but his certification
+                has lapsed.  Since the board can revoke his
+                certification, <a>credential consumers</a> will automatically be
+                aware that he can no longer issue prescriptions or perform medical
+                procedures.</dd>
+                <dd>Jane was issued a certificate by BigTraining Co., indicating
+                that she was a trained Project Manager.  It was later discovered
+                that BigTraining Co. was not actually training anyone, and their
+                organization's certificate was revoked via the US Department of
+                Education's Accreditation Database. Jane's credential is
+                therefore invalid, and prospective employers will be aware of
+                this.</dd>
             </dl>
         </section>
     </section>
@@ -633,7 +654,7 @@ dl.dl-horizontal > dd {
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for a <a>consumer</a> to request a
-                credential such that the <a>holder</a> interactively selects if and which appropriate
+                credential such that the <a>holder</a> selects if and which appropriate
                 credential should be sent.</dd>
                 <dt>Motivations</dt>
                 <dd>
@@ -643,28 +664,37 @@ dl.dl-horizontal > dd {
                 <a>Verifiable Claim</a> stored with their <a>Credential Curator</a> 
                 is used to satisfy the
                 <a>consumer</a>.</dd>
-                <dd>Basic website login can be implemented using a
-                credential.</dd>
+                <!-- <dd>Basic website login can be implemented using a
+                     credential.</dd> -->
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
-                <dd>A bank would like to perform &quot;Know Your
-                Customer&quot; clearing on a new customer by checking to
-                see that they are a citizen of Finland and that they have
+                <dd>Anna has opened an account at her bank in Finland.  As part of
+                that process, the bank would like to perform &quot;Know Your
+                Customer&quot; clearing on her by checking to
+                see that she is a citizen of Finland and she has 
                 a current national ID card issued to them by their
-                government. Once verified, the new customer is authorized to make
+                government. Once verified, she is authorized to make
                 transfers internationally.</dd>
                 <dd>Josie is a healthcare worker that has created a
                 profile on a professional social network to make herself
                 readily available for new opportunities in the
                 workforce. She lists her employment history and
-                credentials including degrees, certificates and digital
+                credentials including degrees, certificates, and digital
                 badges. The website requests verification of her
                 credential claims in order for her credentials to
-                post. The website pings various credential vaults in which
-                Josie stores her credentials and verifies them before
+                post. Josie authorizes the sharing of the relevant claims with the
+                website, and the site verifies them before
                 allowing Josie to post them.</dd>
-                <dd>Roxy visits the FineWines.com website and selects a
+                <dd>In MOOC and other on-line learning systems, being able
+                to reliably identify participants is vital to ensure the
+                individual evaluation and certification. Nick is participating in
+                a course online, and takes a test.  
+                He is required to provide his
+                credentials to prove his identity before the test, and
+                then to allow the system to issue a secure certificate of
+                his results to the test.</dd>
+                <!-- <dd>Roxy visits the FineWines.com website and selects a
                 number of wines to purchase. The website requests a
                 proof-of-age and shipping address credential from
                 Roxy. Roxy's IronVaultCorp credential service presents and she selects credentials that
@@ -690,13 +720,6 @@ dl.dl-horizontal > dd {
                 membership credential, which she provides. The website
                 confirms her membership credential is valid and grants her
                 access to the member-only portion of the site.</dd>
-                <dd>In MOOC and other on-line learning systems being able
-                to reliably identify participants is vital to ensure the
-                individual evaluation and certification. A participant
-                that performs a test certified on the Web must provide his
-                credentials to prove his identity before the test, and
-                then to allow the system to issue a secure certificate of
-                his results to the test.</dd>
                 <dd>Like many telcos (mobile and fixed line alike) are
                 required by law to assess the legal identity of a person
                 before allowing them into the network. Originally only
@@ -725,7 +748,7 @@ dl.dl-horizontal > dd {
                 and expecting free review copies of eTextbooks for its
                 ‘instructors’).  We need stronger assurances that partners
                 are who they say they are and are entitled to
-                institutional or user status.</dd>
+                institutional or user status.</dd> -->
             </dl>
         </section>
 
@@ -734,7 +757,7 @@ dl.dl-horizontal > dd {
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for a <a>consumer</a> to verify that the
-                credential is an authentic statement of an issuer’s claims
+                credential is an authentic statement of an <a>issuer's</a> claims
                 about the <a>subject</a>. The verifying entity must have the
                 capability to connect the issuer’s identity to its
                 credential identifier and the <a>subject's</a> identity to
@@ -750,21 +773,35 @@ dl.dl-horizontal > dd {
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
-                <dd>When processing orders, Giant Shoe Company wants to be certain
-                that the shipping address for a customer is accurate (inaccurate
+                <dd>Francis has found the perfect pair of shoes.  
+                When processing orders, Giant Shoe Company wants to be certain
+                that his shipping address is accurate (inaccurate
                 addresses are very expensive in terms of customer service). They
-                offer a discount for customers who make veriable addresses
-                available as part of the checkout process.</dd>
-                <dd>For banks and other financial institutions it would be
-                the ability to verify on-line customer or potential
-                customer information such a name, address, social security
-                number, age, employment and salary information, credit
-                history and various biometrics such as facial and
-                fingerprint.</dd>
-                <dd>Health care case - pharmacy verifies ability of physician to write a prescription,
-                and confirms that consumer is the person for whom it was written.</dd>
-                <dd>Education case - employer verifies potential employees claim of specific
-                certifications or achievements.</dd>
+                offer a discount for customers who make verifiable addresses
+                available as part of the checkout process. Francis offers his
+                certificate and gets the perfect shoes for even less than he
+                expected.</dd>
+                <dd>Alice wants to open a new bank account.
+                BigOnlineBank offers the ability to do this from home if she can
+                provide electronic credentials.  She offers goverment issued
+                certificates that verify her identity (address, national identity
+                number, etc.), and opens her new account from her couch.</dd>
+                <dd>iPharmacy receives a prescription for Bob electronically from a local
+                clinic.  It includes a certificate about the physician that issued
+                the prescription as well as one about Bob.  iPharmacy's
+                system automatically verifies the ability of the physician to
+                write prescriptions, as well as Bob's insurance coverage.
+                When Bob arrives to pick up his medication, iPharmacy
+                further correlates his identity with the certificate, thereby
+                improving the end-to-end accountability of their system.</dd>
+                <dd>Software Co. has posted an open position online and they are
+                receiving thousands of applications. Cindy has applied for the
+                job.  Unlike many applicants, she has attached her education credentials
+                - college degree, additional specific software training, etc.  Software Co.
+                evaluates these credentials automatically as they receive her
+                application.  Because her materials are verifiable and verified,
+                her application is immediately forwarded as a viable
+                candidate.</dd>
             </dl>
         </section>
 
@@ -772,14 +809,18 @@ dl.dl-horizontal > dd {
             <h3 id="uc-consuming-anonymity">Pseudo-Anonymity</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
-                <dd>It MUST be possible for claims to be associated with
-                IDs that reveal recipient-controllable amounts of
-                personally identifiable information.</dd>
+                <dd>It MUST be possible for the <a>holder</a> of a <a>claim</a> to
+                restrict the amount of information exposed in a claim they choose
+                to share.  It also MUST be possible for the holder to limit the
+                duration for which that information is shared.</dd>
                 <dt>Motivations</dt>
                 <dd>Credentials may be issued to an identifier such that
                 it is possible for the recipient to prove that the
                 identifier corresponds to them without revealing
-                personally identifiable information. In the case of a
+                personally identifiable information. <span class="ednote">Why is
+                    this part of the motivation for THIS requirement?
+                    -Shane</span>
+                In the case of a
                 subpoena, an identity service may be compelled to reveal
                 additional information beyond what the holder of the
                 identity wished to transmit.</dd>
@@ -791,17 +832,25 @@ dl.dl-horizontal > dd {
                 lets the liquor store owner know that she is over 21
                 without having to reveal her actual DOB, her address, or the status
                 of her driving privileges.</dd>
-                <dd>A credential contains an identifier that is a hash of
-                a known identifier (email address) of an individual so
-                that those who know the recipient identifier can verify
-                the credential, but those who don’t know the identifier
-                cannot derive personally identifiable information about
-                the recipient.</dd>
-                <dd>Transient private communication is difficult, since
-                the ActivityPump spec requires verifying the that a
-                message came from its origin, so signatures may help
-                here.</dd>
-            </dl>
+                <dd>John visits a health clinic in Moscow.  At the clinic he is
+                asked for proof of identity.  He provides a credential that
+                verifies his name and address, but elects not to disclose his
+                marital status nor his social security number, as those are
+                neither requested nor required at this clinic. He further marks
+                the disclosure as expiring in 30 days - he does not want his
+                information verifiable after that time.</dd>
+                <dd>"Freedom?" is an online forum that encourages 
+                free discussion about issues
+                controversial in Freedonia.  The forum allows users to register
+                anonymous accounts, but it also allows users to obtain badges
+                based upon real world certifications.  
+                Paula has been certified as an aid worker, and wishes that
+                information to be marked on her posts.  She shares her certificate
+                with the forum, but limits it to only verifying that she is the
+                <a>holder</a> of the certificate, that she is the <a>subject</a>
+                of it, and that she is an aid worker.  In this way she maintains
+                her anonymity in this controversial forum while still being able
+                to assist her fellow countrymen.</dd>
         </section>
     </section>
 
