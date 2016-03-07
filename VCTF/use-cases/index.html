@@ -147,16 +147,15 @@ dl.dl-horizontal > dd {
     The use cases outlined here are provided in order to make progress toward
     possible future standardization and interoperability of both low and
     high-stakes <a>claims</a> with the goals of storing, transmitting, and receiving
-    digitally verifiable proof of qualifications and achievements.
-    The following use cases focus on concrete scenarios that the technology created
+    digitally verifiable proof of attributes such as qualifications and achievements.
+    The use cases in this document focus on concrete scenarios that the technology defined
     by the group should address.
     </p>
 </section>
 
 <section id='sotd'>
-    <p>This document is an early version being used as an integration point for
-    a variety of use cases assembled from throughout the industry.  As the document
-    becomes more mature this status will be updated accordingly.</p>
+    <p>This document represents a concise but limited collection of use cases readers should review in
+    conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
 </section>
 
 <section>
@@ -189,7 +188,7 @@ dl.dl-horizontal > dd {
         to payment account access, the next generation of web
         applications will authorize users to perform actions based on
         rich sets of credentials issued by trusted parties.
-        Human-mediated decisions about job applications, collaboration
+        Human-mediated decisions about job applications, collaboration,
         and professional development will depend on filtering and
         analyzing growing amounts of data about individuals'
         experience and accomplishments.
@@ -202,10 +201,9 @@ dl.dl-horizontal > dd {
     <section>
         <h3>How to Read This Document</h3>
         <p>First, review the basic terminology used in section 2. This will give
-        you a good foundation for understanding the rudimentary examples of how 
-        claims might be
-        issued and later verified in section 3.</p>
-        <p>Next, take a look at the rudimentary examples in section 3 to get a feel for the vision of
+        you a good foundation for understanding the rudimentary examples 
+        in section 3.</p>
+        <p>Next, take a look at the examples in section 3 to get a feel for the vision of
         how claims might be exposed and used in typical web exchanges.</p>
         <p>Finally, review the detailed requirements and supporting scenarios in
         Section 4.</p>
@@ -394,7 +392,7 @@ dl.dl-horizontal > dd {
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.</dd>
                 <dt>Motivation</dt>
-                <dd>Anu <a>entity</a>, such as an end user (<a>holder</a>),
+                <dd>An <a>entity</a>, such as an end user (<a>holder</a>),
                 wishes to make a <a>claim</a> and would like it to be endorsed by a
                 different <a>entity</a> (<a>issuer</a>) which may then be trusted by
                 a potential consumer (<a>credential consumer</a>).</dd>
@@ -414,7 +412,7 @@ dl.dl-horizontal > dd {
                 <dd>Asako just passed the final test to receive a drivers
                 license. As she is still a new driver, and may be pulled over
                 for a traffic violation, she would like to receive a <a>credential</a>
-                asserts a <a>claim</a> that she has right to drive a car. She
+                that asserts a <a>claim</a> that she has right to drive a car. She
                 requests a credential from the certifying authority
                 (<a>issuer</a>) that she can use to prove to the officer
                 (<a>credential consumer</a>) that her <a>claim</a> is
@@ -564,27 +562,25 @@ dl.dl-horizontal > dd {
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>Susan wants to send funds to her family in another country via a
-                popular money transfer service.  She has verifiable claims in her
-                credential curator that demonstrate her identity.  She has also been
-                sent a claim from her family verifying their banking information.  
+                popular money transfer service.  She has <a>verifiable claims</a> in her
+                <a>credential curator</a> that can be used to share her <a>identity</a>.  
+                She has also been
+                sent a <a>claim</a> from her family verifying their banking information.  
                 By sharing these with the money transfer service, they can
                 automatically verify the source and destination of funds, thus being
                 confident in the delivery of those funds and satisfying various
                 regulations regarding prevention of money laundering.</dd>
                 <dd>Jason is looking for a new primary care physician.  His health
                 provider includes information on their web site about the physicians
-                they have on staff, including their verifiable credentials about
+                they have on staff, including <a data-lt="claim">verifiable credentials</a> about their
                 education, board certification, and contining education.  Jason can
                 verify these credentials and be confident that his new physician
                 satisfies his requirements.</dd>
-                <dd>Education / education use scenario</dd>
-                <dd>Company creates credential and signs with a private key.
-                Part of the signed data includes the location of the
-                corresponding public key. A third party having received the
-                <a>credential</a> can retrieve the public key and verify that the
-                <a>digital signature</a> is valid. Through other means, they can
-                choose to trust Company as a valid <a>issuer</a> of
-                credentials including <a>claims</a> that they require.</dd>
+                <dd>Eunice is about to take her ACT (a test used to evaluate her readiness for
+                college).  When she arrives at the testing center, she is required to present
+                identification.  Her government issued identity certificate is a 
+                is acceptable, as the <a>verifiable claims</a> 
+                contained in it reflect all of the required attributes and it is impossible to conterfeit.</dd>
             </dl>
         </section>
 
@@ -629,10 +625,11 @@ dl.dl-horizontal > dd {
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for the <a>issuer</a> of a claim to
-                revoke it, after which it will no longer pass verification
+                revoke it, after which it will no longer satisfy verification
                 procedures.</dd>
                 <dt>Motivation</dt>
-                <dd>An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have issued and are endorsing for an end user (<a>holder</a>), is no longer valid and wishes to revoke the issued claim.</dd>
+                <dd>An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have issued
+                and are endorsing for an end user (<a>subject</a>), is no longer valid and wishes to revoke the issued claim.</dd>
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
@@ -652,7 +649,7 @@ dl.dl-horizontal > dd {
                 organization's certificate was revoked via the US Department of
                 Education's Accreditation Database. Jane's credential is
                 therefore invalid, and prospective employers will be aware of
-                this.</dd>
+                this when they check her certifications.</dd>
             </dl>
         </section>
     </section>
@@ -695,17 +692,18 @@ dl.dl-horizontal > dd {
                 credentials including degrees, certificates, and digital
                 badges. The website requests verification of her
                 credential claims in order for her credentials to
-                post. Josie authorizes the sharing of the relevant claims with the
+                visible when she posts messages. 
+                Josie authorizes the sharing of the relevant claims with the
                 website, and the site verifies them before
-                allowing Josie to post them.</dd>
+                allowing Josie to expose them.</dd>
                 <dd>In MOOC and other on-line learning systems, being able
                 to reliably identify participants is vital to ensure the
                 individual evaluation and certification. Nick is participating in
-                a course online, and takes a test.  
+                a course online and takes a test.  
                 He is required to provide his
                 credentials to prove his identity before the test, and
-                then to allow the system to issue a secure certificate of
-                his results to the test.</dd>
+                then to allow the system to issue a <a>verifiable claim</a> regarding the results of
+                his test.</dd>
                 <!-- <dd>Roxy visits the FineWines.com website and selects a
                 number of wines to purchase. The website requests a
                 proof-of-age and shipping address credential from
@@ -839,7 +837,9 @@ dl.dl-horizontal > dd {
                 lets the liquor store owner know that she is over 21
                 without having to reveal her actual date of birth,
                 her address, or her state ID number.</dd>
-                <dd>John visits a health clinic in Moscow.  At the clinic he is
+                <dd>John is on the vacation of a lifetime, travelling the world.  Falling ill, he 
+                visits a health clinic in a country in which he does not live.
+                At the clinic he is
                 asked for proof of identity.  He provides a credential that
                 verifies his name and address, but elects not to disclose his
                 marital status nor his social security number, as those are
@@ -860,9 +860,10 @@ dl.dl-horizontal > dd {
                 to assist her fellow countrymen.</dd>
             </section>
         </section>
+    </section>
 
-        <!-- Editor - @bsletten -->
-        <!-- <section>
+    <!-- Editor - @bsletten -->
+    <!-- <section>
         <h2>Managing and Sharing Claims</h2>
         <section>
             <h3 id="uc-managing-controlling-context">Context Control</h3>
@@ -890,8 +891,8 @@ dl.dl-horizontal > dd {
         </section>
     </section> -->
 
-        <!-- Editor - @halindrome -->
-        <!-- <section>
+    <!-- Editor - @halindrome -->
+    <!-- <section>
         <h2>Endorsing Claims</h2>
         <section>
             <h3 id="uc-endorsing-counter-signatures">Recipient Collects Counter-signatures for Credential</h3>
@@ -934,19 +935,19 @@ dl.dl-horizontal > dd {
         </section>
 
     </section> -->
-    </section>
+</section>
 
-    <section class="informative">
-        <h2>Acknowledgements</h2>
+<section class="informative">
+    <h2>Acknowledgements</h2>
 
-        <p>
-        The editor is thankful to the following contributions from the
-        Web Payments Workshop, the Web Payments Community Group, and the
-        Credentials Community Group, specifically (in alphabetical order): TBD
-        </p>
+    <p>
+    The editor is thankful to the following contributions from the
+    Web Payments Workshop, the Web Payments Community Group, and the
+    Credentials Community Group, specifically (in alphabetical order): TBD
+    </p>
 
-    </section>
+</section>
 
 
-    </body>
-    </html>
+</body>
+</html>
