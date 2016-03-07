@@ -275,32 +275,32 @@ dl.dl-horizontal > dd {
         </ol>
     </section>
     <section>
-    <h2>How a Verifiable Claim Might be Used</h2>
-    <p>In this example, a <a>holder</a> of a claim needs to use that claim in a
-    typical commerce situation:</p>
-    <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
-    <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
-        <li>Jane decides to shop on the web site
-        WinesOfTheWorld.example.com (merchant).</li>
-        <li>The merchant's site requires Jane be 21 years of age and
-        requests Jane prove this (via a user agent-supported API call).</li>
-        <li>Jane's user agent asks her <a>credential curator</a> for the
-        proof.</li>
-        <li>The <a>credential curator</a> shows Jane three Verifiable Claims
-        it knows of that
-        can assert this claim (e.g., her passport, driving
-        license, and birth certificate).</li>
-        <li>Jane selects one of these and authorizes that it be
-        shared with the merchant.</li>
-        <li>The <a>credential curator</a> returns the selected claim as a response
-        to the user agent-supported API call, which in turn delivers
-        it to the merchant.</li>
-        <li>The merchant's server verifies that the claim is valid
-        and satisfies the requirement.</li>
-        <li>The merchant redirects the user agent to the web site
-        with appropriate authorization.</li>
-    </ol>
-</section>
+        <h2>How a Verifiable Claim Might be Used</h2>
+        <p>In this example, a <a>holder</a> of a claim needs to use that claim in a
+        typical commerce situation:</p>
+        <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
+        <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
+            <li>Jane decides to shop on the web site
+            WinesOfTheWorld.example.com (merchant).</li>
+            <li>The merchant's site requires Jane be 21 years of age and
+            requests Jane prove this (via a user agent-supported API call).</li>
+            <li>Jane's user agent asks her <a>credential curator</a> for the
+            proof.</li>
+            <li>The <a>credential curator</a> shows Jane three Verifiable Claims
+            it knows of that
+            can assert this claim (e.g., her passport, driving
+            license, and birth certificate).</li>
+            <li>Jane selects one of these and authorizes that it be
+            shared with the merchant.</li>
+            <li>The <a>credential curator</a> returns the selected claim as a response
+            to the user agent-supported API call, which in turn delivers
+            it to the merchant.</li>
+            <li>The merchant's server verifies that the claim is valid
+            and satisfies the requirement.</li>
+            <li>The merchant redirects the user agent to the web site
+            with appropriate authorization.</li>
+        </ol>
+    </section>
 </section>
 
 <section>
@@ -389,12 +389,12 @@ dl.dl-horizontal > dd {
 
 
         <section>
-            <h3 id="uc-issuing-claims">Issuing Claims</h3>
+            <h3 id="uc-issuing-claims">Uniquitous Claim Issuance</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.</dd>
                 <dt>Motivation</dt>
-                <dd>An <a>entity</a>, such as an end user (<a>holder</a>),
+                <dd>Anu <a>entity</a>, such as an end user (<a>holder</a>),
                 wishes to make a <a>claim</a> and would like it to be endorsed by a
                 different <a>entity</a> (<a>issuer</a>) which may then be trusted by
                 a potential consumer (<a>credential consumer</a>).</dd>
@@ -402,23 +402,23 @@ dl.dl-horizontal > dd {
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>Jane would like to get a digitally signed <a>credential</a> for her
-                  checking account at MidBank. MidBank offers to provide a
-                  credential asserting that Jane has an account at MidBank and
-                  has access to her associated checking account. MidBank has
-                  performed Know Your Customer clearing (driver’s license,
-                  background check, anti-money laundering blackslist check,
-                  etc.), on Jane which she can use at other financial
-                  institutions. This can help Jane assure destination banks that
-                  she is verified, thereby allaying concerns about misdirected
-                  transactions and money laundering</dd>
+                checking account at MidBank. MidBank offers to provide a
+                credential asserting that Jane has an account at MidBank and
+                has access to her associated checking account. MidBank has
+                performed Know Your Customer clearing (driver’s license,
+                background check, anti-money laundering blackslist check,
+                etc.), on Jane which she can use at other financial
+                institutions. This can help Jane assure destination banks that
+                she is verified, thereby allaying concerns about misdirected
+                transactions and money laundering</dd>
                 <dd>Asako just passed the final test to receive a drivers
-                  license. As she is still a new driver, and may be pulled over
-                  for a traffic violation, she would like to receive a <a>credential</a>
-                  asserts a <a>claim</a> that she has right to drive a car. She
-                  requests a credential from the certifying authority
-                  (<a>issuer</a>) that she can use to prove to the officer
-                  (<a>credential consumer</a>) that her <a>claim</a> is
-                  valid.
+                license. As she is still a new driver, and may be pulled over
+                for a traffic violation, she would like to receive a <a>credential</a>
+                asserts a <a>claim</a> that she has right to drive a car. She
+                requests a credential from the certifying authority
+                (<a>issuer</a>) that she can use to prove to the officer
+                (<a>credential consumer</a>) that her <a>claim</a> is
+                valid.
                 </dd>
                 <dd>Barney is a physician, and has recently become board certified in his state.
                 The state's board issues Barney a digital certificate confirming that he is certified
@@ -550,33 +550,45 @@ dl.dl-horizontal > dd {
         -->
 
         <section>
-          <h3 id="uc-issuing-verifiability">Credential Verifiability</h3>
-          <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for a <a>credential consumer</a> to
-            <a data-lt="credential verification">verify credentials</a>
-              as genuine.</dd>
-            <dt>Motivation</dt>
-            <dd>An <a>issuer</a> MUST be able to sign a credential
-              which can be validated by an arbitrary third party (<a>credential
-              consumer</a>).</dd>
-            <dt>Importance</dt>
-            <dd>Essential</dd>
-            <dt>Scenarios</dt>
-            <dd>Financial scenario</dd>
-            <dd>Health care scenario</dd>
-            <dd>Education / education use scenario</dd>
-            <dd>Company creates credential and signs with a private key.
-              Part of the signed data includes the location of the
-              corresponding public key. A third party having received the
-              <a>credential</a> can retrieve the public key and verify that the
-              <a>digital signature</a> is valid. Through other means, they can
-              choose to trust Company as a valid <a>issuer</a> of
-              credentials including <a>claims</a> that they require.</dd>
-          </dl>
+            <h3 id="uc-issuing-verifiability">Credential Verifiability</h3>
+            <dl class="dl-horizontal">
+                <dt>Requirement</dt>
+                <dd>It MUST be possible for a <a>credential consumer</a> to
+                <a data-lt="credential verification">verify credentials</a>
+                as genuine.</dd>
+                <dt>Motivation</dt>
+                <dd>A credential that has been created by an <a>issuer</a> MUST be able 
+                to be validated by an arbitrary third party (<a>credential
+                    consumer</a>).</dd>
+                <dt>Importance</dt>
+                <dd>Essential</dd>
+                <dt>Scenarios</dt>
+                <dd>Susan wants to send funds to her family in another country via a
+                popular money transfer service.  She has verifiable claims in her
+                credential curator that demonstrate her identity.  She has also been
+                sent a claim from her family verifying their banking information.  
+                By sharing these with the money transfer service, they can
+                automatically verify the source and destination of funds, thus being
+                confident in the delivery of those funds and satisfying various
+                regulations regarding prevention of money laundering.</dd>
+                <dd>Jason is looking for a new primary care physician.  His health
+                provider includes information on their web site about the physicians
+                they have on staff, including their verifiable credentials about
+                education, board certification, and contining education.  Jason can
+                verify these credentials and be confident that his new physician
+                satisfies his requirements.</dd>
+                <dd>Education / education use scenario</dd>
+                <dd>Company creates credential and signs with a private key.
+                Part of the signed data includes the location of the
+                corresponding public key. A third party having received the
+                <a>credential</a> can retrieve the public key and verify that the
+                <a>digital signature</a> is valid. Through other means, they can
+                choose to trust Company as a valid <a>issuer</a> of
+                credentials including <a>claims</a> that they require.</dd>
+            </dl>
         </section>
 
-        <section>
+        <!-- <section>
             <h3 id="uc-issuing-personal-information">Including Personally Identifiable Information</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
@@ -605,7 +617,7 @@ dl.dl-horizontal > dd {
                 need to optionally allow for the transmission/exchange of this
                 information as part of the provisioning process.</dd>
             </dl>
-        </section>
+        </section> -->
 
     </section>
 
@@ -650,7 +662,7 @@ dl.dl-horizontal > dd {
         <h2 id="ic-consuming-claims">Consuming Claims</h2>
         <section>
             <h3 id="uc-consuming-interactive-request">Credential
-                Consumer Interactively Requests Credential</h3>
+                Consumer Requests Credential</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for a <a>consumer</a> to request a
@@ -814,24 +826,19 @@ dl.dl-horizontal > dd {
                 to share.  It also MUST be possible for the holder to limit the
                 duration for which that information is shared.</dd>
                 <dt>Motivations</dt>
-                <dd>Credentials may be issued to an identifier such that
-                it is possible for the recipient to prove that the
-                identifier corresponds to them without revealing
-                personally identifiable information. <span class="ednote">Why is
-                    this part of the motivation for THIS requirement?
-                    -Shane</span>
-                In the case of a
-                subpoena, an identity service may be compelled to reveal
-                additional information beyond what the holder of the
-                identity wished to transmit.</dd>
+                <dd>Credentials may be issued about a <a>subject</a> that include
+                multiple attributes, only some of which are required when
+                verifying a specific criteria is satisfied. The <a>holder</a>
+                should have the ability to satisfy the criteria without revealing
+                additional attributes that are not required.</dd>
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>June goes to her local beer and wine store to buy a
                 bottle of wine. She submits her identity credential that
                 lets the liquor store owner know that she is over 21
-                without having to reveal her actual DOB, her address, or the status
-                of her driving privileges.</dd>
+                without having to reveal her actual date of birth,
+                her address, or her state ID number.</dd>
                 <dd>John visits a health clinic in Moscow.  At the clinic he is
                 asked for proof of identity.  He provides a credential that
                 verifies his name and address, but elects not to disclose his
@@ -851,11 +858,11 @@ dl.dl-horizontal > dd {
                 of it, and that she is an aid worker.  In this way she maintains
                 her anonymity in this controversial forum while still being able
                 to assist her fellow countrymen.</dd>
+            </section>
         </section>
-    </section>
 
-    <section>
         <!-- Editor - @bsletten -->
+        <!-- <section>
         <h2>Managing and Sharing Claims</h2>
         <section>
             <h3 id="uc-managing-controlling-context">Context Control</h3>
@@ -881,10 +888,10 @@ dl.dl-horizontal > dd {
                 in the future.</dd>
             </dl>
         </section>
-    </section>
+    </section> -->
 
-    <section>
         <!-- Editor - @halindrome -->
+        <!-- <section>
         <h2>Endorsing Claims</h2>
         <section>
             <h3 id="uc-endorsing-counter-signatures">Recipient Collects Counter-signatures for Credential</h3>
@@ -926,20 +933,20 @@ dl.dl-horizontal > dd {
             </dl>
         </section>
 
+    </section> -->
     </section>
-</section>
 
-<section class="informative">
-    <h2>Acknowledgements</h2>
+    <section class="informative">
+        <h2>Acknowledgements</h2>
 
-    <p>
-    The editor is thankful to the following contributions from the
-    Web Payments Workshop, the Web Payments Community Group, and the
-    Credentials Community Group, specifically (in alphabetical order): TBD
-    </p>
+        <p>
+        The editor is thankful to the following contributions from the
+        Web Payments Workshop, the Web Payments Community Group, and the
+        Credentials Community Group, specifically (in alphabetical order): TBD
+        </p>
 
-</section>
+    </section>
 
 
-</body>
-</html>
+    </body>
+    </html>
