@@ -3,7 +3,8 @@
 <head>
 <title>Verifiable Claims Task Force Use Cases</title>
 <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-<script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+<!-- <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script> -->
+<script src='https://spec-ops.io/respec-w3c-common.js' class='remove'></script>
 <script src='../common/common.js' class='remove'></script>
 <script class='remove'>
 var respecConfig = {
@@ -146,16 +147,15 @@ dl.dl-horizontal > dd {
     The use cases outlined here are provided in order to make progress toward
     possible future standardization and interoperability of both low and
     high-stakes <a>claims</a> with the goals of storing, transmitting, and receiving
-    digitally verifiable proof of qualifications and achievements.
-    The following use cases focus on concrete scenarios that the technology created
+    digitally verifiable proof of attributes such as qualifications and achievements.
+    The use cases in this document focus on concrete scenarios that the technology defined
     by the group should address.
     </p>
 </section>
 
 <section id='sotd'>
-    <p>This document is an early version being used as an integration point for
-    a variety of use cases assembled from throughout the industry.  As the document
-    becomes more mature this status will be updated accordingly.</p>
+    <p>This document represents a concise but limited collection of use cases readers should review in
+    conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
 </section>
 
 <section>
@@ -188,7 +188,7 @@ dl.dl-horizontal > dd {
         to payment account access, the next generation of web
         applications will authorize users to perform actions based on
         rich sets of credentials issued by trusted parties.
-        Human-mediated decisions about job applications, collaboration
+        Human-mediated decisions about job applications, collaboration,
         and professional development will depend on filtering and
         analyzing growing amounts of data about individuals'
         experience and accomplishments.
@@ -201,20 +201,23 @@ dl.dl-horizontal > dd {
     <section>
         <h3>How to Read This Document</h3>
         <p>First, review the basic terminology used in section 2. This will give
-        you a good foundation for understanding the rudimentary examples of how 
-        claims might be
-        issued and later verified in section 3.</p>
+        you a good foundation for understanding the rudimentary examples 
+        in section 3.</p>
+        <p>Next, take a look at the examples in section 3 to get a feel for the vision of
+        how claims might be exposed and used in typical web exchanges.</p>
         <p>Finally, review the detailed requirements and supporting scenarios in
-        Section 4.  There are also a significant number of "Extended Use Cases" in
-        Appendix A.  We expect these are important, but possibly could be dealt
-        with in subsequent phases of work.</p>
-        <p class="note">The use cases in this document are organized around the basic operations that
+        Section 4.</p>
+        <p class="note">There are also a significant number of "Extended Use Cases" that have been
+        developed by the Credentials Community Group.  These are available in their living use case
+        document [[CCG-USE-CASES]].  A review of these is not required, but may give the reader a
+        better sense of the broad ecosystem the Credentials Community Group envisions.</p>
+        <p class="note">The use cases in this document are organized around some of the basic operations that
         might be performed on a Verifiable Claim.  For each of these
         operations, 
         the document captures some high level use cases
         grouped by the requirement they represent.
         Each use case contains information about its motivation, relative
-        priority, and one or more examples to help define the target
+        priority, and one or more scenarios to help define the target
         beneficiaries of its support.
         </p>
     </section>
@@ -234,7 +237,7 @@ dl.dl-horizontal > dd {
     <!-- Editor - @halindrome -->
     <h2>Examples</h2>
     <p>These examples describe basic ways in which Verifiable Claims 
-    might be used.  They are not meant to be architecturally constraing. Instead,
+    might be used.  They are not meant to be architecturally constraining. Instead,
     they are meant to help illustrate the basic way it <em>could</em> be done in a
     typical commerce situation.
     Again - please remember that it is just an
@@ -248,16 +251,16 @@ dl.dl-horizontal > dd {
         <img alt='Verifiable Claim Creation Flow Description' style='display:block; margin:auto' src="uc-issuing-claims.svg"/>
         <p>Expanding on these steps:</p>
         <ol title="Verifiable Claim Creation Flow Description">
-            <li>[[XHTML1]]Jane asks her User Agent to help her get a Verifiable Claim about
+            <li>Jane asks her User Agent to help her get a Verifiable Claim about
             her identity.</li>
             <li>Her user agent connects her to a Certifying Authority that is able
             to verify her identity.</li>
-            <li>The CA examimes her documentation.</li>
+            <li>The CA examines her documentation.</li>
             <li>They are satisfied, so the CA generates a Verifiable Claim for
             Jane that includes information about her identity linked to their
             own trusted <em>credential</em>.</li>
             <li>The CA delivers the credential back to Jane's User Agent.</li>
-            <li>Jane views the credential to ensure it reflects he
+            <li>Jane views the credential to ensure it reflects her
             requirements.</li>
             <li>When she is satisfied, she instructs her User Agent to save the
             Verifiable Claim so she can use it in the future.</li>
@@ -270,39 +273,39 @@ dl.dl-horizontal > dd {
         </ol>
     </section>
     <section>
-    <h2>How a Verifiable Claim Might be Used</h2>
-    <p>This sub-section
-    illustrates a simple example of how a claim might be used in a
-    typical commerce situation.  Please remember that it is just an
-    example, and should not be thought of as the canonical way such
-    a system must be implemented.  First, consider this diagram:</p>
-    <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
-    <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
-        <li>Jane decides to shop on the web site
-        WinesOfTheWorld.example.com (merchant).</li>
-        <li>The merchant's site requires Jane be 21 years of age and
-        requests Jane prove this (via a user agent-supported API call).</li>
-        <li>Jane's user agent asks her <a>credential curator</a> for the
-        proof.</li>
-        <li>The <a>credential curator</a> shows her three Verifiable Claims
-        it knows of that
-        can assert this claim (e.g., her passport, driving
-        license, and birth certificate).</li>
-        <li>Jane selects one of these and authorizes that it be
-        shared with the merchant.</li>
-        <li>The <a>credential curator</a> returns the selected claim as a response
-        to the user agent-supported API call, which in turn delivers
-        it to the merchant.</li>
-        <li>The merchant's server verifies that the claim is valid
-        and satisfies the requirement.</li>
-        <li>The merchant redirects the user agent to the web site
-        with appropriate authorization.</li>
-    </ol>
-</section>
+        <h2>How a Verifiable Claim Might be Used</h2>
+        <p>In this example, a <a>holder</a> of a claim needs to use that claim in a
+        typical commerce situation:</p>
+        <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
+        <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
+            <li>Jane decides to shop on the web site
+            WinesOfTheWorld.example.com (merchant).</li>
+            <li>The merchant's site requires Jane be 21 years of age and
+            requests Jane prove this (via a user agent-supported API call).</li>
+            <li>Jane's user agent asks her <a>credential curator</a> for the
+            proof.</li>
+            <li>The <a>credential curator</a> shows Jane three Verifiable Claims
+            it knows of that
+            can assert this claim (e.g., her passport, driving
+            license, and birth certificate).</li>
+            <li>Jane selects one of these and authorizes that it be
+            shared with the merchant.</li>
+            <li>The <a>credential curator</a> returns the selected claim as a response
+            to the user agent-supported API call, which in turn delivers
+            it to the merchant.</li>
+            <li>The merchant's server verifies that the claim is valid
+            and satisfies the requirement.</li>
+            <li>The merchant redirects the user agent to the web site
+            with appropriate authorization.</li>
+        </ol>
+    </section>
 </section>
 
 <section>
     <h2>Use Cases</h2>
+    <p class="ednote">For each requirement in this section, let's ensure there are at least three
+    scenarios.  One for each of finance, health care, and education.  Additional scenarios are okay,
+    but let's not overwhelm the reader - especially if some are redundant.</p>
     <!--  TEMPLATE USE CASE
       <section>
           <h2>Example</h2>
@@ -384,7 +387,7 @@ dl.dl-horizontal > dd {
 
 
         <section>
-            <h3 id="uc-issuing-claims">Issuing Claims</h3>
+            <h3 id="uc-issuing-claims">Uniquitous Claim Issuance</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.</dd>
@@ -397,25 +400,29 @@ dl.dl-horizontal > dd {
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>Jane would like to get a digitally signed <a>credential</a> for her
-                  checking account at MidBank. MidBank offers to provide a
-                  credential asserting that Jane has an account at MidBank and
-                  has access to her associated checking account. MidBank has
-                  performed Know Your Customer clearing (driver’s license,
-                  background check, anti-money laundering blackslist check,
-                  etc.), on Jane which she can use at other financial
-                  institutions. This can help Jane assure destination banks that
-                  she is verified, thereby allaying concerns about misdirected
-                  transactions and money laundering</dd>
+                checking account at MidBank. MidBank offers to provide a
+                credential asserting that Jane has an account at MidBank and
+                has access to her associated checking account. MidBank has
+                performed Know Your Customer clearing (driver’s license,
+                background check, anti-money laundering blackslist check,
+                etc.), on Jane which she can use at other financial
+                institutions. This can help Jane assure destination banks that
+                she is verified, thereby allaying concerns about misdirected
+                transactions and money laundering</dd>
                 <dd>Asako just passed the final test to receive a drivers
-                  license. As she is still a new driver, and may be pulled over
-                  for a traffic violation, she would like to receive a <a>credential</a>
-                  asserts a <a>claim</a> that she has right to drive a car. She
-                  requests a credential from the certifying authority
-                  (<a>issuer</a>) that she can use to prove to the officer
-                  (<a>credential consumer</a>) that her <a>claim</a> is
-                  valid.
+                license. As she is still a new driver, and may be pulled over
+                for a traffic violation, she would like to receive a <a>credential</a>
+                that asserts a <a>claim</a> that she has right to drive a car. She
+                requests a credential from the certifying authority
+                (<a>issuer</a>) that she can use to prove to the officer
+                (<a>credential consumer</a>) that her <a>claim</a> is
+                valid.
                 </dd>
-                <dd>
+                <dd>Barney is a physician, and has recently become board certified in his state.
+                The state's board issues Barney a digital certificate confirming that he is certified
+                to practice medicine in that state.  Barney can now use this certificate when writing
+                prescriptions and referrals, thereby improving accountability and verifiability.</dd>
+                <!-- <dd>
                   <p>In education, <a>issuers</a> need to reliably identify participants to
                     ensure that participants are properly evaulated and certificates are
                     issued as appropriate. A participant that performs a test
@@ -463,25 +470,27 @@ dl.dl-horizontal > dd {
                   organization is: Student logs on to their learning system
                   (LMS) (<a>credential consumer</a>) and clicks an eTextbook
                   icon that they would like to study (<a>claim</a>). The LTI
-                  inteGration broker (<a>issuer</a>) needs to subscribe the
+                  integration broker (<a>issuer</a>) needs to subscribe the
                   student if it’s their first visit. Furthermore it needs to
                   issue a license (<a>credential</a>) for the eTextbook if none
                   currently exists. Finally it presents the eTextbook contents
                   to the student.</dd>
-                <dd>The Veterans Affairs office is working on an initiative to
+                <dd>The United States Veterans Affairs office is working on an initiative to
                   translate military experience into digitized claims of the
                   veteran’s skills to help veterans better connect with
-                  employment when they return from duty.</dd>
+                  employment when they return from duty. A veteran with such </dd>
                 <dd>The Project Management Institute which has been issuing
                   Project Management certificates for many years is moving toward
                   digitization of their existing certification program.</dd>
                 <dd>Educause conference issues digital badges to all conference
                   speakers through a claim code system. Conference speakers are
                   given a special code, that they input on the educause site
-                  which triggers a badge to be issued to them.</dd>
+                  which triggers a badge to be issued to them.</dd> -->
             </dl>
         </section>
 
+        <!--  @halindrome commented this requirement out. It falls out from the other requirements and
+        scenarios in this section.
         <section>
             <h3 id="uc-issuing-identification">Identifying Credential Holders</h3>
             <dl class="dl-horizontal">
@@ -536,52 +545,75 @@ dl.dl-horizontal > dd {
                   and Reg E the only remedy).</dd>
             </dl>
         </section>
+        -->
 
         <section>
-          <h3 id="uc-issuing-verifiability">Credential Verifiability</h3>
-          <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for a <a>credential consumer</a> to
-            <a data-lt="credential verification">verify credentials</a>
-              as genuine.</dd>
-            <dt>Motivation</dt>
-            <dd>An <a>issuer</a> MUST be able to sign a credential
-              which can be validated by an arbitrary third party (<a>credential
-              consumer</a>).</dd>
-            <dt>Importance</dt>
-            <dd>Essential</dd>
-            <dt>Scenarios</dt>
-            <dd>Company creates credential and signs with a private key.
-              Part of the signed data includes the location of the
-              corresponding public key. A third party having received the
-              <a>credential</a> can retrieve the public key and verify that the
-              <a>digital signature</a> is valid. Through other means, they can
-              choose to trust Company as a valid <a>issuer</a> of
-              credentials including <a>claims</a> that they require.</dd>
-          </dl>
+            <h3 id="uc-issuing-verifiability">Credential Verifiability</h3>
+            <dl class="dl-horizontal">
+                <dt>Requirement</dt>
+                <dd>It MUST be possible for a <a>credential consumer</a> to
+                <a data-lt="credential verification">verify credentials</a>
+                as genuine.</dd>
+                <dt>Motivation</dt>
+                <dd>A credential that has been created by an <a>issuer</a> MUST be able 
+                to be validated by an arbitrary third party (<a>credential
+                    consumer</a>).</dd>
+                <dt>Importance</dt>
+                <dd>Essential</dd>
+                <dt>Scenarios</dt>
+                <dd>Susan wants to send funds to her family in another country via a
+                popular money transfer service.  She has <a>verifiable claims</a> in her
+                <a>credential curator</a> that can be used to share her <a>identity</a>.  
+                She has also been
+                sent a <a>claim</a> from her family verifying their banking information.  
+                By sharing these with the money transfer service, they can
+                automatically verify the source and destination of funds, thus being
+                confident in the delivery of those funds and satisfying various
+                regulations regarding prevention of money laundering.</dd>
+                <dd>Jason is looking for a new primary care physician.  His health
+                provider includes information on their web site about the physicians
+                they have on staff, including <a data-lt="claim">verifiable credentials</a> about their
+                education, board certification, and contining education.  Jason can
+                verify these credentials and be confident that his new physician
+                satisfies his requirements.</dd>
+                <dd>Eunice is about to take her ACT (a test used to evaluate her readiness for
+                college).  When she arrives at the testing center, she is required to present
+                identification.  Her government issued identity certificate is a 
+                is acceptable, as the <a>verifiable claims</a> 
+                contained in it reflect all of the required attributes and it is impossible to conterfeit.</dd>
+            </dl>
         </section>
 
-        <section>
+        <!-- <section>
             <h3 id="uc-issuing-personal-information">Including Personally Identifiable Information</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for an <a>issuer</a> to include
-                personally identifable information about a <a>holder</a>.</dd>
+                personally identifable information about the <a>subject</a> of a
+                claim.</dd>
                 <dt>Motivation</dt>
-                <dd>In some cases, a <a>claim</a> needs to include other information
+                <dd>In some cases, a <a>claim</a> needs to include information
+                beyond the essential claim; information
                 which can be used to help verify the <a>identity</a>
-                of the <a>holder</a>.</dd>
+                of the <a>subject</a>.</dd>
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
-                <dd>In certain cases, for legal or other reasons,
+                <dd>Financial scenario</dd>
+                <dd>Education scenario</dd>
+                <dd>Healthcare scenario</dd>
+
+                <dd><span class="ednote">I don't find this nebulous scenario very
+                    compelling; we need something that makes it clear situations
+                    in which this might arise. -Shane</span>
+                In certain cases, for legal or other reasons,
                 it may be necessary to capture personally identifiable
                 information as part of the credential provisioning process. This
                 would not apply in all cases, but the credential standard would
                 need to optionally allow for the transmission/exchange of this
                 information as part of the provisioning process.</dd>
             </dl>
-        </section>
+        </section> -->
 
     </section>
 
@@ -593,10 +625,11 @@ dl.dl-horizontal > dd {
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for the <a>issuer</a> of a claim to
-                revoke it, after which it will no longer pass verification
+                revoke it, after which it will no longer satisfy verification
                 procedures.</dd>
                 <dt>Motivation</dt>
-                <dd>An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have issued and are endorsing for an end user (<a>holder</a>), is no longer valid and wishes to revoke the issued claim.</dd>
+                <dd>An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have issued
+                and are endorsing for an end user (<a>subject</a>), is no longer valid and wishes to revoke the issued claim.</dd>
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
@@ -605,6 +638,18 @@ dl.dl-horizontal > dd {
                 John has access to the account.  Some time later, John is moving to a new city and
                 decides to close that account.  Big Bank Co needs to revoke that claim as part of their
                 normal account closing process.</dd>
+                <dd>Barney was a board certified physician, but his certification
+                has lapsed.  Since the board can revoke his
+                certification, <a>credential consumers</a> will automatically be
+                aware that he can no longer issue prescriptions or perform medical
+                procedures.</dd>
+                <dd>Jane was issued a certificate by BigTraining Co., indicating
+                that she was a trained Project Manager.  It was later discovered
+                that BigTraining Co. was not actually training anyone, and their
+                organization's certificate was revoked via the US Department of
+                Education's Accreditation Database. Jane's credential is
+                therefore invalid, and prospective employers will be aware of
+                this when they check her certifications.</dd>
             </dl>
         </section>
     </section>
@@ -614,11 +659,11 @@ dl.dl-horizontal > dd {
         <h2 id="ic-consuming-claims">Consuming Claims</h2>
         <section>
             <h3 id="uc-consuming-interactive-request">Credential
-                Consumer Interactively Requests Credential</h3>
+                Consumer Requests Credential</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for a <a>consumer</a> to request a
-                credential such that the <a>holder</a> interactively selects if and which appropriate
+                credential such that the <a>holder</a> selects if and which appropriate
                 credential should be sent.</dd>
                 <dt>Motivations</dt>
                 <dd>
@@ -626,25 +671,46 @@ dl.dl-horizontal > dd {
                 of their suitability for a transaction.  In this case, the
                 <a>holder</a> must be able to select which, if any, 
                 <a>Verifiable Claim</a> stored with their <a>Credential Curator</a> 
-                is used to satisty the
+                is used to satisfy the
                 <a>consumer</a>.</dd>
-                <dd>Basic website login can be implemented using a
-                credential.</dd>
+                <!-- <dd>Basic website login can be implemented using a
+                     credential.</dd> -->
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
-                <dd>Roxy visits the FineWines.com website and selects a
+                <dd>Anna has opened an account at her bank in Finland.  As part of
+                that process, the bank would like to perform &quot;Know Your
+                Customer&quot; clearing on her by checking to
+                see that she is a citizen of Finland and she has 
+                a current national ID card issued to them by their
+                government. Once verified, she is authorized to make
+                transfers internationally.</dd>
+                <dd>Josie is a healthcare worker that has created a
+                profile on a professional social network to make herself
+                readily available for new opportunities in the
+                workforce. She lists her employment history and
+                credentials including degrees, certificates, and digital
+                badges. The website requests verification of her
+                credential claims in order for her credentials to
+                visible when she posts messages. 
+                Josie authorizes the sharing of the relevant claims with the
+                website, and the site verifies them before
+                allowing Josie to expose them.</dd>
+                <dd>In MOOC and other on-line learning systems, being able
+                to reliably identify participants is vital to ensure the
+                individual evaluation and certification. Nick is participating in
+                a course online and takes a test.  
+                He is required to provide his
+                credentials to prove his identity before the test, and
+                then to allow the system to issue a <a>verifiable claim</a> regarding the results of
+                his test.</dd>
+                <!-- <dd>Roxy visits the FineWines.com website and selects a
                 number of wines to purchase. The website requests a
                 proof-of-age and shipping address credential from
-                Roxy. Roxy's IronVaultCorp credential service delivers
-                both credentials, allowing her to finalize the
+                Roxy. Roxy's IronVaultCorp credential service presents and she selects credentials that
+                provide this information.  These are then delivered to FineWines.com, 
+                allowing her to finalize the
                 transaction.</dd>
-                <dd>A bank would like to perform &quot;Know Your
-                Customer&quot; clearing on a new customer by checking to
-                see that they are a citizen of Finland and that they have
-                a current national ID card issued to them by their
-                government. Once verified, the new customer is authorized to make
-                transfers internaionally.</dd>
                 <dd>Jorge reads an article on BreakingNews.com and wants
                 to engage in a discussion in the comments section. The
                 website requests a verified email address credential to
@@ -655,16 +721,6 @@ dl.dl-horizontal > dd {
                 requests credentials for both the sender and receiver,
                 greatly reducing the risk for the remittance by manually
                 mis-keying the source and destination of the funds.</dd>
-                <dd>Josie is a healthcare worker that has created a
-                profile on a professional social network to make herself
-                readily available for new opportunities in the
-                workforce. She lists her employment history and
-                credentials including degrees, certificates and digital
-                badges. The website requests verification of her
-                credential claims in order for her credentials to
-                post. The website pings various credential vaults in which
-                Josie stores her credentials and verifies them before
-                allowing Josie to post them.</dd>
                 <dd>Seraph initiates a transfer of $45,000 USD to her
                 parents in Pakistan. She is asked to provide a credential
                 used during the high-value transfer, further demonstrating
@@ -674,13 +730,6 @@ dl.dl-horizontal > dd {
                 membership credential, which she provides. The website
                 confirms her membership credential is valid and grants her
                 access to the member-only portion of the site.</dd>
-                <dd>In MOOC and other on-line learning systems being able
-                to reliably identify participants is vital to ensure the
-                individual evaluation and certification. A participant
-                that performs a test certified on the Web must provide his
-                credentials to prove his identity before the test, and
-                then to allow the system to issue a secure certificate of
-                his results to the test.</dd>
                 <dd>Like many telcos (mobile and fixed line alike) are
                 required by law to assess the legal identity of a person
                 before allowing them into the network. Originally only
@@ -709,7 +758,7 @@ dl.dl-horizontal > dd {
                 and expecting free review copies of eTextbooks for its
                 ‘instructors’).  We need stronger assurances that partners
                 are who they say they are and are entitled to
-                institutional or user status.</dd>
+                institutional or user status.</dd> -->
             </dl>
         </section>
 
@@ -717,11 +766,11 @@ dl.dl-horizontal > dd {
             <h3 id="uc-consuming-verifiability">Consumer Verifies Claim</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
-                <dd>It MUST be possible for consumer to verify that the
-                credential is an authentic statement of an issuer’s claims
-                about the recipient. The verifying entity must have the
+                <dd>It MUST be possible for a <a>consumer</a> to verify that the
+                credential is an authentic statement of an <a>issuer's</a> claims
+                about the <a>subject</a>. The verifying entity must have the
                 capability to connect the issuer’s identity to its
-                credential identifier and the recipient’s identity to
+                credential identifier and the <a>subject's</a> identity to
                 their identifier as indicated in the credential. The
                 issuer’s verification information, such as its public key,
                 must be discoverable from the credential record and
@@ -734,31 +783,35 @@ dl.dl-horizontal > dd {
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
-                <dd>When processing orders, Giant Shoe Company wants to be certain
-                that the shipping address for a customer is accurate (inaccurate
+                <dd>Francis has found the perfect pair of shoes.  
+                When processing orders, Giant Shoe Company wants to be certain
+                that his shipping address is accurate (inaccurate
                 addresses are very expensive in terms of customer service). They
-                offer a discount for customers who make veriable addresses
-                available as part of the checkout process.</dd>
-                <dd>For banks and other financial institutions it would be
-                the ability to verify on-line customer or potential
-                customer information such a name, address, social security
-                number, age, employment and salary information, credit
-                history and various biometrics such as facial and
-                fingerprint.</dd>
-                <dd>A customer presents a driver’s license to buy
-                alcohol. In the same transaction, the customer buys other
-                items and presents a SNAP card for payment. The previously
-                presented driver’s license should be used as an
-                authentication for both methods of payment without relying
-                on the competence of the clerk.</dd>
-                <dd>Use similar to the above, but with the ability to
-                recognize a customer’s loyalty account without additional
-                information or clerk decision making. This would require
-                the customer’s permission, preferably at provisioning
-                time.</dd>
-                <dd>A lot of manual intervention is required to validate
-                scanned documents. Local knowledge is often required to
-                verify documents from different jurisdictions.</dd>
+                offer a discount for customers who make verifiable addresses
+                available as part of the checkout process. Francis offers his
+                certificate and gets the perfect shoes for even less than he
+                expected.</dd>
+                <dd>Alice wants to open a new bank account.
+                BigOnlineBank offers the ability to do this from home if she can
+                provide electronic credentials.  She offers goverment issued
+                certificates that verify her identity (address, national identity
+                number, etc.), and opens her new account from her couch.</dd>
+                <dd>iPharmacy receives a prescription for Bob electronically from a local
+                clinic.  It includes a certificate about the physician that issued
+                the prescription as well as one about Bob.  iPharmacy's
+                system automatically verifies the ability of the physician to
+                write prescriptions, as well as Bob's insurance coverage.
+                When Bob arrives to pick up his medication, iPharmacy
+                further correlates his identity with the certificate, thereby
+                improving the end-to-end accountability of their system.</dd>
+                <dd>Software Co. has posted an open position online and they are
+                receiving thousands of applications. Cindy has applied for the
+                job.  Unlike many applicants, she has attached her education credentials
+                - college degree, additional specific software training, etc.  Software Co.
+                evaluates these credentials automatically as they receive her
+                application.  Because her materials are verifiable and verified,
+                her application is immediately forwarded as a viable
+                candidate.</dd>
             </dl>
         </section>
 
@@ -766,41 +819,51 @@ dl.dl-horizontal > dd {
             <h3 id="uc-consuming-anonymity">Pseudo-Anonymity</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
-                <dd>It MUST be possible for claims to be associated with
-                IDs that reveal recipient-controllable amounts of
-                personally identifiable information.</dd>
+                <dd>It MUST be possible for the <a>holder</a> of a <a>claim</a> to
+                restrict the amount of information exposed in a claim they choose
+                to share.  It also MUST be possible for the holder to limit the
+                duration for which that information is shared.</dd>
                 <dt>Motivations</dt>
-                <dd>Credentials may be issued to an identifier such that
-                it is possible for the recipient to prove that the
-                identifier corresponds to them without revealing
-                personally identifiable information. In the case of a
-                subpoena, an identity service may be compelled to reveal
-                additional information beyond what the holder of the
-                identity wished to transmit.</dd>
+                <dd>Credentials may be issued about a <a>subject</a> that include
+                multiple attributes, only some of which are required when
+                verifying a specific criteria is satisfied. The <a>holder</a>
+                should have the ability to satisfy the criteria without revealing
+                additional attributes that are not required.</dd>
                 <dt>Importance</dt>
                 <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>June goes to her local beer and wine store to buy a
                 bottle of wine. She submits her identity credential that
                 lets the liquor store owner know that she is over 21
-                without having to reveal her actual DOB, her address, or the status
-                of her driving privileges.</dd>
-                <dd>A credential contains an identifier that is a hash of
-                a known identifier (email address) of an individual so
-                that those who know the recipient identifier can verify
-                the credential, but those who don’t know the identifier
-                cannot derive personally identifiable information about
-                the recipient.</dd>
-                <dd>Transient private communication is difficult, since
-                the ActivityPump spec requires verifying the that a
-                message came from its origin, so signatures may help
-                here.</dd>
-            </dl>
+                without having to reveal her actual date of birth,
+                her address, or her state ID number.</dd>
+                <dd>John is on the vacation of a lifetime, travelling the world.  Falling ill, he 
+                visits a health clinic in a country in which he does not live.
+                At the clinic he is
+                asked for proof of identity.  He provides a credential that
+                verifies his name and address, but elects not to disclose his
+                marital status nor his social security number, as those are
+                neither requested nor required at this clinic. He further marks
+                the disclosure as expiring in 30 days - he does not want his
+                information verifiable after that time.</dd>
+                <dd>"Freedom?" is an online forum that encourages 
+                free discussion about issues
+                controversial in Freedonia.  The forum allows users to register
+                anonymous accounts, but it also allows users to obtain badges
+                based upon real world certifications.  
+                Paula has been certified as an aid worker, and wishes that
+                information to be marked on her posts.  She shares her certificate
+                with the forum, but limits it to only verifying that she is the
+                <a>holder</a> of the certificate, that she is the <a>subject</a>
+                of it, and that she is an aid worker.  In this way she maintains
+                her anonymity in this controversial forum while still being able
+                to assist her fellow countrymen.</dd>
+            </section>
         </section>
     </section>
 
-    <section>
-        <!-- Editor - @bsletten -->
+    <!-- Editor - @bsletten -->
+    <!-- <section>
         <h2>Managing and Sharing Claims</h2>
         <section>
             <h3 id="uc-managing-controlling-context">Context Control</h3>
@@ -826,10 +889,10 @@ dl.dl-horizontal > dd {
                 in the future.</dd>
             </dl>
         </section>
-    </section>
+    </section> -->
 
-    <section>
-        <!-- Editor - @halindrome -->
+    <!-- Editor - @halindrome -->
+    <!-- <section>
         <h2>Endorsing Claims</h2>
         <section>
             <h3 id="uc-endorsing-counter-signatures">Recipient Collects Counter-signatures for Credential</h3>
@@ -871,857 +934,7 @@ dl.dl-horizontal > dd {
             </dl>
         </section>
 
-    </section>
-</section>
-
-<section class="appendix">
-    <h2>Extended Use Cases</h2>
-    <p>In addition to the fundamental use cases detailed in <a href="#use-cases">Section 4</a>, the
-    task force has captured a number of additional use cases that are relevant to the task and should
-    be kept in mind as further work is done in this space.  Those use cases are captured in this
-    appendix, along with an indication as to their relative importance. This appendix is organized with
-    a structure similar to that of Section 4.</p>
-    <section>
-        <!-- Editor - @gkellogg -->
-        <h3>Issuing Claims</h3>
-        <section>
-            <h3 id="uc-claims-in-credential">Making Claims in a Credential</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for an <a>issuer</a> make multiple
-                <a>claims</a> in a <a>credential</a>.</dd>
-                <dt>Motivation</dt>
-                <dd>An <a>issuer</a> can make a <a>claim</a> that asserts
-                something specific about the <a>holder</a>, such as a
-                qualification, attribute, or the attainment of a particular
-                defined achievement. Credentials may aggregate multiple claims,
-                and may include additional information to identify the
-                <a>holder</a>.</dd>
-                <dt>Importance</dt>
-                <dd>Useful</dd>
-                <dt>Scenarios</dt>
-                <dd>
-                <ul>
-                    <li>A teacher professional development association awards Penny Chen a digital certificate which claims she has fulfilled her professional development units and has demonstrated mastery over common core instruction.</li>
-                    <li>Brian is taking an online course on web development. When he completes modules, the website issues badges to him for module completion and progress through the course. At the end of the course he has an option to submit his work and quizzes that are evaluated and then he is issued a badge.</li>
-                    <li>The state government of California issues Amari a driver’s license after he passes both the written and practice driving tests.</li>
-                    <li>Educause conference issues digital badges to all conference speakers through a claim code system. Conference speakers are given a special code, that they input on the educause site which triggers a badge to be issued to them.</li>
-                </ul>
-                </dd>
-            </dl>
-        </section>
-        <section>
-            <h3 id="uc-issuing-unambiguous-naming">Unambiguous Naming</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>Credentials MUST be able to use unambigous names for
-                described entities.</dd>
-                <dt>Motivation</dt>
-                <dd>Many claims systems to not include a mechanism to unambigously identify entities. The interoperability of credentials depends largely on market verticals defining and standardizing common terminology in publicly available machine-readable vocabulary documents.</dd>
-                <dt>Importance</dt>
-                <dd>Useful</dd>
-                <dt>Scenarios</dt>
-                <dd>
-                <p>Most (bar WebID-TLS) fail to incorporate unambiguous naming
-                using HTTP URIs. In addition, entity names don’t resolve to
-                entity description documents.</p>
-                <ol>
-                    <li>OAuth1 provides assurance of partner identity (Publisher
-                    can trust UCLA is sending the message). But Publisher must
-                    trust the university to accurately identify the user and the
-                    user’s role with respect to the course.</li>
-                    <li>OAuth2 loses message verification of OAuth1, but needs
-                    to be partnered with other identification protocols.</li>
-                    <li>SAML / Shib gives more highly trusted identity information
-                    than either OAuth but contains no course context (unlike LTI).
-                    It is considered too complicated for most higher-ed
-                    institutions and near-impossible for the burgeoning K-12
-                    market.</li>
-                </ol>
-                </dd>
-                <dd>
-                <ul>
-                    <li>Education credentials use a common set of vocabularies to establish a credential type, alignment, and criteria.</li>
-                    <li>Healthcare credentials use a common set of terminology to express licensing status, prescription writing authorization, and which medical facilities the recipient has access to enter.</li>
-                    <li>Anti-money laundering credentials can be used to report suspicious activity on a global basis by using a common set of terminology to express people and organizations that are engaged in transactions.</li>
-                </ul>
-                </dd>
-            </dl>
-        </section>
-        <section>
-            <h3 id="uc-self-asserted-claims">Self-asserted Claims</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for anyone to issue a verifiable claim
-                about themselves.</dd>
-                <dt>Motivation</dt>
-                <dd>An <a>entity</a>, such as an end user (<a>holder</a>),
-                wishes to make a <a>claim</a> and which they endorse themselves,
-                such as a qualification, attribute, or the attainment of a
-                particular defined achievement, acting as an <a>issuer</a>.</dd>
-                <dt>Importance</dt>
-                <dd>Nice to have</dd>
-                <dt>Scenarios</dt>
-                <dd>Mandy has years of experience as a web developer but as an
-                autodidact, doesn’t have the credentials to prove it when
-                applying for jobs. Mandy issues herself a credential and includes
-                information/evidence to support her claim.</dd>
-                <dd>
-                <p>Purpose  The Country Government does not want to build a
-                centralised repository for citizen’s self-asserted credentials
-                such as contact details and perhaps other claimed attributes
-                such as partner’s name, etc. Alternatively, the objective is to
-                support the marketplace to develop an ecosystem of local or
-                global providers that offer the citizen a range of options to
-                choose from. A standard could enable an approach that would
-                remove dependence on any particular technology or platform as
-                the choice of repository for an individual’s self-asserted
-                profile – for example, personal mobile device, open cloud
-                service, commercial provider website.</p>
-
-                <p>Agency and citizen requirements:</p>
-                <ul>
-                    <li>The government agency requires an applicant’s
-                    contact details – that is self-asserted credentials; for
-                    example, email address, mobile phone, postal address, to
-                    complete their registration process for the agency’s online
-                    service.</li>
-                    <li>If the customer changes one of these attributes,
-                    the agency would like the option of being notified.</li>
-                    <li>The citizen wants the means to select specific contact
-                    details from their existing self-managed profile to share with
-                    this particular government agency.</li>
-                    <li>If the citizen changes one of these attributes they
-                    want to be able to simply update their profile without
-                    explicitly notifying each government agency or
-                    organisation.</li>
-                </ul>
-                <p>Use case – register with service provider</p>
-                <ol>
-                    <li>Jane applies to the government agency for a
-                    social welfare entitlement.</li>
-                    <li>The agency requires Jane to authenticate and she
-                    uses her federated login credentials.</li>
-                    <li>The agency requests Jane’s full name, date of birth,
-                    citizenship and validated bank account.</li>
-                    <li>Jane opts to assert her online core identity,
-                    citizenship and validated bank account credentials from the
-                    authoritative providers.</li>
-                    <li>The agency requests Jane’s contact details.</li>
-                    <li>Jane opts to provide these from her online profile.</li>
-                    <li>The agency initiates a request to a
-                    credential/attribute brokering service.</li>
-                    <li>The brokering service checks Jane’s authentication
-                    token.</li>
-                    <li>The brokering service retrieves Jane’s identity,
-                    citizenship and validated bank account from the respective
-                    authoritative credential/attribute providers.</li>
-                    <li>The brokering service retrieves Jane’s profile from
-                    her preferred contact details repository mechanism (personal
-                    mobile device, open cloud service, commercial provider
-                    website, etc.).</li>
-                    <li>Jane selects some specific contact details.</li>
-                    <li>Jane provides information sharing consent
-                    (if not previously provided) to share identity, citizenship,
-                    bank account and contact details with the requesting
-                    government agency.</li>
-                    <li>The brokering service returns the respective
-                    credentials to the requesting agency.</li>
-                    <li>The requesting agency provides Jane with the
-                    requested welfare entitlement.</li>
-                </ol>
-                </dd>
-                <dd>Related use cases  Other use cases for contact details
-                would include initial create and manage contact details profile,
-                service provider checks for contact details credential change,
-                citizen notifies multiple service providers about a credential
-                change.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-issuing-bearer-credentials">Bearer Credentials</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible to prove that a <a>holder</a> has a
-                particular <a>claim</a> without leaking personally identifiable
-                information.</dd>
-                <dt>Motivation</dt>
-                <dd>Two colluding websites should not be able to collude and build
-                a more accurate profile of a person. There are many problems with
-                this privacy requirement. Namely, the Open Web Platform provides
-                multiple mechanisms like session tracking, supercookies, and
-                email-based identifiers, that enable colluding websites to track
-                their users across the Web. Given these existing tracking
-                mechanisms, a bearer credential solution shouldn’t make the
-                problem worse.</dd>
-                <dt>Importance</dt>
-                <dd>Nice to have</dd>
-                <dt>Scenarios</dt>
-                <dd>Niambo would like to prove that she is over the age of 13
-                to get access to a protected website. She has a proof of age
-                credential that can be used in a pseudo-anonymous fashion. She
-                proves her age pseudo-anonymously, as the credential consumer
-                website does not want to track its users, but does want to ensure
-                that it is compliant from a regulatory perspective.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-identifier-aliasing">Identifier Aliasing</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>A <a>holder</a> MUST be able to claim <a>credentials</a>
-                issued to different identifiers owned by the <a>holder</a>.</dd>
-                <dt>Motivation</dt>
-                <dd>A <a>holder</a> may collect credentials asserting that
-                multiple identifiers correspond to their <a>identity</a> so that
-                they may present credentials issued to several of these
-                identifiers at once, as long as the <a data-lt="credential
-                    consumer">consumer</a> of that statement trusts each of the
-                equivalence credential <a>issuers</a>.</dd>
-                <dt>Importance</dt>
-                <dd>Nice to have</dd>
-                <dt><em>Security</em></dt>
-                <dd>When sharing email accounts, forging credentials becomes
-                easier/more commonplace. There are also accidental information
-                leakage issues w/ shared credentials.</dd>
-                <dt>Scenarios</dt>
-                <dd>Owen received a number of credentials issued to an
-                employment-based identifier and uses an identifier equivalence
-                credential issued by his employer to bundle these together with
-                credentials issued to a personal identifier so that consumers
-                will trust the different credentials were issued to the same
-                recipient.</dd>
-                <dd>Sally was issued a credential from her former high school to
-                her then school email, sally@losalamitoshigh.edu. Sally has since
-                transferred to a new high school and wants to be able to claim
-                that credential still as hers even if her former high school
-                email is no longer valid.</dd>
-                <dd>When Jabar was 12, he took several online courses on
-                Khan Academy using his parent’s or teacher’s emails, due to COPPA
-                regulations that didn’t allow him to create his own account.
-                During that period he earned various badges and certificates
-                which, now that he’s 13, he’d like to claim under his own email
-                address.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-issuing-delegation">Delegating Credential Creation</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for an <a>issuer</a> to
-                delegate issuing credentials to end users (<a>holder</a>).</dd>
-                <dt>Motivation</dt>
-                <dd>An <a>issuer</a> would like to provide credentials for
-                end users while delegating the technical aspects of this to a
-                third party. A credential authority would be able to authorize 1
-                or more credential issuers which would in turn be able to issue
-                secure credentials that are accepted as valid and acceptable by
-                consumers of the authority's credentials.</dd>
-                <dt>Importance</dt>
-                <dd>Nice to have</dd>
-                <dt>Scenarios</dt>
-                <dd>MidBank offers to provide credentials to account holders,
-                such as Jane. CredentialsRUs provides a service for busniesses
-                such as MidBank to use for providing such credentials.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-issuing-accessibility">Credential Accessibility</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for a <a>credential consumer</a>
-                operating in one language to understand credentials issued in a
-                different language. A credential MUST be able to be issued to
-                people that have disabilities (10% of the human population).</dd>
-                <dt>Motivation</dt>
-                <dd>Issuers and Credential Consumers often operate in
-                different languages, and the basis of the credential MUST be
-                described in a way which supports interpreting it in multiple
-                language.</dd>
-                <dt>Importance</dt>
-                <dd>Useful</dd>
-                <dt>Scenarios</dt>
-                <dd>Company creates a credential with claims.
-                Such claims need to either be described in multiple languages, or
-                the claim definition allows an indirection to describe the claim
-                in different languages.</dd>
-            </dl>
-        </section>
-
-
-    </section>
-    <section>
-        <!-- Editor - @burnburn -->
-        <h3>Revoking Claims</h3>
-    </section>
-    <section>
-        <!-- Editor - @burnburn -->
-        <h3>Consuming Claims</h3>
-        <section>
-            <h3 id="uc-consuming-recipient-requests">Holder Initiates
-                Credential Transmission</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for a <a>holder</a> to initiate transmission of credentials to
-                a <a>consumer</a>.</dd>
-                <dt>Motivations</dt>
-                <dd>A credential <a>holder</a> may upload one or more
-                credentials to a consumer service or transmit credentials
-                by email in order to apply to access an opportunity or
-                service. The request may be evaluated by an automated
-                system or by a human adjudicator.</dd>
-                <dt>Importance</dt>
-                <dd>Useful</dd>
-                <dt>Scenarios</dt>
-                <dd>Umal wants to buy a PG-13 movie from an online
-                retailer that requires proof of age. He provides a
-                credential stating that he is over the age of 13 from an
-                issuer that the store trusts. This enables the online
-                retailer to avoid collecting information on a minor while
-                ensuring that the proper age check is performed before
-                granting him access to the movie.</dd>
-                <dd>Marcus uploads a collection of badges he’s earned from
-                several summer programs as part of an application for a
-                summer camp counselor job. He chooses credentials that
-                showcase his experience with relevant subject matter and
-                competencies. The decision about who to hire for the job
-                is too complex for a computer, so a camp administrator
-                reviews Marcus’s application and considers the
-                credentials’ applicability.</dd>
-                <dd>Our Trade product allows users to trade on the network
-                but users are required to provide KYC information before
-                they can use their accounts.  Currently we use a
-                third-party service which allows user to upload scanned
-                copies of their relevant documents (passport, driver’s
-                license etc) which, if not automatically verified, require
-                manual verification.  Ideally users should be able to
-                share digital credentials with us that cover all of our
-                KYC requirements.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-consuming-medium-agnostic">Shareable Over any Medium</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for claims to be shareable over
-                any medium.</dd>
-                <dt>Motivations</dt>
-                <dd>A recipient of a digital credential may choose to
-                share their credential through a variety of mediums,
-                whether email, embed or social media.</dd>
-                <dt>Importance</dt>
-                <dd>&nbsp;</dd>
-                <dt>Scenarios</dt>
-                <dd>Chiara, who is seeking new career opportunities, wants
-                to share a list of her credentials with a recruiter. She
-                takes her credentials from her desktop and includes them
-                as an attachment to an email she sends the recruiter. The
-                badges retain their integrity and content.</dd>
-                <dd>Beaver is thrilled to have earned the Associated
-                Student Board Leader of the Year commendation. He wants to
-                shout it from the rooftops and accordingly shares it on
-                his various social media accounts including Facebook,
-                Twitter and LinkedIn.</dd>
-            </dl>
-        </section>
-        
-        <section>
-            <h3 id="uc-consuming-medium-recipient-use-restrictions">Data Rights</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for the recipient to restrict the
-                uses to which their claims can be put</dd>
-                <dt>Motivations</dt>
-                <dd>A recipient of a digital credential may choose to
-                include information that asserts what their information
-                may be used for.</dd>
-                <dt>Importance</dt>
-                <dd>&nbsp;</dd>
-                <dt>Scenarios</dt>
-                <dd>Rosa is transmitting her email address to a group
-                buying website and wants to ensure that her email address
-                will not be used for unsolicited emails. She attaches a
-                &quot;no advertising&quot; assertion to her email
-                credential to ensure that it isn't re-transmitted to 3rd
-                parties for advertising purposes.</dd>
-            </dl>
-        </section>
-        
-        <section>
-            <h3 id="uc-consuming-searchability">Collectible and Searchable</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for claims from different
-                recipients to be collected and searched.</dd>
-                <dt>Motivations</dt>
-                <dd>A credential consumer who has been presented
-                credentials from a large number of candidates can sort and
-                filter those candidates by credentials they have received
-                and claims made by those credentials.</dd>
-                <dt>Importance</dt>
-                <dd>Nice to have</dd>
-                <dt>Scenarios</dt>
-                <dd>Steve, an HR recruiter searches his database of
-                job-seekers for a position that requires a particular
-                defined credential.Steve narrows a list of candidates to
-                those who have a valid passport credential.</dd>
-            </dl>
-        </section>
-        
-        <section>
-            <h3 id="uc-consuming-multiple-recipients">Verify Claims for Multiple Recipients</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible to simultaneously verify claims
-                for multiple recipients.</dd>
-                <dt>Motivations</dt>
-                <dd>Transactions done by third parties often need to
-                confirm the claims of the two other parties to the
-                transaction.</dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
-                <dt>Scenarios</dt>
-                <dd>
-                <ol>
-                    <li>Physician writes a prescription, electronically on iPad application.</li>
-                    <li>Physician transmits to a PBM or Pharmacy.</li>
-                    <li>Transmission contains physician’s key credentials
-                    that would allow the transaction to complete (all of
-                    which can “expire” or be revoked at any moment in
-                    time), like NPI Number, Professional License, DEA
-                    Registration, Network Enrollment, PECOS Enrollment,
-                    Exclusion/Debarment status).</li>
-                    <li>Transmission contains patient’s key credentials
-                    that would allow the transaction to complete (all of
-                    which can “expire” or be revoked at any moment in
-                    time), like drug allergies, other prescribed drugs
-                    (inter-actives), Network/Payer enrollment,
-                    Medicare/Medicaid enrollment, Drug Program enrollment
-                    etc.</li>
-                    <li>Credential consumer (PBM/pharmacy) pass or fails
-                    transaction based on received credentials from both
-                    transaction participants.</li>
-                </ol>
-                </dd>
-                <dd>Company is involved in the issuance and consumption of
-                credentials as “social currency” to prove reputation and
-                ascertain privilege on the Web. A credential is defined as
-                a digitally signed data document that represents
-                authoritative claims issued by primary source data
-                providers to an entity (i.e., person, place or
-                thing.). First major use case: An example would be a
-                nursing license issued by a government agency. The holder
-                of a nursing license credential can offer it via their
-                browser to a web site as proof of required attributes. For
-                instance, if a web site requires a visitor to hold nursing
-                license to gain access, the site would request the nursing
-                identity credential from the visitor’s IdP to authenticate
-                the visitor by inspecting and verifying the provided
-                credential status and authenticity. The nurse should be
-                able to keep private the use of the web site from the
-                IdP. Second major use case: Prior to filling and handing
-                over a prescription to a patient, a pharmacy needs to:
-                ensure the doctor’s credentials are valid and none of them
-                violate a business rule; that the prescription data has
-                not been tampered with; and authenticate the person
-                picking up the prescription is or is appropriately
-                associated with or an official proxy of the patient. Using
-                digital credentials, these processes can be largely
-                automated and streamlined. For example, when a doctor who
-                writes a prescription, a digitally-signed credential can
-                be generated that contains the prescription and an
-                identifier for the intended patient. Linked to the
-                credential can be another credential that contains the
-                doctor’s License, DEA Registration, National Provider
-                Identifier (NPI), Medicare/Medicaid Enrollment Status and
-                Exclusion/Debarment status. The patient can be issued a
-                credential that can be used to prove they are associated
-                with the identifier. The pharmacy prescription system can
-                now independently verify all of the above via these
-                digital credentials at the point of sale terminal or even
-                over the Web.</dd>
-                <dd>Entry Point Processing: verifying credentials of a
-                healthcare transaction participant (broadly) - - hundreds
-                of applications for this.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-consuming-verify-xaction-occurrence">Verify Transaction Occurrence</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>(**NB**: This requirement might be better as the
-                consequence of some other requirements) It MUST be
-                possible for claims to be used in a way that verifies that
-                a transaction has occurred.</dd>
-                <dt>Motivations</dt>
-                <dd>Transactions such as purchases often need to be
-                verified later, such as when the purchased item is picked
-                up.  Being able to track this without a separate database
-                could be useful.</dd>
-                <dt>Importance</dt>
-                <dd>&nbsp;</dd>
-                <dt>Scenarios</dt>
-                <dd>From the processor perspective, issues surrounding the
-                merchant integration of retail with web shopping - there
-                is great interest in cases where a customer will pay
-                online and then pick up in in-store; or if a customer were
-                to place the order online and then pay at the pick-up.
-                Additional areas of concern from instances of Card not
-                present or online shipping where items may be delivered in
-                split shipments requiring multiple authorizations or an
-                item is on back order and the customer wants to complete
-                the transaction - or even instances of advanced orders
-                contingent on future availability.</dd>
-                <dd>Many other use cases - examples include reversing
-                payments (refunds/chargebacks), status enquiries</dd>
-                <dd>There are other use cases of identity verification for
-                selling different items, pick up of orders, employee
-                credential verifications etc.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-consuming-3rd-party-info">Adding Third-party Info</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible to attach third-party information
-                to claims.</dd>
-                <dt>Motivations</dt>
-                <dd>Verifiable claims can be made for reputation or
-                history credentials such that the data associated with the
-                claim is an essential part of the claim.</dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
-                <dt>Scenarios</dt>
-                <dd>We are primarily interested in credentials in relation
-                to content and annotation ownership. Our use cases center
-                around moderation of annotations, cumulative reputation
-                for credentialed individuals, notification (where
-                possible) to content owners that their content is being
-                annotated or their annotations are being replied to, as
-                well as content and annotation distribution and publishing
-                vetted by a distributed reputation system (permission to
-                publish based on merit, explicit permission).</dd>
-                <dd>Tools are increasingly providing analytic results and
-                possibly results to formative assessments (quizzes) or
-                summative assessments (tests).  These values need to be
-                secure and guaranteed to be associated with the student
-                that generates them.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-consuming-qualifier">Verifiable Claims as Qualifiers</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for verifiable claims to be used
-                as qualifiers for an action of transaction.</dd>
-                <dt>Motivations</dt>
-                <dd>Verifiable claims may be used to determine eligibility
-                rather than identity.</dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
-                <dt>Scenarios</dt>
-                <dd>Age-restricted consumer products companies (CPGs) have
-                largely been excluded from price-reduced promotions – a
-                $500B market in the US - to targeted consumers largely due
-                to the requirement to ensure the promotion does not
-                encourage under-age sales.  Digital identity can provide
-                value to the consumer, CPG and merchant by opening up this
-                currently closed market to age-restricted sales.  A beer
-                brewer wants to provide a digital promotion to an ‘of age’
-                consumer.  To obtain the promotion on their mobile, the
-                consumer must prove their age to the beer company (so as
-                not to run afoul of age laws) to obtain the promotion
-                token.  Proof of age must be digital and tokenized,
-                incorporated within the mobile device, and validated by a
-                trusted service provider.  Upon validation of age, the
-                brewer issues the promotion to the mobile, ideally with
-                the age verification token embedded in the promotion token
-                (for validation at POS).  The consumer then selects the
-                promoted product at the convenience store, which is
-                scanned at the POS.  The consumer elects to apply the
-                promotion and passes BOTH the promotion token and age
-                verification token to the POS which matches tokens.  With
-                a successful match, the promotion is applied to the sale
-                and price is discounted.  The store then ‘settles’ the
-                promotion with the brewer; seeking payment from the
-                brewer, retiring the promotion token and posting proof
-                that age verification was assured for proof with
-                regulatory agencies.  This same process – minus the token
-                – can be applied in all age-validated sales within a
-                convenience store; reducing or eliminating the store’s
-                liability to under-age sales and keeping age-restricted
-                products out of the hands of youth</dd>
-                <dd>I think there are two use cases that would be
-                important to Company.  The first is when verifying that
-                new users are who they say they are.  We require that all
-                users have a <a href="http://company.com">company.com</a>
-                account in order to shop with us, so that either results
-                in a returning user signing in or a new user creating an
-                account.  It would be good to have the ability to verify
-                with a credentials solution that the customer signing up
-                with us was who they say they were.  The second case is
-                relative to selling restricted items.  If we had a good
-                way to validate a customer was qualified to purchase that
-                restricted item with us then I think that could eliminate
-                a good deal of friction from the process.</dd>
-                <dd>We see a need for analyzing a bundle of credentials to
-                help match or qualify a person for educational, workforce,
-                and personal opportunities.  Doing so requires that the
-                credentials meet the needs for our use case mentioned
-                above in Question 4 and that the credential ecosystem can
-                live on the web and within the web’s linked data standards
-                and methods of data and privacy protection, security,
-                sharing, and consumption.  We need credentials to be part
-                of the web ecosystem to keep us from having to develop
-                independent systems and applications for managing
-                credentials.</dd>
-                <dd>Establish a framework for fully embedded assessment
-                model built on personal, academic, social, and
-                professional accomplishments.</dd>
-                <dd>Claims processing: patient credentials (insurance
-                coverage/enrollment, admitted to a facility or study
-                participant).</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-consuming-existing-ids">Use Existing IDs as Claim(s)</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for existing IDs to be used as
-                claims, assuming there is an entity that will verify
-                them.</dd>
-                <dt>Motivations</dt>
-                <dd>&nbsp;</dd>
-                <dt>Importance</dt>
-                <dd>&nbsp;</dd>
-                <dt>Scenarios</dt>
-                <dd>We do promote the use of LEI, the Legal Entity
-                Identifier. This is focussed on banks, which will provide
-                certainty in financial trades. E.g.,:
-                <ul>
-                    <li>Identification and storing in repository of trades
-                    between financial Institutions and customers;</li>
-                    <li>Due diligence in correspondent banking;</li>
-                    <li>Identifying banks with LEI is for some cases a
-                    more precise way than presently done through BICs,
-                    though we have no plans to change the usage of BIC in
-                    our RTGS payment system.</li>
-                    <li>indeed KYC, and also FATF‎.</li>
-                </ul>
-                </dd>
-                <dd>We are building various decentralized applications
-                (dApps) and platforms that all make use of our
-                ID/Persona/Reputation system.  “Sign in” to these dApps is
-                accomplished via the wallet that we have built which
-                serves as a container for ID/Persona.  A small number of
-                examples of the systems that use this
-                ID/Persona/Reputation construct include Product, our
-                prediction markets platform, our Poker platform, and Music
-                Platform, our open music industry platform</dd>
-                <dd>We integrate with many products and each product has
-                it’s own credentialing system. Some use LDAP, but that is
-                not consistent. This causes headaches because we don’t
-                know which account to assign which user, especially if
-                they use the account to store data. Will be nice to have a
-                centralized Identity server (like OpenID connect)</dd>
-                <dd>Will be nice to know userid, and organization ID (for
-                proper governances)</dd>
-                <dd>We are using Identity Credentials, and they are
-                designed to address deficiencies in OpenID, OAuth, and
-                SAML, primarily.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-consuming-composability">Composability</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for claims to be combined together
-                in order to meet complex requirements.</dd>
-                <dt>Motivations</dt>
-                <dd>Credentials may be displayed together in order to meet
-                complex requirements or prove qualification more
-                substantively than would be possible with one credential
-                alone.</dd>
-                <dt>Importance</dt>
-                <dd>Useful</dd>
-                <dt>Scenarios</dt>
-                <dd>Marisol wants to open a bank account at a new
-                bank. The bank requires two valid forms of
-                identification. She uses a US Passport credential and a
-                Colorado driver’s license credential to prove that she is
-                who she says she is to the bank.</dd>
-                <dd>Willie is transferring between universities and wants
-                to ensure he gets credit for work he did at his old
-                school, so he bundles the credentials he received for his
-                course work with a 3rd party’s endorsements that he knows
-                the new school trusts, so that the new school is more
-                likely to accept the credentials.</dd>
-                <dd>Idris wants to take the introduction to organic
-                chemistry which is an upper division course. In order to
-                qualify for that course, Idris needs to have proven that
-                he’s taken Biochemistry and Physics. He proves that he’s
-                taken these prerequisite courses which unlocks the
-                opportunity to enroll in the organic chemistry
-                course.</dd>
-                <dd>Multiple credential issuers issue Jane a set of
-                credentials for her shipping address, loyalty card,
-                payment instrument, proof of age, and email address. When
-                she goes to a new store to buy something, all of those
-                credentials are requested by the merchant in a single
-                credentials request. The credentials are delivered via the
-                browser from Jane’s credential storage service to the
-                merchant’s website and Jane initiates the payment
-                process. Jane does not have to fill out any form
-                information or register with the website to complete the
-                purchase since her credentials contain everything the
-                merchant needs to finalize the transaction.</dd>
-                <dd>A user wants to open his online banking portal, but he
-                is on holiday and does not have his hardware token
-                received by the bank with him. The banking portal requires
-                a level of assurance level 3 to enter. According to ISO
-                29003/29115 (see annex B and table 5) it should be
-                possible to use his combination of passport (primary level
-                credential), driver’s licence and bank card of another
-                bank(two secondary level credentials) and his insurance
-                card (tertiary level credential) to access his bankin
-                portal. However, he does not want to send those
-                credentials over the internet, but the issuers of the
-                credentials are asked to confirm per credential that the
-                user indeed owns those credentials and that they are
-                valid.</dd>
-                <dd>CDD Customer Due Diligence: achieving certainty on the
-                identity of a new customer and possible other data such as
-                address and age.  Alice, who wants to use specific
-                services the bank is offering, wants to activate a
-                relationship with the bank. She allows the (local)
-                government to give the bank access to her e-ID document
-                and address and age data.  After successfull verification
-                of Alice’s identity and checking against CDD-lists such as
-                OFAC, the bank activates the relationship and provides
-                Alice with a bank-related identity which she can use to
-                access the banks services.</dd>
-            </dl>
-        </section>
-
-    </section>
-    <section>
-        <!-- Editor - @bsletten -->
-        <h3>Managing and Sharing Claims</h3>
-
-        <section>
-            <h3 id="uc-managing-composition">Entity Composes Claims to Meet Consumer Needs</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>Entities represented by one or more claims will want to be
-                able to compose them into a shaped representation to meet the
-                needs of specific consumers.</dd>
-                <dt>Motivation</dt>
-                <dd>The space for exchanging claims will involve both entities
-                being described and consumers interested in the claims. This
-                will include consumer interest in retrieving the claims about
-                specific entities as well as groups of entities matching an
-                expressed query. In order to be more easily found in this space,
-                entities will want to be able to structure their claims to match
-                these expressed queries.</dd>
-                <dt>Importance</dt>
-                <dd>Useful</dd>
-                <dt>Scenarios</dt>
-                <dd>An intellectual property law firm has a specific interest in
-                recent law graduates with a background in computers. While
-                perusing a page of open positions, Allison discovers this
-                opening and sees the persistent query associated with it.
-                She is interested in this job and creates a compsite of her
-                credentials that highlight both her law degree from last year
-                and her Bachelor of Science in computer science.
-                </dd>
-                <dd>On a social networking site dedicated to
-                matchmaking investors, Antoine finds an individual that knows a
-                friend of his interested in partnering on a financial services
-                venture. As a means of introducing himself and standing out, he creates a composite credential that highlights
-                the social network connection and a series of articles he has
-                written in relevant trade journals.</dd>
-            </dl>
-        </section>
-
-    </section>
-    <section>
-        <!-- Editor - @halindrome -->
-        <h3>Endorsing Claims</h3>
-
-        <section>
-            <h3 id="uc-endorsing-self-claims">Endorsement on self-claims</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for an <a>entity</a> to endorse a self-made claim by a
-                recipient that asserts something specific about herself, such as a
-                qualification, attribute, or the attainment of a particular defined
-                achievement.</dd>
-                <dt>Motivation</dt>
-                <dd>An organization or individual can endorse a self-made claim by a
-                recipient that asserts something specific about herself, such as a
-                qualification, attribute, or the attainment of a particular defined
-                achievement.</dd>
-                <dt>Importance</dt>
-                <dd>Useful</dd>
-                <dt>Scenarios</dt>
-                <dd>After Mandy issues herself a credential with the supporting
-                evidence and information, she reaches out to her previous clients
-                including various sized organizations for which she’s done development
-                work requesting they endorse the self-issued credential. Several
-                organizations oblige and endorse the credential.</dd>
-            </dl>
-        </section>
-
-        <section>
-            <h3 id="uc-endorsing-issuers">Endorsement of Issuers</h3>
-            <dl class="dl-horizontal">
-                <dt>Requirement</dt>
-                <dd>It MUST be possible for an <a>entity</a> to endorse certificates
-                associated with an <a>issuer</a>.</dd>
-                <dt>Motivation</dt>
-                <dd>A credential is only as strong as the trust <a>credential consumers</a> have in
-                the credential's <a>issuer</a>.  In order to enhance that trust, an issuer may choose
-                to have their own credentials available and endorsed by other, (supposedly) more
-                trusted entities.  A credential consumer could examine these endorsements to
-                determine if <a>entities</a> they trust already trust this issuer - thereby
-                increasing theirn owk trust in the issuer.</dd>
-                <dt>Importance</dt>
-                <dd>Nice to have</dd>
-                <dt>Scenarios</dt>
-                <dd>Jim shares a Verifiable Claim with a prospective employer about the results of taking
-                a certification course.
-                The claim was issued by the course provider - Bob's School o' Programming.
-                The employer's system looks at the claim, but is not familiar with the issuer.
-                The issuer has included a URI for their own Verifiable Claim in the certification,
-                and the employer's system retrieves that.
-                The issuer's claim was issued by "Big Computer Corporation", a multi-national that
-                the employer's system <em>is</em> familiar with.
-                The system decides that it can trust the issuer, and therefore Jim's Verifiable
-                Claim.</dd>
-                <dd>Big Testing Service (BTS) provides online test management for a large collection of
-                training organizations - connecting those organizations to various online testing
-                providers and capturing test results. Systems such as LTI (Learning Tools Interoperability)
-                can be used by BTS to certify that they are who they are, and the
-                online testing providers are who they claim to be.  Unfortunately, LTI does not
-                extend to the tire of BTS' clients, nor to the end users who are taking the tests.
-                Organizations outside of that
-                community need a way to know that Verifiable Claims issued by BTS and their clients
-                are valid.  Endorsement of the BTS claims by the online testing providers, and
-                endorsement of BTS clients by BTS, helps establish the trusted relationship.</dd>
-            </dl>
-        </section>
-
-    </section>
+    </section> -->
 </section>
 
 <section class="informative">
