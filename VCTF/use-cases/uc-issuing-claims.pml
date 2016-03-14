@@ -1,13 +1,24 @@
 @startuml
 ' Built at http://plantuml.com/plantuml/
 ' Modified by @halindrome to harmonize terminology
-!includeurl  https://raw.githubusercontent.com/opencreds/website/master/specs/source/common/skin.pml 
+!includeurl  https://raw.githubusercontent.com/w3c/webpayments-ig/master/VCTF/common/skin.pml 
+!ifndef SKIN_INCLUDED
+skinparam {
+    backgroundColor transparent
+    defaultFontName Lucida Sans
+    shadowing false
+}
+skinparam sequence {
+    DividerBackgroundColor transparent
+    LifeLineBackgroundColor transparent
+}
+!endif
 Autonumber
 
 Actor "Jane" as Holder
 Participant "User Agent" as UA
 Participant "Credential Curator" as CS
-Participant "Certifying Authority" as Issuer
+Participant "Issuer" as Issuer
 
 Holder->UA: Navigate to\nweb site
 UA->Issuer: Request Credential

@@ -1,6 +1,6 @@
 @startuml
 ' bringing this in from the master branch
-!includeurl  https://raw.githubusercontent.com/opencreds/website/master/specs/source/common/skin.pml 
+!includeurl  https://raw.githubusercontent.com/w3c/webpayments-ig/master/VCTF/common/skin.pml 
 !ifndef SKIN_INCLUDED
 skinparam {
     backgroundColor transparent
@@ -18,7 +18,7 @@ Autonumber
 Actor Jane
 Participant "Credential Curator" as CV
 Participant "User Agent" as UA
-Participant "Wines Of The World" as merchant
+Participant "Credential Consumer" as merchant
 
 Jane->merchant: Navigate to web site
 

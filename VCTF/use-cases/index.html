@@ -4,7 +4,7 @@
 <title>Verifiable Claims Use Cases</title>
 <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
 <!-- <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script> -->
-<script src='https://spec-ops.io/respec-w3c-common.js' class='remove'></script>
+<script src='/respec/builds/respec-w3c-common.js' class='remove'></script>
 <script src='../common/common.js' class='remove'></script>
 <script class='remove'>
 var respecConfig = {
@@ -43,6 +43,8 @@ var respecConfig = {
           // editors, add as many as you like
           // only "name" is required
           editors:  [
+              { name: "Daniel Burnett", 
+                company: "Standards Play", companyURL: "http://standardsplay.com/"},
               { name: "Shane McCarron", url: "http://digitalbazaar.com/",
                 company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/", w3cid: "23346" },
               { name: "Gregg Kellogg", url: "http://greggkellogg.net/", w3cid: "44770" },
@@ -163,7 +165,7 @@ dl.dl-horizontal > dd {
     <h2>Introduction</h2>
     <p>
     The Verifiable Claims Task Force of the Web Payments Interest and
-    Credentials COmmunity Groups at the W3C is investigating
+    Credentials Community Groups at the W3C is investigating
     the requirements around secure, verifiable, and richly descriptive
     "<a>claims</a>".  The goal of the Task Force is to determine if
     there is a sufficient understanding and need to merit the creation
@@ -254,13 +256,13 @@ dl.dl-horizontal > dd {
         <ol title="Verifiable Claim Creation Flow Description">
             <li>Jane asks her User Agent to help her get a Verifiable Claim about
             her identity.</li>
-            <li>Her user agent connects her to a Certifying Authority that is able
+            <li>Her user agent connects her to a certificate issuer that is able
             to verify her identity.</li>
-            <li>The CA examines her documentation.</li>
-            <li>They are satisfied, so the CA generates a Verifiable Claim for
+            <li>The issuer examines her documentation.</li>
+            <li>They are satisfied, so the issuer generates a Verifiable Claim for
             Jane that includes information about her identity linked to their
             own trusted <em>credential</em>.</li>
-            <li>The CA delivers the credential back to Jane's User Agent.</li>
+            <li>The issuer delivers the credential back to Jane's User Agent.</li>
             <li>Jane views the credential to ensure it reflects her
             requirements.</li>
             <li>When she is satisfied, she instructs her User Agent to save the
@@ -393,12 +395,9 @@ dl.dl-horizontal > dd {
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.</dd>
                 <dt>Motivation</dt>
-                <dd>An <a>entity</a>, such as an end user (<a>holder</a>),
-                wishes to make a <a>claim</a> and would like it to be endorsed by a
-                different <a>entity</a> (<a>issuer</a>) which may then be trusted by
-                a potential consumer (<a>credential consumer</a>).</dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
+                <dd>Individuals and organizations need a way to issue
+                <a>claims</a> about themselves or others that can be verified and
+                trusted.</dd>
                 <dt>Scenarios</dt>
                 <dd>Jane would like to get a digitally signed <a>credential</a> for her
                 checking account at MidBank. MidBank offers to provide a
@@ -554,13 +553,13 @@ dl.dl-horizontal > dd {
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for a <a>credential consumer</a> to
                 <a data-lt="credential verification">verify credentials</a>
-                as genuine.</dd>
+                as genuine.
+                <p class="ednote">This seems to be a duplicate of 4.1.2 above.</p>
+                </dd>
                 <dt>Motivation</dt>
                 <dd>A credential that has been created by an <a>issuer</a> MUST be able 
                 to be validated by an arbitrary third party (<a>credential
                     consumer</a>).</dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>Susan wants to send funds to her family in another country via a
                 popular money transfer service.  She has <a>verifiable claims</a> in her
@@ -579,7 +578,7 @@ dl.dl-horizontal > dd {
                 satisfies his requirements.</dd>
                 <dd>Eunice is about to take her ACT (a test used to evaluate her readiness for
                 college).  When she arrives at the testing center, she is required to present
-                identification.  Her government issued identity certificate is a 
+                identification.  Her government-issued identity certificate
                 is acceptable, as the <a>verifiable claims</a> 
                 contained in it reflect all of the required attributes and it is impossible to conterfeit.</dd>
             </dl>
@@ -631,8 +630,6 @@ dl.dl-horizontal > dd {
                 <dt>Motivation</dt>
                 <dd>An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have issued
                 and are endorsing for an end user (<a>subject</a>), is no longer valid and wishes to revoke the issued claim.</dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>John opens a checking account at Big Bank Co and is issued a Verifiable Claim
                 indicating that the account exists, that the bank verified John's identity, and that
@@ -676,16 +673,14 @@ dl.dl-horizontal > dd {
                 <a>consumer</a>.</dd>
                 <!-- <dd>Basic website login can be implemented using a
                      credential.</dd> -->
-                <dt>Importance</dt>
-                <dd>Essential</dd>
                 <dt>Scenarios</dt>
-                <dd>Anna has opened an account at her bank in Finland.  As part of
-                that process, the bank would like to perform &quot;Know Your
-                Customer&quot; clearing on her by checking to
-                see that she is a citizen of Finland and she has 
-                a current national ID card issued to them by their
-                government. Once verified, she is authorized to make
-                transfers internationally.</dd>
+                <dd>Anna is opening an account at a bank in Finland.  As part of
+                that process, the bank asks her to provide two from a variety of
+                possible sources to confirm her identity - a so called &quot;Know Your
+                Customer&quot; check.  She selects claims that confirm she
+                receives postal mail at a certain address and that has a national
+                ID card. Confirming these allows the bank to open her account and
+                be confident in her identity when she conducts transactions.</dd>
                 <dd>Josie is a healthcare worker that has created a
                 profile on a professional social network to make herself
                 readily available for new opportunities in the
@@ -781,8 +776,6 @@ dl.dl-horizontal > dd {
                 <dd>In many environments (such as order processing) information such as a payer's
                 address, citizenship, or age need to be automatically verified in order to complete
                 the transaction.  </dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>Francis has found the perfect pair of shoes.  
                 When processing orders, Giant Shoe Company wants to be certain
@@ -830,8 +823,6 @@ dl.dl-horizontal > dd {
                 verifying a specific criteria is satisfied. The <a>holder</a>
                 should have the ability to satisfy the criteria without revealing
                 additional attributes that are not required.</dd>
-                <dt>Importance</dt>
-                <dd>Essential</dd>
                 <dt>Scenarios</dt>
                 <dd>June goes to her local beer and wine store to buy a
                 bottle of wine. She submits her identity credential that
