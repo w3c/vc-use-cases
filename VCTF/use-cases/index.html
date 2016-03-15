@@ -3,8 +3,7 @@
 <head>
 <title>Verifiable Claims Use Cases</title>
 <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
-<!-- <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script> -->
-<script src='/respec/builds/respec-w3c-common.js' class='remove'></script>
+<script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
 <script src='../common/common.js' class='remove'></script>
 <script class='remove'>
 var respecConfig = {
@@ -43,11 +42,12 @@ var respecConfig = {
           // editors, add as many as you like
           // only "name" is required
           editors:  [
-              { name: "Daniel Burnett", 
-                company: "Standards Play", companyURL: "http://standardsplay.com/"},
               { name: "Shane McCarron", url: "http://digitalbazaar.com/",
                 company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/", w3cid: "23346" },
-              { name: "Gregg Kellogg", url: "http://greggkellogg.net/", w3cid: "44770" },
+              { name: "Daniel Burnett", 
+                company: "Standards Play", companyURL: "http://standardsplay.com/"},
+              { name: "Gregg Kellogg", url: "http://greggkellogg.net/", w3cid:
+              "44770", company: "Spec-Ops", companyURL: "https://spec-ops.io/" },
               { name: "Brian Sletten", url: "http://bosatsu.net",
                 company: "Bosatsu Consulting, Inc.", companyURL: "http://bosatsu.net" },
               { name: "Manu Sporny", url: "http://digitalbazaar.com/",
@@ -267,9 +267,9 @@ dl.dl-horizontal > dd {
             requirements.</li>
             <li>When she is satisfied, she instructs her User Agent to save the
             Verifiable Claim so she can use it in the future.</li>
-            <li>The UA communicates with her <a>Credential Curator</a>,
+            <li>The UA communicates with her <a>Credential Repository</a>,
             instructing it to store the new claim.</li>
-            <li>The <a>Credential Curator</a> returns a list of the claims it is
+            <li>The <a>Credential Repository</a> returns a list of the claims it is
             holding for Jane to the UA.</li>
             <li>The UA shows Jane her claim collection - confirming 
             everything she has available.</li>
@@ -285,15 +285,15 @@ dl.dl-horizontal > dd {
             WinesOfTheWorld.example.com (merchant).</li>
             <li>The merchant's site requires Jane be 21 years of age and
             requests Jane prove this (via a user agent-supported API call).</li>
-            <li>Jane's user agent asks her <a>credential curator</a> for the
+            <li>Jane's user agent asks her <a>credential repository</a> for the
             proof.</li>
-            <li>The <a>credential curator</a> shows Jane three Verifiable Claims
+            <li>The <a>credential repository</a> shows Jane three Verifiable Claims
             it knows of that
             can assert this claim (e.g., her passport, driving
             license, and birth certificate).</li>
             <li>Jane selects one of these and authorizes that it be
             shared with the merchant.</li>
-            <li>The <a>credential curator</a> returns the selected claim as a response
+            <li>The <a>credential repository</a> returns the selected claim as a response
             to the user agent-supported API call, which in turn delivers
             it to the merchant.</li>
             <li>The merchant's server verifies that the claim is valid
@@ -376,7 +376,7 @@ dl.dl-horizontal > dd {
         the holder.</p>
 
         <p class="note">Personally identifiable information must use known data fields
-        in order to enable credential curation services to protect the
+        in order to enable credential repository services to protect the
         recipient’s privacy.</p>
 
         <p><em><strong>Holder Stores Credential</strong></em></p>
@@ -507,7 +507,7 @@ dl.dl-horizontal > dd {
                 <dd>It MUST be possible for an <a>issuer</a> to verify
                   the <a>identity</a> of a <a>holder</a>. Personally identifiable
                   information MUST use known data fields in order to enable
-                  credential curation services to protect the recipient’s
+                  credential repository services to protect the recipient’s
                   privacy.</dd>
                 <dt>Motivation</dt>
                 <dd>It is important that an <a>issuer</a> ensure that a
@@ -572,7 +572,7 @@ dl.dl-horizontal > dd {
                 <dt>Scenarios</dt>
                 <dd>Susan wants to send funds to her family in another country via a
                 popular money transfer service.  She has <a>verifiable claims</a> in her
-                <a>credential curator</a> that can be used to share her <a>identity</a>.  
+                <a>credential repository</a> that can be used to share her <a>identity</a>.  
                 She has also been
                 sent a <a>claim</a> from her family verifying their banking information.  
                 By sharing these with the money transfer service, they can
@@ -660,6 +660,56 @@ dl.dl-horizontal > dd {
             </dl>
         </section>
     </section>
+    <section>
+        <!-- Editor - @bsletten -->
+        <h2>Managing and Sharing Claims</h2>
+        <section>
+            <h3>Portability of Claims</h3>
+            <dl class="dl-horizontal">
+                <dt>Requirement</dt>
+                <dd>It MUST be possible for the holder of a claim to store that
+                claim in one or more <a>credential repositories</a>. It MUST also be
+                possible for the holder to move a claim among credential
+                repositories.</dd>
+                <dt>Motivation</dt>
+                <dd>A <a>claim</a> is under the control of its <a>holder</a>.  
+                That holder will choose where their claims are stored based upon a
+                variety of factors (e.g., employer requirements, convenience, service
+                levels, business intelligence). The holder needs to be able to
+                easily choose among various credential repositories, and also to be
+                able to migrate their claims to another without requesting new
+                claims from the claim <a>issuer</a>. Competition
+                in this space will foster innovation and cost savings.  Multiple
+                providers in this space will improve reliabilty.</dd>
+                <dt>Scenarios</dt>
+                <dd>Nikita has a several accounts with BigBank, as well as a
+                brokerage account with WallStreetCo.  She had placed all of her claims
+                in a <a>credential repository</a> at BigBank that came free
+                when she opened her accounts.  WallStreetCo is now offering a new
+                <a>repository</a> that has an interface she thinks she will prefer.  
+                Nikita copies
+                her claims from BigBank into the repository at WallStreetCo to
+                experiment with their service, but continues to use the service
+                from BigBank while she is testing.</dd>
+                <dd>Rocky is an undergraduate student at Wossamotta U.  His school
+                    provides a credential repository service to all students and alumni,
+                    so he chooses to use it.  In his third year, Rocky decides to
+                    transfer to Moosylvania Tech.  They do not offer a service, but
+                    he does not want to continue to use the service of his old (and
+                    now rival school) so he moves his claims to the 
+                    service offered by his bank without needing to have them
+                    reissued.</dd>
+                <dd>Jessica is a medical doctor practicing in the United States.
+                She has a variety of digital claims that explain her
+                qualifications, schooling, continuing education achievements, and
+                board certifications.  These are all stored in the <a>credential
+                repository</a> provided by her employer.  When she is offered a
+                position with another health provider network, she can
+                automatically transfer all of these claims to her new
+                employer.</dd>
+            </dl>
+        </section>
+    </section>
 
     <section>
         <!-- Editor - @burnburn -->
@@ -677,7 +727,7 @@ dl.dl-horizontal > dd {
                 A <a>consumer</a> may require that a <a>holder</a> verify aspects
                 of their suitability for a transaction.  In this case, the
                 <a>holder</a> must be able to select which, if any, 
-                <a>Verifiable Claim</a> stored with their <a>Credential Curator</a> 
+                <a>Verifiable Claim</a> stored with their <a>Credential Repository</a> 
                 is used to satisfy the
                 <a>consumer</a>.</dd>
                 <!-- <dd>Basic website login can be implemented using a

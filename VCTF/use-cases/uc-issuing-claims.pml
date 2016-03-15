@@ -17,7 +17,7 @@ Autonumber
 
 Actor "Jane" as Holder
 Participant "User Agent" as UA
-Participant "Credential Curator" as CS
+Participant "Credential Repository" as CS
 Participant "Issuer" as Issuer
 
 Holder->UA: Navigate to\nweb site

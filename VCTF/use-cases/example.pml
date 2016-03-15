@@ -16,7 +16,7 @@ skinparam sequence {
 Autonumber
 
 Actor Jane
-Participant "Credential Curator" as CV
+Participant "Credential Repository" as CV
 Participant "User Agent" as UA
 Participant "Credential Consumer" as merchant
 
