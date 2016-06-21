@@ -27,7 +27,7 @@ var respecConfig = {
 
           issueBase: "https://github.com/w3c/webpayments-ig/issues/",
           githubAPI:  "https://api.github.com/repos/w3c/webpayments-ig",
-          includePermalinks: "true",
+          includePermalinks: false,
 
           // if there a publicly available Editor's Draft, this is the link
           edDraftURI: "http://w3c.github.io/webpayments-ig/VCTF/use-cases/",
@@ -228,84 +228,6 @@ dl.dl-horizontal > dd {
 </section>
 
 <section>
-    <!-- Editor - @halindrome -->
-    <h2>Terminology</h2>
-
-    <div data-include="../common/terms.html"
-        data-oninclude="restrictReferences">
-    </div>
-
-</section>
-
-<section>
-    <!-- Editor - @halindrome -->
-    <h2>Examples</h2>
-    <p>These examples describe basic ways in which Verifiable Claims 
-    might be used.  They are not meant to be architecturally constraining. Instead,
-    they are meant to help illustrate the basic way it <em>could</em> be done in a
-    typical commerce situation.
-    Again - please remember that it is just an
-    example, and should not be thought of as the canonical way such
-    a claims environment must be implemented.</p>
-    <section>
-        <h2>How a Verifiable Claim Might be Created</h2>
-        <p>In this first example, a user will request a Verifiable Claim - a
-        confirmation of their identity. Consider this illustration:</p>
-
-        <img alt='Verifiable Claim Creation Flow Description' style='display:block; margin:auto' src="uc-issuing-claims.svg"/>
-        <p>Expanding on these steps:</p>
-        <ol title="Verifiable Claim Creation Flow Description">
-            <li>Jane asks her User Agent to help her get a Verifiable Claim about
-            her identity.</li>
-            <li>Her user agent connects her to a certificate issuer that is able
-            to verify her identity.</li>
-            <li>The issuer examines her documentation.</li>
-            <li>They are satisfied, so the issuer generates a Verifiable Claim for
-            Jane that includes information about her identity linked to their
-            own trusted <em>credential</em>.</li>
-            <li>The issuer delivers the credential back to Jane's User Agent.</li>
-            <li>Jane views the credential to ensure it reflects her
-            requirements.</li>
-            <li>When she is satisfied, she instructs her User Agent to save the
-            Verifiable Claim so she can use it in the future.</li>
-            <li>The UA communicates with her <a>Credential Repository</a>,
-            instructing it to store the new claim.</li>
-            <li>The <a>Credential Repository</a> returns a list of the claims it is
-            holding for Jane to the UA.</li>
-            <li>The UA shows Jane her claim collection - confirming 
-            everything she has available.</li>
-        </ol>
-    </section>
-    <section>
-        <h2>How a Verifiable Claim Might be Used</h2>
-        <p>In this example, a <a>holder</a> of a claim needs to use that claim in a
-        typical commerce situation:</p>
-        <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
-        <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
-            <li>Jane decides to shop on the web site
-            WinesOfTheWorld.example.com (merchant).</li>
-            <li>The merchant's site requires Jane be 21 years of age and
-            requests Jane prove this (via a user agent-supported API call).</li>
-            <li>Jane's user agent asks her <a>credential repository</a> for the
-            proof.</li>
-            <li>The <a>credential repository</a> shows Jane three Verifiable Claims
-            it knows of that
-            can assert this claim (e.g., her passport, driving
-            license, and birth certificate).</li>
-            <li>Jane selects one of these and authorizes that it be
-            shared with the merchant.</li>
-            <li>The <a>credential repository</a> returns the selected claim as a response
-            to the user agent-supported API call, which in turn delivers
-            it to the merchant.</li>
-            <li>The merchant's server verifies that the claim is valid
-            and satisfies the requirement.</li>
-            <li>The merchant redirects the user agent to the web site
-            with appropriate authorization.</li>
-        </ol>
-    </section>
-</section>
-
-<section>
     <h2>Use Cases</h2>
     <p class="ednote">For each requirement in this section, let's ensure there are at least three
     scenarios.  One for each of finance, health care, and education.  Additional scenarios are okay,
@@ -391,7 +313,7 @@ dl.dl-horizontal > dd {
 
 
         <section>
-            <h3 id="uc-issuing-claims">Uniquitous Claim Issuance</h3>
+            <h3 id="uc-issuing-claims">Ubiquitous Claim Issuance</h3>
             <dl class="dl-horizontal">
                 <dt>Requirement</dt>
                 <dd>It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.</dd>
@@ -987,6 +909,84 @@ dl.dl-horizontal > dd {
         </section>
 
     </section> -->
+</section>
+
+<section class="appendix">
+    <!-- Editor - @halindrome -->
+    <h2>Terminology</h2>
+
+    <div data-include="../common/terms.html"
+        data-oninclude="restrictReferences">
+    </div>
+
+</section>
+
+<section class="informative">
+    <!-- Editor - @halindrome -->
+    <h2>Examples</h2>
+    <p>These examples describe basic ways in which Verifiable Claims 
+    might be used.  They are not meant to be architecturally constraining. Instead,
+    they are meant to help illustrate the basic way it <em>could</em> be done in a
+    typical commerce situation.
+    Again - please remember that it is just an
+    example, and should not be thought of as the canonical way such
+    a claims environment must be implemented.</p>
+    <section>
+        <h2>How a Verifiable Claim Might be Created</h2>
+        <p>In this first example, a user will request a Verifiable Claim - a
+        confirmation of their identity. Consider this illustration:</p>
+
+        <img alt='Verifiable Claim Creation Flow Description' style='display:block; margin:auto' src="uc-issuing-claims.svg"/>
+        <p>Expanding on these steps:</p>
+        <ol title="Verifiable Claim Creation Flow Description">
+            <li>Jane asks her User Agent to help her get a Verifiable Claim about
+            her identity.</li>
+            <li>Her user agent connects her to a certificate issuer that is able
+            to verify her identity.</li>
+            <li>The issuer examines her documentation.</li>
+            <li>They are satisfied, so the issuer generates a Verifiable Claim for
+            Jane that includes information about her identity linked to their
+            own trusted <em>credential</em>.</li>
+            <li>The issuer delivers the credential back to Jane's User Agent.</li>
+            <li>Jane views the credential to ensure it reflects her
+            requirements.</li>
+            <li>When she is satisfied, she instructs her User Agent to save the
+            Verifiable Claim so she can use it in the future.</li>
+            <li>The UA communicates with her <a>Credential Repository</a>,
+            instructing it to store the new claim.</li>
+            <li>The <a>Credential Repository</a> returns a list of the claims it is
+            holding for Jane to the UA.</li>
+            <li>The UA shows Jane her claim collection - confirming 
+            everything she has available.</li>
+        </ol>
+    </section>
+    <section>
+        <h2>How a Verifiable Claim Might be Used</h2>
+        <p>In this example, a <a>holder</a> of a claim needs to use that claim in a
+        typical commerce situation:</p>
+        <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
+        <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
+            <li>Jane decides to shop on the web site
+            WinesOfTheWorld.example.com (merchant).</li>
+            <li>The merchant's site requires Jane be 21 years of age and
+            requests Jane prove this (via a user agent-supported API call).</li>
+            <li>Jane's user agent asks her <a>credential repository</a> for the
+            proof.</li>
+            <li>The <a>credential repository</a> shows Jane three Verifiable Claims
+            it knows of that
+            can assert this claim (e.g., her passport, driving
+            license, and birth certificate).</li>
+            <li>Jane selects one of these and authorizes that it be
+            shared with the merchant.</li>
+            <li>The <a>credential repository</a> returns the selected claim as a response
+            to the user agent-supported API call, which in turn delivers
+            it to the merchant.</li>
+            <li>The merchant's server verifies that the claim is valid
+            and satisfies the requirement.</li>
+            <li>The merchant redirects the user agent to the web site
+            with appropriate authorization.</li>
+        </ol>
+    </section>
 </section>
 
 <section class="informative">
