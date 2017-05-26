@@ -613,7 +613,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         "companyURL": ""
       }],
       "maxTocLevel": 3,
-      "wg": "Verifyable Claims Working Group",
+      "wg": "Verifiable Claims Working Group",
       "wgURI": "https://www.w3.org/2017/vc/",
       "wgPublicList": "public-vc-wg",
       "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/98922/status"
@@ -707,7 +707,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <p>This document represents a concise but limited collection of use cases readers should review in conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
 
     <p>
-      This document was published by the <a href="https://www.w3.org/2017/vc/">Verifyable Claims Working Group</a> as a First Public Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. Comments regarding this document are welcome. Please send them to
+      This document was published by the <a href="https://www.w3.org/2017/vc/">Verifiable Claims Working Group</a> as a First Public Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. Comments regarding this document are welcome. Please send them to
       <a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a> (<a href="mailto:public-vc-wg-request@w3.org?subject=subscribe">subscribe</a>,
       <a href="https://lists.w3.org/Archives/Public/public-vc-wg/">archives</a>).
     </p>
@@ -783,13 +783,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span>
     </h2>
     <p>
-      The Verifiable Claims Task Force of the Web Payments Interest and Credentials Community Groups at the <abbr title="World Wide Web Consortium">W3C</abbr> is investigating the requirements around secure, verifiable, and richly descriptive "
-      <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claims</a>". The goal of the Task Force is to determine if there is a sufficient understanding and need to merit the creation of a <abbr title="World Wide Web Consortium">W3C</abbr> Working Group to develop Recommendations in this space.
+      The Verifiable Claims Working Group at the <abbr title="World Wide Web Consortium">W3C</abbr> is developing standards for expressing and exchanging "<a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claims</a>" that have been verified by a third party easier and more secure on the Web.
     </p>
     <div class="note">
       <div class="note-title marker" aria-level="3" role="heading" id="h-note1"><span>Note</span></div>
       <div class="">
-        This document does NOT attempt to define an architecture for the support of Verifiable Claims. Instead it expresses the sorts of needs that real users have that could be addressed through support for some sort of self-soverign claim environment. It attempts to use terminology that is consistent with the other deliverables of the Verifiable Claims Task Force (you can see the relevant terms in Appendix A).
+        This document does NOT attempt to define an architecture for the support of Verifiable Claims. Instead it expresses the sorts of needs that real users have that could be addressed through support for some sort of self-soverign claim environment. It attempts to use terminology that is consistent with the other deliverables of the Verifiable Claims Working Group (you can see the relevant terms in Appendix A).
       </div>
     </div>
 
@@ -818,7 +817,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 id="h-user-roles" resource="#h-user-roles"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>User roles</span>
     </h2>
     <p>There are four roles supported by Verifiable Claims: Issuer, Inspector, Subject, and Holder.</p>
-    <img height="400px" alt="Verifiable Claim User Roles" style="display:block; margin:auto" src="user-roles.svg">
+    <img height="400" alt="Verifiable Claim User Roles" style="display:block; margin:auto" src="user-roles.svg">
     <dl>
       <dt>Issuer</dt>
       <dd>The entity that creates a claim and associates it with a particular subject.</dd>
@@ -1085,7 +1084,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-how-a-verifiable-claim-might-be-used" resource="#h-how-a-verifiable-claim-might-be-used"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>How a verifiable claim might be used</span>
       </h3>
       <p>In this example, a <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> of a claim needs to use that claim in a typical commerce situation:</p>
-      <img aria-describedby="vf-flow" alt="Verifiable Claim Usage Flow Diagram" style="display:block; margin:auto" src="example.svg">
+      <img aria-describedby="#vf-flow" alt="Verifiable Claim Usage Flow Diagram" style="display:block; margin:auto" src="example.svg">
       <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
         <li>Jane decides to shop on the web site WinesOfTheWorld.example.com (merchant).</li>
         <li>The merchant's site requires Jane be 21 years of age and requests Jane prove this (via a user agent-supported API call).</li>
@@ -1188,15 +1187,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <p><em>This section is non-normative.</em></p>
 
     <p>
-      The editors are thankful to the contributions from the Web Payments Workshop, the Web Payments Community Group, the Web Payments Interest Group, the Credentials Community Group, and the Verifiable Claims Task Force.
+      The editors are thankful to the contributions from the Web Payments Workshop, the Web Payments Community Group, the Web Payments Interest Group, the Credentials Community Group, the Verifiable Claims Task Force, and the Verifiable Claims Working Group.
     </p>
 
   </section>
-
-
-
-
-  <span style="border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; text-indent: 20px; width: auto; padding: 0px 4px 0px 0px; text-align: center; font-style: normal; font-variant-caps: normal; font-weight: bold; font-size: 11px; line-height: 20px; font-family: 'Helvetica Neue', Helvetica, sans-serif; color: rgb(255, 255, 255); background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==); background-size: 14px 14px; background-color: rgb(189, 8, 28); position: absolute; opacity: 1; z-index: 8675309; display: none; cursor: pointer; border: none; -webkit-font-smoothing: antialiased; background-position: 3px 50%; background-repeat: no-repeat no-repeat;">Save</span>
 
   <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
     <!--OddPage-->
