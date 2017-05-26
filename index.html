@@ -9,7 +9,7 @@
 <script class='remove'>
 var respecConfig = {
   // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use .
-  specStatus:           "CG-FINAL",
+  specStatus:           "FPWD",
   useExperimentalStyles: true,
 
   // the specification's short name, as in http://www.w3.org/TR/short-name/
@@ -20,18 +20,17 @@ var respecConfig = {
 
   // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
   // and its maturity status
-  // previousPublishDate:  "1977-03-15",
-  // previousMaturity:  "WD",
+  previousPublishDate:  "2017-05-01",
+  previousMaturity:  "CG-FINAL",
 
   // extend the bibliography entries
   localBiblio: opencreds.localBiblio,
 
-  issueBase: "https://github.com/w3c/webpayments-ig/issues/",
-  githubAPI:  "https://api.github.com/repos/opencreds/vc-use-cases",
+  github: "https://github.com/w3c/vc-use-cases",
   includePermalinks: false,
 
   // if there a publicly available Editor's Draft, this is the link
-  edDraftURI: "https://opencreds.github.io/vc-use-cases/",
+  //edDraftURI: "https://opencreds.github.io/vc-use-cases/",
 
   // if this is a LCWD, uncomment and set the end of its review period
   // lcEnd: "2009-08-05",
@@ -72,31 +71,20 @@ var respecConfig = {
   maxTocLevel: 3,
 
   // name of the WG
-  wg:           "Web Payments Interest Group Verifiable Claims Task Force",
+  wg:           "Verifyable Claims Working Group",
 
   // URI of the public WG page
-  wgURI:        "https://www.w3.org/blog/wpig/",
+  wgURI:        "https://www.w3.org/2017/vc/",
 
   // name (with the @w3c.org) of the public mailing to which comments are due
-  wgPublicList: "public-webpayments-ig",
+  wgPublicList: "public-vc-wg",
 
   // URI of the patent status for this WG, for Rec-track documents
   // !!!! IMPORTANT !!!!
   // This is important for Rec-track documents, do not copy a patent URI from a random
   // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
   // Team Contact.
-  wgPatentURI:  "",
-
-  otherLinks: [{
-    key: "Version control",
-    data: [{
-      value: "Github Repository",
-      href: "https://github.com/opencreds/vc-use-cases/"
-    }, {
-      value: "Issues",
-      href: "https://github.com/opencreds/vc-use-cases/issues"
-    }]
-  }]
+  wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status"
 };
 </script>
 
@@ -165,6 +153,9 @@ dl.dl-horizontal > dd {
 </section>
 
 <section id='sotd'>
+    <p>Although publishing as a First Public Working Draft generally implies that the
+      document is intended to eventually become a Recommendation, this document
+      is intended to eventually be published as a NOTE.</p>
     <p>This document represents a concise but limited collection of use cases readers should review in
     conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
 </section>
