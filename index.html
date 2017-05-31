@@ -9,7 +9,7 @@
 <script class='remove'>
 var respecConfig = {
   // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use .
-  specStatus:           "CG-FINAL",
+  specStatus:           "FPWD",
   useExperimentalStyles: true,
 
   // the specification's short name, as in http://www.w3.org/TR/short-name/
@@ -20,18 +20,17 @@ var respecConfig = {
 
   // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
   // and its maturity status
-  // previousPublishDate:  "1977-03-15",
-  // previousMaturity:  "WD",
+  previousPublishDate:  "2017-05-01",
+  previousMaturity:  "CG-FINAL",
 
   // extend the bibliography entries
   localBiblio: opencreds.localBiblio,
 
-  issueBase: "https://github.com/w3c/webpayments-ig/issues/",
-  githubAPI:  "https://api.github.com/repos/opencreds/vc-use-cases",
+  github: "https://github.com/w3c/vc-use-cases",
   includePermalinks: false,
 
   // if there a publicly available Editor's Draft, this is the link
-  edDraftURI: "https://opencreds.github.io/vc-use-cases/",
+  //edDraftURI: "https://opencreds.github.io/vc-use-cases/",
 
   // if this is a LCWD, uncomment and set the end of its review period
   // lcEnd: "2009-08-05",
@@ -72,31 +71,20 @@ var respecConfig = {
   maxTocLevel: 3,
 
   // name of the WG
-  wg:           "Web Payments Interest Group Verifiable Claims Task Force",
+  wg:           "Verifiable Claims Working Group",
 
   // URI of the public WG page
-  wgURI:        "https://www.w3.org/blog/wpig/",
+  wgURI:        "https://www.w3.org/2017/vc/",
 
   // name (with the @w3c.org) of the public mailing to which comments are due
-  wgPublicList: "public-webpayments-ig",
+  wgPublicList: "public-vc-wg",
 
   // URI of the patent status for this WG, for Rec-track documents
   // !!!! IMPORTANT !!!!
   // This is important for Rec-track documents, do not copy a patent URI from a random
   // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
   // Team Contact.
-  wgPatentURI:  "",
-
-  otherLinks: [{
-    key: "Version control",
-    data: [{
-      value: "Github Repository",
-      href: "https://github.com/opencreds/vc-use-cases/"
-    }, {
-      value: "Issues",
-      href: "https://github.com/opencreds/vc-use-cases/issues"
-    }]
-  }]
+  wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status"
 };
 </script>
 
@@ -165,6 +153,9 @@ dl.dl-horizontal > dd {
 </section>
 
 <section id='sotd'>
+    <p>Although publishing as a First Public Working Draft generally implies that the
+      document is intended to eventually become a Recommendation, this document
+      is intended to eventually be published as a NOTE.</p>
     <p>This document represents a concise but limited collection of use cases readers should review in
     conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
 </section>
@@ -173,12 +164,9 @@ dl.dl-horizontal > dd {
     <!-- Editor - @halindrome -->
     <h2>Introduction</h2>
     <p>
-    The Verifiable Claims Task Force of the Web Payments Interest and
-    Credentials Community Groups at the W3C is investigating
-    the requirements around secure, verifiable, and richly descriptive
-    "<a>claims</a>".  The goal of the Task Force is to determine if
-    there is a sufficient understanding and need to merit the creation
-    of a W3C Working Group to develop Recommendations in this space.
+    The Verifiable Claims Working Group at the W3C is developing
+    standards for expressing and exchanging "<a>claims</a>" that have been verified by a
+    third party and to make them easier and more secure on the Web.
     </p>
     <div class="note">
         This document does NOT attempt to define an architecture for
@@ -186,7 +174,7 @@ dl.dl-horizontal > dd {
         of needs that real users have that could be addressed through support
         for some sort of self-soverign claim environment.  It attempts to use
         terminology that is consistent with the other deliverables of the
-        Verifiable Claims Task Force (you can see the relevant terms
+        Verifiable Claims Working Group (you can see the relevant terms
         in Appendix A).
     </div>
     <section>
@@ -227,7 +215,7 @@ dl.dl-horizontal > dd {
 <section>
     <h2>User roles</h2>
     <p>There are four roles supported by Verifiable Claims: Issuer, Inspector, Subject, and Holder.</p>
-    <img height="400px" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
+    <img height="400" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
     <dl>
         <dt>Issuer</dt>
         <dd>The entity that creates a claim and associates it with a particular subject.</dd>
@@ -687,7 +675,7 @@ dl.dl-horizontal > dd {
         <h2>How a verifiable claim might be used</h2>
         <p>In this example, a <a>holder</a> of a claim needs to use that claim in a
         typical commerce situation:</p>
-        <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
+        <img aria-describedby="#vf-flow" alt='Verifiable Claim Usage Flow Diagram' style='display:block; margin:auto' src="example.svg"/>
         <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
             <li>Jane decides to shop on the web site
             WinesOfTheWorld.example.com (merchant).</li>
@@ -729,8 +717,8 @@ dl.dl-horizontal > dd {
     <p>
     The editors are thankful to the contributions from the
     Web Payments Workshop, the Web Payments Community Group, the Web Payments
-    Interest Group, the Credentials Community Group, and the
-    Verifiable Claims Task Force.
+    Interest Group, the Credentials Community Group, the
+    Verifiable Claims Task Force, and the Verifiable Claims Working Group.
     </p>
 
 </section>
