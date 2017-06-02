@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<html lang="en" dir="ltr" typeof="bibo:Document w3p:NOTE" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -423,12 +423,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       }
     }
   </style>
-  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD">
+  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-NOTE">
   <link rel="canonical" href="https://www.w3.org/TR/verifiable-claims-use-cases/">
-  <meta name="generator" content="ReSpec 12.2.2">
+  <meta name="generator" content="ReSpec 12.2.3">
   <script id="initialUserConfig" type="application/json">
     {
-      "specStatus": "FPWD",
+      "specStatus": "NOTE",
       "useExperimentalStyles": true,
       "shortName": "verifiable-claims-use-cases",
       "previousPublishDate": "2017-05-01",
@@ -621,20 +621,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </script>
 </head>
 
-<body aria-busy="false" data-pinterest-extension-installed="sa1.37.01" class="h-entry" id="respecDocument">
+<body aria-busy="false" data-pinterest-extension-installed="sa1.37.01" class="h-entry toc-inline" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Verifiable Claims Use Cases</h1>
-    <h2 id="w3c-first-public-working-draft-06-june-2017"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time property="dcterms:issued" class="dt-published" datetime="2017-06-06">06 June 2017</time></h2>
+    <h2 id="w3c-working-group-note-08-june-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Working Group Note <time property="dcterms:issued" class="dt-published" datetime="2017-06-08">08 June 2017</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="https://www.w3.org/TR/2017/WD-verifiable-claims-use-cases-20170606/">https://www.w3.org/TR/2017/WD-verifiable-claims-use-cases-20170606/</a></dd>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2017/NOTE-verifiable-claims-use-cases-20170608/">https://www.w3.org/TR/2017/NOTE-verifiable-claims-use-cases-20170608/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="https://www.w3.org/TR/verifiable-claims-use-cases/">https://www.w3.org/TR/verifiable-claims-use-cases/</a></dd>
       <dt>Latest editor's draft:</dt>
       <dd><a href="https://w3c.github.io/vc-use-cases/">https://w3c.github.io/vc-use-cases/</a></dd>
+      <dt>Previous version:</dt>
+      <dd><a rel="dcterms:replaces" href="https://www.w3.org/TR/2017/CG-FINAL-verifiable-claims-use-cases-20170430/">https://www.w3.org/TR/2017/CG-FINAL-verifiable-claims-use-cases-20170430/</a></dd>
       <dt>Editors:</dt>
       <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="23346"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Shane McCarron"><a class="u-url url p-name fn" property="foaf:homepage" href="http://blog.halindrome.com/">Shane McCarron</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="https://spec-ops.io">Spec-Ops</a></span>
         <span property="rdf:rest" resource="_:editor1"></span>
@@ -703,16 +705,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em>
     </p>
 
-    <p>Although publishing as a First Public Working Draft generally implies that the document is intended to eventually become a Recommendation, this document is intended to eventually be published as a NOTE.</p>
     <p>This document represents a concise but limited collection of use cases readers should review in conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
 
     <p>
-      This document was published by the <a href="https://www.w3.org/2017/vc/">Verifiable Claims Working Group</a> as a First Public Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. Comments regarding this document are welcome. Please send them to
+      This document was published by the <a href="https://www.w3.org/2017/vc/">Verifiable Claims Working Group</a> as a Working Group Note. Comments regarding this document are welcome. Please send them to
       <a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a> (<a href="mailto:public-vc-wg-request@w3.org?subject=subscribe">subscribe</a>,
       <a href="https://lists.w3.org/Archives/Public/public-vc-wg/">archives</a>).
     </p>
     <p>
-      Publication as a First Public Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
+      Publication as a Working Group Note does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
     </p>
     <p>
       This document was produced by a group operating under the
