@@ -8,98 +8,86 @@
 <script src='refs.js' class='remove'></script>
 <script class='remove'>
 var respecConfig = {
-          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use .
-          specStatus:           "CG-DRAFT",
-          useExperimentalStyles: true,
+  // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use .
+  specStatus:           "WG-NOTE",
+  useExperimentalStyles: true,
 
-          // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "verifiable-claims-use-cases",
+  // the specification's short name, as in http://www.w3.org/TR/short-name/
+  shortName:            "verifiable-claims-use-cases",
 
-          // if you wish the publication date to be other than today, set this
-          publishDate:  "2016-06-22",
+  // if you wish the publication date to be other than today, set this
+  //publishDate:  "2016-06-22",
 
-          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-          // and its maturity status
-          // previousPublishDate:  "1977-03-15",
-          // previousMaturity:  "WD",
+  // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+  // and its maturity status
+  //previousPublishDate:  "2017-05-01",
+  //previousMaturity:     "CG-FINAL",
 
-          // extend the bibliography entries
-          localBiblio: opencreds.localBiblio,
+  // extend the bibliography entries
+  localBiblio: opencreds.localBiblio,
 
-          issueBase: "https://github.com/w3c/webpayments-ig/issues/",
-          githubAPI:  "https://api.github.com/repos/opencreds/vc-use-cases",
-          includePermalinks: false,
+  github: "https://github.com/w3c/vc-use-cases",
+  includePermalinks: false,
 
-          // if there a publicly available Editor's Draft, this is the link
-          edDraftURI: "https://opencreds.github.io/vc-use-cases/",
+  // if there a publicly available Editor's Draft, this is the link
+  //edDraftURI: "https://opencreds.github.io/vc-use-cases/",
 
-          // if this is a LCWD, uncomment and set the end of its review period
-          // lcEnd: "2009-08-05",
+  // if this is a LCWD, uncomment and set the end of its review period
+  // lcEnd: "2009-08-05",
 
-          // if you want to have extra CSS, append them to this list
-          // it is recommended that the respec.css stylesheet be kept
-          //extraCSS:             [],
+  // if you want to have extra CSS, append them to this list
+  // it is recommended that the respec.css stylesheet be kept
+  //extraCSS:             [],
 
-          // editors, add as many as you like
-          // only "name" is required
-          editors:  [
-              { name: "Shane McCarron", url: "http://blog.halindrome.com/",
-                company: "Spec-Ops", companyURL: "https://spec-ops.io", w3cid: "23346" },
-              { name: "Daniel Burnett", 
-                company: "Standards Play", companyURL: "http://standardsplay.com/"},
-              { name: "Gregg Kellogg", url: "http://greggkellogg.net/",
-                company: "Spec-Ops", companyURL: "https://spec-ops.io/",
-                w3cid: "44770" },
-              { name: "Brian Sletten", url: "http://bosatsu.net",
-                company: "Bosatsu Consulting, Inc.", companyURL: "http://bosatsu.net" },
-              { name: "Manu Sporny", url: "http://digitalbazaar.com/",
-                company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/" }
-          ],
+  // editors, add as many as you like
+  // only "name" is required
+  editors:  [
+    { name: "Shane McCarron", url: "http://blog.halindrome.com/",
+      company: "Spec-Ops", companyURL: "https://spec-ops.io", w3cid: "23346" },
+    { name: "Daniel Burnett",
+      company: "Standards Play", companyURL: "http://standardsplay.com/"},
+    { name: "Gregg Kellogg", url: "http://greggkellogg.net/",
+      company: "Spec-Ops", companyURL: "https://spec-ops.io/",
+      w3cid: "44770" },
+    { name: "Brian Sletten", url: "http://bosatsu.net",
+      company: "Bosatsu Consulting, Inc.", companyURL: "http://bosatsu.net" },
+    { name: "Manu Sporny", url: "http://digitalbazaar.com/",
+      company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/" }
+  ],
 
-          // authors, add as many as you like.
-          // This is optional, uncomment if you have authors as well as editors.
-          // only "name" is required. Same format as editors.
+  // authors, add as many as you like.
+  // This is optional, uncomment if you have authors as well as editors.
+  // only "name" is required. Same format as editors.
 
-          authors:  [
-              { name: "Joe Andrieu", company: "First Person Consulting", companyURL: "http://firstpersonconsulting.com/" },
-              { name: "Sunny Lee", url: "",
-                company: "Badge Alliance", companyURL: "" },
-              { name: "Nate Otto", url: "",
-                company: "Badge Alliance", companyURL: "" }
-          ],
+  authors:  [
+    { name: "Joe Andrieu", company: "First Person Consulting", companyURL: "http://firstpersonconsulting.com/" },
+    { name: "Sunny Lee", url: "",
+      company: "Badge Alliance", companyURL: "" },
+    { name: "Nate Otto", url: "",
+      company: "Badge Alliance", companyURL: "" }
+  ],
 
-          // maximum level of table of contents
-          maxTocLevel: 3,
+  // maximum level of table of contents
+  maxTocLevel: 3,
 
-          // name of the WG
-          wg:           "Web Payments Interest Group Verifiable Claims Task Force",
+  // name of the WG
+  wg:           "Verifiable Claims Working Group",
 
-          // URI of the public WG page
-          wgURI:        "http://www.w3.org/blog/wpig/",
+  // URI of the public WG page
+  wgURI:        "https://www.w3.org/2017/vc/",
 
-          // name (with the @w3c.org) of the public mailing to which comments are due
-          wgPublicList: "public-webpayments-ig",
+  // name (with the @w3c.org) of the public mailing to which comments are due
+  // wgPublicList: "public-vc-comments",
 
-          // URI of the patent status for this WG, for Rec-track documents
-          // !!!! IMPORTANT !!!!
-          // This is important for Rec-track documents, do not copy a patent URI from a random
-          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-          // Team Contact.
-          wgPatentURI:  "",
-
-          otherLinks: [{
-            key: "Version control",
-            data: [{
-              value: "Github Repository",
-              href: "https://github.com/opencreds/vc-use-cases/"
-            }, {
-              value: "Issues",
-              href: "https://github.com/opencreds/vc-use-cases/issues"
-            }]
-          }]
-
-      };
+  // URI of the patent status for this WG, for Rec-track documents
+  // !!!! IMPORTANT !!!!
+  // This is important for Rec-track documents, do not copy a patent URI from a random
+  // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+  // Team Contact.
+  wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status"
+};
 </script>
+
 <style type="text/css">
 dl {
     margin-top: 20px;
@@ -144,13 +132,15 @@ dl.dl-horizontal > dd {
 .dl-horizontal dd + dd { border-top: dotted thin grey;
     padding-top: 0.5em; }
 </style>
+
 </head>
+
 <body>
 <section id='abstract'>
     <p>
     A <em>verifiable claim</em> is a qualification, achievement, quality, or piece of
     information about an <a>entity's</a> background such as a name, government ID,
-    payment provider, home address, or university degree. 
+    payment provider, home address, or university degree.
     Such a claim describes a quality or
     qualities, property or properties of an entity which establish its existence and uniqueness.
     The use cases outlined here are provided in order to make progress toward
@@ -165,26 +155,29 @@ dl.dl-horizontal > dd {
 <section id='sotd'>
     <p>This document represents a concise but limited collection of use cases readers should review in
     conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
+    <p>Comments regarding this document are welcome. Please
+      or file
+      directly on <a href="https://github.com/w3c/vc-use-cases/issues/">GitHub</a>,
+      or send them to
+      <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a> (<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">subscribe</a>,
+      <a href="https://lists.w3.org/Archives/Public/public-vc-comments/">archives</a>).</p>
 </section>
 
 <section>
     <!-- Editor - @halindrome -->
     <h2>Introduction</h2>
     <p>
-    The Verifiable Claims Task Force of the Web Payments Interest and
-    Credentials Community Groups at the W3C is investigating
-    the requirements around secure, verifiable, and richly descriptive
-    "<a>claims</a>".  The goal of the Task Force is to determine if
-    there is a sufficient understanding and need to merit the creation
-    of a W3C Working Group to develop Recommendations in this space.
+    The Verifiable Claims Working Group at the W3C is developing
+    standards for expressing and exchanging "<a>claims</a>" that have been verified by a
+    third party and to make them easier and more secure on the Web.
     </p>
     <div class="note">
         This document does NOT attempt to define an architecture for
-        the support of Verifiable Claims.  Instead it expresses the sorts 
+        the support of Verifiable Claims.  Instead it expresses the sorts
         of needs that real users have that could be addressed through support
-        for some sort of self-soverign claim environment.  It attempts to use
+        for some sort of self-sovereign claim environment.  It attempts to use
         terminology that is consistent with the other deliverables of the
-        Verifiable Claims Task Force (you can see the relevant terms
+        Verifiable Claims Working Group (you can see the relevant terms
         in Appendix A).
     </div>
     <section>
@@ -225,14 +218,14 @@ dl.dl-horizontal > dd {
 <section>
     <h2>User roles</h2>
     <p>There are four roles supported by Verifiable Claims: Issuer, Inspector, Subject, and Holder.</p>
-    <img height="400px" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
+    <img height="400" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
     <dl>
         <dt>Issuer</dt>
         <dd>The entity that creates a claim and associates it with a particular subject.</dd>
         <dt>Inspector</dt>
         <dd>The entity verifying a claim about a given subject.
         <dt>Subject</dt>
-        <dd>The entity about whom a claim is issued. 
+        <dd>The entity about whom a claim is issued.
         <dt>Holder</dt>
         <dd>The entity who controls a particular claim. Often the subject of the claim, but not always. For example, the subject of a claim
         might be a pet who has received a vaccination. The holder of that claim is likely the pet's owner, not the pet. A holder is typically
@@ -259,8 +252,8 @@ dl.dl-horizontal > dd {
             that she has a national ID card. Confirming these allows the bank to
             open her account and be confident in her identity when she conducts
             transactions.</dd>
-            <dd>Now that the account is open, Jane is issued a digitally 
-            signed <a>credential</a> for her checking account at MidBank. 
+            <dd>Now that the account is open, Jane is issued a digitally
+            signed <a>credential</a> for her checking account at MidBank.
             This credential verifies that Jane has an account at MidBank and
             has access to her associated checking account. Since MidBank (and all
             banks in Finland) are required to perform
@@ -272,9 +265,9 @@ dl.dl-horizontal > dd {
             <dt><udef>F.2 Money transfer</udef></dt>
             <dd>Susan wants to send funds to her family in another country via a
             popular money transfer service.  She has <a>verifiable claims</a> in her
-            <a>credential repository</a> that can be used to share her <a>identity profile</a>.  
+            <a>credential repository</a> that can be used to share her <a>identity profile</a>.
             She has also been
-            sent a <a>claim</a> from her family verifying their banking information.  
+            sent a <a>claim</a> from her family verifying their banking information.
             By sharing these with the money transfer service, they can
             automatically verify the source and destination of funds, thus being
             confident in the delivery of those funds and satisfying various
@@ -290,7 +283,7 @@ dl.dl-horizontal > dd {
             brokerage account with WallStreetCo.  She had placed all of her claims
             in a <a>credential repository</a> at BigBank that came free
             when she opened her accounts.  WallStreetCo is now offering a new
-            <a>repository</a> that has an interface she thinks she will prefer.  
+            <a>repository</a> that has an interface she thinks she will prefer.
             Nikita copies
             her claims from BigBank into the repository at WallStreetCo to
             experiment with their service, but continues to use the service
@@ -322,7 +315,7 @@ dl.dl-horizontal > dd {
             <dd>Eunice is about to take her ACT (a test used to evaluate her readiness for
             college).  When she arrives at the testing center, she is required to present
             identification.  Her government-issued identity certificate
-            is acceptable, as the <a>verifiable claims</a> 
+            is acceptable, as the <a>verifiable claims</a>
             contained in it reflect all of the required attributes and it is impossible to counterfeit.</dd>
             <dt><udef>E.3 Transferring schools</udef></dt>
             <dd>Rocky is an undergraduate student at Wossamotta U.  His school
@@ -330,14 +323,14 @@ dl.dl-horizontal > dd {
                 so he chooses to use it.  In his third year, Rocky decides to
                 transfer to Moosylvania Tech.  They do not offer a service, but
                 he does not want to continue to use the service of his old (and
-                now rival school) so he moves his claims to the 
+                now rival school) so he moves his claims to the
                 service offered by his bank without needing to have them
                 reissued.</dd>
             <dt><udef>E.4 Online classes</udef></dt>
             <dd>In MOOC and other on-line learning systems, being able
             to reliably identify participants is vital to ensure the
             individual evaluation and certification. Nick is participating in
-            a course online and takes a test.  
+            a course online and takes a test.
             He is required to provide his
             credentials to prove his identity before the test, and
             then to allow the system to issue a <a>verifiable claim</a> regarding the results of
@@ -365,14 +358,14 @@ dl.dl-horizontal > dd {
             improving the end-to-end accountability of their system.</dd>
             <dt><udef>H.3 Insurance claim</udef></dt>
             <dd>Tracy has a sore throat soon after moving to a new town.  She finds a physician through
-            her health care network and goes in for treatment.  She is a new patient, so the 
-            clinic needs to know who she is and how she will be paying.  When checking in, she 
+            her health care network and goes in for treatment.  She is a new patient, so the
+            clinic needs to know who she is and how she will be paying.  When checking in, she
             presents her verifiable claim that demonstrates her identity and her proof of
-            insurance.  When the clinc submits this to the insurance company, they can 
+            insurance.  When the clinc submits this to the insurance company, they can
             automatically ascertain that she submitted her proof of identity and insurance to the provider
             and granted the physician the ability to submit the claim for payment.</dd>
             <dt><udef>H.4 Traveling illness</udef></dt>
-            <dd>John is on the vacation of a lifetime, travelling the world.  Falling ill, he 
+            <dd>John is on the vacation of a lifetime, travelling the world.  Falling ill, he
             visits a health clinic in a country in which he does not live.
             At the clinic he is
             asked for proof of identity.  He provides a credential that
@@ -389,7 +382,7 @@ dl.dl-horizontal > dd {
         This includes brick-and-mortar store fronts, web-only venues, and even person-to-person sales.</p>
         <dl class="left dl-horizontal">
             <dt><udef>R.1 Address verification</udef></dt>
-            <dd>Francis has found the perfect pair of shoes.  
+            <dd>Francis has found the perfect pair of shoes.
             When processing orders, Giant Shoe Company wants to be certain
             that his shipping address is accurate (inaccurate
             addresses are very expensive in terms of customer service). They
@@ -408,7 +401,7 @@ dl.dl-horizontal > dd {
     <section>
         <h3>Professional credentials</h3>
         <p>In many aspects of life it is important to know that <a>entities</a> are who
-        they say they are, and that they can do what they say. Professional accreditation is one 
+        they say they are, and that they can do what they say. Professional accreditation is one
         way of learning about the abilities of an entity.  Being able to verify these credentials
         is essential to their value.</p>
         <dl class="left dl-horizontal">
@@ -451,15 +444,15 @@ dl.dl-horizontal > dd {
             credentials including degrees, certificates, and digital
             badges. The website requests verification of her
             credential claims in order for her credentials to
-            visible when she posts messages. 
+            visible when she posts messages.
             Josie authorizes the sharing of the relevant claims with the
             website, and the site verifies them before
             allowing Josie to expose them.</dd>
-            <dd>"Freedom?" is an online forum that encourages 
+            <dd>"Freedom?" is an online forum that encourages
             free discussion about issues
             controversial in Freedonia.  The forum allows users to register
             anonymous accounts, but it also allows users to obtain badges
-            based upon real world certifications.  
+            based upon real world certifications.
             Paula has been certified as an
             aid worker, and wishes that
             information to be marked on her
@@ -483,7 +476,7 @@ dl.dl-horizontal > dd {
     </section>
     <section>
         <h3>Legal identity</h3>
-        <p>For many transactions, an <a>entity</a> must be able to prove some aspect of their 
+        <p>For many transactions, an <a>entity</a> must be able to prove some aspect of their
         identity in a way that can be quickly verified.  Governments and other widely recognized
         entities are well positioned to provide such identification in a verifiable digital form.</p>
         <dl class="left dl-horizontal">
@@ -498,22 +491,22 @@ dl.dl-horizontal > dd {
             valid.</dd>
             <dt><udef>L.2 Seamless immigration</udef></dt>
             <dd>Tom is a frequent international traveler.  In order to speed processing
-            through immigration check points, he applies for a digital passport from 
-            his governmental authority.  After satisfying background check requirements, 
-            the authority issues Tom an electronic version of his passport.  This 
+            through immigration check points, he applies for a digital passport from
+            his governmental authority.  After satisfying background check requirements,
+            the authority issues Tom an electronic version of his passport.  This
             version is verifiable and retains a history of all the places he visits so
             that immigration officials can quickly and easily evaluate his suitability as a
             visitor to their country.  Once they are satisfied, they will automatically add the
             details of this new visit to Tom's passport.</dd>
             <dt><udef>L.3 Speedy air travel</udef></dt>
             <dd>Security for air travel is more and more rigorous, requiring more and more time to validate
-            each passenger.  Ivan has a collection of verifiable claims that are assembed into his 
-            air travel <a>Identity Profile</a>.  When Ivan needs to pass through a security checkpoint at his airport, 
+            each passenger.  Ivan has a collection of verifiable claims that are assembed into his
+            air travel <a>Identity Profile</a>.  When Ivan needs to pass through a security checkpoint at his airport,
             he presents this profile before entering the line.  Because his identification can be immediately and automatically
             verified, he is permitted to skip the long line and go straight to the metal detector.</dd>
             <dt><udef>L.4 Refugee crisis</udef></dt>
-            <dd>Thousands of people each year are displaced because of man-made and natural disasters.  Anoushka is one such, 
-            having been forced to flee her village along with her mother and younger brother. They 
+            <dd>Thousands of people each year are displaced because of man-made and natural disasters.  Anoushka is one such,
+            having been forced to flee her village along with her mother and younger brother. They
             reach an IFRC center just across the broder in a relatively
             safe area, but with no documentation.  Since the government of her homeland is in turmoil, there is no way for the IFRC staff
             to easilty establish their identities. Fortunately, Anoushka had been issued a self-soverign proof of birth, attached to which
@@ -525,7 +518,7 @@ dl.dl-horizontal > dd {
 </section>
 <section>
     <h2>User tasks</h2>
-    <p>Use cases are often used as a driver for requirements.  While the users of Verifiable Claims have needs across many domains, 
+    <p>Use cases are often used as a driver for requirements.  While the users of Verifiable Claims have needs across many domains,
     the tasks associated with those needs span the domains.  This section summarizes those tasks, as well as requirements related to the tasks,
     and maps the tasks and requirements back to the associated needs.</p>
     <p class="note">It is worth noting that the subject may or may not be the same entity as the holder. There are no tasks in these examples
@@ -568,7 +561,7 @@ dl.dl-horizontal > dd {
         <h2>Verify claim</h2>
         <dl class="dl-horizontal">
             <dt>Requirement</dt>
-            <dd>It MUST be possible for a <a>inspector</a> to verify that the
+            <dd>It MUST be possible for an <a>inspector</a> to verify that the
             credential is an authentic statement of an <a>issuer's</a> claims
             about the <a>subject</a>. The verifying entity must have the
             capability to connect the issuer’s identity to its
@@ -595,7 +588,7 @@ dl.dl-horizontal > dd {
             possible for the holder to move a claim among credential
             repositories.</dd>
             <dt>Motivation</dt>
-            <dd>A <a>claim</a> is under the control of its <a>holder</a>.  
+            <dd>A <a>claim</a> is under the control of its <a>holder</a>.
             That holder will choose where their claims are stored based upon a
             variety of factors (e.g., employer requirements, convenience, service
             levels, business intelligence). The holder needs to be able to
@@ -614,13 +607,13 @@ dl.dl-horizontal > dd {
             <dt>Requirement</dt>
             <dd>It MUST be possible for a <a>holder</a> to select if and which
             appropriate
-            credential should be sent to a <a>inspector</a>.</dd>
+            credential should be sent to an <a>inspector</a>.</dd>
             <dt>Motivations</dt>
             <dd>
-            A <a>inspector</a> may require that a <a>holder</a> verify aspects
+            An <a>inspector</a> may require that a <a>holder</a> verify aspects
             of their suitability for a transaction.  In this case, the
-            <a>holder</a> must be able to select which, if any, 
-            <a>Verifiable Claim</a> stored with their <a>Credential Repository</a> 
+            <a>holder</a> must be able to select which, if any,
+            <a>Verifiable Claim</a> stored with their <a>Credential Repository</a>
             is used to satisfy the
             <a>inspector</a>.</dd>
             <dt>Needs</dt>
@@ -657,7 +650,7 @@ dl.dl-horizontal > dd {
         <p>In this first example, a user will request a Verifiable Claim - a
         confirmation of their identity. Consider this illustration:</p>
 
-        <img aria-describedby="#claim_flow" alt='Verifiable Claim Creation Flow Description' style='display:block; margin:auto' src="uc-issuing-claims.svg"/>
+        <img aria-describedby="claim_flow" alt='Verifiable Claim Creation Flow Description' style='display:block; margin:auto' src="uc-issuing-claims.svg"/>
         <p>Expanding on these steps:</p>
         <ol id="claim_flow" title="Verifiable Claim Creation Flow Description">
             <li>Jane asks her User Agent to help her get a Verifiable Claim about
@@ -677,7 +670,7 @@ dl.dl-horizontal > dd {
             instructing it to store the new claim.</li>
             <li>The <a>Credential Repository</a> returns a list of the claims it is
             holding for Jane to the UA.</li>
-            <li>The UA shows Jane her claim collection - confirming 
+            <li>The UA shows Jane her claim collection - confirming
             everything she has available.</li>
         </ol>
     </section>
@@ -727,8 +720,8 @@ dl.dl-horizontal > dd {
     <p>
     The editors are thankful to the contributions from the
     Web Payments Workshop, the Web Payments Community Group, the Web Payments
-    Interest Group, and the
-    Credentials Community Group.
+    Interest Group, the Credentials Community Group, the
+    Verifiable Claims Task Force, and the Verifiable Claims Working Group.
     </p>
 
 </section>

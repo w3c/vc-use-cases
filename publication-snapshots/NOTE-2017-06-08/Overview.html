@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta lang="" property="dc:language" content="en">
+  <style>
+    /*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      padding: 0.5em;
+      color: #333;
+      background: #f8f8f8;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #998;
+      font-style: italic;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-subst {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .hljs-number,
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
+      color: #008080;
+    }
+
+    .hljs-string,
+    .hljs-doctag {
+      color: #d14;
+    }
+
+    .hljs-title,
+    .hljs-section,
+    .hljs-selector-id {
+      color: #900;
+      font-weight: bold;
+    }
+
+    .hljs-subst {
+      font-weight: normal;
+    }
+
+    .hljs-type,
+    .hljs-class .hljs-title {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .hljs-tag,
+    .hljs-name,
+    .hljs-attribute {
+      color: #000080;
+      font-weight: normal;
+    }
+
+    .hljs-regexp,
+    .hljs-link {
+      color: #009926;
+    }
+
+    .hljs-symbol,
+    .hljs-bullet {
+      color: #990073;
+    }
+
+    .hljs-built_in,
+    .hljs-builtin-name {
+      color: #0086b3;
+    }
+
+    .hljs-meta {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .hljs-deletion {
+      background: #fdd;
+    }
+
+    .hljs-addition {
+      background: #dfd;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
+  <style>
+    /* --- ISSUES/NOTES --- */
+
+    div.issue-title,
+    div.note-title,
+    div.ednote-title,
+    div.warning-title {
+      padding-right: 1em;
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+
+    div.issue-title {
+      color: #e05252;
+    }
+
+    div.note-title,
+    div.ednote-title {
+      color: #2b2;
+    }
+
+    div.warning-title {
+      color: #f22;
+    }
+
+    div.issue-title span,
+    div.note-title span,
+    div.ednote-title span,
+    div.warning-title span {
+      text-transform: uppercase;
+    }
+
+    div.note,
+    div.issue,
+    div.ednote,
+    div.warning {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    .note>p:first-child,
+    .ednote>p:first-child,
+    .issue>p:first-child,
+    .warning>p:first-child {
+      margin-top: 0
+    }
+
+    .issue,
+    .note,
+    .ednote,
+    .warning {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+    }
+
+    div.issue,
+    div.note,
+    div.ednote,
+    div.warning {
+      padding: 1em 1.2em 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+
+    span.note,
+    span.ednote,
+    span.issue,
+    span.warning {
+      padding: .1em .5em .15em;
+    }
+
+    .issue {
+      border-color: #e05252;
+      background: #fbe9e9;
+    }
+
+    .note,
+    .ednote {
+      border-color: #52e052;
+      background: #e9fbe9;
+    }
+
+    .warning {
+      border-color: #f11;
+      border-width: .2em;
+      border-style: solid;
+      background: #fbe9e9;
+    }
+
+    .warning-title:before {
+      content: "⚠";
+      /*U+26A0 WARNING SIGN*/
+      font-size: 3em;
+      float: left;
+      height: 100%;
+      padding-right: .3em;
+      vertical-align: top;
+      margin-top: -0.5em;
+    }
+
+    li.task-list-item {
+      list-style: none;
+    }
+
+    input.task-list-item-checkbox {
+      margin: 0 0.35em 0.25em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <title>Verifiable Claims Use Cases</title>
+
+
+
+
+
+  <style type="text/css">
+    dl {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    dt,
+    dd {
+      line-height: 1.42857143;
+    }
+
+    dl.dl-horizontal>dt {
+      font-weight: bold;
+    }
+
+    dl.dl-horizontal>dd {
+      padding-bottom: 10px;
+    }
+
+    @media (min-width: 768px),
+    print {
+      .dl-horizontal {
+        margin-bottom: 2em;
+      }
+      .dl-horizontal dt {
+        font-weight: normal;
+        float: left;
+        width: 160px;
+        clear: left;
+        overflow: hidden;
+        text-align: right;
+      }
+      .dl-horizontal dd {
+        margin-left: 180px;
+      }
+      .dl-horizontal dd>ul {
+        padding-left: 20px;
+        margin: 0px;
+      }
+      .dl-horizontal dd+dt {
+        border-top: solid thin grey;
+      }
+      dl.dl-horizontal dt:not(:first-child)+dd {
+        border-top: solid thin grey;
+      }
+
+      .left.dl-horizontal dt {
+        text-align: left;
+      }
+    }
+
+    .dl-horizontal dd+dd {
+      border-top: dotted thin grey;
+      padding-top: 0.5em;
+    }
+  </style>
+
+  <style id="respec-mainstyle">
+    /*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+    /* Override code highlighter background */
+
+    .hljs {
+      background: transparent !important;
+    }
+    /* --- INLINES --- */
+
+    em.rfc2119 {
+      text-transform: lowercase;
+      font-style: normal;
+      color: #900;
+    }
+
+    h1 abbr,
+    h2 abbr,
+    h3 abbr,
+    h4 abbr,
+    h5 abbr,
+    h6 abbr,
+    a abbr {
+      border: none;
+    }
+
+    dfn {
+      font-weight: bold;
+    }
+
+    a.internalDFN {
+      color: inherit;
+      border-bottom: 1px solid #99c;
+      text-decoration: none;
+    }
+
+    a.externalDFN {
+      color: inherit;
+      border-bottom: 1px dotted #ccc;
+      text-decoration: none;
+    }
+
+    a.bibref {
+      text-decoration: none;
+    }
+
+    cite .bibref {
+      font-style: normal;
+    }
+
+    code {
+      color: #C83500;
+    }
+
+    th code {
+      color: inherit;
+    }
+    /* --- TOC --- */
+
+    .toc a,
+    .tof a {
+      text-decoration: none;
+    }
+
+    a .secno,
+    a .figno {
+      color: #000;
+    }
+
+    ul.tof,
+    ol.tof {
+      list-style: none outside none;
+    }
+
+    .caption {
+      margin-top: 0.5em;
+      font-style: italic;
+    }
+    /* --- TABLE --- */
+
+    table.simple {
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-bottom: 3px solid #005a9c;
+    }
+
+    .simple th {
+      background: #005a9c;
+      color: #fff;
+      padding: 3px 5px;
+      text-align: left;
+    }
+
+    .simple th[scope="row"] {
+      background: inherit;
+      color: inherit;
+      border-top: 1px solid #ddd;
+    }
+
+    .simple td {
+      padding: 3px 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    .simple tr:nth-child(even) {
+      background: #f0f6ff;
+    }
+    /* --- DL --- */
+
+    .section dd>p:first-child {
+      margin-top: 0;
+    }
+
+    .section dd>p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section dd {
+      margin-bottom: 1em;
+    }
+
+    .section dl.attrs dd,
+    .section dl.eldef dd {
+      margin-bottom: 0;
+    }
+
+    #issue-summary>ul,
+    .respec-dfn-list {
+      column-count: 2;
+    }
+
+    #issue-summary li,
+    .respec-dfn-list li {
+      list-style: none;
+    }
+
+    @media print {
+      .removeOnSave {
+        display: none;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE.css">
+  <link rel="canonical" href="https://www.w3.org/TR/verifiable-claims-use-cases/">
+  <meta name="generator" content="ReSpec 13.1.0">
+  <script id="initialUserConfig" type="application/json">
+    {
+      "specStatus": "WG-NOTE",
+      "useExperimentalStyles": true,
+      "shortName": "verifiable-claims-use-cases",
+      "localBiblio":
+      {
+        "REST":
+        {
+          "title": "Architectural Styles and the Design of Network-based Software Architectures",
+          "date": "2000",
+          "href": "http://www.ics.uci.edu/~fielding/pubs/dissertation/",
+          "authors": [
+            "Fielding, Roy Thomas"
+          ],
+          "publisher": "University of California, Irvine."
+        },
+        "SECURE-MESSAGING":
+        {
+          "title": "Secure Messaging",
+          "href": "https://web-payments.org/specs/source/secure-messaging",
+          "authors": [
+            "Manu Sporny"
+          ],
+          "etal": true,
+          "status": "unofficial",
+          "publisher": "Web Payments Community Group"
+        },
+        "VCTF-USECASES":
+        {
+          "title": "Verifiable Claims Use Cases",
+          "href": "http://w3c.github.io/webpayments-ig/VCTF/use-cases/",
+          "authors": [
+            "Shane McCarron",
+            "Daniel Burnett",
+            "Gregg Kellogg",
+            "Brian Sletten",
+            "Manu Sporny"
+          ],
+          "status": "IG-DRAFT",
+          "publisher": "Web Payments Interest Group Verifiable Claims Task Force"
+        },
+        "HTTP-SIGNATURES":
+        {
+          "aliasOf": "http-signatures"
+        },
+        "MACAROONS":
+        {
+          "title": "Macaroons",
+          "href": "http://macaroons.io/",
+          "authors": [
+            "Arnar Birgisson",
+            "Joe Gibbs Politz",
+            "Úlfar Erlingsson",
+            "Ankur Taly",
+            "Michael Vrable",
+            "Mark Lentczner"
+          ],
+          "status": "unofficial",
+          "publisher": "Credentials Community Group"
+        },
+        "CREDENTIAL-MANAGEMENT":
+        {
+          "title": "Credential Management Level 1",
+          "href": "https://w3c.github.io/webappsec-credential-management/",
+          "authors": [
+            "Mike West"
+          ],
+          "status": "WG-DRAFT",
+          "publisher": "Web Application Security Working Group"
+        },
+        "OPEN-BADGES":
+        {
+          "title": "Open Badges",
+          "href": "https://github.com/openbadges/openbadges-specification",
+          "authors": [
+            "Brian Brennan",
+            "Mike Larsson",
+            "Chris McAvoy",
+            "Nate Otto",
+            "Kerri Lemoie"
+          ],
+          "status": "BA-DRAFT",
+          "publisher": "Badge Alliance Standard Working Group"
+        },
+        "IDENTITY-CREDENTIALS":
+        {
+          "title": "Identity Credentials",
+          "href": "http://opencreds.org/specs/source/identity-credentials/",
+          "authors": [
+            "Manu Sporny",
+            "Dave Longley"
+          ],
+          "status": "CG-DRAFT",
+          "publisher": "W3C Credentials Community Group"
+        },
+        "RDF-NORMALIZATION":
+        {
+          "title": "RDF Dataset Normalization",
+          "href": "http://json-ld.github.io/normalization/spec/",
+          "authors": [
+            "Dave Longley",
+            "Manu Sporny"
+          ],
+          "status": "CG-DRAFT",
+          "publisher": "Credentials W3C Community Group"
+        },
+        "WEB-COMMERCE":
+        {
+          "title": "Web Commerce",
+          "href": "https://web-payments.org/specs/source/web-commerce/",
+          "authors": [
+            "Dave Longley",
+            "Manu Sporny",
+            "David I. Lehn"
+          ],
+          "status": "CG-DRAFT",
+          "publisher": "W3C Credentials Community Group"
+        },
+        "WEB-COMMERCE-API":
+        {
+          "title": "Web Commerce API",
+          "href": "https://web-payments.org/specs/source/web-commerce-api/",
+          "authors": [
+            "Manu Sporny",
+            "Dave Longley",
+            "David I. Lehn"
+          ],
+          "status": "CG-DRAFT",
+          "publisher": "W3C Credentials Community Group"
+        }
+      },
+      "github": "https://github.com/w3c/vc-use-cases",
+      "includePermalinks": false,
+      "editors": [
+      {
+        "name": "Shane McCarron",
+        "url": "http://blog.halindrome.com/",
+        "company": "Spec-Ops",
+        "companyURL": "https://spec-ops.io",
+        "w3cid": "23346"
+      },
+      {
+        "name": "Daniel Burnett",
+        "company": "Standards Play",
+        "companyURL": "http://standardsplay.com/"
+      },
+      {
+        "name": "Gregg Kellogg",
+        "url": "http://greggkellogg.net/",
+        "company": "Spec-Ops",
+        "companyURL": "https://spec-ops.io/",
+        "w3cid": "44770"
+      },
+      {
+        "name": "Brian Sletten",
+        "url": "http://bosatsu.net",
+        "company": "Bosatsu Consulting, Inc.",
+        "companyURL": "http://bosatsu.net"
+      },
+      {
+        "name": "Manu Sporny",
+        "url": "http://digitalbazaar.com/",
+        "company": "Digital Bazaar, Inc.",
+        "companyURL": "http://digitalbazaar.com/"
+      }],
+      "authors": [
+      {
+        "name": "Joe Andrieu",
+        "company": "First Person Consulting",
+        "companyURL": "http://firstpersonconsulting.com/"
+      },
+      {
+        "name": "Sunny Lee",
+        "url": "",
+        "company": "Badge Alliance",
+        "companyURL": ""
+      },
+      {
+        "name": "Nate Otto",
+        "url": "",
+        "company": "Badge Alliance",
+        "companyURL": ""
+      }],
+      "maxTocLevel": 3,
+      "wg": "Verifiable Claims Working Group",
+      "wgURI": "https://www.w3.org/2017/vc/",
+      "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/98922/status"
+    }
+  </script>
+</head>
+
+<body aria-busy="false" data-pinterest-extension-installed="sa1.37.01" class="h-entry toc-inline" id="respecDocument">
+  <div class="head" role="contentinfo" id="respecHeader">
+    <p>
+      <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
+    </p>
+    <h1 class="title p-name" id="title" property="dcterms:title">Verifiable Claims Use Cases</h1>
+    <h2 id="w3c-working-group-note-08-june-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Working Group Note <time property="dcterms:issued" class="dt-published" datetime="2017-06-08">08 June 2017</time></h2>
+    <dl>
+      <dt>This version:</dt>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2017/NOTE-verifiable-claims-use-cases-20170608/">https://www.w3.org/TR/2017/NOTE-verifiable-claims-use-cases-20170608/</a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="https://www.w3.org/TR/verifiable-claims-use-cases/">https://www.w3.org/TR/verifiable-claims-use-cases/</a></dd>
+      <dt>Latest editor's draft:</dt>
+      <dd><a href="https://w3c.github.io/vc-use-cases/">https://w3c.github.io/vc-use-cases/</a></dd>
+      <dt>Editors:</dt>
+      <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="23346"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Shane McCarron"><a class="u-url url p-name fn" property="foaf:homepage" href="http://blog.halindrome.com/">Shane McCarron</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="https://spec-ops.io">Spec-Ops</a></span>
+        <span property="rdf:rest" resource="_:editor1"></span>
+      </dd>
+      <dd class="p-author h-card vcard" resource="_:editor1" data-editor-id="23346"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Daniel Burnett</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://standardsplay.com/">Standards Play</a></span>
+        <span property="rdf:rest" resource="_:editor2"></span>
+      </dd>
+      <dd class="p-author h-card vcard" resource="_:editor2" data-editor-id="44770"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Gregg Kellogg"><a class="u-url url p-name fn" property="foaf:homepage" href="http://greggkellogg.net/">Gregg Kellogg</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="https://spec-ops.io/">Spec-Ops</a></span>
+        <span property="rdf:rest" resource="_:editor3"></span>
+      </dd>
+      <dd class="p-author h-card vcard" resource="_:editor3" data-editor-id="44770"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Brian Sletten"><a class="u-url url p-name fn" property="foaf:homepage" href="http://bosatsu.net">Brian Sletten</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://bosatsu.net">Bosatsu Consulting, Inc.</a></span>
+        <span property="rdf:rest" resource="_:editor4"></span>
+      </dd>
+      <dd class="p-author h-card vcard" resource="_:editor4" data-editor-id="44770"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Manu Sporny"><a class="u-url url p-name fn" property="foaf:homepage" href="http://digitalbazaar.com/">Manu Sporny</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://digitalbazaar.com/">Digital Bazaar, Inc.</a></span>
+        <span property="rdf:rest" resource="rdf:nil"></span>
+      </dd>
+
+      <dt>Authors:</dt>
+      <dd class="p-author h-card vcard"><span property="dc:contributor" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Joe Andrieu</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://firstpersonconsulting.com/">First Person Consulting</a></span>
+      </dd>
+      <dd class="p-author h-card vcard"><span property="dc:contributor" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Sunny Lee</span>, Badge Alliance</span>
+      </dd>
+      <dd class="p-author h-card vcard"><span property="dc:contributor" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Nate Otto</span>, Badge Alliance</span>
+      </dd>
+
+      <dt>Participate:</dt>
+      <dd>
+        <a href="https://github.com/w3c/vc-use-cases">
+                      GitHub w3c/vc-use-cases
+                    </a>
+      </dd>
+      <dd>
+        <a href="https://github.com/w3c/vc-use-cases/issues/">
+                      File a bug
+                    </a>
+      </dd>
+      <dd>
+        <a href="https://github.com/w3c/vc-use-cases/commits/gh-pages">
+                      Commit history
+                    </a>
+      </dd>
+    </dl>
+    <p class="copyright">
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2017
+
+      <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+      <a href="https://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
+      <abbr title="World Wide Web Consortium">W3C</abbr> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+      <a rel="license" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.
+    </p>
+    <hr title="Separator for header">
+  </div>
+
+  <section id="abstract" class="introductory" property="dc:abstract">
+    <h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+    <p>
+      A <em>verifiable claim</em> is a qualification, achievement, quality, or piece of information about an <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity's</a> background such as a name, government ID, payment provider, home address, or university degree. Such a claim describes a quality or qualities, property or properties of an entity which establish its existence and uniqueness. The use cases outlined here are provided in order to make progress toward possible future standardization and interoperability of both low and high-stakes <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claims</a> with the goals of storing, transmitting, and receiving digitally verifiable proof of attributes such as qualifications and achievements. The use cases in this document focus on concrete scenarios that the technology defined by the group should address.
+    </p>
+  </section>
+
+  <section id="sotd" class="introductory">
+    <h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+    <p>
+      <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em>
+    </p>
+
+    <p>This document represents a concise but limited collection of use cases readers should review in conjunction with the proposed Charter for a Verifiable Claims Working Group.</p>
+    <p>Comments regarding this document are welcome. Please or file directly on <a href="https://github.com/w3c/vc-use-cases/issues/">GitHub</a>, or send them to
+      <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a> (<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">subscribe</a>,
+      <a href="https://lists.w3.org/Archives/Public/public-vc-comments/">archives</a>).</p>
+
+    <p>
+      This document was published by the <a href="https://www.w3.org/2017/vc/">Verifiable Claims Working Group</a> as a Working Group Note.
+    </p>
+    <p>
+      Publication as a Working Group Note does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
+    </p>
+    <p>
+      This document was produced by a group operating under the
+      <a id="sotd_patent" property="w3p:patentRules" href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+            Policy</a>.
+      <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/98922/status" rel="disclosure">public list of any patent
+              disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains
+      <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+      <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+    </p>
+    <p>This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2017/Process-20170301/">1 March 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+    </p>
+
+
+  </section>
+  <nav id="toc">
+    <h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2>
+    <ol class="toc" role="directory">
+      <li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#importance-of-this-work" class="tocxref"><span class="secno">1.1 </span>Importance of this work</a></li>
+          <li class="tocline"><a href="#use-case-model" class="tocxref"><span class="secno">1.2 </span>Use case model</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#user-roles" class="tocxref"><span class="secno">2. </span>User roles</a></li>
+      <li class="tocline"><a href="#user-needs" class="tocxref"><span class="secno">3. </span>User needs</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#finance" class="tocxref"><span class="secno">3.1 </span>Finance</a></li>
+          <li class="tocline"><a href="#education" class="tocxref"><span class="secno">3.2 </span>Education</a></li>
+          <li class="tocline"><a href="#healthcare" class="tocxref"><span class="secno">3.3 </span>Healthcare</a></li>
+          <li class="tocline"><a href="#retail" class="tocxref"><span class="secno">3.4 </span>Retail</a></li>
+          <li class="tocline"><a href="#professional-credentials" class="tocxref"><span class="secno">3.5 </span>Professional credentials</a></li>
+          <li class="tocline"><a href="#legal-identity" class="tocxref"><span class="secno">3.6 </span>Legal identity</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#user-tasks" class="tocxref"><span class="secno">4. </span>User tasks</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#issue-claim" class="tocxref"><span class="secno">4.1 </span>Issue claim</a></li>
+          <li class="tocline"><a href="#assert-claim" class="tocxref"><span class="secno">4.2 </span>Assert claim</a></li>
+          <li class="tocline"><a href="#verify-claim" class="tocxref"><span class="secno">4.3 </span>Verify claim</a></li>
+          <li class="tocline"><a href="#store-move-claim" class="tocxref"><span class="secno">4.4 </span>Store / Move claim</a></li>
+          <li class="tocline"><a href="#retrieve-claim" class="tocxref"><span class="secno">4.5 </span>Retrieve claim</a></li>
+          <li class="tocline"><a href="#revoke-claim" class="tocxref"><span class="secno">4.6 </span>Revoke claim</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#user-sequences" class="tocxref"><span class="secno">5. </span>User sequences</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#how-a-verifiable-claim-might-be-created" class="tocxref"><span class="secno">5.1 </span>How a verifiable claim might be created</a></li>
+          <li class="tocline"><a href="#how-a-verifiable-claim-might-be-used" class="tocxref"><span class="secno">5.2 </span>How a verifiable claim might be used</a></li>
+        </ol>
+      </li>
+      <li class="tocline"><a href="#terminology" class="tocxref"><span class="secno">A. </span>Terminology</a></li>
+      <li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">B. </span>Acknowledgements</a></li>
+      <li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a>
+        <ol class="toc">
+          <li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li>
+        </ol>
+      </li>
+    </ol>
+  </nav>
+
+  <section id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
+    <!-- Editor - @halindrome -->
+    <!--OddPage-->
+    <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span>
+    </h2>
+    <p>
+      The Verifiable Claims Working Group at the <abbr title="World Wide Web Consortium">W3C</abbr> is developing standards for expressing and exchanging "<a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claims</a>" that have been verified by a third party and to make them easier and more secure on the Web.
+    </p>
+    <div class="note">
+      <div class="note-title marker" aria-level="3" role="heading" id="h-note1"><span>Note</span></div>
+      <div class="">
+        This document does NOT attempt to define an architecture for the support of Verifiable Claims. Instead it expresses the sorts of needs that real users have that could be addressed through support for some sort of self-soverign claim environment. It attempts to use terminology that is consistent with the other deliverables of the Verifiable Claims Working Group (you can see the relevant terms in Appendix A).
+      </div>
+    </div>
+
+    <section id="importance-of-this-work" typeof="bibo:Chapter" resource="#importance-of-this-work" property="bibo:hasPart">
+      <h3 id="h-importance-of-this-work" resource="#h-importance-of-this-work"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Importance of this work</span>
+      </h3>
+
+      <p>Entities (people, organizations, devices) need to make many kinds of claims as part of their everyday activities. As more and more of these important activities move to the Internet, entities need to be able to transmit instantly <em>verifiable</em> claims (e.g., about their location, accomplishments, value, what-have-you). From educational records to payment account access, the next generation of web applications will authorize entities to perform actions based on rich sets of credentials issued by trusted parties. Human- and machine-mediated decisions about job applications, account access, collaboration, and professional development will depend on filtering and analyzing growing amounts of data. It is essential that data be verifiable.
+      </p>
+      <p>Standardization of digital <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a> technologies makes it possible for many stakeholders to issue, earn, and trust these essential records about their counterparties, without being locked into proprietary platforms.</p>
+    </section>
+
+    <section id="use-case-model" typeof="bibo:Chapter" resource="#use-case-model" property="bibo:hasPart">
+      <h3 id="h-use-case-model" resource="#h-use-case-model"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Use case model</span>
+      </h3>
+      <p>This document presents an aggregate use case model, comprised of Needs, Roles, Tasks, and Sequences. Taken together, these models define the use cases that the Verifiable Claims Working Group will address.</p>
+
+      <p>User needs define the problem space Verifiable Claims addresses. User Roles specify the roles different entities play when interacting with Verifiable Claims. Tasks define the functions users can accomplish and sequences demonstrate how tasks might be realized by interactions between entities over time.</p>
+      <p>As with all models, this use case model is neither exhaustive nor complete. The listed uses cannot exhaustively capture all possible use cases. Similarly, the models do not completely characterize the use cases represented. However, the combined model provides specific, coherent guidance for the work ahead.</p>
+    </section>
+
+  </section>
+
+  <section id="user-roles" typeof="bibo:Chapter" resource="#user-roles" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-user-roles" resource="#h-user-roles"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>User roles</span>
+    </h2>
+    <p>There are four roles supported by Verifiable Claims: Issuer, Inspector, Subject, and Holder.</p>
+    <img height="400" alt="Verifiable Claim User Roles" style="display:block; margin:auto" src="user-roles.svg">
+    <dl>
+      <dt>Issuer</dt>
+      <dd>The entity that creates a claim and associates it with a particular subject.</dd>
+      <dt>Inspector</dt>
+      <dd>The entity verifying a claim about a given subject.
+      </dd><dt>Subject</dt>
+      <dd>The entity about whom a claim is issued.
+      </dd><dt>Holder</dt>
+      <dd>The entity who controls a particular claim. Often the subject of the claim, but not always. For example, the subject of a claim might be a pet who has received a vaccination. The holder of that claim is likely the pet's owner, not the pet. A holder is typically the initiator of the transmission of a claim.</dd>
+    </dl>
+
+  </section>
+
+  <section id="user-needs" typeof="bibo:Chapter" resource="#user-needs" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-user-needs" resource="#h-user-needs"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>User needs</span>
+    </h2>
+    <p>Verifiable Claims address user needs in a number of key domains:</p>
+    <img alt="Verifiable Claim Creation Flow Description" style="display:block; margin:auto" src="user-needs.svg">
+
+    <section id="finance" typeof="bibo:Chapter" resource="#finance" property="bibo:hasPart">
+      <h3 id="h-finance" resource="#h-finance"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Finance</span>
+      </h3>
+      <p>The Finance domain includes banking, brokerage, insurance, and other industries where there is a high value placed on knwoing exactly with whom you are dealing.</p>
+      <dl class="left dl-horizontal">
+        <dt><span id="uneed_F_1" class="userneed-name" title="F.1 Reuse know your customer">F.1 Reuse know your customer</span></dt>
+        <dd>Jane is opening an account at MidBank in Finland. As part of that process, the bank asks her to provide two from a variety of possible sources to confirm her identity - a so called "Know Your Customer" check. She selects government-supplied
+          <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">verifiable claims</a> that confirm she receives postal mail at a certain address and that she has a national ID card. Confirming these allows the bank to open her account and be confident in her identity when she conducts transactions.
+        </dd>
+        <dd>Now that the account is open, Jane is issued a digitally signed <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> for her checking account at MidBank. This credential verifies that Jane has an account at MidBank and has access to her associated checking account. Since MidBank (and all banks in Finland) are required to perform "Know Your Customer" checks on accounts, this credential can also be used as sufficient verification by other financial institutions. This can help Jane assure destination banks that she is verified, thereby allaying concerns about misdirected transactions and money laundering.</dd>
+        <dt><span id="uneed_F_2" class="userneed-name" title="F.2 Money transfer">F.2 Money transfer</span></dt>
+        <dd>Susan wants to send funds to her family in another country via a popular money transfer service. She has <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">verifiable claims</a> in her
+          <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> that can be used to share her <a href="#dfn-identity-profile" class="internalDFN" data-link-type="dfn">identity profile</a>. She has also been sent a <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a> from her family verifying their banking information. By sharing these with the money transfer service, they can automatically verify the source and destination of funds, thus being confident in the delivery of those funds and satisfying various regulations regarding prevention of money laundering.</dd>
+        <dt><span id="uneed_F_3" class="userneed-name" title="F.3 Closing account">F.3 Closing account</span></dt>
+        <dd>John opens a checking account at Big Bank Co and is issued a Verifiable Claim indicating that the account exists, that the bank verified John's identity, and that John has access to the account. Some time later, John is moving to a new city and decides to close that account. Big Bank Co needs to revoke that claim as part of their normal account closing process.</dd>
+        <dt><span id="uneed_F_4" class="userneed-name" title="F.4 Trying out a new service">F.4 Trying out a new service</span></dt>
+        <dd>Nikita has several accounts with BigBank, as well as a brokerage account with WallStreetCo. She had placed all of her claims in a <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> at BigBank that came free when she opened her accounts. WallStreetCo is now offering a new
+          <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">repository</a> that has an interface she thinks she will prefer. Nikita copies her claims from BigBank into the repository at WallStreetCo to experiment with their service, but continues to use the service from BigBank while she is testing.</dd>
+        <dt><span id="uneed_F_5" class="userneed-name" title="F.5 New bank account from home">F.5 New bank account from home</span></dt>
+        <dd>Alice wants to open a new bank account. BigOnlineBank offers the ability to do this from home if she can provide electronic credentials. She offers government issued certificates that verify her identity (address, national identity number, etc.), and opens her new account from her couch.</dd>
+      </dl>
+    </section>
+
+    <section id="education" typeof="bibo:Chapter" resource="#education" property="bibo:hasPart">
+      <h3 id="h-education" resource="#h-education"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Education</span>
+      </h3>
+      <p>The education domain includes all levels of the educational experience; from primary through professional continuing education.</p>
+      <dl class="left dl-horizontal">
+        <dt><span id="uneed_E_1" class="userneed-name" title="E.1 Digital transcript">E.1 Digital transcript</span></dt>
+        <dd>Joleen is the registrar of Mega University and, by virtue of her office, is responsible for the integrity, accuracy, and security of academic records. Joleen has been a pioneering registrar in advocating an 'extended transcript' that includes not only the standard set of course grades but also adds supplementary information on learner competencies. These might include work experiences and non-educational but marketable skills. Upon the request of her students Joleen issues digital credentials that encapsulates an extended transcript.</dd>
+        <dt><span id="uneed_E_2" class="userneed-name" title="E.2 Taking a test">E.2 Taking a test</span></dt>
+        <dd>Eunice is about to take her ACT (a test used to evaluate her readiness for college). When she arrives at the testing center, she is required to present identification. Her government-issued identity certificate is acceptable, as the <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">verifiable claims</a> contained in it reflect all of the required attributes and it is impossible to counterfeit.</dd>
+        <dt><span id="uneed_E_3" class="userneed-name" title="E.3 Transferring schools">E.3 Transferring schools</span></dt>
+        <dd>Rocky is an undergraduate student at Wossamotta U. His school provides a credential repository service to all students and alumni, so he chooses to use it. In his third year, Rocky decides to transfer to Moosylvania Tech. They do not offer a service, but he does not want to continue to use the service of his old (and now rival school) so he moves his claims to the service offered by his bank without needing to have them reissued.
+        </dd>
+        <dt><span id="uneed_E_4" class="userneed-name" title="E.4 Online classes">E.4 Online classes</span></dt>
+        <dd>In MOOC and other on-line learning systems, being able to reliably identify participants is vital to ensure the individual evaluation and certification. Nick is participating in a course online and takes a test. He is required to provide his credentials to prove his identity before the test, and then to allow the system to issue a <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">verifiable claim</a> regarding the results of his test.</dd>
+      </dl>
+    </section>
+
+    <section id="healthcare" typeof="bibo:Chapter" resource="#healthcare" property="bibo:hasPart">
+      <h3 id="h-healthcare" resource="#h-healthcare"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Healthcare</span>
+      </h3>
+      <p>Privacy is critically important in the healthcare industry. This domain looks at everything from physicial interaction to connecting patients and providers with service organizations.</p>
+      <dl class="left dl-horizontal">
+        <dt><span id="uneed_H_1" class="userneed-name" title="H.1 Prescribing">H.1 Prescribing</span></dt>
+        <dd>Barney is a physician, and has recently become board certified in his state. The state's board issues Barney a digital certificate confirming that he is certified to practice medicine in that state. Barney can now use this certificate when writing prescriptions and referrals, thereby improving accountability and verifiability.</dd>
+        <dt><span id="uneed_H_2" class="userneed-name" title="H.2 Online pharmacy">H.2 Online pharmacy</span></dt>
+        <dd>iPharmacy receives a prescription for Bob electronically from a local clinic. It includes a certificate about the physician that issued the prescription as well as one about Bob. iPharmacy's system automatically verifies the ability of the physician to write prescriptions, as well as Bob's insurance coverage. When Bob arrives to pick up his medication, iPharmacy further correlates his identity with the certificate, thereby improving the end-to-end accountability of their system.</dd>
+        <dt><span id="uneed_H_3" class="userneed-name" title="H.3 Insurance claim">H.3 Insurance claim</span></dt>
+        <dd>Tracy has a sore throat soon after moving to a new town. She finds a physician through her health care network and goes in for treatment. She is a new patient, so the clinic needs to know who she is and how she will be paying. When checking in, she presents her verifiable claim that demonstrates her identity and her proof of insurance. When the clinc submits this to the insurance company, they can automatically ascertain that she submitted her proof of identity and insurance to the provider and granted the physician the ability to submit the claim for payment.</dd>
+        <dt><span id="uneed_H_4" class="userneed-name" title="H.4 Traveling illness">H.4 Traveling illness</span></dt>
+        <dd>John is on the vacation of a lifetime, travelling the world. Falling ill, he visits a health clinic in a country in which he does not live. At the clinic he is asked for proof of identity. He provides a credential that verifies his name and address, but elects not to disclose his marital status nor his social security number, as those are neither requested nor required at this clinic. He further marks the disclosure as expiring in 30 days - he does not want his information verifiable after that time.</dd>
+      </dl>
+    </section>
+
+    <section id="retail" typeof="bibo:Chapter" resource="#retail" property="bibo:hasPart">
+      <h3 id="h-retail" resource="#h-retail"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Retail</span>
+      </h3>
+      <p>The retail domain encompasses all things where there is an exchange of value on an individual level. This includes brick-and-mortar store fronts, web-only venues, and even person-to-person sales.</p>
+      <dl class="left dl-horizontal">
+        <dt><span id="uneed_R_1" class="userneed-name" title="R.1 Address verification">R.1 Address verification</span></dt>
+        <dd>Francis has found the perfect pair of shoes. When processing orders, Giant Shoe Company wants to be certain that his shipping address is accurate (inaccurate addresses are very expensive in terms of customer service). They offer a discount for customers who make verifiable addresses available as part of the checkout process. Francis offers his certificate and gets the perfect shoes for even less than he expected.
+        </dd>
+        <dt><span id="uneed_R_2" class="userneed-name" title="R.2 Adult beverages">R.2 Adult beverages</span></dt>
+        <dd>June goes to her local beer and wine store to buy a bottle of wine. She submits her identity credential that lets the liquor store owner know that she is over 21 without having to reveal her actual date of birth, her address, or her state ID number.</dd>
+      </dl>
+    </section>
+
+    <section id="professional-credentials" typeof="bibo:Chapter" resource="#professional-credentials" property="bibo:hasPart">
+      <h3 id="h-professional-credentials" resource="#h-professional-credentials"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Professional credentials</span>
+      </h3>
+      <p>In many aspects of life it is important to know that <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entities</a> are who they say they are, and that they can do what they say. Professional accreditation is one way of learning about the abilities of an entity. Being able to verify these credentials is essential to their value.</p>
+      <dl class="left dl-horizontal">
+        <dt><span id="uneed_C_1" class="userneed-name" title="C.1 Find a doctor">C.1 Find a doctor</span></dt>
+        <dd>Jason is looking for a new primary care physician. His health provider includes information on their web site about the physicians they have on staff, including <a data-lt="claim" href="#dfn-claim" class="internalDFN" data-link-type="dfn">verifiable credentials</a> about their education, board certification, and continuing education. Jason can verify these credentials and be confident that his new physician satisfies his requirements.</dd>
+        <dt><span id="uneed_C_2" class="userneed-name" title="C.2 Busy doctor">C.2 Busy doctor</span></dt>
+        <dd>Barney was a board certified physician, but he ran out of time to complete his contuning education requirements and his certification lapsed. Since the board can revoke his certification, <a href="#dfn-credential-inspector" class="internalDFN" data-link-type="dfn">credential inspectors</a> will automatically be aware that he can no longer issue prescriptions or perform medical procedures.
+        </dd>
+        <dt><span id="uneed_C_3" class="userneed-name" title="C.3 Bad university">C.3 Bad university</span></dt>
+        <dd>Jane was issued a certificate by BigTraining Co., indicating that she was a trained Project Manager. It was later discovered that BigTraining Co. was not actually training anyone, and their organization's certificate was revoked via the US Department of Education's Accreditation Database. Jane's credential is therefore invalid, and prospective employers will be aware of this when they check her certifications.</dd>
+        <dt><span id="uneed_C_4" class="userneed-name" title="C.4 New employer">C.4 New employer</span></dt>
+        <dd>Jessica is a medical doctor practicing in the United States. She has a variety of digital claims that explain her qualifications, schooling, continuing education achievements, and board certifications. These are all stored in the <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential
+            repository</a> provided by her employer. When she is offered a position with another health provider network, she can automatically transfer all of these claims to her new employer.
+        </dd>
+        <dt><span id="uneed_C_5" class="userneed-name" title="C.5 Social authority">C.5 Social authority</span></dt>
+        <dd>Josie is a healthcare worker that has created a profile on a professional social network to make herself readily available for new opportunities in the workforce. She lists her employment history and credentials including degrees, certificates, and digital badges. The website requests verification of her credential claims in order for her credentials to visible when she posts messages. Josie authorizes the sharing of the relevant claims with the website, and the site verifies them before allowing Josie to expose them.</dd>
+        <dd>"Freedom?" is an online forum that encourages free discussion about issues controversial in Freedonia. The forum allows users to register anonymous accounts, but it also allows users to obtain badges based upon real world certifications. Paula has been certified as an aid worker, and wishes that information to be marked on her posts. She shares her certificate with the forum, but limits it to only verifying that she is the
+          <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> of the certificate, that she is the
+          <a href="#dfn-subject" class="internalDFN" data-link-type="dfn">subject</a> of it, and that she is an aid worker. In this way she maintains her anonymity in this controversial forum while still being able to assist her fellow countrymen.</dd>
+        <dt><span id="uneed_C_6" class="userneed-name" title="C.6 Job applicant">C.6 Job applicant</span></dt>
+        <dd>Software Co. has posted an open position online and they are receiving thousands of applications. Cindy has applied for the job. Unlike many applicants, she has attached her education credentials - college degree, additional specific software training, etc. Software Co. evaluates these credentials automatically as they receive her application. Because her materials are verifiable and verified, her application is immediately forwarded as a viable candidate.
+        </dd>
+      </dl>
+    </section>
+
+    <section id="legal-identity" typeof="bibo:Chapter" resource="#legal-identity" property="bibo:hasPart">
+      <h3 id="h-legal-identity" resource="#h-legal-identity"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Legal identity</span>
+      </h3>
+      <p>For many transactions, an <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> must be able to prove some aspect of their identity in a way that can be quickly verified. Governments and other widely recognized entities are well positioned to provide such identification in a verifiable digital form.</p>
+      <dl class="left dl-horizontal">
+        <dt><span id="uneed_L_1" class="userneed-name" title="L.1 Digital driving license">L.1 Digital driving license</span></dt>
+        <dd>Asako just passed the final test to receive a drivers license. As she is still a new driver, and may be pulled over for a traffic violation, she would like to receive a <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> that asserts a <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a> that she has right to drive a car. She requests a credential from the certifying authority (<a href="#dfn-issuer" class="internalDFN" data-link-type="dfn">issuer</a>) that she can use to prove to the officer (<a href="#dfn-credential-inspector" class="internalDFN" data-link-type="dfn">credential inspector</a>) that her <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a> is valid.
+        </dd>
+        <dt><span id="uneed_L_2" class="userneed-name" title="L.2 Seamless immigration">L.2 Seamless immigration</span></dt>
+        <dd>Tom is a frequent international traveler. In order to speed processing through immigration check points, he applies for a digital passport from his governmental authority. After satisfying background check requirements, the authority issues Tom an electronic version of his passport. This version is verifiable and retains a history of all the places he visits so that immigration officials can quickly and easily evaluate his suitability as a visitor to their country. Once they are satisfied, the will automatically add the details of this new visit to Tom's passport.</dd>
+        <dt><span id="uneed_L_3" class="userneed-name" title="L.3 Speedy air travel">L.3 Speedy air travel</span></dt>
+        <dd>Security for air travel is more and more rigorous, requiring more and more time to validate each passenger. Ivan has a collection of verifiable claims that are assembed into his air travel <a href="#dfn-identity-profile" class="internalDFN" data-link-type="dfn">Identity Profile</a>. When Ivan needs to pass through a security checkpoint at his airport, he presents this profile before entering the line. Because his identification can be immediately and automatically verified, he is permitted to skip the long line and go straight to the metal detector.</dd>
+        <dt><span id="uneed_L_4" class="userneed-name" title="L.4 Refugee crisis">L.4 Refugee crisis</span></dt>
+        <dd>Thousands of people each year are displaced because of man-made and natural disasters. Anoushka is one such, having been forced to flee her village along with her mother and younger brother. They reach an IFRC center just across the broder in a relatively safe area, but with no documentation. Since the government of her homeland is in turmoil, there is no way for the IFRC staff to easilty establish their identities. Fortunately, Anoushka had been issued a self-soverign proof of birth, attached to which is the proof of birth and marriage for her parents. She is able to retrieve this because it is available from many places on the Internet. Since it is verifiable, the IFRC is comfortable vouching for them and resettling them in a safer area for the duration of the conflict.</dd>
+      </dl>
+    </section>
+  </section>
+
+  <section id="user-tasks" typeof="bibo:Chapter" resource="#user-tasks" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-user-tasks" resource="#h-user-tasks"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>User tasks</span>
+    </h2>
+    <p>Use cases are often used as a driver for requirements. While the users of Verifiable Claims have needs across many domains, the tasks associated with those needs span the domains. This section summarizes those tasks, as well as requirements related to the tasks, and maps the tasks and requirements back to the associated needs.</p>
+    <div class="note">
+      <div class="note-title marker" aria-level="3" role="heading" id="h-note2"><span>Note</span></div>
+      <p class="">It is worth noting that the subject may or may not be the same entity as the holder. There are no tasks in these examples that require participation of the subject.</p>
+    </div>
+    <img alt="Verifiable Claim User Tasks" style="display:block; margin:auto" src="user-tasks.svg">
+
+
+    <section id="issue-claim" typeof="bibo:Chapter" resource="#issue-claim" property="bibo:hasPart">
+      <h3 id="h-issue-claim" resource="#h-issue-claim"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Issue claim</span>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It <em class="rfc2119" title="MUST">MUST</em> be possible for any <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> to issue a verifiable <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a>.</dd>
+        <dt>Motivation</dt>
+        <dd>Individuals and organizations need a way to issue
+          <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claims</a> about themselves or others that can be verified and trusted.
+        </dd>
+        <dt>Needs</dt>
+        <dd><a href="#uneed_F_1">F.1 Reuse know your customer</a>, <a href="#uneed_E_1">E.1 Digital transcript</a>, <a href="#uneed_L_1">L.1 Digital driving license</a>, <a href="#uneed_H_1">H.1 Prescribing</a></dd>
+      </dl>
+    </section>
+
+    <section id="assert-claim" typeof="bibo:Chapter" resource="#assert-claim" property="bibo:hasPart">
+      <h3 id="h-assert-claim" resource="#h-assert-claim"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>Assert claim</span>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It <em class="rfc2119" title="MUST">MUST</em> be possible for the <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> of a <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a> to restrict the amount of information exposed in a claim they choose to share. It also <em class="rfc2119" title="MUST">MUST</em> be possible for the holder to limit the duration for which that information is shared.</dd>
+        <dt>Motivations</dt>
+        <dd>Credentials may be issued about a <a href="#dfn-subject" class="internalDFN" data-link-type="dfn">subject</a> that include multiple attributes, only some of which are required when verifying a specific criteria is satisfied. The <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> should have the ability to satisfy the criteria without revealing additional attributes that are not required.</dd>
+        <dt>Needs</dt>
+        <dd><a href="#uneed_R_2">R.2 Adult beverages</a>, <a href="#uneed_H_4">H.4 Traveling illness</a></dd>
+      </dl>
+    </section>
+
+    <section id="verify-claim" typeof="bibo:Chapter" resource="#verify-claim" property="bibo:hasPart">
+      <h3 id="h-verify-claim" resource="#h-verify-claim"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.3 </span>Verify claim</span>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It <em class="rfc2119" title="MUST">MUST</em> be possible for an <a href="#dfn-credential-inspector" class="internalDFN" data-link-type="dfn">inspector</a> to verify that the credential is an authentic statement of an <a href="#dfn-issuer" class="internalDFN" data-link-type="dfn">issuer's</a> claims about the <a href="#dfn-subject" class="internalDFN" data-link-type="dfn">subject</a>. The verifying entity must have the capability to connect the issuer’s identity to its credential identifier and the <a href="#dfn-subject" class="internalDFN" data-link-type="dfn">subject's</a> identity to their identifier as indicated in the credential. The issuer’s verification information, such as its public key, must be discoverable from the credential record and verifiably linked to the issuer. It <em class="rfc2119" title="MUST">MUST</em> be possible to do this in an automated fashion.</dd>
+        <dt>Motivations</dt>
+        <dd>In many environments (such as order processing) information such as a payer's address, citizenship, or age need to be automatically verified in order to complete the transaction. </dd>
+        <dt>Needs</dt>
+        <dd><a href="#uneed_F_2">F.2 Money transfer</a>, <a href="#uneed_C_1">C.1 Find a doctor</a>, <a href="#uneed_E_2">E.2 Taking a test</a>, <a href="#uneed_R_1">R.1 Address verification</a>, <a href="#uneed_F_5">F.5 New bank account from home</a>, <a href="#uneed_H_2">H.2 Online pharmacy</a>, <a href="#uneed_C_6">C.6 Job applicant</a></dd>
+      </dl>
+    </section>
+
+    <section id="store-move-claim" typeof="bibo:Chapter" resource="#store-move-claim" property="bibo:hasPart">
+      <h3 id="h-store-move-claim" resource="#h-store-move-claim"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4 </span>Store / Move claim</span>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It <em class="rfc2119" title="MUST">MUST</em> be possible for the holder of a claim to store that claim in one or more <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>. It <em class="rfc2119" title="MUST">MUST</em> also be possible for the holder to move a claim among credential repositories.
+        </dd>
+        <dt>Motivation</dt>
+        <dd>A <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a> is under the control of its <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a>. That holder will choose where their claims are stored based upon a variety of factors (e.g., employer requirements, convenience, service levels, business intelligence). The holder needs to be able to easily choose among various credential repositories, and also to be able to migrate their claims to another without requesting new claims from the claim <a href="#dfn-issuer" class="internalDFN" data-link-type="dfn">issuer</a>. Competition in this space will foster innovation and cost savings. Multiple providers in this space will improve reliabilty.</dd>
+        <dt>Needs</dt>
+        <dd><a href="#uneed_F_4">F.4 Trying out a new service</a>, <a href="#uneed_E_3">E.3 Transferring schools</a>, <a href="#uneed_C_4">C.4 New employer</a></dd>
+      </dl>
+    </section>
+
+    <section id="retrieve-claim" typeof="bibo:Chapter" resource="#retrieve-claim" property="bibo:hasPart">
+      <h3 id="h-retrieve-claim" resource="#h-retrieve-claim"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.5 </span>Retrieve claim</span>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It <em class="rfc2119" title="MUST">MUST</em> be possible for a <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> to select if and which appropriate credential should be sent to an <a href="#dfn-credential-inspector" class="internalDFN" data-link-type="dfn">inspector</a>.</dd>
+        <dt>Motivations</dt>
+        <dd>
+          An <a href="#dfn-credential-inspector" class="internalDFN" data-link-type="dfn">inspector</a> may require that a <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> verify aspects of their suitability for a transaction. In this case, the
+          <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> must be able to select which, if any,
+          <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">Verifiable Claim</a> stored with their <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">Credential Repository</a> is used to satisfy the
+          <a href="#dfn-credential-inspector" class="internalDFN" data-link-type="dfn">inspector</a>.</dd>
+        <dt>Needs</dt>
+        <dd><a href="#uneed_C_5">C.5 Social authority</a>, <a href="#uneed_E_4">E.4 Online classes</a></dd>
+      </dl>
+    </section>
+
+    <section id="revoke-claim" typeof="bibo:Chapter" resource="#revoke-claim" property="bibo:hasPart">
+      <h3 id="h-revoke-claim" resource="#h-revoke-claim"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.6 </span>Revoke claim</span>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It <em class="rfc2119" title="MUST">MUST</em> be possible for the <a href="#dfn-issuer" class="internalDFN" data-link-type="dfn">issuer</a> of a claim to revoke it, after which it will no longer satisfy verification procedures.
+        </dd>
+        <dt>Motivation</dt>
+        <dd>An <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> (<a href="#dfn-issuer" class="internalDFN" data-link-type="dfn">issuer</a>) discovers that a <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claim</a> they have issued and are endorsing for an end user (<a href="#dfn-subject" class="internalDFN" data-link-type="dfn">subject</a>), is no longer valid and wishes to revoke the issued claim.</dd>
+        <dt>Needs</dt>
+        <dd><a href="#uneed_F_3">F.3 Closing account</a>, <a href="#uneed_C_2">C.2 Busy doctor</a>, <a href="#uneed_C_3">C.3 Bad university</a></dd>
+      </dl>
+    </section>
+  </section>
+
+  <section id="user-sequences" typeof="bibo:Chapter" resource="#user-sequences" property="bibo:hasPart">
+    <!-- Editor - @halindrome -->
+    <!--OddPage-->
+    <h2 id="h-user-sequences" resource="#h-user-sequences"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>User sequences</span>
+    </h2>
+    <p>The transaction examples in this section basic ways in which Verifiable Claims might be used. They are not meant to be architecturally constraining. Instead, they are meant to help illustrate the basic way it <em>could</em> be done in a typical commerce situation. Again - please remember that it is just an example, and should not be thought of as the canonical way such a claims environment must be implemented.</p>
+
+    <section id="how-a-verifiable-claim-might-be-created" typeof="bibo:Chapter" resource="#how-a-verifiable-claim-might-be-created" property="bibo:hasPart">
+      <h3 id="h-how-a-verifiable-claim-might-be-created" resource="#h-how-a-verifiable-claim-might-be-created"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.1 </span>How a verifiable claim might be created</span>
+      </h3>
+      <p>In this first example, a user will request a Verifiable Claim - a confirmation of their identity. Consider this illustration:</p>
+
+      <img aria-describedby="claim_flow" alt="Verifiable Claim Creation Flow Description" style="display:block; margin:auto" src="uc-issuing-claims.svg">
+      <p>Expanding on these steps:</p>
+      <ol id="claim_flow" title="Verifiable Claim Creation Flow Description">
+        <li>Jane asks her User Agent to help her get a Verifiable Claim about her identity.</li>
+        <li>Her user agent connects her to a certificate issuer that is able to verify her identity.</li>
+        <li>The issuer examines her documentation.</li>
+        <li>They are satisfied, so the issuer generates a Verifiable Claim for Jane that includes information about her identity linked to their own trusted <em>credential</em>.</li>
+        <li>The issuer delivers the credential back to Jane's User Agent.</li>
+        <li>Jane views the credential to ensure it reflects her requirements.
+        </li>
+        <li>When she is satisfied, she instructs her User Agent to save the Verifiable Claim so she can use it in the future.</li>
+        <li>The UA communicates with her <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">Credential Repository</a>, instructing it to store the new claim.</li>
+        <li>The <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">Credential Repository</a> returns a list of the claims it is holding for Jane to the UA.</li>
+        <li>The UA shows Jane her claim collection - confirming everything she has available.</li>
+      </ol>
+    </section>
+
+    <section id="how-a-verifiable-claim-might-be-used" typeof="bibo:Chapter" resource="#how-a-verifiable-claim-might-be-used" property="bibo:hasPart">
+      <h3 id="h-how-a-verifiable-claim-might-be-used" resource="#h-how-a-verifiable-claim-might-be-used"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>How a verifiable claim might be used</span>
+      </h3>
+      <p>In this example, a <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a> of a claim needs to use that claim in a typical commerce situation:</p>
+      <img aria-describedby="vf-flow" alt="Verifiable Claim Usage Flow Diagram" style="display:block; margin:auto" src="example.svg">
+      <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
+        <li>Jane decides to shop on the web site WinesOfTheWorld.example.com (merchant).</li>
+        <li>The merchant's site requires Jane be 21 years of age and requests Jane prove this (via a user agent-supported API call).</li>
+        <li>Jane's user agent asks her <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> for the proof.
+        </li>
+        <li>The <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> shows Jane three Verifiable Claims it knows of that can assert this claim (e.g., her passport, driving license, and birth certificate).</li>
+        <li>Jane selects one of these and authorizes that it be shared with the merchant.</li>
+        <li>The <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> returns the selected claim as a response to the user agent-supported API call, which in turn delivers it to the merchant.</li>
+        <li>The merchant's server verifies that the claim is valid and satisfies the requirement.</li>
+        <li>The merchant redirects the user agent to the web site with appropriate authorization.</li>
+      </ol>
+    </section>
+  </section>
+
+
+  <section class="appendix" id="terminology" typeof="bibo:Chapter" resource="#terminology" property="bibo:hasPart">
+    <!-- Editor - @halindrome -->
+    <!--OddPage-->
+    <h2 id="h-terminology" resource="#h-terminology"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Terminology</span>
+    </h2>
+
+    <div data-oninclude="restrictReferences">
+      <p>
+        This document attempts to communicate the concepts outlined in the Open Credentials space by using specific terms to discuss particular concepts. This terminology is included below and linked to throughout the document to aid the reader:
+      </p>
+
+      <dl class="termlist" id="terms">
+        <dt><dfn id="dfn-claim" data-dfn-type="dfn">claim</dfn></dt>
+        <dd>
+          A statement made by an <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> about an <a href="#dfn-identity-profile" class="internalDFN" data-link-type="dfn">identity profile</a>.
+        </dd>
+        <dt><dfn id="dfn-credential-repository" data-dfn-type="dfn">credential repository</dfn></dt>
+        <dd>
+          A program, such as a storage vault or personal verifiable claim wallet, that stores and protects access to a <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder's</a> credentials and verifiable claims.</dd>
+
+
+
+
+        <dt><dfn id="dfn-credential" data-dfn-type="dfn">credential</dfn></dt>
+        <dd>
+          A set of claims that refer to a qualification, achievement, personal quality, aspect of an <a href="#dfn-identity" class="internalDFN" data-link-type="dfn">identity</a> such as a name, government ID, preferred payment processor, home address, or university degree typically used to indicate suitability.
+        </dd>
+        <dt><dfn id="dfn-credential-inspector" data-dfn-type="dfn">credential inspector</dfn></dt>
+        <dd>
+          An <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> that requests a <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> for processing.
+        </dd>
+
+
+
+
+
+        <dt><dfn id="dfn-entity" data-dfn-type="dfn">entity</dfn></dt>
+        <dd>
+          A thing with distinct and independent existence such as a person, organization, concept, or device.
+        </dd>
+
+
+        <dt><dfn id="dfn-holder" data-dfn-type="dfn">holder</dfn></dt>
+        <dd>
+          An <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> that is in control of a particular <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a>. Typically a holder's identity is also the primary subject of the information in a credential. A holder is often the <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> that initiates the transmission of a credential.
+        </dd>
+        <dt><dfn id="dfn-identity" data-dfn-type="dfn">identity</dfn></dt>
+        <dd>
+          A set of information that can be used to identify a particular
+          <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> such as a person, organization, concept, or device. An
+          <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> may have multiple identities associated with it.
+        </dd>
+
+
+
+
+
+        <dt><dfn id="dfn-identity-profile" data-dfn-type="dfn">identity profile</dfn></dt>
+        <dd>
+          A set of information that can be used to identify a particular
+          <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a>. An
+          <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> may have multiple identity profiles associated with it.
+        </dd>
+        <dt><dfn id="dfn-issuer" data-dfn-type="dfn">issuer</dfn></dt>
+        <dd>
+          An <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> that creates a <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> and associates it with a particular <a href="#dfn-holder" class="internalDFN" data-link-type="dfn">holder</a>.
+        </dd>
+        <dt><dfn id="dfn-subject" data-dfn-type="dfn">subject</dfn></dt>
+        <dd>
+          An <a href="#dfn-entity" class="internalDFN" data-link-type="dfn">entity</a> which may have multiple <a href="#dfn-identity-profile" class="internalDFN" data-link-type="dfn">identity profiles</a> and about which <a href="#dfn-claim" class="internalDFN" data-link-type="dfn">claims</a> may be made.
+        </dd>
+
+
+
+
+      </dl>
+    </div>
+
+  </section>
+
+  <section class="informative" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Acknowledgements</span>
+    </h2>
+    <p><em>This section is non-normative.</em></p>
+
+    <p>
+      The editors are thankful to the contributions from the Web Payments Workshop, the Web Payments Community Group, the Web Payments Interest Group, the Credentials Community Group, the Verifiable Claims Task Force, and the Verifiable Claims Working Group.
+    </p>
+
+  </section>
+
+
+
+
+  <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>References</span>
+    </h2>
+
+    <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
+      <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Normative references</span>
+      </h3>
+      <dl class="bibliography" resource=""><dt id="bib-JSON-LD">[JSON-LD]</dt>
+        <dd><a href="https://www.w3.org/TR/json-ld/" property="dc:requires"><cite>JSON-LD 1.0</cite></a>. Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. 16 January 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/json-ld/" property="dc:requires">https://www.w3.org/TR/json-ld/</a>
+        </dd>
+      </dl>
+    </section>
+  </section>
+  <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
+  <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+</body>
+</html>
