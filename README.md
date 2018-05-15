@@ -18,7 +18,6 @@ mailing list as well.
 * charter: [https://www.w3.org/2017/vc/WG/charter.html](https://www.w3.org/2017/vc/WG/charter.html)
 * Chairs
   * Matt Stone, Pearson @stonematt
-  * Richard Varn, ETS @rvanr
   * Dan Burnet @burnburn
 
 ### Verifiable Claims Data Model on Github:
