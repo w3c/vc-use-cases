@@ -684,6 +684,34 @@ dl.dl-horizontal > dd {
           on the hook for verifying the underlying credentials and Sam’s claims, including 
           correlating against any additional data they might already have.</p>
       <h3>Threat model</h3>
+        <ol>
+          <li><strong>Threat: Terrorist / Identity fraud.</strong> A bad actor could be 
+            impersonating Sam to attain a passport. Of course, if a bad actor were to be able to 
+            collect the required verifiable credentials--mother’s passport, birth certificate, and 
+            marriage license, that actor has already significantly compromised the system. </li>
+            <ul>
+              <li><strong>Response:</strong> Identity assurance based on the presentation and other 
+                data, above and beyond what is in the presentation and the claims.</li>
+              <li><strong>Response:</strong> Identity assurance based on the contents of the claims, 
+                potentially with enhanced data embedded in the claims, i.e., data not currently in 
+                passports, birth certificates, or marriage license. For example, a biometric 
+                template could be embedded in the birth certificate claim and that template could be 
+                used for interactive identity assurance at the time of submitting the presentation.</li>
+            </ul>
+            <li><strong>Threat: Exposure of private information.</strong>  By storing potentially 
+              compromising information in credentials and sending them over the network, we are 
+              increasing the attack surface for the subjects of those credentials. </li>
+            <ul>
+              <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets 
+                the same encrypted blob)</li>
+              <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This may 
+                leak usage data to the issuer, assuming the Holder must ask for a new, encrypted 
+                credential for each Verifier.</li>
+              <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
+              <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No 
+                issuer involved</li>
+            </ul>
+        </ol>
     </section>
     <section>
       <h2>Expert Dive Instructor</h2>
