@@ -21,9 +21,11 @@ mailing list as well.
   * Richard Varn, ETS @rvanr
   * Dan Burnet @burnburn
 
-### Verifiable Claims github repos
+### Verifiable Claims Data Model on Github:
 * [Data Model](https://github.com/w3c/vc-data-model)
-* [Use Cases](https://github.com/w3c/vc-use-cases)
+
+### Use Cases (this document) editor's draft:
+* [Use Cases](https://w3c.github.io/vc-use-cases/)
 
 ### Other useful links
 * [Public group email archive](https://lists.w3.org/Archives/Public/public-vc-wg/)
