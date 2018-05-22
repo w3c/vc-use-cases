@@ -647,12 +647,71 @@ dl.dl-horizontal > dd {
     <section>
       <h2>Citizenship by parentage</h2>
       <h3>Background</h3>
+        <p>Sam wants to claim US citizenship because his mother is American. Sam has a digital birth 
+          certificate from Kenya, where he was born while his Mother was in the Peace corps. He also 
+          has a digital version of his mother's US passport. Because his mother’s name changed 
+          between his birth and the issuance of the passport, Sam also has a marriage license with 
+          her maiden and married names. Sam is applying for a new passport from the 
+          US Secretary of State.</p>
       <h3>Distinction</h3>
+        <p>This use case is challenging because the mother’s name changed, by marriage, between the 
+          issuance of the birth certificate and passport.</p>
       <h3>Scenario</h3>
+        <p>Sam’s mother emailed him the certificate, license, and passport as independent Verifiable 
+          Credentials. He then creates a Verifiable Presentation which includes those credentials, 
+          a statement of their relationship to each other and his relationship to his mother. He 
+          then visits the U.S. Secretary of State website, creates an account, starts the 
+          application for a passport, and uploads his new Verifiable Presentation as supporting 
+          evidence. After processing the application, Sam is issued both a traditional passport 
+          and a new digital passport.</p>
       <h3>Verifiable Credentials</h3>
+        <ul>
+          <li>Birth Certificate</li>
+          <li>Marriage License</li>
+          <li>Mother’s Passport</li>
+          <li>Sam’s Passport</li>
+        </ul>
       <h3>Verifiable Presentation</h3>
+        <p>A Verifiable Presentation which includes those three credentials, adds his name, photo, 
+          and demographic data along with the assertion that</p>
+          <ol>
+            <li>he is the child in the birth certificate</li>
+            <li>mother in the birth certificate, the person in the passport, the spouse in the 
+              marriage license are all the same person</li>
+          </ol> 
       <h3>Trust Hierarchy</h3>
+        <p>Sam is legally liable for his claim to the rights of citizenship. The state department is 
+          on the hook for verifying the underlying credentials and Sam’s claims, including 
+          correlating against any additional data they might already have.</p>
       <h3>Threat model</h3>
+        <ol>
+          <li><strong>Threat: Terrorist / Identity fraud.</strong> A bad actor could be 
+            impersonating Sam to attain a passport. Of course, if a bad actor were to be able to 
+            collect the required verifiable credentials--mother’s passport, birth certificate, and 
+            marriage license, that actor has already significantly compromised the system. </li>
+            <ul>
+              <li><strong>Response:</strong> Identity assurance based on the presentation and other 
+                data, above and beyond what is in the presentation and the claims.</li>
+              <li><strong>Response:</strong> Identity assurance based on the contents of the claims, 
+                potentially with enhanced data embedded in the claims, i.e., data not currently in 
+                passports, birth certificates, or marriage license. For example, a biometric 
+                template could be embedded in the birth certificate claim and that template could be 
+                used for interactive identity assurance at the time of submitting the presentation.</li>
+            </ul>
+            <li><strong>Threat: Exposure of private information.</strong>  By storing potentially 
+              compromising information in credentials and sending them over the network, we are 
+              increasing the attack surface for the subjects of those credentials. </li>
+            <ul>
+              <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets 
+                the same encrypted blob)</li>
+              <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This may 
+                leak usage data to the issuer, assuming the Holder must ask for a new, encrypted 
+                credential for each Verifier.</li>
+              <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
+              <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No 
+                issuer involved</li>
+            </ul>
+        </ol>
     </section>
     <section>
       <h2>Expert Dive Instructor</h2>
