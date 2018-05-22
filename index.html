@@ -725,13 +725,55 @@ dl.dl-horizontal > dd {
     </section>
     <section>
       <h2>International Travel with minor and upgrade</h2>
+        <p></p>
       <h3>Background</h3>
+        <p>Malathi is traveling internationally with her 8-month old son, Anand. His father Rajesh is staying home. 
+          She books the plane tickets through her travel agent who adds the lap child to the ticket. Malathi 
+          obtains permission from Rajesh stating she is allowed to take the baby out of the country. Malathi has 
+          enough frequent flyer miles to upgrade the ticket to first class.</p>
       <h3>Distinction</h3>
+        <p>Credentials must be coordinated between two verifiers (agent and airline) for two individuals, and a 
+          digital coupon is used.</p>
+        <p>Permission for one parent to fly with the child and without the other parent must be established.</p>
       <h3>Scenario</h3>
+        <p>HappyAir must verify that Malathi is Anand’s guardian and that she is legally allowed to exit the country
+          with him and without his other parent.</p>
+        <p>Prior to booking the trips Malathi visits HappyAir.com to requests an upgrade to first class. HappyAir 
+          issues a Verifiable Credential redeemable for a first class upgrade on an international flight.</p>
       <h3>Verifiable Credentials</h3>
+        <ul>
+          <li>Traveling Parent passport</li>
+          <li>Minor passport (implies parentage/guardianship = “responsibility”?). Note that the subject != holder. The holder(s) of the passport are parents, not the baby.</li>
+          <li>Permission from non-traveling parent </li>
+          <ul>
+            <li>Parents are the holders of the passport credential</li>
+            <li>Parents must present the passport credential</li>
+            <li>In order for one parent to present the passport credential alone, they must give mutual permission.</li>
+            <li>This replaces the role of a notarized permission document</li>
+          </ul>
+          <li>Coupon for upgrade (interchangeable for $$)</li>
+        </ul>
       <h3>Verifiable Presentation</h3>
+        <p>Submitted to HappyAir, includes assertion of permission and Frequent Flyer coupon. </p>
       <h3>Trust Hierarchy</h3>
+        <ul>
+          <li>Malathi is liable for her claim of parentage as well as securing right to admission for herself and her son at their destination (visa may be required). </li>
+          <li>Malathi and Rajesh are both liable for attestation of permission to fly with Anand without the other parent. </li>
+          <li>Malathi is liable for the cost of her ticket and her son’s ticket. </li>
+          <li>The agency is liable for issuing valid tickets and for verifying the credentials provided by the travelers. </li>
+          <li>The airline is liable for issuing tickets and, ultimately, fulfilling the terms of travel [does the airline issue tickets or do the agents?]. </li>
+          <li>The airline is liable for accepting the upgrade coupons at ticketing. </li>
+          <li>The check-in agent, TSA agent, and passport control at the destination are liable for identity assurance at various points of travel, using information contained in the verifiable credentials.</li>
+        </ul>
       <h3>Threat model</h3>
+        <ul>
+          <li><strong>Threat: Key compromise.</strong> Either parent’s keys could be in the hands of a bad actor, 
+            willing to falsify permission and/or assertions of parentage</li>
+                      <ul>
+                        <li><strong>Response:</strong> </li>
+                        <li><strong>Response:</strong> </li>
+                      </ul>
+        </ul>
     </section>
 </section>
 <section >
