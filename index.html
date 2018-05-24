@@ -788,23 +788,23 @@ dl.dl-horizontal > dd {
         </ul>
       <h3>Threat model</h3>
         <ol>
-          <li><strong>Threat: Identity compromise.</strong> Either parent’s identity keys could be 
-            in the hands of a bad actor, willing to falsify permission and/or assertions of 
-            parentage <br /> 
-            Consequences of this sort of threat include:<br />
-            <strong>Rajesh’s key is compromised</strong>, e.g., Malathi controls it. The permission 
-            to travel could be faked. (Kidnapping her own kids and fleeing Rajesh.)<br />
-            <strong>Malathi’s key is compromised</strong>. Someone can impersonate Malathi when 
-            purchasing the ticket.</li>
+          <li><strong>Threat: Stolen Key.</strong> Malathi steals Rajesh’s key in order to fake travel permission. (Kidnapping
+          her own kids and fleeing Rajesh.) </li>
             <ul>
-              <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets 
-                the same encrypted blob)</li>
-              <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This may 
-                leak usage data to the issuer, assuming the Holder must ask for a new, encrypted 
-                credential for each Verifier.</li>
-              <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
-              <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No 
-                issuer involved</li>
+              <li><strong>Response:</strong> Rajesh could store his key with a trusted third party, such as an attorney.</li>
+              <li><strong>Response:</strong> Rajesh could use a hardware wallet with pin or biometric.</li>
+              <li><strong>Response:</strong> Rajesh could use a passphrase on his key </li>
+            </ul>
+            </ul>
+          <li><strong>Threat: <span class="issue">Stolen Key 2</span></strong> Ticket purchaser has Malathi’s credentials, impersonating her to purchase a ticket.
+          This could enable a third party kidnapping.</li>
+            <ul>
+              <li><strong>Response:</strong> Travel permission can be restricted to specific date and or trip minimizing
+              abuse potential.</li>
+              <li><strong>Response:</strong> Embed identifying characteristics or biometric into the credentials so that
+              verifiers can independently verify the subject in front of them is the subject in the credential.</li>
+              <li><strong>Response:</strong> Malathi could use a hardware wallet with pin or biometric.</li>
+              <li><strong>Response:</strong> Malathi could use a passphrase on her key </li>
             </ul>
           <li><strong>Threat: Impersonating traveler.</strong> Handled by identity assurance, using
           information within the credentials </li>
@@ -817,7 +817,16 @@ dl.dl-horizontal > dd {
                 could be embedded in the birth certificate claim and that template could be used for 
                 interactive identity assurance at the time of submitting the presentation.</li>
             </ul>
-        </ul>
+          <li><strong>Threat: Exposure of private information.</strong> By storing potentially compromising information in credentials and sending them over the network, we are increasing the attack surface for the subjects of those credentials.</li>
+            <ul>
+              <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets the same encrypted
+              blob)</li>
+              <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This may leak usage data to the
+              issuer, assuming the Holder must ask for a new, encrypted credential for each Verifier.</li>
+              <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
+              <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No issuer involved</li>
+            </ul>
+        </ol>
     </section>
 </section>
 <section >
