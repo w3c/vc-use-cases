@@ -766,18 +766,35 @@ dl.dl-horizontal > dd {
           <li>The check-in agent, TSA agent, and passport control at the destination are liable for identity assurance at various points of travel, using information contained in the verifiable credentials.</li>
         </ul>
       <h3>Threat model</h3>
-        <ul>
-          <li><strong>Threat: Key compromise.</strong> Either parent’s keys could be in the hands of a bad actor, 
-            willing to falsify permission and/or assertions of parentage</li>
-                      <ul>
-                        <li><strong>Response:</strong> Identity assurance based on the presentation and other data, 
-                          above and beyond what is in the presentation and the claims.</li>
-                        <li><strong>Response:</strong> Identity assurance based on the contents of the claims, 
-                          potentially with enhanced data embedded in the claims, i.e., data not currently in 
-                          passports, birth certificates, or marriage license. For example, a biometric template 
-                          could be embedded in the birth certificate claim and that template could be used for 
-                          interactive identity assurance at the time of submitting the presentation.</li>
-                      </ul>
+        <ol>
+          <li><strong>Threat: Identity compromise.</strong> Either parent’s identity keys could be in the hands of a
+            bad actor, willing to falsify permission and/or assertions of parentage <br />
+            Consequences of this sort of threat include:<br />
+            <strong>Rajesh’s key is compromised</strong>, e.g., Malathi controls it. The permission to travel could 
+            be faked. (Kidnapping her own kids and fleeing Rajesh.)<br />
+            <strong>Malathi’s key is compromised</strong>. Someone can impersonate Malathi when purchasing 
+            the ticket.</li>
+            <ul>
+              <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets 
+                the same encrypted blob)</li>
+              <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This may 
+                leak usage data to the issuer, assuming the Holder must ask for a new, encrypted 
+                credential for each Verifier.</li>
+              <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
+              <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No 
+                issuer involved</li>
+            </ul>
+          <li><strong>Threat: Impersonating traveler.</strong> Handled by identity assurance, using information within 
+            the credentials </li>
+            <ul>
+              <li><strong>Response:</strong> Identity assurance based on the presentation and other data, 
+                above and beyond what is in the presentation and the claims.</li>
+              <li><strong>Response:</strong> Identity assurance based on the contents of the claims, 
+                potentially with enhanced data embedded in the claims, i.e., data not currently in 
+                passports, birth certificates, or marriage license. For example, a biometric template 
+                could be embedded in the birth certificate claim and that template could be used for 
+                interactive identity assurance at the time of submitting the presentation.</li>
+            </ul>
         </ul>
     </section>
 </section>
