@@ -817,7 +817,9 @@ dl.dl-horizontal > dd {
                 could be embedded in the birth certificate claim and that template could be used for 
                 interactive identity assurance at the time of submitting the presentation.</li>
             </ul>
-          <li><strong>Threat: Exposure of private information.</strong> By storing potentially compromising information in credentials and sending them over the network, we are increasing the attack surface for the subjects of those credentials.</li>
+          <li><strong>Threat: Exposure of private information.</strong> By storing potentially compromising information in
+          credentials and sending them over the network, we are increasing the attack surface for the subjects of those
+          credentials.</li>
             <ul>
               <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets the same encrypted
               blob)</li>
@@ -826,6 +828,12 @@ dl.dl-horizontal > dd {
               <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
               <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No issuer involved</li>
             </ul>
+            <li><strong>Threat: Stolen coupon</strong> Rajesh falsifies the upgrade coupon.</li>
+              <ul>
+                <li><strong>Response:</strong> HappyAir signs the coupon with secure credentials.</li>
+                <li><strong>Response:</strong> Travel agent verifies the coupon through a distributed status registry,
+                verifying it is still valid</li>
+              </ul>
         </ol>
     </section>
 </section>
