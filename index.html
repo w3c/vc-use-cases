@@ -741,9 +741,11 @@ dl.dl-horizontal > dd {
         <p>Prior to booking the trips Malathi visits HappyAir.com to requests an upgrade to first class. HappyAir 
           issues a Verifiable Credential redeemable for a first class upgrade on an international flight.</p>
       <h3>Verifiable Credentials</h3>
+        <p class="issue">Reformat section to include the value/purpose of each credential.</p>
         <ul>
           <li>Traveling Parent passport</li>
-          <li>Minor passport (implies parentage/guardianship = “responsibility”?). Note that the subject != holder. The holder(s) of the passport are parents, not the baby.</li>
+          <li>Minor passport <span class="issue">(implies parentage/guardianship = “responsibility”?)</span>. Note that the subject != holder. 
+            The holder(s) of the passport are parents, not the baby.</li>
           <li>Permission from non-traveling parent </li>
           <ul>
             <li>Parents are the holders of the passport credential</li>
@@ -751,7 +753,7 @@ dl.dl-horizontal > dd {
             <li>In order for one parent to present the passport credential alone, they must give mutual permission.</li>
             <li>This replaces the role of a notarized permission document</li>
           </ul>
-          <li>Coupon for upgrade (interchangeable for $$)</li>
+          <li>Coupon for upgrading ticket to first class. <span class="note">This introduces a commerce bound credential.</span></li>
         </ul>
       <h3>Verifiable Presentation</h3>
         <p>Submitted to HappyAir, includes assertion of permission and Frequent Flyer coupon. </p>
