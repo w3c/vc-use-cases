@@ -201,8 +201,8 @@ dl.dl-horizontal > dd {
           <p>This document presents an aggregate use case model, comprised of Needs, Roles, Tasks,
           and Sequences. Taken together, these models define the use cases that the Verifiable
           Claims Working Group will address.</p>
-          <p>User needs define the problem space Verifiable Claims addresses. User Roles specify
-          the roles different entities play when interacting with Verifiable Claims. Tasks define
+          <p>User needs define the problem space verifiable claims addresses. User Roles specify
+          the roles different entities play when interacting with verifiable claims. Tasks define
           the functions users can accomplish and sequences demonstrate how tasks might be realized
           by interactions between entities over time.</p>
           <p>As with all models, this use case model is neither exhaustive nor complete. The listed
@@ -214,7 +214,7 @@ dl.dl-horizontal > dd {
 
 <section>
     <h2>User Roles</h2>
-    <p>There are four roles supported by Verifiable Claims: Issuer, Inspector, Subject, and Holder.</p>
+    <p>There are four roles supported by verifiable claims: Issuer, Inspector, Subject, and Holder.</p>
     <figure>
 		<img height="400" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
         <figcaption>Verifiable Claims Roles</figcaption>
@@ -236,7 +236,7 @@ dl.dl-horizontal > dd {
 
 <section>
     <h2>User Needs</h2>
-    <p>Verifiable Claims address user needs in a number of key domains:</p>
+    <p>Verifiable claims address user needs in a number of key domains:</p>
     <figure>
 		<img alt='Verifiable Claim User Needs' style='display:block; margin:auto' src="user-needs.svg"/>
 		<figcaption>Verifiable Claims, Example Domains for User Needs</figcaption>
@@ -277,7 +277,7 @@ dl.dl-horizontal > dd {
             confident in the delivery of those funds and satisfying various
             regulations regarding prevention of money laundering.</dd>
             <dt><udef>F.3 Closing account</udef></dt>
-            <dd>John opens a checking account at Big Bank Co and is issued a Verifiable Claim
+            <dd>John opens a checking account at Big Bank Co and is issued a verifiable claim
             indicating that the account exists, that the bank verified John's identity, and that
             John has access to the account.  Some time later, John is moving to a new city and
             decides to close that account.  Big Bank Co needs to revoke that claim as part of their
@@ -527,7 +527,7 @@ dl.dl-horizontal > dd {
 </section>
 <section>
     <h2>User Tasks</h2>
-    <p>Use cases are often used as a driver for requirements. While the users of Verifiable Claims have
+    <p>Use cases are often used as a driver for requirements. While the users of verifiable claims have
       needs across many domains, the tasks associated with those needs span the domains. This section
       summarizes those tasks, as well as requirements related to the tasks, and maps the tasks and
       requirements back to the associated needs.</p> <p class="note">It is worth noting that the subject
@@ -627,7 +627,7 @@ dl.dl-horizontal > dd {
             An <a>inspector</a> may require that a <a>holder</a> verify aspects
             of their suitability for a transaction.  In this case, the
             <a>holder</a> must be able to select which, if any,
-            <a>Verifiable Claim</a> stored with their <a>Credential Repository</a>
+            <a>verifiable claim</a> stored with their <a>credential repository</a>
             is used to satisfy the
             <a>inspector</a>.</dd>
             <dt>Needs</dt>
@@ -723,7 +723,7 @@ dl.dl-horizontal > dd {
               <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets 
                 the same encrypted blob)</li>
               <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This may 
-                leak usage data to the issuer, assuming the Holder must ask for a new, encrypted 
+                leak usage data to the issuer, assuming the holder must ask for a new, encrypted 
                 credential for each verifier.</li>
               <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
               <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No 
@@ -917,22 +917,22 @@ dl.dl-horizontal > dd {
 			
         <p>Expanding on these steps:</p>
         <ol id="claim_flow" title="Verifiable Claim Creation Flow Description">
-            <li>Jane asks her User Agent to help her get a Verifiable Claim about
+            <li>Jane asks her User Agent to help her get a verifiable claim about
             her identity.</li>
             <li>Her user agent connects her to a certificate issuer that is able
             to verify her identity.</li>
             <li>The issuer examines her documentation.</li>
-            <li>They are satisfied, so the issuer generates a Verifiable Claim for
+            <li>They are satisfied, so the issuer generates a verifiable claim for
             Jane that includes information about her identity linked to their
             own trusted <em>credential</em>.</li>
             <li>The issuer delivers the credential back to Jane's User Agent.</li>
             <li>Jane views the credential to ensure it reflects her
             requirements.</li>
             <li>When she is satisfied, she instructs her User Agent to save the
-            Verifiable Claim so she can use it in the future.</li>
-            <li>The UA communicates with her <a>Credential Repository</a>,
+            verifiable claim so she can use it in the future.</li>
+            <li>The UA communicates with her <a>credential repository</a>,
             instructing it to store the new claim.</li>
-            <li>The <a>Credential Repository</a> returns a list of the claims it is
+            <li>The <a>credential repository</a> returns a list of the claims it is
             holding for Jane to the UA.</li>
             <li>The UA shows Jane her claim collection - confirming
             everything she has available.</li>
@@ -954,7 +954,7 @@ dl.dl-horizontal > dd {
             requests Jane prove this (via a user agent-supported API call).</li>
             <li>Jane's user agent asks her <a>credential repository</a> for the
             proof.</li>
-            <li>The <a>credential repository</a> shows Jane three Verifiable Claims
+            <li>The <a>credential repository</a> shows Jane three verifiable claims
             it knows of that
             can assert this claim (e.g., her passport, driving
             license, and birth certificate).</li>
