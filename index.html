@@ -980,6 +980,155 @@ dl.dl-horizontal > dd {
     </div>
 
 </section>
+<section class="appendix">
+    <h2>Example Verifable Credentials</h2>
+    <h3>Focal Use Case: International Travel with Minor</h3>
+
+    <pre class="example nohighlight" title="Malathi's passport (simple model)">
+{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:9f6878c8-73c7-11e8-ab37-23a1a3504fd0",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2028-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+    "givenName": "Malathi",
+    "familyName": "Hamal",
+    "citizenship": "US",
+    /* any other claims made by gov't */
+  },
+  "proof": {/* signature by gov't */}
+}
+    </pre>
+
+    <pre class="example nohighlight" title="Malathi's passport (passport is a document model) ">
+{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:9f6878c8-73c7-11e8-ab37-23a1a3504fd0",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2028-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+    "passport": {
+      "id": "urn:uuid:79c181dc-73c7-11e8-8c1f-2bb1fd2d268a",
+      "type": "Passport",
+      "traveler": {
+        "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+        "givenName": "Malathi",
+        "familyName": "Hamal",
+        "citizenship": "US"
+      },
+      /* any other passport fields */
+    }
+  },
+  "proof": {/* signature by gov't */}
+}
+        </pre>
+
+        <pre class="example nohighlight" title="Amanda's passport">
+{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:b306614c-73c7-11e8-b596-47e8c5ce9144",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2020-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "givenName": "Anand",
+    "familyName": "Hamal"
+    "citizenship": "US",
+    /* any other claims made by gov't */
+  },
+  "proof": {/* signature by gov't */}
+}
+        </pre>
+
+        <pre class="example nohighlight" title="Amanda's birth certificate">
+{
+	"@context": [
+		"https://w3id.org/credentials/v1",
+		"https://example.com/travel-vocab/v1"
+	],
+	"id": "urn:uuid:05a47fe2-73c8-11e8-ac1e-7fe0051a1d75",
+	"type": ["VerifiableCredential", "BirthCertificate"],
+	"issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+	"expires": "2020-01-01T00:00:00Z",
+	"claim": {
+		"id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+		"citizenship": "US",
+		"birthDate": "2017-10-01T00:00:00Z",
+		"birthPlace": {
+			"type": "Hospital",
+			"address": {
+				"type": "US address",
+				"addressLocality": "Denver",
+				"addressRegion": "CO",
+				"postalCode": "80209",
+				"streetAddress": "123 Main St."
+			}
+		},
+		"givenName": "Anand",
+		"familyName": "Hamal",
+		"parent": [{
+			"id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+			"type": "Person",
+			"givenName": "Malathi",
+			"familyName": "Hamal",
+			"maidenName": "Holla"
+		}, {
+			"id": "did:example:BgXRjB4RPrrsUVoVNaYNwzfznKsWep7AWrZkiyVcorEN",
+			"type": "Person",
+			"givenName": "Rajesh",
+			"familyName": "Hamal"
+		}]
+	},
+	"proof": {/* signature by gov't */}
+}
+        </pre>
+
+        <pre class="example nohighlight" title="Permission to travel from Rajesh
+using schema.org vocab">
+{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:58c08196-73c6-11e8-b030-3bd8a829a356",
+  "type": ["VerifiableCredential", "ChildTravelPass"],
+  "issuer": "did:example:BgXRjB4RPrrsUVoVNaYNwzfznKsWep7AWrZkiyVcorEN",
+  "expires": "2018-07-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "potentialAction": {
+      "type": "TravelAction",
+      "agent": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+      "participant": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+      "location": {
+        "type": "Country",
+        "address": {
+          "addressCountry": "CA"
+        }
+      }
+    }
+  },
+  "proof": {/* signature by Rajesh proving control of DID */}
+}
+        </pre>
+</section>
 
 <section class="informative">
     <h2>Acknowledgements</h2>
