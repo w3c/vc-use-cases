@@ -17,8 +17,8 @@ mailing list as well.
 * Group page: [https://www.w3.org/2017/vc/WG/](https://www.w3.org/2017/vc/WG/)
 * charter: [https://www.w3.org/2017/vc/WG/charter.html](https://www.w3.org/2017/vc/WG/charter.html)
 * Chairs
-  * Matt Stone, Pearson @stonematt
-  * Dan Burnet @burnburn
+  * Matt Stone @stonematt
+  * Dan Burnet, Consensys @burnburn
 
 ### Verifiable Claims Data Model on Github:
 * [Data Model](https://github.com/w3c/vc-data-model)
