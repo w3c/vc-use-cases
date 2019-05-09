@@ -214,7 +214,7 @@ dl.dl-horizontal > dd {
 
 <section>
     <h2>User Roles</h2>
-    <p>There are four roles supported by verifiable claims: Issuer, Inspector, Subject, and Holder.</p>
+    <p>There are four roles supported by verifiable claims: Issuer, Verifier, Subject, and Holder.</p>
     <figure>
 		<img height="400" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
         <figcaption>Verifiable Claims Roles</figcaption>
@@ -222,7 +222,7 @@ dl.dl-horizontal > dd {
     <dl>
         <dt>Issuer</dt>
         <dd>The entity that creates a claim and associates it with a particular subject.</dd>
-        <dt>Inspector</dt>
+        <dt>Verifier</dt>
         <dd>The entity verifying a claim about a given subject.
         <dt>Subject</dt>
         <dd>The entity about whom a claim is issued.
@@ -431,7 +431,7 @@ dl.dl-horizontal > dd {
             <dd>Barney was a board-certified physician, but he ran out of
             time to complete his contuning education requirements and his
             certification lapsed.  Since the board can revoke his
-            certification, <a>credential inspectors</a> will automatically be
+            certification, <a>credential verifiers</a> will automatically be
             aware that he can no longer issue prescriptions or perform medical
             procedures.</dd>
             <dt><udef>C.3 Bad university</udef></dt>
@@ -502,7 +502,7 @@ dl.dl-horizontal > dd {
             that asserts a <a>claim</a> that she has right to drive a car. She
             requests a credential from the certifying authority
             (<a>issuer</a>) that she can use to prove to the officer
-            (<a>credential inspector</a>) that her <a>claim</a> is
+            (<a>credential verifier</a>) that her <a>claim</a> is
             valid.</dd>
             <dt><udef>L.2 Seamless immigration</udef></dt>
             <dd>Tom is a frequent international traveler.  In order to speed processing
@@ -583,7 +583,7 @@ dl.dl-horizontal > dd {
         <h3>Verify Claim</h3>
         <dl class="dl-horizontal">
             <dt>Requirement</dt>
-            <dd>It MUST be possible for an <a>inspector</a> to verify that the
+            <dd>It MUST be possible for a <a>verifier</a> to verify that the
             credential is an authentic statement of an <a>issuer's</a> claims
             about the <a>subject</a>. The verifying entity must have the
             capability to connect the issuer’s identity to its
@@ -627,15 +627,15 @@ dl.dl-horizontal > dd {
             <dt>Requirement</dt>
             <dd>It MUST be possible for a <a>holder</a> to select if and which
             appropriate
-            credential should be sent to an <a>inspector</a>.</dd>
+            credential should be sent to a <a>verifier</a>.</dd>
             <dt>Motivations</dt>
             <dd>
-            An <a>inspector</a> may require that a <a>holder</a> verify aspects
+            A <a>verifier</a> may require that a <a>holder</a> verify aspects
             of their suitability for a transaction.  In this case, the
             <a>holder</a> must be able to select which, if any,
             <a>verifiable claim</a> stored with their <a>credential repository</a>
             is used to satisfy the
-            <a>inspector</a>.</dd>
+            <a>verifier</a>.</dd>
             <dt>Needs</dt>
             <dd><uref>C.5</uref>, <uref>E.4</uref></dd>
         </dl>
