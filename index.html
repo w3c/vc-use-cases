@@ -374,7 +374,7 @@ dl.dl-horizontal dt:not(:first-child) + dd {
         through her health care network and goes in for treatment. She is a new patient, so the
         clinic needs to know who she is and how she will be paying. When checking in, she
         presents her verifiable claim that demonstrates her identity and her proof of
-        insurance. When the clinc submits this to the insurance company, they can automatically
+        insurance. When the clinic submits this to the insurance company, they can automatically
         ascertain that she submitted her proof of identity and insurance to the provider and
         granted the physician the ability to submit the claim for payment.</dd>
       <dt>
@@ -438,7 +438,7 @@ dl.dl-horizontal dt:not(:first-child) + dd {
         <udef>C.2 Busy doctor</udef>
       </dt>
       <dd>Barney was a board-certified physician, but he ran out of
-        time to complete his contuning education requirements and his
+        time to complete his continuing education requirements and his
         certification lapsed.  Since the board can revoke his
         certification, <a>credential inspectors</a> will automatically be
         aware that he can no longer issue prescriptions or perform medical
@@ -450,9 +450,13 @@ dl.dl-horizontal dt:not(:first-child) + dd {
         that she was a trained Project Manager.  It was later discovered
         that BigTraining Co. was not actually training anyone, and their
         organization's certificate was revoked via the US Department of
-        Education's Accreditation Database. Jane's credential is
-        therefore invalid, and prospective employers will be aware of
-        this when they check her certifications.</dd>
+        Education's Accreditation Database, invalidating Jane's credential.
+        Jane's current employer performs a monthly check on the validity of
+        the credentials that its employees provided at the time they were hired.
+        So, within a month, he will find out that Jane has not been trained
+        appropriately, and can take corresponding action.
+        Also, any prospective employers will become aware of
+        this when they check Jane's certifications.</dd>
       <dt>
         <udef>C.4 New employer</udef>
       </dt>
@@ -491,6 +495,13 @@ dl.dl-horizontal dt:not(:first-child) + dd {
         only verifying that she is the <a>holder</a> of the certificate, that she is the <a>subject</a> of it, and that she is an aid worker.  In this
         way she maintains her anonymity in this controversial forum while
         still being able to assist her fellow countrymen.</dd>
+      <dd>Social healthcare platforms, such as those on which Josie and Paula post their profiles and messages,
+        enhance the trustworthiness of such posts by publishing (possibly anonymized) claims and credentials 
+        that the platform itself has verified at the time they were posted.
+        However, as time elapses, so does the likelihood that such claims are no longer valid,
+        e.g. because they have expired, or they have been revoked.
+        To ensure the trustworthiness of its content, the platform decides to check the validity of all claims
+        that have been posted on a daily basis, and to (temporarily) remove any invalid claims, or posts that have such claims.</dd>
       <dt>
         <udef>C.6 Job applicant</udef>
       </dt>
@@ -706,6 +717,36 @@ dl.dl-horizontal dt:not(:first-child) + dd {
         ,
         <uref>C.3</uref>
       </dd>
+    </dl>
+  </section>
+  <section>
+    <h3>Check Revocation</h3>
+    <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It MUST be possible for the <a>verifier</a> that has been presented with a revocable claim,
+        to check whether or not that claim has been revoked, not only when it received that claim, but also at later times.
+        Such checking MUST NOT require the <a>verifier</a> to contact the <a>holder</a> from which the claim was received.
+        Also, it MUST NOT  require the <a>verifier</a> to contact the <a>issuer</a> of that claim.
+        <dt>Motivation</dt>
+        <dd>Claims that are valid at the time a <a>verifier</a> receives them (and checks their validity),
+        may no longer be valid at the time that they are actually used, e.g. for making decisions.
+        This may be caused e.g. by expiration of (the credential that contains) the claim,
+        or by that credential having been revoked by its <a>issuer</a>.
+        Using claims whose validity no longer is verifiable, to make decisions, comes with a risk
+        that increases as the period between the validity-check and the use of such claims gets longer.
+        In order to thwart this risk, the <a>verifier</a> must be able to check the validity of such claims
+        immediately prior to using them.
+        Note that since the <a>verifier</a>, at this point in time, may not be able to connect to the <a>holder</a>,
+        it must be able to check the validity on its own.
+        Also note that for reasons of privacy, the <a>verifier</a> should not connect to the <a>issuer</a>
+        at the time it checks the validity of the claim, since the <a>issuer</a> could then learn which of its credentials
+        are being used by which <a>verifier</a>s.</dd>
+        <dt>Needs</dt>
+        <dd><uref>F.1</uref>, <uref>F.5</uref>, <uref>E.2</uref>, <uref>E.4</uref>, <uref>H.2</uref>, <uref>H.4</uref>
+        , <uref>C.2</uref>, <uref>C.3</uref>, <uref>C.5</uref>.
+        Also, the need for this is illustrated in section 5.2, 
+        where the NOAA needs to check the current status of all of Pat's certifications.</dd>
+        <div class="note">The above paragraph on Needs needs to be revised.</div>
     </dl>
   </section>
 </section>
