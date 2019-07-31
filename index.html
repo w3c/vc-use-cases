@@ -537,6 +537,67 @@ dl.dl-horizontal > dd {
               area for the duration of the conflict.</dd>
         </dl>
     </section>
+    <section>
+        <h3>Devices</h3>
+        <p>Intelligence devices are created and deployed so that they can interact with other
+        <a>entities</a> (people, organizations, devices). Establishing trust and maintaining
+        secure relationships with these devices is especially critical.</p>
+        <dl class="left dl-horizontal">
+            <dt><udef>I.1 Devices during manufacturing</udef></dt>
+            <dd><p>Bob, the director of production at HVAC Manufacturing, issues a device identity
+            <a>verifiable credential</a> (e.g. IDevID, IAK) at the factory for an energy-saving
+            fan controller IoT device.</p>
+ 
+            <p>Carol, senior quality engineer at Certifications Testing Lab, issues a certification of specification-compliance <a>verifiable credential</a> to the fan-controller device at
+            the certification lab during the manufacturing process.</p>
+
+            <p>When the fan controller is installed at the customer's office at Modern Office Spaces,
+            the controller's identity <a>credential</a> can be verified by Sam, IT technician,
+            to establish the identity of the controller as part of the on-boarding of the new
+            controller. The controller's specification-compliance <a>credential</a> is verified
+            to demonstrate the controller's Energy-Star compliance.</p> 
+            </dd>
+            <dt><udef>I.2 Devices during delivery</udef></dt>
+            <dd><p>As the fan controller leaves the factory, additional verifiable <a>credentials</a>
+            are issued by Vince, a systems engineer at VAR Resellers, as he verifies the
+            manufacturer's configuration matches the verifiable <a>credentials</a> accompanying
+            the device. He then installs a software package specific to Modern Office Spaces needs
+            and issues verifiable <a>credentials</a> that establish evidence of possession by
+            VAR Resellers and the software additions Vince made to the device.</p>
+
+            <p>Finally, upon delivery to Sam, the end customer, the verifiable <a>credentials</a>
+            show that the fan controller has been securely handled and contains the correct
+            features and certifications.</p></dd>
+            <dt><udef>I.3 Devices setup for operating autonomously</udef></dt>
+            <dd>
+            <p>Sam, the new device owner, needs to trust the device originated from
+            HVAC Manufacturing and was handled correctly by Carol at Certifications Testing Lab
+            and installed with the correct software package by Vince at VAR Resellers. After Sam
+            verifies each of the <a>credentials</a>, he issues another verifiable <a>credential</a>
+            for fan controller #37 which includes assertions relating to trust: device manufacturer
+            model/version, software manufacturer model/version, security versions of components TCB,
+            and associated devices the fan controller is authorized to interact with including
+            thermostat-board-room.
+            </p>
+
+            <p>The thermostat-board-room monitors room temperature. When the temperature is too hot
+            it switches the fan controller #37 on and later when the temperature reaches a
+            comfortable level, off. The device makes sure the control signals from
+            thermostat-board-room are authorized (namely, that Sam intended for
+            thermostat-board-room to control the fan controller).</p>
+
+            <p>Sam is concerned about the security of the smart board room. He configures the
+            autonomously interacting devices to re-verify device trustworthiness attributes
+            periodically by re-checking that the device originated from HVAC Manufacturing and
+            was handled correctly by Carol at Certifications Testing Lab and installed with the
+            correct software package by Vince at VAR Resellers.</p>
+
+            <p>Sam may update the device’s software occasionally during its lifetime. Even though
+            Sam is applying the update, Vince supplies the correct update. The device ensures
+            that only Vince is able to supply the updated software image and that only Sam is
+            able to apply the update.</p></dd>
+        </dl>
+    </section>
 </section>
 <section>
     <h2>User Tasks</h2>
