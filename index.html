@@ -608,15 +608,20 @@ dl.dl-horizontal > dd {
         <dt>Requirement</dt>
         <dd>It MUST be possible for a <a>verifier</a> to determine
         what pairs of (credential type, issuer) it accepts as valid,
-        i.e. trusts to be valid.
-        Consequently, it must also be possible for an issuer 
-        to advertise (publish) the credentials that it is willing and capable of issuing.
-        Such advertisements SHOULD contain all information that typical <a>verifier</a>s would need
-        to make their trust decision. This would typically include syntax and semantics 
-        of the claims in the credential, an endpoint at which the issuer issues these credentials,
+        i.e. trusts to be valid, for what purposes.
+        It SHOULD be possible that VCs that may contain the same information,
+        but that are issued by different issuers, are all acceptable for one purpose,
+        but only specific issuers would be allowed for another purpose.
+        Every <a>verifier</a> MUST make its own decisions in this regard.
+        As a consequence, it MUST be possible for a <a>verifier</a> to obtain
+        all information that it finds relevant for making such determinations,
+        and hence also for <a>issuer</a>s to publish (advertise) such information.
+        It is envisaged that such information would include 
+        syntax and semantics of the claims in the credential,
+        an endpoint at which the issuer issues these credentials,
         and (optionally) other meta-data, such as liability that the issuer takes,
         compensations for issue/use of such credentials, procedures that the issuer has followed
-        to verify the truthfulness of issued claims, etc. </dd>
+        to verify the truthfulness of issued claims, etc.</dd>
         <dt>Motivations</dt>
         <dd>Whenever a holder requests a <a>verfier</a> to provide a product or service, 
         the <a>verfier</a> must return a query for the claims (from <a>issuer</a>s that it trusts, and)
