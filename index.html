@@ -214,7 +214,7 @@ dl.dl-horizontal > dd {
 
 <section>
     <h2>User Roles</h2>
-    <p>There are four roles supported by verifiable claims: Issuer, <a>Verifier</a> , Subject, and Holder.</p>
+    <p>There are four roles supported by verifiable claims: <a>Issuer</a>, <a>Verifier</a> , <a>Subject</a>, and <a>Holder</a>.</p>
     <figure>
 		<img height="400" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
         <figcaption>Verifiable Claims Roles</figcaption>
@@ -787,7 +787,7 @@ dl.dl-horizontal > dd {
       </ol>
       <h3>Threat model</h3>
       <ol>
-        <li><strong>Threat: Issuer is compromised.</strong> One of the dive schools had their private keys stolen, but the school itself only ever issues valid certificates. </li>
+        <li><strong>Threat: <a>Issuer</a> is compromised.</strong> One of the dive schools had their private keys stolen, but the school itself only ever issues valid certificates. </li>
         <ol>
           <li><strong>Response : </strong>Use multi-sig to prevent theft of a single key  from relevance </li>
           <li><strong>Response : </strong>Hardware wallet to minimize threat of network-based attack</li>
@@ -840,7 +840,7 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
         <li><strong>Response : </strong>Use better identity assurance for the verifier, i.e., don't give capability to strangers.</li>
         <li><strong>Response : </strong> Use Object Capabilities based on strong authentication and well-known public keys.</li>
       </ol>
-      <li><strong>Threat: Issuer spoofs Pat and Pat receives VC from non PADI-certified instructor</strong>. </li>
+      <li><strong>Threat: <a>Issuer</a> spoofs Pat and Pat receives VC from non PADI-certified instructor</strong>. </li>
       <ol>
         <li><strong>Response : </strong> Pat runs PADI's wallet software to make sure any certificates they receive are authentic.</li>
         <li><strong>Response : </strong> Pat checks the VC with a PADI-provided tool before accepting it</li>
