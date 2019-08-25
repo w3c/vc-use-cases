@@ -183,7 +183,7 @@ dl.dl-horizontal > dd {
     </div>
     <section>
         <h3>Importance of this work</h3>
-        <p>Entities (people, organizations, devices) need to make many kinds of claims as part of
+        <p>Entities (people, organizations, devices) need to make many kinds of <a>claims</a> as part of
         their everyday activities. As more and more of these important activities move to the
         Internet, entities need to be able to transmit instantly <em>verifiable</em> claims (e.g.,
         about their location, accomplishments, value, what-have-you). From educational records to
@@ -267,7 +267,7 @@ dl.dl-horizontal > dd {
             so he chooses to use it.  In his third year, Rocky decides to
             transfer to Moosylvania Tech.  They do not offer a service, but
             he does not want to continue to use the service of his old (and
-            now rival school) so he moves his claims to the
+            now rival school) so he moves his <a>claims</a> to the
             service offered by his bank without needing to have them
             reissued.</dd>
         <dt><udef>E.4 Online classes</udef></dt>
@@ -359,12 +359,12 @@ dl.dl-horizontal > dd {
             normal account closing process.</dd>
             <dt><udef>F.4 Trying out a new service</udef></dt>
             <dd>Nikita has several accounts with BigBank, as well as a
-            brokerage account with WallStreetCo.  She had placed all of her claims
+            brokerage account with WallStreetCo.  She had placed all of her <a>claims</a>
             in a <a>credential repository</a> at BigBank that came free
             when she opened her accounts.  WallStreetCo is now offering a new
             <a>repository</a> that has an interface she thinks she will prefer.
             Nikita copies
-            her claims from BigBank into the repository at WallStreetCo to
+            her <a>claims</a> from BigBank into the repository at WallStreetCo to
             experiment with their service, but continues to use the service
             from BigBank while she is testing.</dd>
             <dt><udef>F.5 New bank account from home</udef></dt>
@@ -448,12 +448,12 @@ dl.dl-horizontal > dd {
             this when they check her certifications.</dd>
             <dt><udef>C.4 New employer</udef></dt>
             <dd>Jessica is a medical doctor practicing in the United States.
-            She has a variety of digital claims that explain her
+            She has a variety of digital <a>claims</a> that explain her
             qualifications, schooling, continuing education achievements, and
             board certifications.  These are all stored in the <a>credential
             repository</a> provided by her employer.  When she is offered a
             position with another health provider network, she can
-            automatically transfer all of these claims to her new
+            automatically transfer all of these <a>claims</a> to her new
             employer.</dd>
             <dt><udef>C.5 Social authority</udef></dt>
             <dd>Josie is a healthcare worker that has created a
@@ -462,9 +462,9 @@ dl.dl-horizontal > dd {
             workforce. She lists her employment history and
             credentials including degrees, certificates, and digital
             badges. The website requests verification of her
-            credential claims in order for her credentials to be
+            credential <a>claims</a> in order for her credentials to be
             visible when she posts messages.
-            Josie authorizes the sharing of the relevant claims with the
+            Josie authorizes the sharing of the relevant <a>claims</a> with the
             website, and the site verifies them before
             allowing Josie to expose them.</dd>
             <dd>"Freedom?" is an online forum that encourages
@@ -588,7 +588,7 @@ dl.dl-horizontal > dd {
         <dl class="dl-horizontal">
             <dt>Requirement</dt>
             <dd>It MUST be possible for a <a>verifier</a> to verify that the
-            credential is an authentic statement of an <a>issuer's</a> claims
+            credential is an authentic statement of an <a>issuer's</a> <a>claims</a>
             about the <a>subject</a>. The verifying entity must have the
             capability to connect the issuer’s identity to its
             credential identifier and the <a>subject's</a> identity to
@@ -616,10 +616,10 @@ dl.dl-horizontal > dd {
             claim issuer.</dd>
             <dt>Motivation</dt>
             <dd>A <a>claim</a> is under the control of its <a>holder</a>. That holder will choose
-            where their claims are stored based upon a variety of factors (e.g., employer
+            where their <a>claims</a> are stored based upon a variety of factors (e.g., employer
             requirements, convenience, service levels, provider cost, business intelligence). The
             holder needs to be able to easily choose among various credential repositories, and
-            also to be able to migrate their claims to another without requesting new claims from
+            also to be able to migrate their <a>claims</a> to another without requesting new <a>claims</a> from
             the claim <a>issuer</a>.</dd>
             <dt>Needs</dt>
             <dd><uref>F.4</uref>, <uref>E.3</uref>, <uref>C.4</uref></dd>
@@ -709,7 +709,7 @@ dl.dl-horizontal > dd {
           </ol> 
       <h3>Trust Hierarchy</h3>
         <p>Sam is legally liable for his claim to the rights of citizenship. The state department is 
-          on the hook for verifying the underlying credentials and Sam’s claims, including 
+          on the hook for verifying the underlying credentials and Sam’s <a>claims</a>, including 
           correlating against any additional data they might already have.</p>
       <h3>Threat model</h3>
         <ol>
@@ -719,9 +719,9 @@ dl.dl-horizontal > dd {
             marriage license, that actor has already significantly compromised the system. </li>
             <ul>
               <li><strong>Response:</strong> Identity assurance based on the presentation and other 
-                data, above and beyond what is in the presentation and the claims.</li>
-              <li><strong>Response:</strong> Identity assurance based on the contents of the claims, 
-                potentially with enhanced data embedded in the claims, i.e., data not currently in 
+                data, above and beyond what is in the presentation and the <a>claims</a>.</li>
+              <li><strong>Response:</strong> Identity assurance based on the contents of the <a>claims</a>, 
+                potentially with enhanced data embedded in the <a>claims</a>, i.e., data not currently in 
                 passports, birth certificates, or marriage license. For example, a biometric 
                 template could be embedded in the birth certificate claim and that template could be 
                 used for interactive identity assurance at the time of submitting the presentation.</li>
@@ -730,12 +730,12 @@ dl.dl-horizontal > dd {
               compromising information in credentials and sending them over the network, we are 
               increasing the attack surface for the subjects of those credentials. </li>
             <ul>
-              <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier gets 
+              <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every verifier gets 
                 the same encrypted blob)</li>
-              <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This may 
+              <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each verifier. This may 
                 leak usage data to the issuer, assuming the holder must ask for a new, encrypted 
                 credential for each verifier.</li>
-              <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
+              <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each verifier.</li>
               <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No 
                 issuer involved.</li>
             </ul>
@@ -977,9 +977,9 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
           information within the credentials </li>
             <ul>
               <li><strong>Response:</strong> Identity assurance based on the presentation and other
-              data, above and beyond what is in the presentation and the claims.</li>
+              data, above and beyond what is in the presentation and the <a>claims</a>.</li>
               <li><strong>Response:</strong> Identity assurance based on the contents of the
-              claims, potentially with enhanced data embedded in the claims, i.e., data not
+              <a>claims</a>, potentially with enhanced data embedded in the <a>claims</a>, i.e., data not
               currently in passports, birth certificates, or marriage license. For example, a
               biometric template could be embedded in the birth certificate claim and that template
               could be used for interactive identity assurance at the time of submitting the
@@ -998,12 +998,12 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
           compromising information in credentials and sending them over the network, we are
           increasing the attack surface for the subjects of those credentials.</li>
             <ul>
-              <li><strong>Response:</strong> Encrypt the claims (once by issuer, every verifier
+              <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every verifier
               gets the same encrypted blob)</li>
-              <li><strong>Response:</strong> Encrypt the claims uniquely for each verifier. This
+              <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each verifier. This
               may leak usage data to the issuer, assuming the holder must ask for a new, encrypted
               credential for each Verifier.</li>
-              <li><strong>Response:</strong> Blind the claims uniquely for each verifier.</li>
+              <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each verifier.</li>
               <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier.
               No issuer involved</li>
             </ul>
@@ -1020,11 +1020,11 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
 <section >
     <!-- Editor - @halindrome -->
     <h2>User Sequences</h2>
-    <p>The transaction examples in this section show basic ways in which verifiable claims might be
+    <p>The transaction examples in this section show basic ways in which verifiable <a>claims</a> might be
     used. They are not meant to be architecturally constraining. Instead, they are meant to help
     illustrate the basic way it <em>could</em> be done in a typical commerce situation.
     Again&mdash;please remember that it is just an example, and should not be thought of as the
-    canonical way such a claims environment must be implemented.</p>
+    canonical way such a <a>claims</a> environment must be implemented.</p>
     <section>
         <h3>How a Verifiable Claim Might Be Created</h3>
         <p>In this first example, a user will request a verifiable claim&mdash;a
@@ -1053,7 +1053,7 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
             verifiable claim so she can use it in the future.</li>
             <li>The UA communicates with her <a>credential repository</a>,
             instructing it to store the new claim.</li>
-            <li>The <a>credential repository</a> returns a list of the claims it is
+            <li>The <a>credential repository</a> returns a list of the <a>claims</a> it is
             holding for Jane to the UA.</li>
             <li>The UA shows Jane her claim collection&mdash;confirming
             everything she has available.</li>
