@@ -740,10 +740,10 @@ dl.dl-horizontal > dd {
           issuance of the birth certificate and passport.</p>
       <h3>Scenario</h3>
         <p>Sam’s mother emailed him the certificate, license, and passport as independent Verifiable 
-          Credentials. He then creates a verifiable presentation which includes those credentials, 
+          Credentials. He then creates a <a>verifiable presentation</a> which includes those credentials, 
           a statement of their relationship to each other and his relationship to his mother. He 
           then visits the US Secretary of State website, creates an account, starts the 
-          application for a passport, and uploads his new verifiable presentation as supporting 
+          application for a passport, and uploads his new <a>verifiable presentation</a> as supporting 
           evidence. After processing the application, Sam is issued both a traditional passport 
           and a new digital passport.</p>
       <h3>Verifiable Credentials</h3>
@@ -762,7 +762,7 @@ dl.dl-horizontal > dd {
         </dl>
         
       <h3>Verifiable Presentation</h3>
-        <p>A verifiable presentation which includes those three credentials, adds his name, photo, 
+        <p>A <a>verifiable presentation</a> which includes those three credentials, adds his name, photo, 
           and demographic data along with the assertion that</p>
           <ol>
             <li>He is the child in the birth certificate.</li>
@@ -780,13 +780,13 @@ dl.dl-horizontal > dd {
             collect the required <a>verifiable credentials</a>&mdash;mother’s passport, birth certificate, and 
             marriage license, that actor has already significantly compromised the system. </li>
             <ul>
-              <li><strong>Response:</strong> Identity assurance based on the presentation and other 
-                data, above and beyond what is in the presentation and the <a>claims</a>.</li>
+              <li><strong>Response:</strong> Identity assurance based on the <a>presentation</a> and other 
+                data, above and beyond what is in the <a>presentation</a> and the <a>claims</a>.</li>
               <li><strong>Response:</strong> Identity assurance based on the contents of the <a>claims</a>, 
                 potentially with enhanced data embedded in the <a>claims</a>, i.e., data not currently in 
                 passports, birth certificates, or marriage license. For example, a biometric 
                 template could be embedded in the birth certificate claim and that template could be 
-                used for interactive identity assurance at the time of submitting the presentation.</li>
+                used for interactive identity assurance at the time of submitting the <a>presentation</a>.</li>
             </ul>
             <li><strong>Threat: Exposure of private information.</strong>  By storing potentially 
               compromising information in credentials and sending them over the network, we are 
@@ -798,7 +798,7 @@ dl.dl-horizontal > dd {
                 leak usage data to the issuer, assuming the holder must ask for a new, encrypted 
                 credential for each verifier.</li>
               <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each verifier.</li>
-              <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier. No 
+              <li><strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each verifier. No 
                 issuer involved.</li>
             </ul>
         </ol>
@@ -1038,14 +1038,14 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
           <li><strong>Threat: Impersonating traveler.</strong> Handled by identity assurance, using
           information within the credentials </li>
             <ul>
-              <li><strong>Response:</strong> Identity assurance based on the presentation and other
-              data, above and beyond what is in the presentation and the <a>claims</a>.</li>
+              <li><strong>Response:</strong> Identity assurance based on the <a>presentation</a> and other
+              data, above and beyond what is in the <a>presentation</a> and the <a>claims</a>.</li>
               <li><strong>Response:</strong> Identity assurance based on the contents of the
               <a>claims</a>, potentially with enhanced data embedded in the <a>claims</a>, i.e., data not
               currently in passports, birth certificates, or marriage license. For example, a
               biometric template could be embedded in the birth certificate claim and that template
               could be used for interactive identity assurance at the time of submitting the
-              presentation.</li>
+              <a>presentation</a>.</li>
             </ul>
           <li><strong>Threat: False Parent</strong> Someone other than than Rajesh, e.g., Fred,
           signs the travel permission with a valid key, allowing Malathi to travel without Rajesh’s
@@ -1066,7 +1066,7 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
               may leak usage data to the issuer, assuming the holder must ask for a new, encrypted
               credential for each Verifier.</li>
               <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each verifier.</li>
-              <li><strong>Response:</strong> Encrypt the presentation uniquely for each verifier.
+              <li><strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each verifier.
               No issuer involved</li>
             </ul>
             <li><strong>Threat: Stolen coupon</strong> Rajesh falsifies the upgrade coupon.</li>
