@@ -144,7 +144,7 @@ dl.dl-horizontal > dd {
     <p> A <em>verifiable claim</em> is a qualification, achievement, quality, or piece of
     information about an <a>entity's</a> background such as a name, government ID, payment
     provider, home address, or university degree. Such a claim describes a quality or qualities,
-    property or properties of an entity which establish its existence and uniqueness. The use cases
+    property or properties of an <a>entity</a> which establish its existence and uniqueness. The use cases
     outlined here are provided in order to make progress toward possible future standardization and
     interoperability of both low and high-stakes <a>claims</a> with the goals of storing,
     transmitting, and receiving digitally verifiable proof of attributes such as qualifications and
@@ -185,9 +185,9 @@ dl.dl-horizontal > dd {
         <h3>Importance of this work</h3>
         <p>Entities (people, organizations, devices) need to make many kinds of <a>claims</a> as part of
         their everyday activities. As more and more of these important activities move to the
-        Internet, entities need to be able to transmit instantly <em>verifiable</em> claims (e.g.,
+        Internet, <a>entities</a> need to be able to transmit instantly <em>verifiable</em> claims (e.g.,
         about their location, accomplishments, value, what-have-you). From educational records to
-        payment account access, the next generation of web applications will authorize entities to
+        payment account access, the next generation of web applications will authorize <a>entities</a> to
         perform actions based on rich sets of credentials issued by trusted parties. Human- and
         machine-mediated decisions about job applications, account access, collaboration, and
         professional development will depend on filtering and analyzing growing amounts of data. It
@@ -202,9 +202,9 @@ dl.dl-horizontal > dd {
           and Sequences. Taken together, these models define the use cases that the Verifiable
           Claims Working Group will address.</p>
           <p>User needs define the problem space verifiable claims addresses. User Roles specify
-          the roles different entities play when interacting with verifiable claims. Tasks define
+          the roles different <a>entities</a> play when interacting with verifiable claims. Tasks define
           the functions users can accomplish and sequences demonstrate how tasks might be realized
-          by interactions between entities over time.</p>
+          by interactions between <a>entities</a> over time.</p>
           <p>As with all models, this use case model is neither exhaustive nor complete. The listed
           uses cannot capture all possible use cases. Similarly, the models do not completely
           characterize the use cases represented. However, the combined model is intended to
@@ -221,15 +221,15 @@ dl.dl-horizontal > dd {
 	</figure>
     <dl>
         <dt>Issuer</dt>
-        <dd>The entity that creates a claim and associates it with a particular subject.</dd>
+        <dd>The <a>entity</a> that creates a claim and associates it with a particular subject.</dd>
         <dt>Verifier</dt>
-        <dd>The entity verifying a claim about a given subject.
+        <dd>The <a>entity</a> verifying a claim about a given subject.
         <dt>Subject</dt>
-        <dd>The entity about whom a claim is issued.
+        <dd>The <a>entity</a> about whom a claim is issued.
         <dt>Holder</dt>
-        <dd>A role an entity may perform by possessing one or more <a>verifiable credentials</a>. A holder
+        <dd>A role an <a>entity</a> may perform by possessing one or more <a>verifiable credentials</a>. A holder
         is usually, but not always, the subject of the <a>verifiable credentials</a> that they are
-        holding. Holders store their credentials in <a>credential repositories</a>.</dd>
+        holding. <a>holders</a> store their credentials in <a>credential repositories</a>.</dd>
     </dl>
 </section>
 
@@ -421,7 +421,7 @@ dl.dl-horizontal > dd {
         <h3>Professional Credentials</h3>
         <p>In many aspects of life it is important to know that <a>entities</a> are who
         they say they are, and that they can do what they say. Professional accreditation is one
-        way of learning about the abilities of an entity.  Being able to verify these credentials
+        way of learning about the abilities of an <a>entity</a>.  Being able to verify these credentials
         is essential to their value.</p>
         <dl class="left dl-horizontal">
             <dt><udef>C.1 Find a doctor</udef></dt>
@@ -497,7 +497,7 @@ dl.dl-horizontal > dd {
         <h3>Legal Identity</h3>
         <p>For many transactions, an <a>entity</a> must be able to prove some aspect of their
         identity in a way that can be quickly verified.  Governments and other widely recognized
-        entities are well positioned to provide such identification in a verifiable digital form.</p>
+        <a>entities</a> are well positioned to provide such identification in a verifiable digital form.</p>
         <dl class="left dl-horizontal">
             <dt><udef>L.1 Digital driving license</udef></dt>
             <dd>Asako just passed the final test to receive a drivers
@@ -544,7 +544,7 @@ dl.dl-horizontal > dd {
       needs across many domains, the tasks associated with those needs span the domains. This section
       summarizes those tasks, as well as requirements related to the tasks, and maps the tasks and
       requirements back to the associated needs.</p> <p class="note">It is worth noting that the subject
-      may or may not be the same entity as the holder. There are no tasks in these examples that require
+      may or may not be the same <a>entity</a> as the holder. There are no tasks in these examples that require
       participation of the subject.</p>
       <figure>
 		  <img alt='Verifiable Claim User Tasks' style='display:block; margin:auto' src="user-tasks.svg"/>
@@ -589,7 +589,7 @@ dl.dl-horizontal > dd {
             <dt>Requirement</dt>
             <dd>It MUST be possible for a <a>verifier</a> to verify that the
             credential is an authentic statement of an <a>issuer's</a> <a>claims</a>
-            about the <a>subject</a>. The verifying entity must have the
+            about the <a>subject</a>. The verifying <a>entity</a> must have the
             capability to connect the issuer’s identity to its
             credential identifier and the <a>subject's</a> identity to
             their identifier as indicated in the credential. The
@@ -806,8 +806,8 @@ dl.dl-horizontal > dd {
       </ol>
       <li><strong>Threat: Dive school could issue certificates with a revoked authorization</strong>. </li>
       <ol>
-        <li><strong>Response : </strong> Holders should verify the authorization, before they buy the course</li>
-        <li><strong>Response : </strong>Holders should verify the authorization at the point of receiving the credential</li>
+        <li><strong>Response : </strong> <a>Holders</a> should verify the authorization, before they buy the course</li>
+        <li><strong>Response : </strong><a>Holders</a> should verify the authorization at the point of receiving the credential</li>
         <li><strong>Response : </strong>Verifiers should also verify the authorization of the issuer</li>
       </ol>
       <li><strong>Threat: Pat could send a proxy to earn their certificate</strong>. </li>
@@ -912,7 +912,7 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
             </ul>
             <p class="issue">This is content from the prior discussion&mdash;remove the following points?</p>
             <ul>
-              <li>Parents are the holders of the passport credential</li>
+              <li>Parents are the <a>holders</a> of the passport credential</li>
               <li>Parents must present the passport credential</li>
               <li>In order for one parent to present the passport credential alone, they must give 
                 mutual permission.</li>
