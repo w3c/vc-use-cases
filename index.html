@@ -228,7 +228,7 @@ dl.dl-horizontal > dd {
         <dd>The <a>entity</a> about whom a claim is issued.
         <dt>Holder</dt>
         <dd>A role an <a>entity</a> may perform by possessing one or more <a>verifiable credentials</a>. A holder
-        is usually, but not always, the subject of the <a>verifiable credentials</a> that they are
+        is usually, but not always, the <a>subject</a> of the <a>verifiable credentials</a> that they are
         holding. <a>holders</a> store their credentials in <a>credential repositories</a>.</dd>
     </dl>
 </section>
@@ -728,7 +728,7 @@ dl.dl-horizontal > dd {
             </ul>
             <li><strong>Threat: Exposure of private information.</strong>  By storing potentially 
               compromising information in credentials and sending them over the network, we are 
-              increasing the attack surface for the subjects of those credentials. </li>
+              increasing the attack surface for the <a>subject</a> of those credentials. </li>
             <ul>
               <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every verifier gets 
                 the same encrypted blob)</li>
@@ -877,7 +877,7 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
           individuals, and a digital coupon is used.</li>
           <li>The relationship of the minor to the non-traveling parent must be established, in
           order for the permission to be considered.</li>
-          <li>In the minor's passport case, the subject is not the holder of the verifiable
+          <li>In the minor's passport case, the <a>subject</a> is not the holder of the verifiable
           credential. The holder(s) of the passport are parents, not the minor.</li>
         </ul>
 
@@ -967,8 +967,8 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
               <li><strong>Response:</strong> Travel permission can be restricted to specific date
               and or trip minimizing abuse potential.</li>
               <li><strong>Response:</strong> Embed identifying characteristics or biometric into
-              the credentials so that verifiers can independently verify the subject in front of
-              them is the subject in the credential.</li>
+              the credentials so that verifiers can independently verify the <a>subject</a> in front of
+              them is the <a>subject</a> in the credential.</li>
               <li><strong>Response:</strong> Malathi could use a hardware wallet with pin or
               biometric.</li>
               <li><strong>Response:</strong> Malathi could use a passphrase on her key </li>
@@ -996,7 +996,7 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
             </ul>
           <li><strong>Threat: Exposure of private information.</strong> By storing potentially
           compromising information in credentials and sending them over the network, we are
-          increasing the attack surface for the subjects of those credentials.</li>
+          increasing the attack surface for the <a>subject</a> of those credentials.</li>
             <ul>
               <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every verifier
               gets the same encrypted blob)</li>
