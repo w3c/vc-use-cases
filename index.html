@@ -214,7 +214,7 @@ dl.dl-horizontal > dd {
 
 <section>
     <h2>User Roles</h2>
-    <p>There are four roles supported by verifiable claims: Issuer, Verifier, Subject, and Holder.</p>
+    <p>There are four roles supported by verifiable claims: Issuer, <a>Verifier</a> , Subject, and Holder.</p>
     <figure>
 		<img height="400" alt='Verifiable Claim User Roles' style='display:block; margin:auto' src="user-roles.svg"/>
         <figcaption>Verifiable Claims Roles</figcaption>
@@ -730,13 +730,13 @@ dl.dl-horizontal > dd {
               compromising information in credentials and sending them over the network, we are 
               increasing the attack surface for the <a>subject</a> of those credentials. </li>
             <ul>
-              <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every verifier gets 
+              <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every <a>verifier</a>  gets 
                 the same encrypted blob)</li>
-              <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each verifier. This may 
+              <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each <a>verifier</a>.  This may 
                 leak usage data to the issuer, assuming the holder must ask for a new, encrypted 
-                credential for each verifier.</li>
-              <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each verifier.</li>
-              <li><strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each verifier. No 
+                credential for each <a>verifier</a>. </li>
+              <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each <a>verifier</a>. </li>
+              <li><strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each <a>verifier</a>.  No 
                 issuer involved.</li>
             </ul>
         </ol>
@@ -808,7 +808,7 @@ dl.dl-horizontal > dd {
       <ol>
         <li><strong>Response : </strong> <a>Holders</a> should verify the authorization, before they buy the course</li>
         <li><strong>Response : </strong><a>Holders</a> should verify the authorization at the point of receiving the credential</li>
-        <li><strong>Response : </strong>Verifiers should also verify the authorization of the issuer</li>
+        <li><strong>Response : </strong><a>Verifiers</a>  should also verify the authorization of the issuer</li>
       </ol>
       <li><strong>Threat: Pat could send a proxy to earn their certificate</strong>. </li>
       <ol>
@@ -1000,11 +1000,11 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
             <ul>
               <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every verifier
               gets the same encrypted blob)</li>
-              <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each verifier. This
+              <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each <a>verifier</a>.  This
               may leak usage data to the issuer, assuming the holder must ask for a new, encrypted
               credential for each Verifier.</li>
-              <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each verifier.</li>
-              <li><strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each verifier.
+              <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each <a>verifier</a>. </li>
+              <li><strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each <a>verifier</a>. 
               No issuer involved</li>
             </ul>
             <li><strong>Threat: Stolen coupon</strong> Rajesh falsifies the upgrade coupon.</li>
