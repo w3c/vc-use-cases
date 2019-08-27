@@ -646,29 +646,61 @@ dl.dl-horizontal > dd {
         </dl>
     </section>
     <section>
-        <h3>Verify Claim</h3>
-        <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for a <a>verifier</a> to verify that the
-            credential is an authentic statement of an <a>issuer's</a> claims
-            about the <a>subject</a>. The verifying entity must have the
-            capability to connect the issuer’s identity to its
-            credential identifier and the <a>subject's</a> identity to
-            their identifier as indicated in the credential. The
-            issuer’s verification information, such as its public key,
-            must be discoverable from the credential record and
-            verifiably linked to the issuer.  It MUST be possible to
-            do this in an automated fashion.</dd>
-            <dt>Motivations</dt>
-            <dd>In many environments (such as order processing) information such as a payer's
-            address, citizenship, or age need to be automatically verified in order to complete
-            the transaction.  </dd>
-            <dt>Needs</dt>
-            <dd><uref>F.2</uref>, <uref>C.1</uref>, <uref>E.2</uref>, <uref>R.1</uref>, 
-              <uref>F.5</uref>, <uref>H.2</uref>, <uref>C.6</uref></dd>
-        </dl>
-    </section>
-    <section>
+      <h3>Verify Claim</h3>
+      <dl class="dl-horizontal">
+          <dt>Requirement</dt>
+          <dd>It MUST be possible for a <a>verifier</a> to verify that the
+          credential is an authentic statement of an <a>issuer's</a> claims
+          about the <a>subject</a>. The verifying entity must have the
+          capability to connect the issuer’s identity to its
+          credential identifier and the <a>subject's</a> identity to
+          their identifier as indicated in the credential. The
+          issuer’s verification information, such as its public key,
+          must be discoverable from the credential record and
+          verifiably linked to the issuer.  It MUST be possible to
+          do this in an automated fashion.</dd>
+          <dt>Motivations</dt>
+          <dd>In many environments (such as order processing) information such as a payer's
+          address, citizenship, or age need to be automatically verified in order to complete
+          the transaction.  </dd>
+          <dt>Needs</dt>
+          <dd><uref>F.2</uref>, <uref>C.1</uref>, <uref>E.2</uref>, <uref>R.1</uref>, 
+            <uref>F.5</uref>, <uref>H.2</uref>, <uref>C.6</uref></dd>
+      </dl>
+  </section>
+  <section>
+    <h3>Trust Claim</h3>
+    <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>It MUST be possible for a <a>verifier</a> to determine
+        what pairs of (credential type, issuer) it accepts as valid,
+        i.e. trusts to be valid, for what purposes.
+        It SHOULD be possible that VCs that may contain the same information,
+        but that are issued by different issuers, are all acceptable for one purpose,
+        but only specific issuers would be allowed for another purpose.
+        Every <a>verifier</a> MUST make its own decisions in this regard.
+        As a consequence, it MUST be possible for a <a>verifier</a> to obtain
+        all information that it finds relevant for making such determinations,
+        and hence also for <a>issuer</a>s to publish (advertise) such information.
+        It is envisaged that such information would include 
+        syntax and semantics of the claims in the credential,
+        an endpoint at which the issuer issues these credentials,
+        and (optionally) other meta-data, such as liability that the issuer takes,
+        compensations for issue/use of such credentials, procedures that the issuer has followed
+        to verify the truthfulness of issued claims, etc.</dd>
+        <dt>Motivations</dt>
+        <dd>Whenever a holder requests a <a>verfier</a> to provide a product or service, 
+        the <a>verfier</a> must return a query for the claims (from <a>issuer</a>s that it trusts, and)
+        that it needs to decide whether or not to provide the requested product or service. 
+        In order for the <a>verfier</a> to decide whether or not it trusts credentials from identifiable <a>issuer</a>s,
+        it needs information, e.g. about the kinds of claims in such credentials, the way that the <a>issuer</a> has verified them, and more.
+        This requirement becomes increasingly important as the transactions that the <a>verfier</a> must decide on,
+        come with a higher value (and hence a higher risk).</dd>
+        <dt>Needs</dt>
+        <dd>every use-case</dd>
+    </dl>
+</section>
+<section>
         <h3>Store / Move Claim</h3>
         <dl class="dl-horizontal">
             <dt>Requirement</dt>
