@@ -237,70 +237,83 @@ There are four roles supported by verifiable claims: <a>Issuer</a>, <a>Verifier<
     </figure>
       <dl>
         <dt>Issuer</dt>
-        <dd>The <a>entity</a> that creates a claim and associates it with a particular subject.
+        <dd>
+The <a>entity</a> that creates a claim and associates it with a particular subject.
         </dd>
         <dt>Verifier</dt>
-        <dd>The <a>entity</a> verifying a claim about a given subject.
+        <dd>
+The <a>entity</a> verifying a claim about a given subject.
         <dt>Subject</dt>
-        <dd>The <a>entity</a> about whom a claim is issued.
+        <dd>
+The <a>entity</a> about whom a claim is issued.
         <dt>Holder</dt>
-        <dd>A role an <a>entity</a> may perform by possessing one or more <a>verifiable
-            credentials</a>. A holder
-          is usually, but not always, the <a>subject</a> of the <a>verifiable credentials</a>
-          that they are
-          holding. <a>Holders</a> store their <a>credentials</a> in <a>credential
-            repositories</a>.</dd>
+        <dd>
+A role an <a>entity</a> may perform by possessing one or more <a>verifiable
+credentials</a>. A holder is usually, but not always, the <a>subject</a> of the
+<a>verifiable credentials</a> that they are holding. <a>Holders</a> store their
+<a>credentials</a> in <a>credential repositories</a>. </dd>
       </dl>
 </section>
 
 <section>
     <h2>User Needs</h2>
-    <p>Verifiable claims address user needs in a number of key domains:</p>
-    <figure>
-		<img alt='Verifiable Credential User Needs' style='display:block; margin:auto' src="VerifiableCredentialsProblemDomains.png"/>
-		<figcaption>Verifiable Credentials, Example Domains for User Needs</figcaption>
-	</figure>
-  <section>
-    <h3>Education</h3>
-    <p>The education domain includes all levels of the educational experience; from primary
-    through professional continuing education.</p>
-    <dl class="left dl-horizontal">
-        <dt><udef>E.1 Digital transcript</udef></dt>
-        <dd>Joleen is the registrar of Mega University and, by virtue of
-        her office, is responsible for the integrity, accuracy, and
-        security of academic records.  Joleen has been a pioneering
-        registrar in advocating an 'extended transcript' that includes not
-        only the standard set of course grades but also adds supplementary
-        information on learner competencies.  These might include work
-        experiences and non-educational but marketable skills. Upon the
-        request of her students Joleen issues a digital credential that
-        includes an extended transcript.</dd>
-        <dt><udef>E.2 Taking a test</udef></dt>
-        <dd>Eunice is about to take her ACT (a test used to evaluate her readiness for
-        college). When she arrives at the testing center, she is required to present
-        identification. Her government-issued identity certificate is acceptable, as the
-        <a>verifiable claims</a> contained in it reflect all of the required attributes and it
-        is difficult to counterfeit.</dd>
-        <dt><udef>E.3 Transferring schools</udef></dt>
-        <dd>Rocky is an undergraduate student at Wossamotta U.  His school
-            provides a <a>credential repository</a> service to all students and alumni,
-            so he chooses to use it.  In his third year, Rocky decides to
-            transfer to Moosylvania Tech.  They do not offer a service, but
-            he does not want to continue to use the service of his old (and
-            now rival school) so he moves his <a>claims</a> to the
-            service offered by his bank without needing to have them
-            reissued.</dd>
-        <dt><udef>E.4 Online classes</udef></dt>
-        <dd>In MOOC and other online learning systems, being able
-        to reliably identify participants is vital to ensure the
-        individual evaluation and certification. Nick is participating in
-        a course online and takes a test.
-        He is required to provide his
-        credentials to prove his identity before the test, and
-        then to allow the system to issue a <a>verifiable claim</a> regarding the results of
-        his test.</dd>
-    </dl>
-  </section>
+    <p>
+Verifiable claims address user needs in a number of key domains:
+    </p>
+    <figure> <img alt='Verifiable Credential User Needs' style='display:block; margin:auto'
+        src="VerifiableCredentialsProblemDomains.png" />
+      <figcaption>Verifiable Credentials, Example Domains for User Needs</figcaption>
+    </figure> 
+    <section>
+      <h3>Education</h3>
+      <p>The education domain includes all levels of the educational experience; from primary
+        through professional continuing education.</p>
+      <dl class="left dl-horizontal">
+        <dt>
+          <udef>E.1 Digital transcript</udef>
+        </dt>
+        <dd>
+Joleen is the registrar of Mega University and, by virtue of her office, is responsible
+for the integrity, accuracy, and security of academic records. Joleen has been a
+pioneering registrar in advocating an 'extended transcript' that includes not only the
+standard set of course grades but also adds supplementary information on learner
+competencies. These might include work experiences and non-educational but marketable
+skills. Upon the request of her students Joleen issues a digital credential that includes
+an extended transcript.
+        </dd>
+        <dt>
+          <udef>E.2 Taking a test</udef>
+        </dt>
+        <dd>
+          Eunice is about to take her ACT (a test used to evaluate her readiness for
+          college). When she arrives at the testing center, she is required to present
+          identification. Her government-issued identity certificate is acceptable, as the
+          <a>verifiable claims</a> contained in it reflect all of the required attributes and it
+          is difficult to counterfeit.
+        </dd>
+        <dt>
+          <udef>E.3 Transferring schools</udef>
+        </dt>
+        <dd>
+Rocky is an undergraduate student at Wossamotta U. His school provides a <a>credential
+  repository</a> service to all students and alumni, so he chooses to use it. In his third
+year, Rocky decides to transfer to Moosylvania Tech. They do not offer a service, but he
+does not want to continue to use the service of his old (and now rival school) so he moves
+his <a>claims</a> to the service offered by his bank without needing to have them
+reissued.
+        </dd>
+        <dt>
+          <udef>E.4 Online classes</udef>
+        </dt>
+        <dd>
+In MOOC and other online learning systems, being able to reliably identify participants is
+vital to ensure the individual evaluation and certification. Nick is participating in a
+course online and takes a test. He is required to provide his credentials to prove his
+identity before the test, and then to allow the system to issue a <a>verifiable claim</a>
+regarding the results of his test.
+        </dd>
+      </dl>
+      </section>
 
   <section>
     <h3>Retail</h3>
