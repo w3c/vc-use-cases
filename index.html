@@ -750,153 +750,200 @@ and that only Sam is able to apply the update.
       </section>
     </section>
 
-<section>
-    <h2>User Tasks</h2>
-    <p>Use cases are often used as a driver for requirements. While the users of verifiable claims have
-      needs across many domains, the tasks associated with those needs span the domains. This section
-      summarizes those tasks, as well as requirements related to the tasks, and maps the tasks and
-      requirements back to the associated needs.</p> <p class="note">It is worth noting that the subject
-      may or may not be the same <a>entity</a> as the holder. There are no tasks in these examples that require
-      participation of the subject.</p>
+    <section>
+      <h2>User Tasks</h2>
+      <p>
+Use cases are often used as a driver for requirements. While the users of
+verifiable claims have needs across many domains, the tasks associated with
+those needs span the domains. This section summarizes those tasks, as well as
+requirements related to the tasks, and maps the tasks and requirements back
+to the associated needs.
+      </p>
+      <p class="note">
+It is worth noting that the subject may or may not be the same <a>entity</a>
+as the holder. There are no tasks in these examples that require
+participation of the subject.
+      </p>
       <figure>
-		  <img alt='Verifiable Claim User Tasks' style='display:block; margin:auto' src="VerifiableCredentialsUserTasks.png"/>
-		  <figcaption>Verifiable Credentials User Tasks</figcaption>
-	  </figure>
-
-
-    <section>
+        <img alt='Verifiable Claim User Tasks' style='display:block; margin:auto'
+          src="VerifiableCredentialsUserTasks.png" />
+        <figcaption>Verifiable Credentials User Tasks</figcaption>
+      </figure>
+    
+      <section>
         <h3>Issue Claim</h3>
-            <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.</dd>
-            <dt>Motivation</dt>
-            <dd>Individuals and organizations need a way to issue
-            <a>claims</a> about themselves or others that can be verified and
-            trusted.</dd>
-            <dt>Needs</dt>
-            <dd><uref>F.1</uref>, <uref>E.1</uref>, <uref>L.1</uref>, <uref>H.1</uref></dd>
+        <dl class="dl-horizontal">
+          <dt>Requirement</dt>
+          <dd>
+It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.
+          </dd>
+          <dt>Motivation</dt>
+          <dd>
+Individuals and organizations need a way to issue <a>claims</a> about
+themselves or others that can be verified and trusted.
+          </dd>
+          <dt>Needs</dt>
+          <dd>
+            <uref>F.1</uref>, <uref>E.1</uref>, <uref>L.1</uref>, <uref>H.1</uref>
+          </dd>
         </dl>
-    </section>
-    <section>
+      </section>
+      
+      <section>
         <h3>Assert Claim</h3>
         <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for the <a>holder</a> of a <a>claim</a> to
-            restrict the amount of information exposed in a claim they choose
-            to share.  It also MUST be possible for the holder to limit the
-            duration for which that information is shared.</dd>
-            <dt>Motivations</dt>
-            <dd>Credentials may be issued about a <a>subject</a> that include
-            multiple attributes, only some of which are required when
-            verifying a specific criteria is satisfied. The <a>holder</a>
-            should have the ability to satisfy the criteria without revealing
-            additional attributes that are not required.</dd>
-            <dt>Needs</dt>
-            <dd><uref>R.2</uref>, <uref>H.4</uref></dd>
+          <dt>Requirement</dt>
+          <dd>
+It MUST be possible for the <a>holder</a> of a <a>claim</a> to restrict the
+amount of information exposed in a claim they choose to share. It also MUST
+be possible for the holder to limit the duration for which that information
+is shared.
+          </dd>
+          <dt>Motivations</dt>
+          <dd>
+Credentials may be issued about a <a>subject</a> that include multiple
+attributes, only some of which are required when verifying a specific
+criteria is satisfied. The <a>holder</a> should have the ability to satisfy
+the criteria without revealing additional attributes that are not required.
+          </dd>
+          <dt>Needs</dt>
+          <dd>
+            <uref>R.2</uref>, <uref>H.4</uref>
+          </dd>
         </dl>
-    </section>
-    <section>
+      </section>
+
+      <section>
         <h3>Verify Claim</h3>
         <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for a <a>verifier</a> to verify that the
-            credential is an authentic statement of an <a>issuer's</a> <a>claims</a>
-            about the <a>subject</a>. The verifying <a>entity</a> must have the
-            capability to connect the issuer’s identity to its
-            credential identifier and the <a>subject's</a> identity to
-            their identifier as indicated in the credential. The
-            issuer’s verification information, such as its public key,
-            must be discoverable from the credential record and
-            verifiably linked to the issuer.  It MUST be possible to
-            do this in an automated fashion.</dd>
-            <dt>Motivations</dt>
-            <dd>In many environments (such as order processing) information such as a payer's
-            address, citizenship, or age need to be automatically verified in order to complete
-            the transaction.  </dd>
-            <dt>Needs</dt>
-            <dd><uref>F.2</uref>, <uref>C.1</uref>, <uref>E.2</uref>, <uref>R.1</uref>, 
-              <uref>F.5</uref>, <uref>H.2</uref>, <uref>C.6</uref></dd>
+          <dt>Requirement</dt>
+          <dd>
+It MUST be possible for a <a>verifier</a> to verify that the credential is an
+authentic statement of an <a>issuer's</a> <a>claims</a> about the
+<a>subject</a>. The verifying <a>entity</a> must have the capability to
+connect the issuer’s identity to its credential identifier and the
+<a>subject's</a> identity to their identifier as indicated in the credential.
+The issuer’s verification information, such as its public key, must be
+discoverable from the credential record and verifiably linked to the issuer.
+It MUST be possible to do this in an automated fashion.
+          </dd>
+          <dt>Motivations</dt>
+          <dd>
+In many environments (such as order processing) information such as a payer's
+address, citizenship, or age need to be automatically verified in order to
+complete the transaction.
+          </dd>
+          <dt>Needs</dt>
+          <dd>
+            <uref>F.2</uref>, <uref>C.1</uref>, <uref>E.2</uref>, <uref>R.1</uref>,
+            <uref>F.5</uref>, <uref>H.2</uref>, <uref>C.6</uref>
+          </dd>
         </dl>
-    </section>
-    <section>
+      </section>
+      <section>
         <h3>Store / Move Claim</h3>
         <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for the holder of a claim to store that claim in one or more
-            <a>credential repositories</a>. It MUST also be possible for the holder to move a claim
-            among <a>credential repositories</a>, and to do so without requesting a new claim from the
-            claim issuer.</dd>
-            <dt>Motivation</dt>
-            <dd>A <a>claim</a> is under the control of its <a>holder</a>. That holder will choose
-            where their <a>claims</a> are stored based upon a variety of factors (e.g., employer
-            requirements, convenience, service levels, provider cost, business intelligence). The
-            holder needs to be able to easily choose among various <a>credential repositories</a>, and
-            also to be able to migrate their <a>claims</a> to another without requesting new <a>claims</a> from
-            the claim <a>issuer</a>.</dd>
-            <dt>Needs</dt>
-            <dd><uref>F.4</uref>, <uref>E.3</uref>, <uref>C.4</uref></dd>
+          <dt>Requirement</dt>
+          <dd>
+It MUST be possible for the holder of a claim to store that claim in one or
+more <a>credential repositories</a>. It MUST also be possible for the holder
+to move a claim among <a>credential repositories</a>, and to do so without
+requesting a new claim from the claim issuer.
+          </dd>
+          <dt>Motivation</dt>
+          <dd>
+A <a>claim</a> is under the control of its <a>holder</a>. That holder will
+choose where their <a>claims</a> are stored based upon a variety of factors
+(e.g., employer requirements, convenience, service levels, provider cost,
+business intelligence). The holder needs to be able to easily choose among
+various <a>credential repositories</a>, and also to be able to migrate their
+<a>claims</a> to another without requesting new <a>claims</a> from the claim
+<a>issuer</a>.
+          </dd>
+          <dt>Needs</dt>
+          <dd>
+            <uref>F.4</uref>, <uref>E.3</uref>, <uref>C.4</uref>
+          </dd>
         </dl>
-    </section>
-    <section>
+      </section>
+      <section>
         <h3>Retrieve Claim</h3>
         <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for a <a>holder</a> to select if and which
-            appropriate
-            credential should be sent to a <a>verifier</a>.</dd>
-            <dt>Motivations</dt>
-            <dd>
-            A <a>verifier</a> may require that a <a>holder</a> verify aspects
-            of their suitability for a transaction.  In this case, the
-            <a>holder</a> must be able to select which, if any,
-            <a>verifiable claim</a> stored with their <a>credential repository</a>
-            is used to satisfy the
-            <a>verifier</a>.</dd>
-            <dt>Needs</dt>
-            <dd><uref>C.5</uref>, <uref>E.4</uref></dd>
+          <dt>Requirement</dt>
+          <dd>
+It MUST be possible for a <a>holder</a> to select if and which appropriate
+credential should be sent to a <a>verifier</a>.
+          </dd>
+          <dt>Motivations</dt>
+          <dd>
+A <a>verifier</a> may require that a <a>holder</a> verify aspects of their
+suitability for a transaction. In this case, the <a>holder</a> must be able
+to select which, if any, <a>verifiable claim</a> stored with their
+<a>credential repository</a> is used to satisfy the <a>verifier</a>.
+          </dd>
+          <dt>Needs</dt>
+          <dd>
+            <uref>C.5</uref>, <uref>E.4</uref>
+          </dd>
         </dl>
-    </section>
-    <section>
+      </section>
+      <section>
         <h3>Revoke Claim</h3>
         <dl class="dl-horizontal">
-            <dt>Requirement</dt>
-            <dd>It MUST be possible for the <a>issuer</a> of a claim to
-            revoke it, after which it will no longer satisfy verification
-            procedures.</dd>
-            <dt>Motivation</dt>
-            <dd>An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have issued and
-            are endorsing for an end user (<a>subject</a>), is no longer valid and wishes to revoke
-            the issued claim.</dd>
-            <dt>Needs</dt>
-            <dd><uref>F.3</uref>, <uref>C.2</uref>, <uref>C.3</uref></dd>
+          <dt>Requirement</dt>
+          <dd>
+It MUST be possible for the <a>issuer</a> of a claim to revoke it, after
+which it will no longer satisfy verification procedures.
+          </dd>
+          <dt>Motivation</dt>
+          <dd>
+An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have
+issued and are endorsing for an end user (<a>subject</a>), is no longer valid
+and wishes to revoke the issued claim.
+          </dd>
+          <dt>Needs</dt>
+          <dd>
+            <uref>F.3</uref>, <uref>C.2</uref>, <uref>C.3</uref>
+          </dd>
         </dl>
+      </section>
     </section>
-</section>
-<section>
-    <h2>Focal Use Cases</h2>
-    <p> Focal Use Cases are meant to provide examples where a blend of features from verifiable
-    claims standard may be used together to solve complex or challenging marketplace needs.</p>
     <section>
-      <h3>Citizenship by Parentage</h3>
-      <h3>Background</h3>
-        <p>Sam wants to claim US citizenship because his mother is American. Sam has a digital birth 
-          certificate from Kenya, where he was born while his Mother was in the Peace corps. He also 
-          has a digital version of his mother's US passport. Because his mother’s name changed 
-          between his birth and the issuance of the passport, Sam also has a marriage license with 
-          her maiden and married names. Sam is applying for a new passport from the 
-          US Secretary of State.</p>
-      <h3>Distinction</h3>
-        <p>This use case is challenging because the mother’s name changed, by marriage, between the 
-          issuance of the birth certificate and passport.</p>
-      <h3>Scenario</h3>
-        <p>Sam’s mother emailed him the certificate, license, and passport as independent Verifiable 
-          Credentials. He then creates a <a>verifiable presentation</a> which includes those credentials, 
-          a statement of their relationship to each other and his relationship to his mother. He 
-          then visits the US Secretary of State website, creates an account, starts the 
-          application for a passport, and uploads his new <a>verifiable presentation</a> as supporting 
-          evidence. After processing the application, Sam is issued both a traditional passport 
-          and a new digital passport.</p>
-      <h3>Verifiable Credentials</h3>
+      <h2>Focal Use Cases</h2>
+      <p> 
+Focal Use Cases are meant to provide examples where a blend of features from
+verifiable claims standard may be used together to solve complex or
+challenging marketplace needs.
+      </p>
+      <section>
+        <h3>Citizenship by Parentage</h3>
+        <h3>Background</h3>
+        <p>
+Sam wants to claim US citizenship because his mother is American. Sam has a
+digital birth certificate from Kenya, where he was born while his Mother was
+in the Peace corps. He also has a digital version of his mother's US
+passport. Because his mother’s name changed between his birth and the
+issuance of the passport, Sam also has a marriage license with her maiden and
+married names. Sam is applying for a new passport from the US Secretary of
+State.
+        </p>
+        <h3>Distinction</h3>
+        <p>
+This use case is challenging because the mother’s name changed, by marriage,
+between the issuance of the birth certificate and passport.
+        </p>
+        <h3>Scenario</h3>
+        <p>
+Sam’s mother emailed him the certificate, license, and passport as
+independent Verifiable Credentials. He then creates a <a>verifiable
+presentation</a> which includes those credentials, a statement of their
+relationship to each other and his relationship to his mother. He then visits
+the US Secretary of State website, creates an account, starts the application
+for a passport, and uploads his new <a>verifiable presentation</a> as
+supporting evidence. After processing the application, Sam is issued both a
+traditional passport and a new digital passport.
+        </p>
+        <h3>Verifiable Credentials</h3>
         <dl class="dl-horizontal">
           <dt>Birth Certificate</dt>
           <dd>Establishes relationship to mother with maiden name</dd>
@@ -912,17 +959,23 @@ and that only Sam is able to apply the update.
         </dl>
         
       <h3>Verifiable Presentation</h3>
-        <p>A <a>verifiable presentation</a> which includes those three credentials, adds his name, photo, 
-          and demographic data along with the assertion that</p>
+        <p>
+A <a>verifiable presentation</a> which includes those three credentials, adds
+his name, photo, and demographic data along with the assertion that
+        </p>
           <ol>
             <li>He is the child in the birth certificate.</li>
-            <li>The mother in the birth certificate, the person in the passport, the spouse in the 
-              marriage license are all the same person.</li>
+            <li>The mother in the birth certificate, the person in the
+            passport, the spouse in the marriage license are all the same
+            person.</li>
           </ol> 
       <h3>Trust Hierarchy</h3>
-        <p>Sam is legally liable for his claim to the rights of citizenship. The state department is 
-          on the hook for verifying the underlying credentials and Sam’s <a>claims</a>, including 
-          correlating against any additional data they might already have.</p>
+        <p>
+Sam is legally liable for his claim to the rights of citizenship. The state
+department is on the hook for verifying the underlying credentials and Sam’s
+<a>claims</a>, including correlating against any additional data they might
+already have.
+        </p>
       <h3>Threat model</h3>
         <ol>
           <li><strong>Threat: Terrorist / Identity fraud.</strong> A bad actor could be 
@@ -956,24 +1009,62 @@ and that only Sam is able to apply the update.
     <section>
       <h2>Expert Dive Instructor</h2>
       <h3>Background</h3>
-      <p>Pat earned multiple diving credentials while living and working in Fiji and Australia. Later, Pat is hired by NOAA as a Dive Instructor, which requires that they maintain certification as an instructor with additional specialist diver certifications in dry suit, night diving, and search and recovery. The dive instructor certification is public record, but the additional specialist certifications are private because they are for personal diving, not acting as an instructor.</p>
-      <p>Part of Pat's job is logging the certifications of fellow divers during NOAA sanctioned dives. </p>
+      <p>
+Pat earned multiple diving credentials while living and working in Fiji and
+Australia. Later, Pat is hired by NOAA as a Dive Instructor, which requires
+that they maintain certification as an instructor with additional specialist
+diver certifications in dry suit, night diving, and search and recovery. The
+dive instructor certification is public record, but the additional specialist
+certifications are private because they are for personal diving, not acting
+as an instructor.
+      </p>
+      <p>
+Part of Pat's job is logging the certifications of fellow divers during NOAA
+sanctioned dives.
+      </p>
       <h3>Distinction</h3>
       <p>This use case is difficult because:
         <ol>
-          <li>Certification in Fiji and Australia. NOAA relies on an international 
-        certification agency, PADI, with relevance in multiple jurisdictions.</li>
-          <li>Each of these credentials is issued by different schools in the name of PADI. </li>
+          <li>Certification in Fiji and Australia. NOAA relies on an
+          international certification agency, PADI, with relevance in
+          multiple jurisdictions.</li>
+          <li>Each of these credentials is issued by different schools in the
+          name of PADI. </li>
           <li>Each credential has an independent expiration cycle. </li>
-          <li>Pat grants NOAA permission (the capability) to validate future credential status changes.</li>
-          <li>On each trip, Pat creates a certified log of all divers, effectively issuing a verified credential about other credentials.</li>
+          <li>Pat grants NOAA permission (the capability) to validate future
+          credential status changes.</li>
+          <li>On each trip, Pat creates a certified log of all divers,
+          effectively issuing a verified credential about other
+          credentials.</li>
         </ol>
       </p>
       <h3>Scenario</h3>
-      <p>When Pat applied for his job at NOAA, he provided <a>verifiable credentials</a> issued by different dive schools licensed by PADI to do so. NOAA verifies cryptographically that the certifications were issued by PADI approved dive schools and that the credentials were still in good standing by checking both the certifications' *and* the dive schools' revocation services.</p>
-      <p>Upon accepting the job, Pat issues NOAA a revocable token that allows NOAA to check the current status of all of his certifications--not just the status of a single <a>verifiable credential</a>. After any specific certification expires--and Pat renews it--NOAA's next check of Pat's certifications returns the status of the renewed certification, not just the status of the (now expired) <a>verifiable credential</a>.</p>
-      <p>When Pat takes a group of divers on NOAA sanctioned dives, he records the <a>verifiable credentials</a> for each diver (which demonstrate their diving certifications), creates a <a>verifiable credential</a> including those credentials; he signs and archives it on his laptop. </p>
-      <p>When Pat retires from NOAA, he revokes that token and NOAA staff is no longer able to monitor his non-public certification status.</p>
+      <p>
+When Pat applied for his job at NOAA, he provided <a>verifiable
+credentials</a> issued by different dive schools licensed by PADI to do so.
+NOAA verifies cryptographically that the certifications were issued by PADI
+approved dive schools and that the credentials were still in good standing by
+checking both the certifications' *and* the dive schools' revocation
+services.
+      </p>
+      <p>
+Upon accepting the job, Pat issues NOAA a revocable token that allows NOAA to
+check the current status of all of his certifications--not just the status of
+a single <a>verifiable credential</a>. After any specific certification
+expires--and Pat renews it--NOAA's next check of Pat's certifications returns
+the status of the renewed certification, not just the status of the (now
+expired) <a>verifiable credential</a>.
+      </p>
+      <p>
+When Pat takes a group of divers on NOAA sanctioned dives, he records the
+<a>verifiable credentials</a> for each diver (which demonstrate their diving
+certifications), creates a <a>verifiable credential</a> including those
+credentials; he signs and archives it on his laptop.
+      </p>
+      <p>
+When Pat retires from NOAA, he revokes that token and NOAA staff is no longer
+able to monitor his non-public certification status.
+      </p>
       <h3>Verifiable Credentials</h3>
       <ol>
         <li>Advanced Open Water Instructor</li>
@@ -991,328 +1082,417 @@ and that only Sam is able to apply the update.
       <h3>Trust Hierarchy</h3>
       <ol>
         <li>PADI is liable for correctly certifying dive schools.</li>
-        <li>Dive schools are liable for correctly certifying Pat's knowledge & skills.</li>
-        <li>Pat is liable for representing the facts in their application and maintaining the revocable capability.</li>
-        <li>NOAA is liable for verifying the credentials and Pat's assertions claiming them, and for assuring Pat's continued good standing for the required credentials.</li>
-        <li>Pat is liable for making sure all divers, on each trip, have valid credentials and are properly logged.</li>
-        <li>Diver's are liable for presenting valid credentials, specifically credentials for which they are the subject, including any formal identity credentials, e.g., passport or driver's license.</li>
+        <li>Dive schools are liable for correctly certifying Pat's knowledge
+        & skills.</li>
+        <li>Pat is liable for representing the facts in their application and
+        maintaining the revocable capability.</li>
+        <li>NOAA is liable for verifying the credentials and Pat's assertions
+        claiming them, and for assuring Pat's continued good standing for the
+        required credentials.</li>
+        <li>Pat is liable for making sure all divers, on each trip, have
+        valid credentials and are properly logged.</li>
+        <li>Diver's are liable for presenting valid credentials, specifically
+        credentials for which they are the subject, including any formal
+        identity credentials, e.g., passport or driver's license.</li>
       </ol>
       <h3>Threat model</h3>
       <ol>
-        <li><strong>Threat: <a>Issuer</a> is compromised.</strong> One of the dive schools had their private keys stolen, but the school itself only ever issues valid certificates. </li>
+        <li><strong>Threat: <a>Issuer</a> is compromised.</strong> One of the dive schools had
+          their private keys stolen, but the school itself only ever issues valid
+          certificates. </li>
         <ol>
-          <li><strong>Response : </strong>Use multi-sig to prevent theft of a single key  from relevance </li>
-          <li><strong>Response : </strong>Hardware wallet to minimize threat of network-based attack</li>
+          <li><strong>Response : </strong>Use multi-sig to prevent theft of a single key from
+            relevance </li>
+          <li><strong>Response : </strong>Hardware wallet to minimize threat of network-based
+            attack</li>
           <li><strong>Response : </strong>Biometrically locked hardware wallet</li>
-          <li><strong>Response : </strong>Frequent rotation to minimize exposure from stolen keys</li>
-          <li><strong>Response : </strong>Enhanced background checks for all individuals with access to keys</li>
-          <li><strong>Response : </strong>Instead of institutional keys, sign certificates with individuals' keys plus credential from the school.</li>
-        </ol></li>
-      <li><strong>Threat: A dive school could issue unearned certificates</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong>Audit certificate issuance. Record all issuings, systemically spot check for validity.</li>
-        <li><strong>Response : </strong>Background checks on schools prior to authorization</li>
-        <li><strong>Response : </strong>Limit the number of certificates that can be issued to limit impact of violation</li>
-        <li><strong>Response : </strong>Limit time horizon that the school may issue on behalf of PADI to require re-validation of qualifications</li>
-        <li><strong>Response : </strong>Use revocation mechanisms for school's authorization credentials</li>
+          <li><strong>Response : </strong>Frequent rotation to minimize exposure from stolen
+            keys</li>
+          <li><strong>Response : </strong>Enhanced background checks for all individuals with
+            access to keys</li>
+          <li><strong>Response : </strong>Instead of institutional keys, sign certificates
+            with individuals' keys plus credential from the school.</li>
+        </ol>
+        </li>
+        <li><strong>Threat: A dive school could issue unearned certificates</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong>Audit certificate issuance. Record all issuings,
+            systemically spot check for validity.</li>
+          <li><strong>Response : </strong>Background checks on schools prior to authorization
+          </li>
+          <li><strong>Response : </strong>Limit the number of certificates that can be issued
+            to limit impact of violation</li>
+          <li><strong>Response : </strong>Limit time horizon that the school may issue on
+            behalf of PADI to require re-validation of qualifications</li>
+          <li><strong>Response : </strong>Use revocation mechanisms for school's authorization
+            credentials</li>
+        </ol>
+        <li><strong>Threat: Dive school could issue certificates with a revoked
+            authorization</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong> <a>Holders</a> should verify the authorization,
+            before they buy the course</li>
+          <li><strong>Response : </strong><a>Holders</a> should verify the authorization at
+            the point of receiving the credential</li>
+          <li><strong>Response : </strong><a>Verifiers</a> should also verify the
+            authorization of the issuer</li>
+        </ol>
+        <li><strong>Threat: Pat could send a proxy to earn their certificate</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong> School should use multi-factor identity assurance
+            during registration and onsite when testing. </li>
+          <li><strong>Response : </strong> Dive school retains video surveillance of event for
+            future audits </li>
+          <li><strong>Response : </strong> Dive boat / test center takes photos of
+            participants and logs them for later audit </li>
+        </ol>
+        <li><strong>Threat: Pat or another dive master could lie about a diver that's on the
+            boat</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong>
+            NOAA requires divers listed to submit endorsement that they were there (they
+            endorse the dive log); Divers mutually sign another diver's log entry</li>
+          <li><strong>Response : </strong>
+            Boat owner signs dive log</li>
+          <li><strong>Response : </strong>
+            Pre-register excursion and expected diver list</li>
+          <li><strong>Response : </strong>
+            Ongoing signed provenance data about Pat's job assignments (location, dates,
+            correspondence, etc) by/with NOAA
+            Manifest "souls on board" before/after including crew</li>
+          <li><strong>Response : </strong>
+            Independent ID proofing of offline credentials (signed picture and/or photo ID)
+          </li>
+        </ol>
+    
+        <li><strong>Threat: Malware could take control of Issuer agent (of verifying
+            agent)</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong> Run virus and malware scans regularly</li>
+          <li><strong>Response : </strong> Isolate issuer agent system to an air gapped
+            environment</li>
+        </ol>
+        <li><strong>Threat: Pat is phished and Pat gives capability to the wrong
+            person/entity</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong>Use better identity assurance for the verifier,
+            i.e., don't give capability to strangers.</li>
+          <li><strong>Response : </strong> Use Object Capabilities based on strong
+            authentication and well-known public keys.</li>
+        </ol>
+        <li><strong>Threat: <a>Issuer</a> spoofs Pat and Pat receives VC from non
+            PADI-certified instructor</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong> Pat runs PADI's wallet software to make sure any
+            certificates they receive are authentic.</li>
+          <li><strong>Response : </strong> Pat checks the VC with a PADI-provided tool before
+            accepting it</li>
+          <li><strong>Response : </strong> Pat checks the VC with a standard tool, to see that
+            (1) There really is a PADI authentication and (2) PADI authentication is actually
+            from PADI</li>
+        </ol>
+        <li><strong>Threat: Pat presents a fake credential as a PADI certification</strong>.
+        </li>
+        <ol>
+          <li><strong>Response : </strong> NOAA verifies the signature on the certification
+            credential AND on the PADI authentication credential.</li>
+        </ol>
+        <li><strong>Threat: Pat's laptop on the boat could be compromised</strong>. </li>
+        <ol>
+          <li><strong>Response : </strong> Use air-gapping techniques, such as QR codes, to
+            limit impact of compromise</li>
+        </ol>
       </ol>
-      <li><strong>Threat: Dive school could issue certificates with a revoked authorization</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong> <a>Holders</a> should verify the authorization, before they buy the course</li>
-        <li><strong>Response : </strong><a>Holders</a> should verify the authorization at the point of receiving the credential</li>
-        <li><strong>Response : </strong><a>Verifiers</a>  should also verify the authorization of the issuer</li>
-      </ol>
-      <li><strong>Threat: Pat could send a proxy to earn their certificate</strong>. </li>
-      <ol>
-          <li><strong>Response : </strong> School should use multi-factor identity assurance during registration and onsite when testing. </li>
-          <li><strong>Response : </strong> Dive school retains video surveillance of event for future audits </li>
-          <li><strong>Response : </strong> Dive boat / test center takes photos of participants and logs them for later audit </li>
-      </ol>
-      <li><strong>Threat: Pat or another dive master could lie about a diver that's on the boat</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong> 
-          NOAA requires divers listed to submit endorsement that they were there (they endorse the dive log); Divers mutually sign another diver's log entry</li>
-        <li><strong>Response : </strong> 
-Boat owner signs dive log</li>
-        <li><strong>Response : </strong> 
-Pre-register excursion and expected diver list</li>
-        <li><strong>Response : </strong> 
-Ongoing signed provenance data about Pat's job assignments (location, dates, correspondence, etc) by/with NOAA
-Manifest "souls on board" before/after including crew</li>
-        <li><strong>Response : </strong> 
-Independent ID proofing of offline credentials (signed picture and/or photo ID)</li>           </ol>
-     
-      <li><strong>Threat: Malware could take control of Issuer agent (of verifying agent)</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong> Run virus and malware scans regularly</li>
-        <li><strong>Response : </strong> Isolate issuer agent system to an air gapped environment</li>
-      </ol>
-      <li><strong>Threat: Pat is phished and Pat gives capability to the wrong person/entity</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong>Use better identity assurance for the verifier, i.e., don't give capability to strangers.</li>
-        <li><strong>Response : </strong> Use Object Capabilities based on strong authentication and well-known public keys.</li>
-      </ol>
-      <li><strong>Threat: <a>Issuer</a> spoofs Pat and Pat receives VC from non PADI-certified instructor</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong> Pat runs PADI's wallet software to make sure any certificates they receive are authentic.</li>
-        <li><strong>Response : </strong> Pat checks the VC with a PADI-provided tool before accepting it</li>
-        <li><strong>Response : </strong> Pat checks the VC with a standard tool, to see that (1) There really is a PADI authentication and (2) PADI authentication is actually from PADI</li>
-      </ol>
-      <li><strong>Threat: Pat presents a fake credential as a PADI certification</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong> NOAA verifies the signature on the certification credential AND on the PADI authentication credential.</li>
-      </ol>
-      <li><strong>Threat: Pat's laptop on the boat could be compromised</strong>. </li>
-      <ol>
-        <li><strong>Response : </strong> Use air-gapping techniques, such as QR codes, to limit impact of compromise</li>
-      </ol>
-    </ol>
-  </section>
+    </section>
 
     <section>
       <h3>International Travel with Minor and Upgrade</h3>
-        <p></p>
-
+      <p></p>
+    
       <h3>Background</h3>
-        <p>Malathi is traveling internationally with her 8-month-old son, Anand. His father, Rajesh,
-        is staying home. Malathi has enough frequent flyer miles to upgrade the ticket to first
-        class.</p>
+      <p>
+Malathi is traveling internationally with her 8-month-old son, Anand. His
+father, Rajesh, is staying home. Malathi has enough frequent flyer miles to
+upgrade the ticket to first class.
+      </p>
       <h3>Distinction</h3>
-        <p>This use case is difficult because:</p>
-        <ul>
-          <li>Current US passports do not establish explicit relationship between parent and child.</li>
-          <li>When one parent travels with a minor, the other parent is required to grant
-          permission for the trip, thus implying guardianship or responsibility.</li>
-          <li>The DID or other Digital Identity system replaces the role of the notary in the
-          paper/physical world</li>
-          <li>Credentials must be coordinated between two verifiers (agent and airline) for two
-          individuals, and a digital coupon is used.</li>
-          <li>The relationship of the minor to the non-traveling parent must be established, in
-          order for the permission to be considered.</li>
-          <li>In the minor's passport case, the <a>subject</a> is not the holder of the verifiable
-          credential. The holder(s) of the passport are parents, not the minor.</li>
-        </ul>
-
+      <p>This use case is difficult because:</p>
+      <ul>
+        <li>Current US passports do not establish explicit relationship
+        between parent and child.</li>
+        <li>When one parent travels with a minor, the other parent is
+        required to grant permission for the trip, thus implying guardianship
+        or responsibility.</li>
+        <li>The DID or other Digital Identity system replaces the role of the
+        notary in the paper/physical world</li>
+        <li>Credentials must be coordinated between two verifiers (agent and
+        airline) for two individuals, and a digital coupon is used.</li>
+        <li>The relationship of the minor to the non-traveling parent must be
+        established, in order for the permission to be considered.</li>
+        <li>In the minor's passport case, the <a>subject</a> is not the
+        holder of the verifiable credential. The holder(s) of the passport
+        are parents, not the minor.</li>
+      </ul>
+    
       <h3>Scenario</h3>
-        <p>Malathi obtains permission from Rajesh stating she is allowed to take the baby out of
-        the country.</p>
-        <p>Prior to booking the trips, Malathi visits HappyAir.com to request an upgrade to first
-        class. HappyAir issues a <a>verifiable credential</a> redeemable for a first class upgrade on an
-        international flight.</p>
-        <p>She books the plane tickets through her travel agent who adds the lap child to the ticket.</p>
-        <p>HappyAir verifies that Malathi has a signed statement from Anand’s other parent stating
-        that she may exit the country with him.</p>
-
+      <p
+>Malathi obtains permission from Rajesh stating she is allowed to take the
+baby out of the country.
+      </p>
+      <p>
+Prior to booking the trips, Malathi visits HappyAir.com to request an upgrade
+to first class. HappyAir issues a <a>verifiable credential</a> redeemable for
+a first class upgrade on an international flight.
+      </p>
+      <p>
+She books the plane tickets through her travel agent who adds the lap child
+to the ticket.
+      </p>
+      <p>
+HappyAir verifies that Malathi has a signed statement from Anand’s other
+parent stating that she may exit the country with him.
+      </p>
+    
       <h3>Verifiable Credentials</h3>
-        <dl class="dl-horizontal">
-          <dt>Malathi's passport</dt>
-          <dd>Establishes identity of the traveling parent</dd>
-          
-          <dt>Anand's passport</dt>
-          <dd>Establishes identity of the minor</dd>
-          
-          <dt>Anand's Birth Certificate</dt>
-          <dd>Establishes relationship to parents and provides link from Rajesh to Anand that
+      <dl class="dl-horizontal">
+        <dt>Malathi's passport</dt>
+        <dd>Establishes identity of the traveling parent</dd>
+    
+        <dt>Anand's passport</dt>
+        <dd>Establishes identity of the minor</dd>
+    
+        <dt>Anand's Birth Certificate</dt>
+        <dd>Establishes relationship to parents and provides link from Rajesh to Anand that
           qualifies the permission to travel </dd>
-
-          <dt>Permission to travel from Rajesh </dt>
-          <dd>
-            <ul>
-              <li>Grants permission from non-traveling parent for minor to travel.</li>
-              <li>Identity matches identity of the parent in the birth certificate, establishing
-              relevance.</li>
-            </ul>
-          </dd>
-          
-          <dt>Upgrade coupon for first class ticket</dt>
-          <dd>Introduces commercial value in a <a>verifiable credential</a> </dd>
-        </dl>
-        <p>For details, refer to <a href='#example-verifable-credentials'>Example Verifiable
-        Credentials</a> in Appendix</p>
-
+    
+        <dt>Permission to travel from Rajesh </dt>
+        <dd>
+          <ul>
+            <li>Grants permission from non-traveling parent for minor to
+            travel.</li>
+            <li>Identity matches identity of the parent in the birth
+            certificate, establishing relevance.</li>
+          </ul>
+        </dd>
+    
+        <dt>Upgrade coupon for first class ticket</dt>
+        <dd>Introduces commercial value in a <a>verifiable credential</a> </dd>
+      </dl>
+      <p>
+For details, refer to <a href='#example-verifable-credentials'>Example
+Verifiable Credentials</a> in Appendix
+        </p>
+    
       <h3>Verifiable Presentation</h3>
-        <p>Submitted to HappyAir, includes Malathi and Anand's passport, assertion of permission, birth certificate and
-        Frequent Flyer coupon. </p>
-
+      <p>
+Submitted to HappyAir, includes Malathi and Anand's passport, assertion of
+permission, birth certificate and Frequent Flyer coupon.
+      </p>
+    
       <h3>Trust Hierarchy</h3>
-        <ul>
-          <li>Malathi is liable for her claim of parentage as well as securing right to admission
-          for herself and her son at their destination (visa may be required).</li>
-          <li>Malathi and Rajesh are both liable for attestation of permission to fly with Anand
-          without the other parent.</li>
-          <li>Malathi is liable for the cost of her ticket and her son’s ticket.</li>
-          <li>The agency is liable for issuing valid tickets and for verifying the credentials
-          provided by the travelers.</li>
-          <li>The airline is liable for issuing tickets and, ultimately, fulfilling the terms of
-          travel</li>
-          <li>The airline is liable for accepting the upgrade coupons at ticketing.</li>
-          <li>The airline is liable for verifying the credentials in the birth certificate match
-          the credentials in the permission letter.</li>
-          <li>The check-in agent, TSA agent, and passport control at the destination are liable for
-          identity assurance at various points of travel, using information contained in the
-          <a>verifiable credentials</a>.</li>
-        </ul>
-
+      <ul>
+        <li>Malathi is liable for her claim of parentage as well as securing
+        right to admission for herself and her son at their destination (visa
+        may be required).</li>
+        <li>Malathi and Rajesh are both liable for attestation of permission
+        to fly with Anand without the other parent.</li>
+        <li>Malathi is liable for the cost of her ticket and her son’s
+        ticket.</li>
+        <li>The agency is liable for issuing valid tickets and for verifying
+        the credentials provided by the travelers.</li>
+        <li>The airline is liable for issuing tickets and, ultimately,
+        fulfilling the terms of travel</li>
+        <li>The airline is liable for accepting the upgrade coupons at
+        ticketing.</li>
+        <li>The airline is liable for verifying the credentials in the birth
+        certificate match the credentials in the permission letter.</li>
+        <li>The check-in agent, TSA agent, and passport control at the
+        destination are liable for identity assurance at various points of
+        travel, using information contained in the <a>verifiable
+        credentials</a>.</li>
+      </ul>
+    
       <h3>Threat model</h3>
-        <ol>
-          <li><strong>Threat: Stolen Key.</strong> Malathi steals Rajesh’s key in order to fake
-          travel permission. (Kidnapping her own kids and fleeing Rajesh.) </li>
-            <ul>
-              <li><strong>Response:</strong> Rajesh could store his key with a trusted third party,
-              such as an attorney.</li>
-              <li><strong>Response:</strong> Rajesh could use a hardware wallet with pin or biometric.</li>
-              <li><strong>Response:</strong> Rajesh could use a passphrase on his key </li>
-            </ul>
-            </ul>
-          <li><strong>Threat: Stolen Key 2</strong> Ticket purchaser has
-          Malathi’s credentials, impersonating her to purchase a ticket. This could enable a third-party
-          kidnapping.</li>
-            <ul>
-              <li><strong>Response:</strong> Travel permission can be restricted to specific date
-              and or trip minimizing abuse potential.</li>
-              <li><strong>Response:</strong> Embed identifying characteristics or biometric into
-              the credentials so that verifiers can independently verify the <a>subject</a> in front of
-              them is the <a>subject</a> in the credential.</li>
-              <li><strong>Response:</strong> Malathi could use a hardware wallet with pin or
-              biometric.</li>
-              <li><strong>Response:</strong> Malathi could use a passphrase on her key </li>
-            </ul>
-          <li><strong>Threat: Impersonating traveler.</strong> Handled by identity assurance, using
-          information within the credentials </li>
-            <ul>
-              <li><strong>Response:</strong> Identity assurance based on the <a>presentation</a> and other
-              data, above and beyond what is in the <a>presentation</a> and the <a>claims</a>.</li>
-              <li><strong>Response:</strong> Identity assurance based on the contents of the
-              <a>claims</a>, potentially with enhanced data embedded in the <a>claims</a>, i.e., data not
-              currently in passports, birth certificates, or marriage license. For example, a
-              biometric template could be embedded in the birth certificate claim and that template
-              could be used for interactive identity assurance at the time of submitting the
-              <a>presentation</a>.</li>
-            </ul>
-          <li><strong>Threat: False Parent</strong> Someone other than than Rajesh, e.g., Fred,
-          signs the travel permission with a valid key, allowing Malathi to travel without Rajesh’s
-          permission.</li>
-            <ul>
-              <li><strong>Response:</strong> Fred’s actions are fraudulent. Captured in the signed
-              statement, it would provide evidence for prosecution.</li>
-              <li><strong>Response:</strong> Fred’s credentials won’t match those in Anand’s birth
-              certificate. By comparing the credentials, HappyAir can prevent this attack</li>
-            </ul>
-          <li><strong>Threat: Exposure of private information.</strong> By storing potentially
-          compromising information in credentials and sending them over the network, we are
-          increasing the attack surface for the <a>subject</a> of those credentials.</li>
-            <ul>
-              <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every verifier
-              gets the same encrypted blob)</li>
-              <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each <a>verifier</a>.  This
-              may leak usage data to the issuer, assuming the holder must ask for a new, encrypted
-              credential for each Verifier.</li>
-              <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for each <a>verifier</a>. </li>
-              <li><strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each <a>verifier</a>. 
-              No issuer involved</li>
-            </ul>
-            <li><strong>Threat: Stolen coupon</strong> Rajesh falsifies the upgrade coupon.</li>
-              <ul>
-                <li><strong>Response:</strong> HappyAir signs the coupon with secure
-                credentials.</li>
-                <li><strong>Response:</strong> Travel agent verifies the coupon through a
-                distributed status registry, verifying it is still valid</li>
-              </ul>
-        </ol>
+      <ol>
+        <li><strong>Threat: Stolen Key.</strong> Malathi steals Rajesh’s key
+          in order to fake travel permission. (Kidnapping her own kids and
+          fleeing Rajesh.) </li>
+        <ul>
+          <li><strong>Response:</strong> Rajesh could store his key with a
+            trusted third party, such as an attorney.</li>
+          <li><strong>Response:</strong> Rajesh could use a hardware wallet
+            with pin or biometric.</li>
+          <li><strong>Response:</strong> Rajesh could use a passphrase on his
+            key </li>
+        </ul>
+        </ul>
+        <li><strong>Threat: Stolen Key 2</strong> Ticket purchaser has
+          Malathi’s credentials, impersonating her to purchase a ticket. This
+          could enable a third-party kidnapping.</li>
+        <ul>
+          <li><strong>Response:</strong> Travel permission can be restricted
+          to specific date and or trip minimizing abuse potential.</li>
+          <li><strong>Response:</strong> Embed identifying characteristics or
+          biometric into the credentials so that verifiers can independently
+          verify the <a>subject</a> in front of them is the <a>subject</a> in
+          the credential.</li>
+          <li><strong>Response:</strong> Malathi could use a hardware wallet
+          with pin or biometric.</li>
+          <li><strong>Response:</strong> Malathi could use a passphrase on
+          her key </li>
+        </ul>
+        <li><strong>Threat: Impersonating traveler.</strong> Handled by
+        identity assurance, using information within the credentials </li>
+        <ul>
+          <li><strong>Response:</strong> Identity assurance based on the
+          <a>presentation</a> and other data, above and beyond what is in the
+          <a>presentation</a> and the <a>claims</a>. </li>
+          <li><strong>Response:</strong> Identity assurance based on the
+          contents of the <a>claims</a>, potentially with enhanced data
+          embedded in the <a>claims</a>, i.e., data not currently in
+          passports, birth certificates, or marriage license. For example, a
+          biometric template could be embedded in the birth certificate claim
+          and that template could be used for interactive identity assurance
+          at the time of submitting the <a>presentation</a>.</li>
+        </ul>
+        <li><strong>Threat: False Parent</strong> Someone other than than
+        Rajesh, e.g., Fred, signs the travel permission with a valid key,
+        allowing Malathi to travel without Rajesh’s permission.</li>
+        <ul>
+          <li><strong>Response:</strong> Fred’s actions are fraudulent.
+          Captured in the signed statement, it would provide evidence for
+          prosecution.</li>
+          <li><strong>Response:</strong> Fred’s credentials won’t match those
+          in Anand’s birth certificate. By comparing the credentials,
+          HappyAir can prevent this attack</li>
+        </ul>
+        <li><strong>Threat: Exposure of private information.</strong> By
+        storing potentially compromising information in credentials and
+        sending them over the network, we are increasing the attack surface
+        for the <a>subject</a> of those credentials.</li>
+        <ul>
+          <li><strong>Response:</strong> Encrypt the <a>claims</a> (once by
+          issuer, every verifier gets the same encrypted blob)</li>
+          <li><strong>Response:</strong> Encrypt the <a>claims</a> uniquely
+          for each <a>verifier</a>. This may leak usage data to the issuer,
+          assuming the holder must ask for a new, encrypted credential for
+          each Verifier.</li>
+          <li><strong>Response:</strong> Blind the <a>claims</a> uniquely for
+          each <a>verifier</a>. </li>
+          <li><strong>Response:</strong> Encrypt the <a>presentation</a>
+          uniquely for each <a>verifier</a>. No issuer involved</li>
+        </ul>
+        <li><strong>Threat: Stolen coupon</strong> Rajesh falsifies the
+        upgrade coupon.</li>
+        <ul>
+          <li><strong>Response:</strong> HappyAir signs the coupon with
+          secure credentials.</li>
+          <li><strong>Response:</strong> Travel agent verifies the coupon
+          through a distributed status registry, verifying it is still
+          valid</li>
+        </ul>
+      </ol>
+      </section>
     </section>
-</section>
-<section >
-    <!-- Editor - @halindrome -->
-    <h2>User Sequences</h2>
-    <p>The transaction examples in this section show basic ways in which verifiable <a>claims</a> might be
-    used. They are not meant to be architecturally constraining. Instead, they are meant to help
-    illustrate the basic way it <em>could</em> be done in a typical commerce situation.
-    Again&mdash;please remember that it is just an example, and should not be thought of as the
-    canonical way such a <a>claims</a> environment must be implemented.</p>
     <section>
+      <!-- Editor - @halindrome -->
+      <h2>User Sequences</h2>
+      <p>
+The transaction examples in this section show basic ways in which verifiable
+<a>claims</a> might be used. They are not meant to be architecturally
+constraining. Instead, they are meant to help illustrate the basic way it
+<em>could</em> be done in a typical commerce situation. Again&mdash;please
+remember that it is just an example, and should not be thought of as the
+canonical way such a <a>claims</a> environment must be implemented.
+      </p>
+      <section>
         <h3>How a Verifiable Claim Might Be Created</h3>
-        <p>In this first example, a user will request a verifiable claim&mdash;a
-        confirmation of their identity. Consider this illustration:</p>
-
+        <p>
+In this first example, a user will request a verifiable claim&mdash;a
+confirmation of their identity. Consider this illustration:
+        </p>
+    
         <figure>
-			<img aria-describedby="claim_flow" alt='Verifiable Claim Creation Flow Description' 
-                style='display:block; margin:auto' src="uc-issuing-claims.svg"/>
-			<figcaption>Verifiable Claim Creation Flow Diagram</figcaption>
-		</figure>
-			
+          <img aria-describedby="claim_flow" alt='Verifiable Claim Creation Flow Description'
+            style='display:block; margin:auto' src="uc-issuing-claims.svg" />
+          <figcaption>Verifiable Claim Creation Flow Diagram</figcaption>
+        </figure>
+    
         <p>Expanding on these steps:</p>
         <ol id="claim_flow" title="Verifiable Claim Creation Flow Description">
-            <li>Jane asks her User Agent to help her get a verifiable claim about
+          <li>Jane asks her User Agent to help her get a verifiable claim about
             her identity.</li>
-            <li>Her user agent connects her to a certificate issuer that is able
+          <li>Her user agent connects her to a certificate issuer that is able
             to verify her identity.</li>
-            <li>The issuer examines her documentation.</li>
-            <li>They are satisfied, so the issuer generates a verifiable claim for
+          <li>The issuer examines her documentation.</li>
+          <li>They are satisfied, so the issuer generates a verifiable claim for
             Jane that includes information about her identity linked to their
             own trusted <a>credential</a>.</li>
-            <li>The issuer delivers the credential back to Jane's User Agent.</li>
-            <li>Jane views the credential to ensure it reflects her
+          <li>The issuer delivers the credential back to Jane's User Agent.</li>
+          <li>Jane views the credential to ensure it reflects her
             requirements.</li>
-            <li>When she is satisfied, she instructs her User Agent to save the
+          <li>When she is satisfied, she instructs her User Agent to save the
             verifiable claim so she can use it in the future.</li>
-            <li>The UA communicates with her <a>credential repository</a>,
+          <li>The UA communicates with her <a>credential repository</a>,
             instructing it to store the new claim.</li>
-            <li>The <a>credential repository</a> returns a list of the <a>claims</a> it is
+          <li>The <a>credential repository</a> returns a list of the <a>claims</a> it is
             holding for Jane to the UA.</li>
-            <li>The UA shows Jane her claim collection&mdash;confirming
+          <li>The UA shows Jane her claim collection&mdash;confirming
             everything she has available.</li>
         </ol>
-    </section>
-    <section>
+      </section>
+      <section>
         <h3>How a Verifiable Claim Might Be Used</h3>
-        <p>In this example, a <a>holder</a> of a claim needs to use that claim in a
-        typical commerce situation:</p>
+        <p>
+In this example, a <a>holder</a> of a claim needs to use that claim in a
+typical commerce situation:
+        </p>
         <figure>
-			<img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram' 
-                style='display:block; margin:auto' src="example.svg"/>
-			<figcaption>Verifiable Claim Usage Flow Diagram</figcaption>
-       	</figure>
+          <img aria-describedby="vf-flow" alt='Verifiable Claim Usage Flow Diagram'
+            style='display:block; margin:auto' src="example.svg" />
+          <figcaption>Verifiable Claim Usage Flow Diagram</figcaption>
+        </figure>
         <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
-            <li>Jane decides to shop on the website
+          <li>Jane decides to shop on the website
             WinesOfTheWorld.example.com (merchant).</li>
-            <li>The merchant's site requires Jane be 21 years of age and
+          <li>The merchant's site requires Jane be 21 years of age and
             requests Jane prove this (via a user agent-supported API call).</li>
-            <li>Jane's user agent asks her <a>credential repository</a> for the
+          <li>Jane's user agent asks her <a>credential repository</a> for the
             proof.</li>
-            <li>The <a>credential repository</a> shows Jane three verifiable claims
+          <li>The <a>credential repository</a> shows Jane three verifiable claims
             it knows of that
             can assert this claim (e.g., her passport, driving
             license, and birth certificate).</li>
-            <li>Jane selects one of these and authorizes that it be
+          <li>Jane selects one of these and authorizes that it be
             shared with the merchant.</li>
-            <li>The <a>credential repository</a> returns the selected claim as a response
+          <li>The <a>credential repository</a> returns the selected claim as a response
             to the user agent-supported API call, which in turn delivers
             it to the merchant.</li>
-            <li>The merchant's server verifies that the claim is valid
+          <li>The merchant's server verifies that the claim is valid
             and satisfies the requirement.</li>
-            <li>The merchant redirects the user agent to the web site
+          <li>The merchant redirects the user agent to the web site
             with appropriate authorization.</li>
         </ol>
+      </section>
     </section>
-</section>
 
 
-<section class="appendix">
-    <!-- Editor - @halindrome -->
-    <h2>Terminology</h2>
-
+    <section class="appendix">
+      <!-- Editor - @halindrome -->
+      <h2>Terminology</h2>
+    
       <em>This section is non-normative.</em>
-
+    
       <div data-include="https://w3c.github.io/vc-data-model/terms.html"
-          data-oninclude="restrictReferences">
+        data-oninclude="restrictReferences">
       </div>
-
-</section>
-<section class="appendix">
-    <h2>Example Verifable Credentials</h2>
-    <h3>Focal Use Case: International Travel with Minor</h3>
-
-    <pre class="example nohighlight" title="Malathi's passport (simple model)">
+    
+    </section>
+    <section class="appendix">
+      <h2>Example Verifable Credentials</h2>
+      <h3>Focal Use Case: International Travel with Minor</h3>
+    
+      <pre class="example nohighlight" title="Malathi's passport (simple model)">
 {
   "@context": [
     "https://w3id.org/credentials/v1",
@@ -1332,7 +1512,7 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
   },
   "proof": {/* signature by gov't */}
 }
-    </pre>
+      </pre>
 
     <pre class="example nohighlight" title="Malathi's passport (passport is a document model) ">
 {
@@ -1361,9 +1541,9 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
   },
   "proof": {/* signature by gov't */}
 }
-        </pre>
+      </pre>
 
-        <pre class="example nohighlight" title="Amanda's passport">
+      <pre class="example nohighlight" title="Amanda's passport">
 {
   "@context": [
     "https://w3id.org/credentials/v1",
@@ -1383,9 +1563,9 @@ Independent ID proofing of offline credentials (signed picture and/or photo ID)<
   },
   "proof": {/* signature by gov't */}
 }
-        </pre>
+      </pre>
 
-        <pre class="example nohighlight" title="Amanda's birth certificate">
+      <pre class="example nohighlight" title="Amanda's birth certificate">
 {
   "@context": [
     "https://w3id.org/credentials/v1",
