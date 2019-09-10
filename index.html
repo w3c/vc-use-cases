@@ -42,23 +42,19 @@ var respecConfig = {
   // editors, add as many as you like
   // only "name" is required
   editors:  [
-    { name: "Joe Andrieu",
+    { name: "Shane McCarron", url: "http://blog.halindrome.com/",
+      company: "Spec-Ops", companyURL: "https://spec-ops.io", w3cid: "23346" },
+    { name: "Joe Andrieu", 
       company: "Legendary Requirements", companyURL: "http://legreq.com" },
     { name: "Matt Stone", url: "https://www.lithos.me/about",
       company: "The Brightlink", companyURL: "http://www.thebrightlink.com" },
     { name: "Tzviya Siegman", url: "",
       company: "Wiley", companyURL: ""},
-    { name: "Shane McCarron", url: "http://blog.halindrome.com/",
-      company: "Spec-Ops", companyURL: "https://spec-ops.io", w3cid: "23346" },
-    { name: "Daniel Burnett",
-      company: "Standards Play", companyURL: "http://standardsplay.com/"},
     { name: "Gregg Kellogg", url: "http://greggkellogg.net/",
       company: "Spec-Ops", companyURL: "https://spec-ops.io/",
       w3cid: "44770" },
-    { name: "Brian Sletten", url: "http://bosatsu.net",
-      company: "Bosatsu Consulting, Inc.", companyURL: "http://bosatsu.net" },
-    { name: "Manu Sporny", url: "http://digitalbazaar.com/",
-      company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/" }
+    { name: "Ted Thibodeau, Jr.", url: "https://www.linkedin.com/in/macted/",
+      company: "OpenLink Software, Inc.", companyURL: "http://www.openlinksw.com/"}
   ],
 
   // authors, add as many as you like.
@@ -66,10 +62,18 @@ var respecConfig = {
   // only "name" is required. Same format as editors.
 
   authors:  [
+    { name: "Nate Otto", url: "",
+      company: "Badge Alliance", companyURL: "" },
     { name: "Sunny Lee", url: "",
       company: "Badge Alliance", companyURL: "" },
-    { name: "Nate Otto", url: "",
-      company: "Badge Alliance", companyURL: "" }
+    { name: "Brian Sletten", url: "http://bosatsu.net",
+      company: "Bosatsu Consulting, Inc.", companyURL: "http://bosatsu.net" },
+    { name: "Daniel Burnett",
+      company: "Standards Play", companyURL: "http://standardsplay.com/"},
+    { name: "Manu Sporny", url: "http://digitalbazaar.com/",
+      company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/" },
+    { name: "Ken Ebert", url: "",
+      company: "Sovrin Foundation", companyURL: "https://sovrin.org/" }
   ],
 
   // maximum level of table of contents
@@ -212,8 +216,8 @@ counterparties, without being locked into proprietary platforms.
       <h3>Use case model</h3>
       <p>
 This document presents an aggregate use case model, comprised of Needs, Roles,
-Tasks, and Sequences. Taken together, these models define the use cases that the
-Verifiable Claims Working Group will address.
+Tasks, and Sequences. Taken together, these models define the use cases that
+the Verifiable Claims Working Group will address.
       </p>
       <p>
 User needs define the problem space verifiable claims addresses. User Roles
@@ -237,42 +241,38 @@ is intended to provide specific, coherent guidance for the work ahead.
 There are four roles supported by verifiable claims: <a>Issuer</a>,
 <a>Verifier</a>, <a>Subject</a>, and <a>Holder</a>.
     </p>
-
     <figure>
-      <img height="400"
-           alt='Verifiable Credential User Roles'
-           style='display:block; margin:auto'
-           src="user-roles.svg"/>
+      <img alt="Verifiable Credential User Roles" 
+           style="display:block; margin:auto"
+           src="VerifiableCredentialsUserRoles.png"/>
       <figcaption>
-Verifiable Claim User Roles
-      </figcaption>
-    </figure>
-
-    <figure>
-      <img height="400"
-           alt='Verifiable Credential User Roles'
-           style='display:block; margin:auto'
-           src="VerifiableCredentialsUserRoles.png" />
-      <figcaption>
-Verifiable Claim User Roles
+Verifiable Credential User Roles
       </figcaption>
     </figure>
 
     <dl>
-      <dt>Issuer</dt>
+      <dt>
+Issuer
+      </dt>
       <dd>
-The <a>entity</a> that creates a claim and associates it with a particular
-subject.
+The <a>entity</a> that creates a <a>claim</a> and associates it with a
+particular <a>subject</a>.
       </dd>
-      <dt>Verifier</dt>
+      <dt>
+Verifier
+      </dt>
       <dd>
-The <a>entity</a> verifying a claim about a given subject.
+The <a>entity</a> verifying a <a>claim</a> about a given <a>subject</a>.
       </dd>
-      <dt>Subject</dt>
+      <dt>
+Subject
+      </dt>
       <dd>
-The <a>entity</a> about whom a claim is issued.
+The <a>entity</a> about whom a <a>claim</a> is issued.
       </dd>
-      <dt>Holder</dt>
+      <dt>
+Holder
+      </dt>
       <dd>
 A role an <a>entity</a> may perform by possessing one or more
 <a>verifiable credentials</a>. A <a>holder</a> is usually, but not always, the
@@ -282,10 +282,11 @@ A role an <a>entity</a> may perform by possessing one or more
     </dl>
   </section>
 
+
   <section>
     <h2>User Needs</h2>
     <p>
-Verifiable claims address user needs in a number of key domains:
+<a>Verifiable credentials</a> address user needs in a number of key domains:
     </p>
 
     <figure>
@@ -360,7 +361,6 @@ his test.
         </dd>
       </dl>
     </section>
-
     <section>
       <h3>Retail</h3>
       <p>
@@ -404,7 +404,6 @@ legit, he can purchase his gift.
         </dd>
       </dl>
     </section>
-
     <section>
       <h3>Finance</h3>
       <p>
@@ -419,44 +418,45 @@ you are dealing.
         <dd>
 Jane is opening an account at MidBank in Finland.  As part of that process,
 the bank asks her to provide two from a variety of possible sources to confirm
-her identity &mdash; a so-called "Know Your Customer" check. She selects
-government-supplied <a>verifiable claims</a> that confirm she receives postal
-mail at a certain address and that she has a national ID card. Confirming these
-allows the bank to open her account and be confident in her identity when she
-conducts transactions.
+her identity &mdash; a so-called &quot;Know Your Customer&quot; check. She
+selects government-supplied <a>verifiable claims</a> that confirm she receives
+postal mail at a certain address and that she has a national ID card.
+Confirming these allows the bank to open her account and be confident in her
+identity when she conducts transactions.
         </dd>
         <dd>
 Now that the account is open, Jane is issued a digitally-signed
 <a>credential</a> for her checking account at MidBank. This <a>credential</a>
 verifies that Jane has an account at MidBank and has access to her associated
 checking account. Since MidBank (and all banks in Finland) are required to
-perform "Know Your Customer" checks on accounts, this credential can also be
-used as sufficient verification by other financial institutions. This can help
-Jane assure destination banks that she is verified, thereby allaying concerns
-about misdirected transactions and money laundering.
+perform &quot;Know Your Customer&quot; checks on accounts, this credential
+can also be used as sufficient verification by other financial institutions.
+This can help Jane assure destination banks that she is verified, thereby
+allaying concerns about misdirected transactions and money laundering.
         </dd>
         <dt>
 <udef>F.2 Money transfer</udef>
         </dt>
         <dd>
 Susan wants to send funds to her family in another country via a popular money
-transfer service.  She has <a>verifiable claims</a> in her
+transfer service.  She has <a>verifiable credentials</a> in her
 <a>credential repository</a> that can be used to share her
-<a>identity profile</a>. She has also been sent a <a>claim</a> from her family
-verifying their banking information. By sharing these with the money transfer
-service, they can automatically verify the source and destination of funds,
-thus being confident in the delivery of those funds and satisfying various
-regulations regarding prevention of money laundering.
+<a>identity profile</a>. She has also been sent a <a>credential</a> from her
+family verifying their banking information. By sharing these with the money
+transfer service, they can automatically verify the source and destination of
+funds, thus being confident in the delivery of those funds and satisfying
+various regulations regarding prevention of money laundering.
         </dd>
         <dt>
 <udef>F.3 Closing account</udef>
         </dt>
         <dd>
-John opens a checking account at Big Bank Co and is issued a verifiable claim
-indicating that the account exists, that the bank verified John's identity,
-and that John has access to the account.  Some time later, John is moving to a
-new city and decides to close that account.  Big Bank Co needs to revoke that
-claim as part of their normal account closing process.
+John opens a checking account at Big Bank Co and is issued a
+<a>verifiable credential</a> indicating that the account exists, that the bank
+verified John's identity, and that John has access to the account.  Some time
+later, John is moving to a new city and decides to close that account.  Big
+Bank Co needs to revoke that claim as part of their normal account closing
+process.
         </dd>
         <dt>
 <udef>F.4 Trying out a new service</udef>
@@ -530,7 +530,7 @@ ability to submit the claim for payment.
         </dt>
         <dd>
 John is on the vacation of a lifetime, travelling the world. Falling ill, he
-visits a health clinic in a country in which he does not live. At the clinic
+visits a health clinic in a country in which he does not live. At the clinic,
 he is asked for proof of identity.  He provides a credential that verifies his
 name and address, but elects not to disclose his marital status nor his social
 security number, as those are neither requested nor required at this clinic.
@@ -546,7 +546,7 @@ local free disability ride service to get to the employment office. To use
 this service, she is required to verify that she maintains legal disability
 status. Trina provides her government-issued disability credential to sign up
 for the ride service, and is not required to disclose her specific disability
-to the ride service as this could put her at personal risk.
+to the ride service, as this could put her at personal risk.
         </dd>
       </dl>
     </section>
@@ -596,12 +596,12 @@ check her certifications.
 <udef>C.4 New employer</udef>
         </dt>
         <dd>
-Jessica is a medical doctor practicing in the United States. She has a
-variety of digital <a>claims</a> that explain her qualifications, schooling,
-continuing education achievements, and board certifications.  These are all
-stored in the <a>credential repository</a> provided by her employer.  When she
-is offered a position with another health provider network, she can
-automatically transfer all of these <a>claims</a> to her new employer.
+Jessica is a medical doctor practicing in the United States. She has a variety
+of digital <a>claims</a> that explain her qualifications, schooling, continuing
+education achievements, and board certifications. These are all stored in the
+<a>credential repository</a> provided by her employer.  When she is offered a
+position with another health provider network, she can automatically transfer
+all of these <a>claims</a> to her new employer.
         </dd>
         <dt>
 <udef>C.5 Social authority</udef>
@@ -796,29 +796,20 @@ software image and that only Sam is able to apply the update.
     <h2>User Tasks</h2>
     <p>
 Use cases are often used as a driver for requirements. While the users of
-verifiable claims have needs across many domains, the tasks associated with
-those needs span the domains. This section summarizes those tasks, as well as
-requirements related to the tasks, and maps the tasks and requirements back to
-the associated needs.
+<a>verifiable credentials</a> have needs across many domains, the tasks
+associated with those needs span the domains. This section summarizes those
+tasks, as well as requirements related to the tasks, and maps the tasks and
+requirements back to the associated needs.
     </p>
     <p class="note">
 It is worth noting that the <a>subject</a> may or may not be the same
 <a>entity</a> as the <a>holder</a>. There are no tasks in these examples that
 require participation of the <a>subject</a>.
     </p>
-    
-    <figure>
-      <img alt='Verifiable Credential User Tasks'
-           style='display:block; margin:auto'
-           src="user-tasks.svg" />
-      <figcaption>
-Verifiable Credential User Tasks
-      </figcaption>
-    </figure>
 
       <figure>
-        <img alt='Verifiable Credential User Tasks'
-             style='display:block; margin:auto'
+        <img alt="Verifiable Credential User Tasks"
+             style="display:block; margin:auto"
              src="VerifiableCredentialsUserTasks.png" />
         <figcaption>
 Verifiable Credential User Tasks
@@ -986,14 +977,14 @@ between the issuance of the birth certificate and passport.
         </p>
         <h4>Scenario</h4>
         <p>
-Sam’s mother emailed him the certificate, license, and passport as
-independent <a>Verifiable Credentials</a>. He then creates a
-<a>verifiable presentation</a> which includes those credentials, a statement
-of their relationship to each other and his relationship to his mother. He
-then visits the US Secretary of State website, creates an account, starts the
-application for a passport, and uploads his new <a>verifiable presentation</a>
-as supporting evidence. After processing the application, Sam is issued both
-a traditional passport and a new digital passport.
+Sam’s mother emailed him the certificate, license, and passport as independent
+<a>Verifiable Credentials</a>. He then creates a <a>verifiable presentation</a>
+which includes those credentials, a statement of their relationship to each
+other and his relationship to his mother. He then visits the US Secretary of
+State website, creates an account, starts the application for a passport, and
+uploads his new <a>verifiable presentation</a> as supporting evidence. After
+processing the application, Sam is issued both a traditional passport and a
+new digital passport.
         </p>
         <h4>Verifiable Credentials</h4>
         <dl class="dl-horizontal">
@@ -1029,15 +1020,15 @@ Establishes Sam is the child in the birth certificate
         <h4>Verifiable Presentation</h4>
         <p>
 A <a>verifiable presentation</a> which includes those three <a>credentials</a>,
-adds his name, photo, and demographic data along with the assertion that
+adds his name, photo, and demographic data along with the assertions that &mdash;
         </p>
         <ol>
           <li>
 He is the child in the birth certificate.
           </li>
           <li>
-The mother in the birth certificate, the person in the passport, the spouse
-in the marriage license are all the same person.
+The mother in the birth certificate, the person in the passport, the spouse in
+the marriage license are all the same person.
           </li>
         </ol>
         <h4>Trust Hierarchy</h4>
@@ -1453,8 +1444,8 @@ out of the country.
         </p>
         <p>
 Prior to booking the trips, Malathi visits HappyAir.com to request an upgrade
-to first-class. HappyAir issues a <a>verifiable credential</a> redeemable for
-a first-class upgrade on an international flight.
+to first class. HappyAir issues a <a>verifiable credential</a> redeemable for
+a first class upgrade on an international flight.
         </p>
         <p>
 She books the plane tickets through her travel agent who adds the lap child
@@ -1503,7 +1494,7 @@ relevance.
               </li>
             </ul>
           </dd>
-
+          
           <dt>
 Upgrade coupon for first class ticket
           </dt>
@@ -1579,8 +1570,8 @@ biometric.
           </li>
           <li>
 <strong>Threat: Stolen Key 2</strong> Ticket purchaser has Malathi’s
-credentials, impersonating her to purchase a ticket. This could enable a
-third-party kidnapping.
+<a>credentials</a>, impersonating her to purchase a ticket. This could enable
+a third-party kidnapping.
             <ul>
               <li>
 <strong>Response:</strong> Travel permission can be restricted to specific
@@ -1601,48 +1592,13 @@ biometric.
             </ul>
           </li>
           <li>
-<strong>Threat: Impersonating traveler.</strong> Handled by identity assurance,
-using information within the credentials
-          </li>
-            <ul>
-              <li>
-<strong>Response:</strong> Identity assurance based on the <a>presentation</a>
-and other data, above and beyond what is in the <a>presentation</a> and the
-<a>claims</a>.
-              </li>
-              <li>
-<strong>Response:</strong> Identity assurance based on the contents of the
-<a>claims</a>, potentially with enhanced data embedded in the <a>claims</a>,
-i.e., data not currently in passports, birth certificates, or marriage license.
-For example, a biometric template could be embedded in the birth certificate
-<a>claim</a> and that template could be used for interactive identity assurance
-at the time of submitting the <a>presentation</a>.
-              </li>
-            </ul>
-          <li>
-<strong>Threat: False Parent</strong> Someone other than than Rajesh, e.g.,
-Fred, signs the travel permission with a valid key, allowing Malathi to travel
-without Rajesh’s permission.
-          </li>
-            <ul>
-              <li>
-<strong>Response:</strong> Fred’s actions are fraudulent. Captured in the
-signed statement, it would provide evidence for prosecution.
-              </li>
-              <li>
-<strong>Response:</strong> Fred’s <a>credentials</a> won’t match those in
-Anand’s birth certificate. By comparing the <a>credentials</a>, HappyAir can
-prevent this attack
-              </li>
-            </ul>
-          <li>
 <strong>Threat: Exposure of private information.</strong> By storing
 potentially compromising information in credentials and sending them over the
 network, we are increasing the attack surface for the <a>subjects</a> of those
 credentials.
             <ul>
               <li>
-<strong>Response:</strong> Encrypt the <a>claims</a> (once by <a>issuer</a>,
+<strong>Response:</strong> Encrypt the <a>claims</a> (once by <a>issuer</a>;
 every <a>verifier</a> gets the same encrypted blob)
               </li>
               <li>
@@ -1681,7 +1637,7 @@ distributed status registry, verifying it is still valid
     <h2>User Sequences</h2>
     <p>
 The transaction examples in this section show basic ways in which
-<a>verifiable claims</a> might be used. They are not meant to be
+<a>verifiable credentials</a> might be used. They are not meant to be
 architecturally constraining. Instead, they are meant to help illustrate the
 basic way it <em>could</em> be done in a typical commerce situation. Again
 &mdash; please remember that it is just an example, and should not be thought
@@ -1707,42 +1663,42 @@ Expanding on these steps:
       </p>
         <ol id="claim_flow" title="Verifiable Claim Creation Flow Description">
           <li>
-Jane asks her User Agent to help her get a <a>verifiable claim</a> about her
-identity.
+Jane asks her User Agent to help her get a <a>verifiable credential</a> about
+her identity.
           </li>
           <li>
-Her user agent connects her to a certificate <a>issuer</a> that is able to
+Her user agent connects her to a <a>credential</a> <a>issuer</a> that is able to
 <a>verify</a> her identity.
           </li>
           <li>
 The issuer examines her documentation.
           </li>
           <li>
-They are satisfied, so the <a>issuer</a> generates a <a>verifiable claim</a>
-for Jane that includes information about her identity linked to their own
-trusted <a>credential</a>.
+They are satisfied, so the <a>issuer</a> generates a
+<a>verifiable credential</a> for Jane that includes information about her
+identity linked to their own trusted <a>credential</a>.
           </li>
           <li>
-The issuer delivers the credential back to Jane's User Agent.
+The issuer delivers the <a>verifiable credential</a> back to Jane's User Agent.
           </li>
           <li>
-Jane views the credential to ensure it reflects her requirements.
+Jane views the <a>verifiable credential</a> to ensure it reflects her requirements.
           </li>
           <li>
 When she is satisfied, she instructs her User Agent to save the
-<a>verifiable claim</a> so she can use it in the future.
+<a>verifiable credential</a> so she can use it in the future.
           </li>
           <li>
 The UA communicates with her <a>credential repository</a>, instructing it to
-store the new <a>claim</a>.
+store the new <a>verifiable credential</a>.
           </li>
           <li>
-The <a>credential repository</a> returns a list of the <a>claims</a> it is
-holding for Jane to the UA.
+The <a>credential repository</a> returns a list of the 
+<a>verifiable credentials</a> it is holding for Jane to the UA.
           </li>
           <li>
-The UA shows Jane her <a>claim</a> collection &mdash; confirming everything
-she has available.
+The UA shows Jane her <a>verifiable credential</a> collection &mdash;
+confirming everything she has available.
           </li>
         </ol>
     </section>
