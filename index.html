@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Verifiable Claims Use Cases</title>
-<meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
 <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
 <script src='https://opencreds.github.io/vc-common/common.js' class='remove'></script>
 <script src='./refs.js' class='remove'></script>
@@ -244,7 +244,7 @@ There are four roles supported by <a>verifiable credentials</a>: <a>Issuer</a>,
     <figure>
       <img alt="Verifiable Credential User Roles" 
            style="display:block; margin:auto"
-           src="VerifiableCredentialsUserRoles.png"/>
+           src="VerifiableCredentialsUserRoles.png" />
       <figcaption>
 Verifiable Credential User Roles
       </figcaption>
@@ -292,7 +292,7 @@ A role an <a>entity</a> may perform by possessing one or more
     <figure>
       <img alt='Verifiable Credential User Needs'
            style='display:block; margin:auto'
-           src="user-needs.svg"/>
+           src="user-needs.svg" />
       <figcaption>
 Verifiable Credentials, Example Domains for User Needs
       </figcaption>
@@ -519,7 +519,7 @@ of their system.
 Tracy has a sore throat soon after moving to a new town. She finds a physician
 through her health care network and goes in for treatment. She is a new
 patient, so the clinic needs to know who she is and how she will be paying.
-When checking in, she presents hera <>verifiable credential</a> that
+When checking in, she presents her <a>verifiable credential</a> that
 demonstrates her identity and her proof of insurance. When the clinic submits
 this to the insurance company, they can automatically ascertain that she
 submitted her proof of identity and insurance to the provider and granted the
@@ -680,7 +680,7 @@ add the details of this new visit to Tom's passport.
 Security for air travel is more and more rigorous, requiring more and more
 time to validate each passenger. Ivan has a collection of
 <a>verifiable credentials</a> that are assembled into his air travel
-<a>Identity Profile</a>. When Ivan needs to pass through a security
+<em>Identity Profile</em>. When Ivan needs to pass through a security
 checkpoint at his airport, he presents this profile before entering the
 line. Because his identification can be immediately and automatically
 verified, he is permitted to skip the long line and go straight to the
@@ -822,7 +822,7 @@ Verifiable Credential User Tasks
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
-It MUST be possible for any <a>entity</a> to issue a verifiable <a>claim</a>.
+It MUST be possible for any <a>entity</a> to issue a <a>verifiable credential</a>.
         </dd>
         <dt>Motivation</dt>
         <dd>
@@ -840,14 +840,14 @@ themselves or others that can be verified and trusted.
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
-It MUST be possible for the <a>holder</a> of a <a>claim</a> to restrict the
-amount of information exposed in a claim they choose to share.  It also MUST
-be possible for the holder to limit the duration for which that information
-is shared.
+It MUST be possible for the <a>holder</a> of a <a>verifiable credential</a>
+to restrict the amount of information exposed in a <a>credential</a> they
+choose to share.  It also MUST be possible for the holder to limit the
+duration for which that information is shared.
         </dd>
         <dt>Motivations</dt>
         <dd>
-Credentials may be issued about a <a>subject</a> that include multiple
+<a>Credentials</a> may be issued about a <a>subject</a> that include multiple
 attributes, only some of which are required when verifying a specific criteria
 is satisfied. The <a>holder</a> should have the ability to satisfy the
 criteria without revealing additional attributes that are not required.
@@ -1023,7 +1023,7 @@ Establishes Sam is the child in the birth certificate
 A <a>verifiable presentation</a> which includes those three <a>credentials</a>,
 adds his name, photo, and demographic data along with the assertions that &mdash;
         </p>
-        <ol>
+        <ul>
           <li>
 He is the child in the birth certificate.
           </li>
@@ -1031,7 +1031,7 @@ He is the child in the birth certificate.
 The mother in the birth certificate, the person in the passport, the spouse in
 the marriage license are all the same person.
           </li>
-        </ol>
+        </ul>
         <h4>Trust Hierarchy</h4>
         <p>
 Sam is legally liable for his claim to the rights of citizenship. The state
@@ -1040,7 +1040,7 @@ department is on the hook for verifying the underlying credentials and Sam’s
 already have.
         </p>
         <h4>Threat model</h4>
-        <ol>
+        <ul>
           <li>
 <strong>Threat: Terrorist / Identity fraud.</strong> A bad actor could be
 impersonating Sam to attain a passport. Of course, if a bad actor were to be
@@ -1089,7 +1089,7 @@ of those credentials.
               </li>
             </ul>
           </li>
-        </ol>
+        </ul>
     </section>
     <section>
       <h3>Expert Dive Instructor</h3>
@@ -1109,7 +1109,7 @@ sanctioned dives.
         </p>
         <h4>Distinction</h4>
         <p>This use case is difficult because:
-          <ol>
+          <ul>
             <li>
 Certification in Fiji and Australia. NOAA relies on an international
 certification agency, PADI, with relevance in multiple jurisdictions.
@@ -1129,7 +1129,7 @@ Pat grants NOAA permission (the capability) to validate future
 On each trip, Pat creates a certified log of all divers, effectively issuing
 a <a>verified credential</a> about other <a>credentials</a>.
             </li>
-          </ol>
+          </ul>
         </p>
         <h4>Scenario</h4>
         <p>
@@ -1158,7 +1158,7 @@ When Pat retires from NOAA, he revokes that token and NOAA staff is no longer
 able to monitor his non-public certification status.
         </p>
         <h4>Verifiable Credentials</h4>
-        <ol>
+        <ul>
           <li>
 Advanced Open Water Instructor
           </li>
@@ -1169,7 +1169,7 @@ Drysuit Dive Certification
 Night Diving Certification
           </li>
           <li>
-Search & Recovery Dive Certification
+Search &amp; Recovery Dive Certification
           </li>
           <li>
 Fiji PADI School Affiliation Certification
@@ -1180,15 +1180,15 @@ Australia PADI School Affiliation Certification
           <li>
 Signed log entry of dive event
           </li>
-        </ol>
+        </ul>
         <h4>Verifiable Presentation</h4>
-        <ol>
+        <ul>
           <li>
 <a>Verifiable credentials</a> submitted with job application
           </li>
-        </ol>
+        </ul>
         <h4>Trust Hierarchy</h4>
-        <ol>
+        <ul>
           <li>
 PADI is liable for correctly certifying dive schools.
           </li>
@@ -1213,14 +1213,14 @@ Diver's are liable for presenting valid <a>credentials</a>, specifically
 <a>credentials</a> for which they are the <a>subject</a>, including any formal
 identity <a>credentials</a>, e.g., passport or driver's license.
           </li>
-        </ol>
+        </ul>
         <h4>Threat model</h4>
-        <ol>
+        <ul>
           <li>
 <strong>Threat: <a>Issuer</a> is compromised.</strong> One of the dive schools
 had their private keys stolen, but the school itself only ever issues valid
 certificates.
-          <ol>
+          <ul>
             <li>
 <strong>Response:</strong> Use multi-sig to prevent theft of a single key from
 relevance
@@ -1244,11 +1244,11 @@ access to keys
 <strong>Response:</strong> Instead of institutional keys, sign certificates
 with individuals' keys plus credential from the school.
             </li>
-          </ol>
+          </ul>
         </li>
         <li>
 <strong>Threat: A dive school could issue unearned certificates</strong>.
-          <ol>
+          <ul>
             <li>
 <strong>Response:</strong> Audit certificate issuance. Record all issuance,
 systemically spot check for validity.
@@ -1268,12 +1268,12 @@ behalf of PADI to require re-validation of qualifications
 <strong>Response:</strong> Use revocation mechanisms for school's authorization
 credentials
             </li>
-          </ol>
+          </ul>
         </li>
         <li>
 <strong>Threat: Dive school could issue certificates with a revoked
 authorization</strong>.
-          <ol>
+          <ul>
             <li>
 <strong>Response:</strong> <a>Holders</a> should verify the authorization,
 before they buy the course
@@ -1286,11 +1286,11 @@ the point of receiving the <a>credential</a>
 <strong>Response:</strong> <a>Verifiers</a> should also verify the
 authorization of the <a>issuer</a>
             </li>
-          </ol>
+          </ul>
         </li>
         <li>
 <strong>Threat: Pat could send a proxy to earn their certificate</strong>.
-          <ol>
+          <ul>
             <li>
 <strong>Response:</strong>  School should use multi-factor identity assurance
 during registration and onsite when testing.
@@ -1303,12 +1303,12 @@ for future audits
 <strong>Response:</strong>  Dive boat or test center takes photos of
 participants and logs them for later audit
             </li>
-          </ol>
+          </ul>
         </li>
         <li>
 <strong>Threat: Pat or another dive master could lie about a diver being on
 the boat</strong>.
-          <ol>
+          <ul>
             <li>
 <strong>Response:</strong> NOAA requires divers listed to submit endorsement
 that they were there (they endorse the dive log); divers mutually sign each
@@ -1329,12 +1329,12 @@ assignments (location, dates, correspondence, etc) by/with NOAA Manifest
 <strong>Response:</strong>  Independent ID proofing of offline credentials
 (signed picture and/or photo ID)
             </li>
-          </ol>
+          </ul>
         </li>
       <li>
 <strong>Threat: Malware could take control of <a>issuer</a> or <a>verifier</a>
 agent</strong>.
-        <ol>
+        <ul>
           <li>
 <strong>Response:</strong> Run virus and malware scans regularly
           </li>
@@ -1342,12 +1342,12 @@ agent</strong>.
 <strong>Response:</strong> Isolate issuer agent system to an air-gapped
 environment
           </li>
-        </ol>
+        </ul>
       </li>
       <li>
 <strong>Threat: Pat is phished, and Pat gives capability to the wrong
 person/entity</strong>.
-        <ol>
+        <ul>
           <li>
 <strong>Response:</strong> Use better identity assurance for the verifier,
 i.e., don't give capability to strangers.
@@ -1356,12 +1356,12 @@ i.e., don't give capability to strangers.
 <strong>Response:</strong>  Use Object Capabilities based on strong
 authentication and well-known public keys.
           </li>
-        </ol>
+        </ul>
       </li>
       <li>
 <strong>Threat: <a>Issuer</a> spoofs Pat, and Pat receives VC from
 non-PADI-certified instructor</strong>.
-        <ol>
+        <ul>
           <li>
 <strong>Response:</strong>  Pat runs PADI's wallet software to make sure any
 certificates they receive are authentic.
@@ -1375,27 +1375,27 @@ accepting it
 that (1) There really is a PADI authentication and (2) PADI authentication is
 actually from PADI
           </li>
-        </ol>
+        </ul>
       </li>
       <li>
 <strong>Threat: Pat presents a fake credential as a PADI certification</strong>.
-        <ol>
+        <ul>
           <li>
 <strong>Response:</strong>  NOAA verifies the signature on the certification
 credential AND on the PADI authentication credential.
           </li>
-        </ol>
+        </ul>
       </li>
       <li>
 <strong>Threat: Pat's laptop on the boat could be compromised</strong>.
-        <ol>
+        <ul>
           <li>
 <strong>Response:</strong>  Use air-gapping techniques, such as QR codes, to
 limit impact of compromise
           </li>
-        </ol>
+        </ul>
       </li>
-    </ol>
+    </ul>
   </section>
 
   <section>
@@ -1551,7 +1551,7 @@ contained in the <a>verifiable credentials</a>.
         </ul>
 
       <h4>Threat model</h4>
-        <ol>
+        <ul>
           <li>
 <strong>Threat: Stolen Key.</strong> Malathi steals Rajesh’s key in order to
 fake travel permission. (Kidnapping her own kids and fleeing Rajesh.)
@@ -1630,7 +1630,7 @@ distributed status registry, verifying it is still valid
               </li>
             </ul>
           </li>
-        </ol>
+        </ul>
     </section>
   </section>
   <section>
