@@ -153,7 +153,7 @@ ID, payment provider, home address, or university degree. Such a claim
 describes a quality or qualities, property or properties of an <a>entity</a>
 which establish its existence and uniqueness. The use cases outlined here are
 provided in order to make progress toward possible future standardization and
-interoperability of both low and high-stakes <a>claims</a> with the goals of
+interoperability of both low- and high-stakes <a>claims</a> with the goals of
 storing, transmitting, and receiving digitally verifiable proof of attributes
 such as qualifications and achievements. The use cases in this document focus
 on concrete scenarios that the technology defined by the group should address.
@@ -217,14 +217,14 @@ counterparties, without being locked into proprietary platforms.
       <p>
 This document presents an aggregate use case model, comprised of Needs, Roles,
 Tasks, and Sequences. Taken together, these models define the use cases that
-the Verifiable Claims Working Group will address.
+the Verifiable Claims Working Group has addressed.
       </p>
       <p>
-User needs define the problem space verifiable claims addresses. User Roles
-specify the roles different <a>entities</a> play when interacting with
-verifiable claims. Tasks define the functions users can accomplish and
-sequences demonstrate how tasks might be realized by interactions between
-<a>entities</a> over time.
+User needs define the problem space addressed by <a>verifiable credentials</a>.
+User Roles specify the roles different <a>entities</a> play when interacting
+with <a>verifiable credentials</a>. Tasks define the functions users can
+accomplish, and sequences demonstrate how tasks might be realized, by
+interactions between <a>entities</a> over time.
       </p>
       <p>
 As with all models, this use case model is neither exhaustive nor complete. The
@@ -238,7 +238,7 @@ is intended to provide specific, coherent guidance for the work ahead.
   <section>
     <h2>User Roles</h2>
     <p>
-There are four roles supported by verifiable claims: <a>Issuer</a>,
+There are four roles supported by <a>verifiable credentials</a>: <a>Issuer</a>,
 <a>Verifier</a>, <a>Subject</a>, and <a>Holder</a>.
     </p>
     <figure>
@@ -334,7 +334,7 @@ transcript.
 Eunice is about to take her ACT (a test used to evaluate her readiness for
 college). When she arrives at the testing center, she is required to present
 identification. Her government-issued identity certificate is acceptable, as
-the <a>verifiable claims</a> contained in it reflect all of the required
+the <a>verifiable credentials</a> contained in it reflect all of the required
 attributes and it is difficult to counterfeit.
         </dd>
         <dt>
@@ -356,8 +356,8 @@ In MOOC and other online learning systems, being able to reliably identify
 participants is vital to ensure the individual evaluation and certification.
 Nick is participating in a course online and takes a test. He is required to
 provide his credentials to prove his identity before the test, and then to
-allow the system to issue a <a>verifiable claim</a> regarding the results of
-his test.
+allow the system to issue a <a>verifiable credential</a> regarding the
+results of his test.
         </dd>
       </dl>
     </section>
@@ -419,8 +419,8 @@ you are dealing.
 Jane is opening an account at MidBank in Finland.  As part of that process,
 the bank asks her to provide two from a variety of possible sources to confirm
 her identity &mdash; a so-called &quot;Know Your Customer&quot; check. She
-selects government-supplied <a>verifiable claims</a> that confirm she receives
-postal mail at a certain address and that she has a national ID card.
+selects government-supplied <a>verifiable credentials</a> that confirm she
+receives postal mail at a certain address and that she has a national ID card.
 Confirming these allows the bank to open her account and be confident in her
 identity when she conducts transactions.
         </dd>
@@ -519,11 +519,11 @@ of their system.
 Tracy has a sore throat soon after moving to a new town. She finds a physician
 through her health care network and goes in for treatment. She is a new
 patient, so the clinic needs to know who she is and how she will be paying.
-When checking in, she presents her verifiable claim that demonstrates her
-identity and her proof of insurance. When the clinic submits this to the
-insurance company, they can automatically ascertain that she submitted her
-proof of identity and insurance to the provider and granted the physician the
-ability to submit the claim for payment.
+When checking in, she presents hera <>verifiable credential</a> that
+demonstrates her identity and her proof of insurance. When the clinic submits
+this to the insurance company, they can automatically ascertain that she
+submitted her proof of identity and insurance to the provider and granted the
+physician the ability to submit the claim for payment.
         </dd>
         <dt>
 <udef>H.4 Traveling illness</udef>
@@ -678,12 +678,13 @@ add the details of this new visit to Tom's passport.
         </dt>
         <dd>
 Security for air travel is more and more rigorous, requiring more and more
-time to validate each passenger. Ivan has a collection of verifiable claims
-that are assembled into his air travel <a>Identity Profile</a>. When Ivan
-needs to pass through a security checkpoint at his airport, he presents this
-profile before entering the line. Because his identification can be
-immediately and automatically verified, he is permitted to skip the long line
-and go straight to the metal detector.
+time to validate each passenger. Ivan has a collection of
+<a>verifiable credentials</a> that are assembled into his air travel
+<a>Identity Profile</a>. When Ivan needs to pass through a security
+checkpoint at his airport, he presents this profile before entering the
+line. Because his identification can be immediately and automatically
+verified, he is permitted to skip the long line and go straight to the
+metal detector.
         </dd>
         <dt>
 <udef>L.4 Refugee crisis</udef>
@@ -922,7 +923,7 @@ credential should be sent to a <a>verifier</a>.
         <dd>
 A <a>verifier</a> may require that a <a>holder</a> verify aspects of their
 suitability for a transaction.  In this case, the <a>holder</a> must be able
-to select which, if any, <a>verifiable claim</a> stored with their
+to select which, if any, <a>verifiable credential</a> stored with their
 <a>credential repository</a> is used to satisfy the <a>verifier</a>.
         </dd>
         <dt>Needs</dt>
@@ -956,8 +957,8 @@ and wishes to revoke the issued claim.
     <h2>Focal Use Cases</h2>
     <p>
 Focal Use Cases are meant to provide examples where a blend of features from
-verifiable claims standard may be used together to solve complex or
-challenging marketplace needs.
+<a>verifiable credentials</a> standard may be used together to solve complex
+or challenging marketplace needs.
     </p>
     <section>
       <h3>Citizenship by Parentage</h3>
@@ -1644,24 +1645,24 @@ basic way it <em>could</em> be done in a typical commerce situation. Again
 of as the canonical way such a <a>claims</a> environment must be implemented.
     </p>
     <section>
-      <h3>How a Verifiable Claim Might Be Created</h3>
+      <h3>How a Verifiable Credential Might Be Created</h3>
       <p>
-In this first example, a user will request a verifiable claim&mdash;a
+In this first example, a user will request a verifiable credential&mdash;a
 confirmation of their identity. Consider this illustration:
       </p>
 
       <figure>
         <img aria-describedby="claim_flow"
-             alt="Verifiable Claim Creation Flow Description"
+             alt="Verifiable Credential Creation Flow Description"
              style="display:block; margin:auto"
              src="uc-issuing-claims.svg" />
-        <figcaption>Verifiable Claim Creation Flow Diagram</figcaption>
+        <figcaption>Verifiable Credential Creation Flow Diagram</figcaption>
       </figure>
 
       <p>
 Expanding on these steps:
       </p>
-        <ol id="claim_flow" title="Verifiable Claim Creation Flow Description">
+        <ol id="claim_flow" title="Verifiable Credential Creation Flow Description">
           <li>
 Jane asks her User Agent to help her get a <a>verifiable credential</a> about
 her identity.
@@ -1703,21 +1704,21 @@ confirming everything she has available.
         </ol>
     </section>
     <section>
-      <h3>How a Verifiable Claim Might Be Used</h3>
+      <h3>How a Verifiable Credential Might Be Used</h3>
         <p>
 In this example, a <a>holder</a> of a <a>claim</a> needs to use that
 <a>claim</a> in a typical commerce situation:
         </p>
         <figure>
           <img aria-describedby="vf-flow"
-               alt="Verifiable Claim Usage Flow Diagram"
+               alt="Verifiable Credential Usage Flow Diagram"
                style="display:block; margin:auto"
                src="example.svg" />
           <figcaption>
-Verifiable Claim Usage Flow Diagram
+Verifiable Credential Usage Flow Diagram
           </figcaption>
         </figure>
-        <ol title="Verifiable Claim Usage Flow Description" id="vf-flow">
+        <ol title="Verifiable Credential Usage Flow Description" id="vf-flow">
           <li>
 Jane decides to shop on the website WinesOfTheWorld.example.com (merchant).
           </li>
