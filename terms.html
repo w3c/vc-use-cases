@@ -10,7 +10,7 @@ An assertion made about a <a>subject</a>.
   <dt><dfn data-lt="credential|credentials|credential's">credential</dfn></dt>
   <dd>
 A set of one or more <a>claims</a> made by an <a>issuer</a>. A
-<dfn data-lt="verifiable credentials">verifiable credential</dfn> is a
+<dfn data-lt="verifiable credentials|verified credential">verifiable credential</dfn> is a
 tamper-evident credential that has authorship that can be cryptographically
 verified. Verifiable credentials can be used to build
 <a>verifiable presentations</a>, which can also be cryptographically verified.
@@ -156,15 +156,12 @@ for identifiers.
 The evaluation of whether a <a>verifiable credential</a> or <a>verifiable presentation</a> 
 is an authentic and timely statement of the issuer or presenter, respectively.  
     This includes checking that: the credential (or presentation) conforms to the specification; the proof method is
-satisfied; and, if present, the status check succeeds.
+satisfied; and, if present, the status is successfully checked.
 
   </dd>
   <dt><dfn data-lt="verifier|verifiers|verifier's|verifier(s)|credential verifiers|credential verifier's">verifier</dfn></dt>
   <dd>
-A role an <a>entity</a> performs by receiving one or more
-<a>verifiable credentials</a>, optionally inside a
-<a>verifiable presentation</a> for processing. Other specifications might refer
-to this concept as a <dfn data-lt="relying parties">relying party</dfn>.
+The <a>entity</a> verifying a claim about a given subject.
   </dd>
   <dt><dfn data-lt="URI|URIs">URI</dfn></dt>
   <dd>
