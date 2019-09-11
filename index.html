@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Verifiable Claims Use Cases</title>
+<title>Verifiable Credentials Use Cases</title>
 <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
 <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
 <script src='https://opencreds.github.io/vc-common/common.js' class='remove'></script>
@@ -9,14 +9,14 @@
 <script class='remove'>
 var respecConfig = {
   // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use .
-  specStatus:           "WG-NOTE",
+  specStatus:           "ED",
   useExperimentalStyles: true,
 
   // the specification's short name, as in http://www.w3.org/TR/short-name/
-  shortName:            "verifiable-claims-use-cases",
+  shortName:            "vc-use-cases",
 
   // if you wish the publication date to be other than today, set this
-  //publishDate:  "2016-06-22",
+  // publishDate:  "2019-09-24",
 
   // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
   // and its maturity status
@@ -163,8 +163,16 @@ on concrete scenarios that the technology defined by the group should address.
   <section id='sotd'>
     <p>
 This document represents a concise but limited collection of use cases readers
-should review in conjunction with the proposed Charter for a Verifiable Claims
-Working Group.
+should review alongside the <a href="https://www.w3.org/TR/vc-data-model/">Verifiable
+Credentials Data Model</a>.
+    </p>
+    <p>
+The work on this document was carried out under tight time constraints due to
+limitations of the W3C process and publishing deadlines. Under such conditions,
+errors are unavoidable and some of the ideas presented here are incomplete.
+The Working Group hopes that in the future, W3C process can be revised to better
+support the dynamic nature of standards work in a more consistent way across
+different groups.
     </p>
     <p>
 Comments regarding this document are welcome. Please file directly on
@@ -432,7 +440,7 @@ allaying concerns about misdirected transactions and money laundering.
 Susan wants to send funds to her family in another country via a popular money
 transfer service.  She has <a>verifiable credentials</a> in her
 <a>credential repository</a> that can be used to share her
-<a>identity profile</a>. She has also been sent a <a>credential</a> from her
+identity profile. She has also been sent a <a>credential</a> from her
 family verifying their banking information. By sharing these with the money
 transfer service, they can automatically verify the source and destination of
 funds, thus being confident in the delivery of those funds and satisfying
@@ -1752,7 +1760,7 @@ authorization.
 
       <em>This section is non-normative.</em>
 
-      <div data-include="https://w3c.github.io/vc-data-model/terms.html"
+      <div data-include="./terms.html"
           data-oninclude="restrictReferences">
       </div>
 

@@ -1,0 +1,2685 @@
+<!DOCTYPE html><html dir="ltr" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta name="generator" content="ReSpec 24.32.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example span.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+<title>Verifiable Credentials Use Cases</title>
+
+<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+@keyframes pop {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1.25, 1.25);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+.respec-offending-element:target {
+  animation: pop 0.25s ease-in-out 0s 1;
+}
+
+.respec-offending-element,
+a[href].respec-offending-element {
+  text-decoration: red wavy underline;
+}
+@supports not (text-decoration: red wavy underline) {
+  .respec-offending-element:not(pre) {
+    display: inline-block;
+  }
+  .respec-offending-element {
+    /* Red squiggly line */
+    background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=)
+      bottom repeat-x;
+  }
+}
+
+#references :target {
+  background: #eaf3ff;
+  animation: pop 0.4s ease-in-out 0s 1;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+a[href].orcid {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+a[href].orcid > svg {
+    margin-bottom: -2px;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2 > a.self-link,
+h3 > a.self-link,
+h4 > a.self-link,
+h5 > a.self-link,
+h6 > a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: 0.5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity 0.2s;
+  width: 2em;
+}
+
+h2 > a.self-link::before,
+h3 > a.self-link::before,
+h4 > a.self-link::before,
+h5 > a.self-link::before,
+h6 > a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2 > a.self-link,
+  h3 > a.self-link,
+  h4 > a.self-link,
+  h5 > a.self-link,
+  h6 > a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+
+
+
+
+<style>
+dl {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+dt,
+dd {
+    line-height: 1.42857143;
+}
+dl.dl-horizontal > dt {
+    font-weight: bold;
+}
+dl.dl-horizontal > dd {
+    padding-bottom: 10px;
+}
+@media (min-width: 768px), print {
+    .dl-horizontal {
+        margin-bottom: 2em;
+    }
+    .dl-horizontal dt {
+        font-weight: normal;
+        float: left;
+        width: 160px;
+        clear: left;
+        overflow: hidden;
+        text-align: right;
+    }
+    .dl-horizontal dd {
+        margin-left: 180px;
+    }
+    .dl-horizontal dd > ul {
+        padding-left: 20px;
+        margin: 0px;
+    }
+    .dl-horizontal dd + dt { border-top: solid thin grey; }
+    dl.dl-horizontal dt:not(:first-child) + dd { border-top: solid thin grey; }
+
+    .left.dl-horizontal dt {
+        text-align: left;
+    }
+}
+.dl-horizontal dd + dd { border-top: dotted thin grey;
+    padding-top: 0.5em; }
+</style>
+
+<link rel="canonical" href="https://www.w3.org/TR/vc-use-cases/"><style>var {
+  position: relative;
+  cursor: pointer;
+}
+
+var[data-type]::before,
+var[data-type]::after {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+/* the triangle or arrow or caret or whatever */
+var[data-type]::before {
+  content: "";
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #000;
+}
+
+/* actual text */
+var[data-type]::after {
+  content: attr(data-type);
+  transform: translateX(-50%) translateY(-100%);
+  background: #000;
+  text-align: center;
+  /* additional styling */
+  font-family: "Dank Mono", "Fira Code", monospace;
+  font-style: normal;
+  padding: 6px;
+  border-radius: 3px;
+  color: #daca88;
+  text-indent: 0;
+  font-weight: normal;
+}
+
+var[data-type]:hover::after,
+var[data-type]:hover::before {
+  opacity: 1;
+}
+</style><script id="initialUserConfig" type="application/json">{
+  "specStatus": "NOTE",
+  "useExperimentalStyles": true,
+  "shortName": "vc-use-cases",
+  "publishDate": "2019-09-24",
+  "localBiblio": {
+    "REST": {
+      "title": "Architectural Styles and the Design of Network-based Software Architectures",
+      "date": "2000",
+      "href": "http://www.ics.uci.edu/~fielding/pubs/dissertation/",
+      "authors": [
+        "Fielding, Roy Thomas"
+      ],
+      "publisher": "University of California, Irvine."
+    },
+    "SECURE-MESSAGING": {
+      "title": "Secure Messaging",
+      "href": "https://web-payments.org/specs/source/secure-messaging",
+      "authors": [
+        "Manu Sporny"
+      ],
+      "etal": true,
+      "status": "unofficial",
+      "publisher": "Web Payments Community Group"
+    },
+    "VCTF-USECASES": {
+      "title": "Verifiable Claims Use Cases",
+      "href": "http://w3c.github.io/webpayments-ig/VCTF/use-cases/",
+      "authors": [
+        "Shane McCarron",
+        "Daniel Burnett",
+        "Gregg Kellogg",
+        "Brian Sletten",
+        "Manu Sporny"
+      ],
+      "status": "IG-DRAFT",
+      "publisher": "Web Payments Interest Group Verifiable Claims Task Force"
+    },
+    "HTTP-SIGNATURES": {
+      "aliasOf": "http-signatures"
+    },
+    "MACAROONS": {
+      "title": "Macaroons",
+      "href": "http://macaroons.io/",
+      "authors": [
+        "Arnar Birgisson",
+        "Joe Gibbs Politz",
+        "Úlfar Erlingsson",
+        "Ankur Taly",
+        "Michael Vrable",
+        "Mark Lentczner"
+      ],
+      "status": "unofficial",
+      "publisher": "Credentials Community Group"
+    },
+    "CREDENTIAL-MANAGEMENT": {
+      "title": "Credential Management Level 1",
+      "href": "https://w3c.github.io/webappsec-credential-management/",
+      "authors": [
+        "Mike West"
+      ],
+      "status": "WG-DRAFT",
+      "publisher": "Web Application Security Working Group"
+    },
+    "OPEN-BADGES": {
+      "title": "Open Badges",
+      "href": "https://github.com/openbadges/openbadges-specification",
+      "authors": [
+        "Brian Brennan",
+        "Mike Larsson",
+        "Chris McAvoy",
+        "Nate Otto",
+        "Kerri Lemoie"
+      ],
+      "status": "BA-DRAFT",
+      "publisher": "Badge Alliance Standard Working Group"
+    },
+    "IDENTITY-CREDENTIALS": {
+      "title": "Identity Credentials",
+      "href": "http://opencreds.org/specs/source/identity-credentials/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "W3C Credentials Community Group"
+    },
+    "RDF-NORMALIZATION": {
+      "title": "RDF Dataset Normalization",
+      "href": "http://json-ld.github.io/normalization/spec/",
+      "authors": [
+        "Dave Longley",
+        "Manu Sporny"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "Credentials W3C Community Group"
+    },
+    "WEB-COMMERCE": {
+      "title": "Web Commerce",
+      "href": "https://web-payments.org/specs/source/web-commerce/",
+      "authors": [
+        "Dave Longley",
+        "Manu Sporny",
+        "David I. Lehn"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "W3C Credentials Community Group"
+    },
+    "WEB-COMMERCE-API": {
+      "title": "Web Commerce API",
+      "href": "https://web-payments.org/specs/source/web-commerce-api/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley",
+        "David I. Lehn"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "W3C Credentials Community Group"
+    }
+  },
+  "github": "https://github.com/w3c/vc-use-cases",
+  "includePermalinks": false,
+  "editors": [
+    {
+      "name": "Shane McCarron",
+      "url": "http://blog.halindrome.com/",
+      "company": "Spec-Ops",
+      "companyURL": "https://spec-ops.io",
+      "w3cid": "23346"
+    },
+    {
+      "name": "Joe Andrieu",
+      "company": "Legendary Requirements",
+      "companyURL": "http://legreq.com"
+    },
+    {
+      "name": "Matt Stone",
+      "url": "https://www.lithos.me/about",
+      "company": "The Brightlink",
+      "companyURL": "http://www.thebrightlink.com"
+    },
+    {
+      "name": "Tzviya Siegman",
+      "url": "",
+      "company": "Wiley",
+      "companyURL": ""
+    },
+    {
+      "name": "Gregg Kellogg",
+      "url": "http://greggkellogg.net/",
+      "company": "Spec-Ops",
+      "companyURL": "https://spec-ops.io/",
+      "w3cid": "44770"
+    },
+    {
+      "name": "Ted Thibodeau, Jr.",
+      "url": "https://www.linkedin.com/in/macted/",
+      "company": "OpenLink Software, Inc.",
+      "companyURL": "http://www.openlinksw.com/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Nate Otto",
+      "url": "",
+      "company": "Badge Alliance",
+      "companyURL": ""
+    },
+    {
+      "name": "Sunny Lee",
+      "url": "",
+      "company": "Badge Alliance",
+      "companyURL": ""
+    },
+    {
+      "name": "Brian Sletten",
+      "url": "http://bosatsu.net",
+      "company": "Bosatsu Consulting, Inc.",
+      "companyURL": "http://bosatsu.net"
+    },
+    {
+      "name": "Daniel Burnett",
+      "company": "Standards Play",
+      "companyURL": "http://standardsplay.com/"
+    },
+    {
+      "name": "Manu Sporny",
+      "url": "http://digitalbazaar.com/",
+      "company": "Digital Bazaar, Inc.",
+      "companyURL": "http://digitalbazaar.com/"
+    },
+    {
+      "name": "Ken Ebert",
+      "url": "",
+      "company": "Sovrin Foundation",
+      "companyURL": "https://sovrin.org/"
+    }
+  ],
+  "maxTocLevel": 3,
+  "wg": "Verifiable Claims Working Group",
+  "wgURI": "https://www.w3.org/2017/vc/",
+  "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/98922/status",
+  "publishISODate": "2019-09-24T00:00:00.000Z",
+  "generatedSubtitle": "Working Group Note 24 September 2019"
+}</script><meta name="description" content="A verifiable claim is a qualification, achievement, quality, or piece
+of information about an entity's background such as a name, government
+ID, payment provider, home address, or university degree. Such a claim
+describes a quality or qualities, property or properties of an entity
+which establish its existence and uniqueness. The use cases outlined here are
+provided in order to make progress toward possible future standardization and
+interoperability of both low- and high-stakes claims with the goals of
+storing, transmitting, and receiving digitally verifiable proof of attributes
+such as qualifications and achievements. The use cases in this document focus
+on concrete scenarios that the technology defined by the group should address."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-NOTE"></head>
+
+<body class="h-entry informative"><div class="head">
+      <a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a> <h1 id="title" class="title p-name">Verifiable Credentials Use Cases</h1>
+      
+      <h2>
+        W3C Working Group Note
+        <time class="dt-published" datetime="2019-09-24">24 September 2019</time>
+      </h2>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2019/NOTE-vc-use-cases-20190924/">https://www.w3.org/TR/2019/NOTE-vc-use-cases-20190924/</a>
+              </dd><dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/vc-use-cases/">https://www.w3.org/TR/vc-use-cases/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/vc-use-cases/">https://w3c.github.io/vc-use-cases/</a></dd>
+        
+        
+        
+        
+        
+        
+        <dt>Editors:</dt>
+        <dd class="p-author h-card vcard" data-editor-id="23346"><a class="u-url url p-name fn" href="http://blog.halindrome.com/">Shane McCarron</a>
+            (<a class="p-org org h-org h-card" href="https://spec-ops.io">Spec-Ops</a>)
+          </dd><dd class="p-author h-card vcard"><span class="p-name fn">Joe Andrieu</span>
+            (<a class="p-org org h-org h-card" href="http://legreq.com">Legendary Requirements</a>)
+          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.lithos.me/about">Matt Stone</a>
+            (<a class="p-org org h-org h-card" href="http://www.thebrightlink.com">The Brightlink</a>)
+          </dd><dd class="p-author h-card vcard"><span class="p-name fn">Tzviya Siegman</span>
+            (Wiley)
+          </dd><dd class="p-author h-card vcard" data-editor-id="44770"><a class="u-url url p-name fn" href="http://greggkellogg.net/">Gregg Kellogg</a>
+            (<a class="p-org org h-org h-card" href="https://spec-ops.io/">Spec-Ops</a>)
+          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.linkedin.com/in/macted/">Ted Thibodeau, Jr.</a>
+            (<a class="p-org org h-org h-card" href="http://www.openlinksw.com/">OpenLink Software, Inc.</a>)
+          </dd>
+        
+        <dt>
+                Authors:
+              </dt><dd class="p-author h-card vcard"><span class="p-name fn">Nate Otto</span>
+            (Badge Alliance)
+          </dd><dd class="p-author h-card vcard"><span class="p-name fn">Sunny Lee</span>
+            (Badge Alliance)
+          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="http://bosatsu.net">Brian Sletten</a>
+            (<a class="p-org org h-org h-card" href="http://bosatsu.net">Bosatsu Consulting, Inc.</a>)
+          </dd><dd class="p-author h-card vcard"><span class="p-name fn">Daniel Burnett</span>
+            (<a class="p-org org h-org h-card" href="http://standardsplay.com/">Standards Play</a>)
+          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="http://digitalbazaar.com/">Manu Sporny</a>
+            (<a class="p-org org h-org h-card" href="http://digitalbazaar.com/">Digital Bazaar, Inc.</a>)
+          </dd><dd class="p-author h-card vcard"><span class="p-name fn">Ken Ebert</span>
+            (<a class="p-org org h-org h-card" href="https://sovrin.org/">Sovrin Foundation</a>)
+          </dd>
+        <dt>Participate:</dt><dd>
+      <a href="https://github.com/w3c/vc-use-cases/">GitHub w3c/vc-use-cases</a>
+    </dd><dd>
+      <a href="https://github.com/w3c/vc-use-cases/issues/">File a bug</a>
+    </dd><dd>
+      <a href="https://github.com/w3c/vc-use-cases/commits/gh-pages">Commit history</a>
+    </dd><dd>
+      <a href="https://github.com/w3c/vc-use-cases/pulls/">Pull requests</a>
+    </dd>
+      </dl>
+      
+      
+      
+      <p class="copyright">
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+      ©
+      2019
+      
+      <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
+      <a href="https://ev.buaa.edu.cn/">Beihang</a>). 
+      W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules
+      apply.
+    </p>
+      <hr title="Separator for header">
+    </div>
+  <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <p>
+A <em>verifiable claim</em> is a qualification, achievement, quality, or piece
+of information about an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity's</a> background such as a name, government
+ID, payment provider, home address, or university degree. Such a claim
+describes a quality or qualities, property or properties of an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a>
+which establish its existence and uniqueness. The use cases outlined here are
+provided in order to make progress toward possible future standardization and
+interoperability of both low- and high-stakes <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> with the goals of
+storing, transmitting, and receiving digitally verifiable proof of attributes
+such as qualifications and achievements. The use cases in this document focus
+on concrete scenarios that the technology defined by the group should address.
+    </p>
+  </section>
+
+  <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p>
+    <p>
+This document represents a concise but limited collection of use cases readers
+should review alongside the <a href="https://www.w3.org/TR/vc-data-model/">Verifiable
+Credentials Data Model</a>.
+    </p>
+    <p>
+The work on this document was carried out under tight time constraints due to
+limitations of the <abbr title="World Wide Web Consortium">W3C</abbr> process and publishing deadlines. Under such conditions,
+errors are unavoidable and some of the ideas presented here are incomplete.
+The Working Group hopes that in the future, <abbr title="World Wide Web Consortium">W3C</abbr> process can be revised to better
+support the dynamic nature of standards work in a more consistent way across
+different groups.
+    </p>
+    <p>
+Comments regarding this document are welcome. Please file directly on
+<a href="https://github.com/w3c/vc-use-cases/issues/">GitHub</a>, or send them
+to <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a>
+(<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-vc-comments/">archives</a>).
+    </p>
+  <p>
+      This document was published by the <a href="https://www.w3.org/2017/vc/">Verifiable Claims Working Group</a> as a
+      Working Group Note.
+      
+    </p><p>
+      <a href="https://github.com/w3c/vc-use-cases/issues/">GitHub Issues</a> are preferred for
+            discussion of this specification.
+          
+      
+    </p><p>
+      Publication as a Working Group Note does not imply endorsement by the
+      <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or
+      obsoleted by other documents at any time. It is inappropriate to cite this
+      document as other than work in progress.
+    </p><p>
+      
+        This document was produced by a group
+        operating under the
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+       
+      
+                  <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                  <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/98922/status">public list of any patent disclosures</a>
+            made in connection with the deliverables of
+            the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual
+            knowledge of a patent which the individual believes contains
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+            must disclose the information in accordance with
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
+      
+    </p><p>
+                  This document is governed by the
+                  <a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">1 March 2019 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#importance-of-this-work"><bdi class="secno">1.1 </bdi>Importance of this work</a></li><li class="tocline"><a class="tocxref" href="#use-case-model"><bdi class="secno">1.2 </bdi>Use case model</a></li></ol></li><li class="tocline"><a class="tocxref" href="#user-roles"><bdi class="secno">2. </bdi>User Roles</a></li><li class="tocline"><a class="tocxref" href="#user-needs"><bdi class="secno">3. </bdi>User Needs</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#education"><bdi class="secno">3.1 </bdi>Education</a></li><li class="tocline"><a class="tocxref" href="#retail"><bdi class="secno">3.2 </bdi>Retail</a></li><li class="tocline"><a class="tocxref" href="#finance"><bdi class="secno">3.3 </bdi>Finance</a></li><li class="tocline"><a class="tocxref" href="#healthcare"><bdi class="secno">3.4 </bdi>Healthcare</a></li><li class="tocline"><a class="tocxref" href="#professional-credentials"><bdi class="secno">3.5 </bdi>Professional Credentials</a></li><li class="tocline"><a class="tocxref" href="#legal-identity"><bdi class="secno">3.6 </bdi>Legal Identity</a></li><li class="tocline"><a class="tocxref" href="#devices"><bdi class="secno">3.7 </bdi>Devices</a></li></ol></li><li class="tocline"><a class="tocxref" href="#user-tasks"><bdi class="secno">4. </bdi>User Tasks</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#issue-claim"><bdi class="secno">4.1 </bdi>Issue Claim</a></li><li class="tocline"><a class="tocxref" href="#assert-claim"><bdi class="secno">4.2 </bdi>Assert Claim</a></li><li class="tocline"><a class="tocxref" href="#verify-claim"><bdi class="secno">4.3 </bdi>Verify Claim</a></li><li class="tocline"><a class="tocxref" href="#store-move-claim"><bdi class="secno">4.4 </bdi>Store / Move Claim</a></li><li class="tocline"><a class="tocxref" href="#retrieve-claim"><bdi class="secno">4.5 </bdi>Retrieve Claim</a></li><li class="tocline"><a class="tocxref" href="#revoke-claim"><bdi class="secno">4.6 </bdi>Revoke Claim</a></li></ol></li><li class="tocline"><a class="tocxref" href="#focal-use-cases"><bdi class="secno">5. </bdi>Focal Use Cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#citizenship-by-parentage"><bdi class="secno">5.1 </bdi>Citizenship by Parentage</a></li><li class="tocline"><a class="tocxref" href="#expert-dive-instructor"><bdi class="secno">5.2 </bdi>Expert Dive Instructor</a></li><li class="tocline"><a class="tocxref" href="#international-travel-with-minor-and-upgrade"><bdi class="secno">5.3 </bdi>International Travel with Minor and Upgrade</a></li></ol></li><li class="tocline"><a class="tocxref" href="#user-sequences"><bdi class="secno">6. </bdi>User Sequences</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#how-a-verifiable-credential-might-be-created"><bdi class="secno">6.1 </bdi>How a Verifiable Credential Might Be Created</a></li><li class="tocline"><a class="tocxref" href="#how-a-verifiable-credential-might-be-used"><bdi class="secno">6.2 </bdi>How a Verifiable Credential Might Be Used</a></li></ol></li><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">A. </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#example-verifiable-credentials"><bdi class="secno">B. </bdi>Example Verifiable Credentials</a></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">C. </bdi>Acknowledgements</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">D. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">D.1 </bdi>Informative references</a></li></ol></li></ol></nav>
+
+  <section id="introduction">
+    
+    <h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction<a class="self-link" aria-label="§" href="#introduction"></a></h2>
+      <p>
+The Verifiable Claims Working Group at the <abbr title="World Wide Web Consortium">W3C</abbr> is developing standards for
+expressing and exchanging "<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>" that have been verified by a third
+party and to make them easier and more secure on the Web.
+    </p>
+    <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Note</span></div><div class="">
+This document does NOT attempt to define an architecture for the support of
+Verifiable Claims.  Instead it expresses the sorts of needs that real users have
+that could be addressed through support for some sort of self-sovereign claim
+environment.  It attempts to use terminology that is consistent with the other
+deliverables of the Verifiable Claims Working Group (you can see the relevant
+terms in Appendix A).
+    </div></div>
+    <section id="importance-of-this-work">
+      <h3 id="x1-1-importance-of-this-work"><bdi class="secno">1.1 </bdi>Importance of this work<a class="self-link" aria-label="§" href="#importance-of-this-work"></a></h3>
+      <p>
+Entities (people, organizations, devices) need to make many kinds of
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> as part of their everyday activities. As more and more of these
+important activities move to the Internet, <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> need to be able to
+transmit instantly <em>verifiable</em> claims (e.g., about their location,
+accomplishments, value, what-have-you). From educational records to payment
+account access, the next generation of web applications will authorize
+<a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> to perform actions based on rich sets of credentials issued by
+trusted parties. Human- and machine-mediated decisions about job applications,
+account access, collaboration, and professional development will depend on
+filtering and analyzing growing amounts of data. It is essential that data be
+verifiable.
+      </p>
+      <p>
+Standardization of digital <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> technologies makes it possible for many
+stakeholders to issue, earn, and trust these essential records about their
+counterparties, without being locked into proprietary platforms.
+      </p>
+    </section>
+    <section id="use-case-model">
+      <h3 id="x1-2-use-case-model"><bdi class="secno">1.2 </bdi>Use case model<a class="self-link" aria-label="§" href="#use-case-model"></a></h3>
+      <p>
+This document presents an aggregate use case model, comprised of Needs, Roles,
+Tasks, and Sequences. Taken together, these models define the use cases that
+the Verifiable Claims Working Group has addressed.
+      </p>
+      <p>
+User needs define the problem space addressed by <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>.
+User Roles specify the roles different <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> play when interacting
+with <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>. Tasks define the functions users can
+accomplish, and sequences demonstrate how tasks might be realized, by
+interactions between <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> over time.
+      </p>
+      <p>
+As with all models, this use case model is neither exhaustive nor complete. The
+listed uses cannot capture all possible use cases. Similarly, the models do not
+completely characterize the use cases represented. However, the combined model
+is intended to provide specific, coherent guidance for the work ahead.
+      </p>
+    </section>
+  </section>
+
+  <section id="user-roles">
+    <h2 id="x2-user-roles"><bdi class="secno">2. </bdi>User Roles<a class="self-link" aria-label="§" href="#user-roles"></a></h2>
+    <p>
+There are four roles supported by <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>: <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">Issuer</a>,
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">Verifier</a>, <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">Subject</a>, and <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">Holder</a>.
+    </p>
+    <figure id="fig-verifiable-credential-user-roles">
+      <img alt="Verifiable Credential User Roles" style="display:block; margin:auto" src="VerifiableCredentialsUserRoles.png" width="173" height="312">
+      <figcaption>Figure <bdi class="figno">1</bdi> <span class="fig-title">
+Verifiable Credential User Roles
+      </span></figcaption>
+    </figure>
+
+    <dl>
+      <dt>
+Issuer
+      </dt>
+      <dd>
+The <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> that creates a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> and associates it with a
+particular <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>.
+      </dd>
+      <dt>
+Verifier
+      </dt>
+      <dd>
+The <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> verifying a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> about a given <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>.
+      </dd>
+      <dt>
+Subject
+      </dt>
+      <dd>
+The <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> about whom a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> is issued.
+      </dd>
+      <dt>
+Holder
+      </dt>
+      <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> may perform by possessing one or more
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>. A <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> is usually, but not always, the
+<a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> of the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> that they are holding.
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn">Holders</a> store their <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> in <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>.
+      </dd>
+    </dl>
+  </section>
+
+
+  <section id="user-needs">
+    <h2 id="x3-user-needs"><bdi class="secno">3. </bdi>User Needs<a class="self-link" aria-label="§" href="#user-needs"></a></h2>
+    <p>
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">Verifiable credentials</a> address user needs in a number of key domains:
+    </p>
+
+    <figure id="fig-verifiable-credentials-example-domains-for-user-needs">
+      <img alt="Verifiable Credential User Needs" style="display:block; margin:auto" src="VerifiableCredentialsProblemDomains.png" width="1145" height="695">
+      <figcaption>Figure <bdi class="figno">2</bdi> <span class="fig-title">
+Verifiable Credentials, Example Domains for User Needs
+      </span></figcaption>
+    </figure>
+
+    <section id="education">
+      <h3 id="x3-1-education"><bdi class="secno">3.1 </bdi>Education<a class="self-link" aria-label="§" href="#education"></a></h3>
+      <p>
+The education domain includes all levels of the educational experience; from
+primary through professional continuing education.
+      </p>
+      <dl class="left dl-horizontal">
+        <dt>
+<span id="uneed_E_1" class="userneed-name" title="E.1 Digital transcript">E.1 Digital transcript</span>
+        </dt>
+        <dd>
+Joleen is the registrar of Mega University and, by virtue of her office, is
+responsible for the integrity, accuracy, and security of academic records.
+Joleen has been a pioneering registrar in advocating an "extended transcript"
+that includes not only the standard set of course grades but also adds
+supplementary information on learner competencies.  These might include work
+experiences and non-educational but marketable skills. Upon the request of her
+students, Joleen issues a digital credential that includes an extended
+transcript.
+        </dd>
+        <dt>
+<span id="uneed_E_2" class="userneed-name" title="E.2 Taking a test">E.2 Taking a test</span>
+        </dt>
+        <dd>
+Eunice is about to take her ACT (a test used to evaluate her readiness for
+college). When she arrives at the testing center, she is required to present
+identification. Her government-issued identity certificate is acceptable, as
+the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> contained in it reflect all of the required
+attributes and it is difficult to counterfeit.
+        </dd>
+        <dt>
+<span id="uneed_E_3" class="userneed-name" title="E.3 Transferring schools">E.3 Transferring schools</span>
+        </dt>
+        <dd>
+Rocky is an undergraduate student at Wossamotta U.  His school provides a
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> service to all students and alumni, so he chooses
+to use it. In his third year, Rocky decides to transfer to Moosylvania Tech.
+They do not offer a service, but he does not want to continue to use the
+service of his old (and now rival school) so he moves his <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> to the
+service offered by his bank without needing to have them reissued.
+        </dd>
+        <dt>
+<span id="uneed_E_4" class="userneed-name" title="E.4 Online classes">E.4 Online classes</span>
+        </dt>
+        <dd>
+In MOOC and other online learning systems, being able to reliably identify
+participants is vital to ensure the individual evaluation and certification.
+Nick is participating in a course online and takes a test. He is required to
+provide his credentials to prove his identity before the test, and then to
+allow the system to issue a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> regarding the
+results of his test.
+        </dd>
+      </dl>
+    </section>
+    <section id="retail">
+      <h3 id="x3-2-retail"><bdi class="secno">3.2 </bdi>Retail<a class="self-link" aria-label="§" href="#retail"></a></h3>
+      <p>
+The retail domain encompasses all things where there is an exchange of value on
+an individual level. This includes brick-and-mortar store fronts, web-only
+venues, and even person-to-person sales.
+      </p>
+      <dl class="left dl-horizontal">
+        <dt>
+<span id="uneed_R_1" class="userneed-name" title="R.1 Address verification">R.1 Address verification</span>
+        </dt>
+        <dd>
+Francis has found the perfect pair of shoes. When processing orders, Giant Shoe
+Company wants to be certain that his shipping address is accurate (inaccurate
+addresses are very expensive in terms of customer service). They offer a
+discount for customers who make verifiable addresses available as part of the
+checkout process. Francis offers his certificate and gets the perfect shoes for
+even less than he expected.
+        </dd>
+        <dt>
+<span id="uneed_R_2" class="userneed-name" title="R.2 Adult beverages">R.2 Adult beverages</span>
+        </dt>
+        <dd>
+June goes to her local beer and wine store to buy a bottle of wine. She submits
+her identity credential that lets the liquor store owner know that she is over
+21 without having to reveal her actual date of birth, her address, or her state
+ID number.
+        </dd>
+        <dt>
+<span id="uneed_R_3" class="userneed-name" title="R.3 Fraud detection">R.3 Fraud detection</span>
+        </dt>
+        <dd>
+On a bright Sunday, Oskar remembers that he still needs to buy his wife a
+precious gift for their wedding anniversary. However, he is acutely aware that
+it is precisely in weekends that gangs set up fraudulent web shops that claim
+to sell such gifts, while in fact they only take the cash, and disappear on
+Mondays. So before actually purchasing a gift from the web shop of his choice,
+he requests the shop to provide a credential issued by the chamber of commerce,
+that contains proof of legitimacy. After having verified that the shop is
+legit, he can purchase his gift.
+        </dd>
+      </dl>
+    </section>
+    <section id="finance">
+      <h3 id="x3-3-finance"><bdi class="secno">3.3 </bdi>Finance<a class="self-link" aria-label="§" href="#finance"></a></h3>
+      <p>
+The Finance domain includes banking, brokerage, insurance, and other
+industries where there is a high value placed on knowing exactly with whom
+you are dealing.
+      </p>
+      <dl class="left dl-horizontal">
+        <dt>
+<span id="uneed_F_1" class="userneed-name" title="F.1 Reuse know your customer">F.1 Reuse know your customer</span>
+        </dt>
+        <dd>
+Jane is opening an account at MidBank in Finland.  As part of that process,
+the bank asks her to provide two from a variety of possible sources to confirm
+her identity — a so-called "Know Your Customer" check. She
+selects government-supplied <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> that confirm she
+receives postal mail at a certain address and that she has a national ID card.
+Confirming these allows the bank to open her account and be confident in her
+identity when she conducts transactions.
+        </dd>
+        <dd>
+Now that the account is open, Jane is issued a digitally-signed
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> for her checking account at MidBank. This <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a>
+verifies that Jane has an account at MidBank and has access to her associated
+checking account. Since MidBank (and all banks in Finland) are required to
+perform "Know Your Customer" checks on accounts, this credential
+can also be used as sufficient verification by other financial institutions.
+This can help Jane assure destination banks that she is verified, thereby
+allaying concerns about misdirected transactions and money laundering.
+        </dd>
+        <dt>
+<span id="uneed_F_2" class="userneed-name" title="F.2 Money transfer">F.2 Money transfer</span>
+        </dt>
+        <dd>
+Susan wants to send funds to her family in another country via a popular money
+transfer service.  She has <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> in her
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> that can be used to share her
+identity profile. She has also been sent a <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> from her
+family verifying their banking information. By sharing these with the money
+transfer service, they can automatically verify the source and destination of
+funds, thus being confident in the delivery of those funds and satisfying
+various regulations regarding prevention of money laundering.
+        </dd>
+        <dt>
+<span id="uneed_F_3" class="userneed-name" title="F.3 Closing account">F.3 Closing account</span>
+        </dt>
+        <dd>
+John opens a checking account at Big Bank Co and is issued a
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> indicating that the account exists, that the bank
+verified John's identity, and that John has access to the account.  Some time
+later, John is moving to a new city and decides to close that account.  Big
+Bank Co needs to revoke that claim as part of their normal account closing
+process.
+        </dd>
+        <dt>
+<span id="uneed_F_4" class="userneed-name" title="F.4 Trying out a new service">F.4 Trying out a new service</span>
+        </dt>
+        <dd>
+Nikita has several accounts with BigBank, as well as a brokerage account with
+WallStreetCo. She had placed all of her <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> in a
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> at BigBank that came free when she opened her
+accounts. WallStreetCo is now offering a new <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">repository</a> that has an
+interface she thinks she will prefer. Nikita copies her <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> from
+BigBank into the repository at WallStreetCo to experiment with their service,
+but continues to use the service from BigBank while she is testing.
+        </dd>
+        <dt>
+<span id="uneed_F_5" class="userneed-name" title="F.5 New bank account from home">F.5 New bank account from home</span>
+        </dt>
+        <dd>
+Alice wants to open a new bank account. BigOnlineBank offers the ability to
+do this from home if she can provide electronic credentials.  She offers
+government-issued certificates that verify her identity (address, national
+identity number, etc.), and opens her new account from her couch.
+        </dd>
+      </dl>
+    </section>
+
+    <section id="healthcare">
+      <h3 id="x3-4-healthcare"><bdi class="secno">3.4 </bdi>Healthcare<a class="self-link" aria-label="§" href="#healthcare"></a></h3>
+      <p>
+Privacy is critically important in the healthcare industry. This domain looks
+at everything from physical interaction to connecting patients and providers
+with service organizations.
+      </p>
+      <dl class="left dl-horizontal">
+        <dt>
+<span id="uneed_H_1" class="userneed-name" title="H.1 Prescribing">H.1 Prescribing</span>
+        </dt>
+        <dd>
+Barney is a physician, and has recently become board certified in his state.
+The state's board issues Barney a digital certificate confirming that he is
+certified to practice medicine in that state.  Barney can now use this
+certificate when writing prescriptions and referrals, thereby improving
+accountability and verifiability.
+        </dd>
+        <dt>
+<span id="uneed_H_2" class="userneed-name" title="H.2 Online pharmacy">H.2 Online pharmacy</span>
+        </dt>
+        <dd>
+iPharmacy receives a prescription for Bob electronically from a local clinic.
+It includes a certificate about the physician that issued the prescription as
+well as one about Bob. iPharmacy's system automatically verifies the ability
+of the physician to write prescriptions, as well as Bob's insurance coverage.
+When Bob arrives to pick up his medication, iPharmacy further correlates his
+identity with the certificate, thereby improving the end-to-end accountability
+of their system.
+        </dd>
+        <dt>
+<span id="uneed_H_3" class="userneed-name" title="H.3 Insurance claim">H.3 Insurance claim</span>
+        </dt>
+        <dd>
+Tracy has a sore throat soon after moving to a new town. She finds a physician
+through her health care network and goes in for treatment. She is a new
+patient, so the clinic needs to know who she is and how she will be paying.
+When checking in, she presents her <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> that
+demonstrates her identity and her proof of insurance. When the clinic submits
+this to the insurance company, they can automatically ascertain that she
+submitted her proof of identity and insurance to the provider and granted the
+physician the ability to submit the claim for payment.
+        </dd>
+        <dt>
+<span id="uneed_H_4" class="userneed-name" title="H.4 Traveling illness">H.4 Traveling illness</span>
+        </dt>
+        <dd>
+John is on the vacation of a lifetime, travelling the world. Falling ill, he
+visits a health clinic in a country in which he does not live. At the clinic,
+he is asked for proof of identity.  He provides a credential that verifies his
+name and address, but elects not to disclose his marital status nor his social
+security number, as those are neither requested nor required at this clinic.
+He further marks the disclosure as expiring in 30 days—he does not want
+his information verifiable after that time.
+        </dd>
+        <dt>
+<span id="uneed_H_5" class="userneed-name" title="H.5 Proving Legal Disability Status">H.5 Proving Legal Disability Status</span>
+        </dt>
+        <dd>
+Trina, who is legally blind, is currently unemployed, and needs to use the
+local free disability ride service to get to the employment office. To use
+this service, she is required to verify that she maintains legal disability
+status. Trina provides her government-issued disability credential to sign up
+for the ride service, and is not required to disclose her specific disability
+to the ride service, as this could put her at personal risk.
+        </dd>
+      </dl>
+    </section>
+
+    <section id="professional-credentials">
+      <h3 id="x3-5-professional-credentials"><bdi class="secno">3.5 </bdi>Professional Credentials<a class="self-link" aria-label="§" href="#professional-credentials"></a></h3>
+      <p>
+In many aspects of life it is important to know that <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> are who
+they say they are, and that they can do what they say. Professional
+accreditation is one way of learning about the abilities of an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a>.
+Being able to verify these credentials is essential to their value.
+      </p>
+      <dl class="left dl-horizontal">
+        <dt>
+<span id="uneed_C_1" class="userneed-name" title="C.1 Find a doctor">C.1 Find a doctor</span>
+        </dt>
+        <dd>
+Jason is looking for a new primary care physician.  His health provider
+includes information on their web site about the physicians they have on
+staff, including <a data-lt="claim" href="#dfn-claims" class="internalDFN" data-link-type="dfn">verifiable credentials</a> about their
+education, board certification, and continuing education.  Jason can verify
+these credentials and be confident that his new physician satisfies his
+requirements.
+        </dd>
+        <dt>
+<span id="uneed_C_2" class="userneed-name" title="C.2 Busy doctor">C.2 Busy doctor</span>
+        </dt>
+        <dd>
+Barney was a board-certified physician, but he ran out of time to complete
+his continuing education requirements and his certification lapsed. Since the
+board can revoke his certification, <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">credential verifiers</a> will
+automatically be aware that he can no longer issue prescriptions or perform
+medical procedures.
+        </dd>
+        <dt>
+<span id="uneed_C_3" class="userneed-name" title="C.3 Bad university">C.3 Bad university</span>
+        </dt>
+        <dd>
+Jane was issued a certificate by BigTraining Co., indicating that she was a
+trained Project Manager.  It was later discovered that BigTraining Co. was not
+actually training anyone, and their organization's certificate was revoked via
+the US Department of Education's Accreditation Database. Jane's credential is
+therefore invalid, and prospective employers will be aware of this when they
+check her certifications.
+        </dd>
+        <dt>
+<span id="uneed_C_4" class="userneed-name" title="C.4 New employer">C.4 New employer</span>
+        </dt>
+        <dd>
+Jessica is a medical doctor practicing in the United States. She has a variety
+of digital <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> that explain her qualifications, schooling, continuing
+education achievements, and board certifications. These are all stored in the
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> provided by her employer.  When she is offered a
+position with another health provider network, she can automatically transfer
+all of these <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> to her new employer.
+        </dd>
+        <dt>
+<span id="uneed_C_5" class="userneed-name" title="C.5 Social authority">C.5 Social authority</span>
+        </dt>
+        <dd>
+Josie is a healthcare worker that has created a profile on a professional
+social network to make herself readily available for new opportunities in the
+workforce. She lists her employment history and credentials including degrees,
+certificates, and digital badges. The website requests verification of her
+credential <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> in order for her credentials to be visible when she
+posts messages. Josie authorizes the sharing of the relevant <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> with
+the website, and the site verifies them before allowing Josie to expose them.
+        </dd>
+        <dd>
+"Freedom?" is an online forum that encourages free discussion about issues
+controversial in Freedonia.  The forum allows users to register anonymous
+accounts, but it also allows users to obtain badges based upon real-world
+certifications. Paula has been certified as an aid worker, and wishes that
+information to be marked on her posts.  She shares her certificate with the
+forum, but limits it to only verifying that she is the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> of the
+certificate, that she is the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> of it, and that she is an aid
+worker.  In this way she maintains her anonymity in this controversial forum
+while still being able to assist her fellow countrymen.
+        </dd>
+        <dt>
+<span id="uneed_C_6" class="userneed-name" title="C.6 Job applicant">C.6 Job applicant</span>
+        </dt>
+        <dd>
+Software Co. has posted an open position online and they are receiving
+thousands of applications. Cindy has applied for the job. Unlike many
+applicants, she has attached her education credentials—college degree,
+additional specific software training, etc.  Software Co. evaluates these
+credentials automatically as they receive her application.  Because her
+materials are verifiable and verified, her application is immediately
+forwarded as a viable candidate.
+        </dd>
+      </dl>
+    </section>
+    <section id="legal-identity">
+      <h3 id="x3-6-legal-identity"><bdi class="secno">3.6 </bdi>Legal Identity<a class="self-link" aria-label="§" href="#legal-identity"></a></h3>
+      <p>
+For many transactions, an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> must be able to prove some aspect of
+their identity in a way that can be quickly verified.  Governments and other
+widely recognized <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> are well positioned to provide such
+identification in a verifiable digital form.
+      </p>
+      <dl class="left dl-horizontal">
+        <dt>
+<span id="uneed_L_1" class="userneed-name" title="L.1 Digital driving license">L.1 Digital driving license</span>
+        </dt>
+        <dd>
+Asako just passed the final test to receive a drivers license. As she is still
+a new driver, and may be pulled over for a traffic violation, she would like
+to receive a <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> that asserts a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> that she has right
+to drive a car. She requests a credential from the certifying authority
+(<a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>) that she can use to prove to the officer
+(<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">credential verifier</a>) that her <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> is valid.
+        </dd>
+        <dt>
+<span id="uneed_L_2" class="userneed-name" title="L.2 Seamless immigration">L.2 Seamless immigration</span>
+        </dt>
+        <dd>
+Tom is a frequent international traveler. In order to speed processing
+through immigration check points, he applies for a digital passport from his
+governmental authority. After satisfying background check requirements, the
+authority issues Tom an electronic version of his passport. This version is
+verifiable and retains a history of all the places he visits so that
+immigration officials can quickly and easily evaluate his suitability as a
+visitor to their country. Once they are satisfied, they will automatically
+add the details of this new visit to Tom's passport.
+        </dd>
+        <dt>
+<span id="uneed_L_3" class="userneed-name" title="L.3 Speedy air travel">L.3 Speedy air travel</span>
+        </dt>
+        <dd>
+Security for air travel is more and more rigorous, requiring more and more
+time to validate each passenger. Ivan has a collection of
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> that are assembled into his air travel
+<em>Identity Profile</em>. When Ivan needs to pass through a security
+checkpoint at his airport, he presents this profile before entering the
+line. Because his identification can be immediately and automatically
+verified, he is permitted to skip the long line and go straight to the
+metal detector.
+        </dd>
+        <dt>
+<span id="uneed_L_4" class="userneed-name" title="L.4 Refugee crisis">L.4 Refugee crisis</span>
+        </dt>
+        <dd>
+Thousands of people each year are displaced because of man-made and natural
+disasters. Anoushka is one such, having been forced to flee her village along
+with her mother and younger brother. They reach an IFRC center just across
+the border in a relatively safe area, but with no documentation. Since the
+government of her homeland is in turmoil, there is no way for the IFRC staff
+to easily establish their identities. Fortunately, Anoushka had been issued
+a self-sovereign proof of birth, attached to which is the proof of birth and
+marriage for her parents. She is able to retrieve this because it is available
+from many places often the Internet. Since it is verifiable, the IFRC is
+comfortable vouching for them and resettling them in a safer area for the
+duration of the conflict.
+        </dd>
+      </dl>
+    </section>
+    <section id="devices">
+      <h3 id="x3-7-devices"><bdi class="secno">3.7 </bdi>Devices<a class="self-link" aria-label="§" href="#devices"></a></h3>
+        <p>
+Intelligence devices are created and deployed so that they can interact with
+other <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> (people, organizations, devices). Establishing trust
+and maintaining secure relationships with these devices is especially critical.
+        </p>
+        <dl class="left dl-horizontal">
+          <dt>
+<span id="uneed_D_1" class="userneed-name" title="D.1 Devices during manufacturing">D.1 Devices during manufacturing</span>
+          </dt>
+          <dd>
+            <p>
+Bob, the director of production at HVAC Manufacturing, issues a
+device-identifying <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> (e.g. IDevID, IAK) at the
+factory for an energy-saving fan controller IoT device.
+            </p>
+            <p>
+Carol, senior quality engineer at Certifications Testing Lab, issues a
+certification of specification-compliance <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> to the
+fan-controller device at the certification lab during the manufacturing
+process.
+            </p>
+            <p>
+When the fan controller is installed at the customer's office at Modern Office
+Spaces, the controller's identifying <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> can be verified by Sam,
+IT technician, to establish the identity of the controller as part of the
+on-boarding of the new controller. The controller's specification-compliance
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> is verified to demonstrate the controller's Energy-Star
+compliance.
+            </p>
+          </dd>
+          <dt>
+<span id="uneed_D_2" class="userneed-name" title="D.2 Devices during delivery">D.2 Devices during delivery</span>
+          </dt>
+          <dd>
+            <p>
+As the fan controller leaves the factory, additional
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> are issued by Vince, a systems engineer at VAR
+Resellers, as he verifies the manufacturer's configuration matches the
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> accompanying the device. He then installs a
+software package specific to Modern Office Spaces needs and issues
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> that establish evidence of possession by VAR
+Resellers and the software additions Vince made to the device.
+            </p>
+            <p>
+Finally, upon delivery to Sam, the end customer, the
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> show that the fan controller has been securely
+handled and contains the correct features and certifications.
+            </p>
+          </dd>
+          <dt>
+<span id="uneed_D_3" class="userneed-name" title="D.3 Devices setup for operating autonomously">D.3 Devices setup for operating autonomously</span>
+          </dt>
+          <dd>
+            <p>
+Sam, the new device owner, needs to trust the device originated from HVAC
+Manufacturing and was handled correctly at Certifications Testing Lab and
+installed with the correct software package at VAR Resellers. After Sam
+verifies each of the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>, he issues another
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> for fan controller #37 which includes assertions
+relating to trust: device manufacturer model/version, software manufacturer
+model/version, security versions of components TCB, and associated devices the
+fan controller is authorized to interact with including thermostat-board-room.
+            </p>
+            <p>
+The thermostat-board-room monitors room temperature. When the temperature is
+too hot it switches the fan controller #37 on and later when the temperature
+reaches a comfortable level, off. The device makes sure the control signals
+from thermostat-board-room are authorized (namely, that Sam intended for
+thermostat-board-room to control the fan controller).
+            </p>
+            <p>
+Sam is concerned about the security of the smart board room. He configures
+the autonomously interacting devices to re-verify device trustworthiness
+attributes periodically by re-checking that the device originated from HVAC
+Manufacturing and was handled correctly by Certifications Testing Lab and
+installed with the correct software package by VAR Resellers.
+            </p>
+            <p>
+Sam may update the device’s software occasionally during its lifetime. Even
+though Sam is applying the update, VAR Resellers supplies the correct update.
+The device ensures that only VAR Resellers is able to supply the updated
+software image and that only Sam is able to apply the update.
+            </p>
+          </dd>
+        </dl>
+    </section>
+</section>
+<section id="user-tasks">
+    <h2 id="x4-user-tasks"><bdi class="secno">4. </bdi>User Tasks<a class="self-link" aria-label="§" href="#user-tasks"></a></h2>
+    <p>
+Use cases are often used as a driver for requirements. While the users of
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> have needs across many domains, the tasks
+associated with those needs span the domains. This section summarizes those
+tasks, as well as requirements related to the tasks, and maps the tasks and
+requirements back to the associated needs.
+    </p>
+    <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span>Note</span></div><p class="">
+It is worth noting that the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> may or may not be the same
+<a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> as the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a>. There are no tasks in these examples that
+require participation of the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>.
+    </p></div>
+
+      <figure id="fig-verifiable-credential-user-tasks">
+        <img alt="Verifiable Credential User Tasks" style="display:block; margin:auto" src="VerifiableCredentialsUserTasks.png" width="536" height="463">
+        <figcaption>Figure <bdi class="figno">3</bdi> <span class="fig-title">
+Verifiable Credential User Tasks
+        </span></figcaption>
+      </figure>
+
+    <section id="issue-claim">
+      <h3 id="x4-1-issue-claim"><bdi class="secno">4.1 </bdi>Issue Claim<a class="self-link" aria-label="§" href="#issue-claim"></a></h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+It <em class="rfc2119" title="MUST">MUST</em> be possible for any <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> to issue a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>.
+        </dd>
+        <dt>Motivation</dt>
+        <dd>
+Individuals and organizations need a way to issue <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> about
+themselves or others that can be verified and trusted.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+<a href="#uneed_F_1">F.1 Reuse know your customer</a>, <a href="#uneed_E_1">E.1 Digital transcript</a>, <a href="#uneed_L_1">L.1 Digital driving license</a>, <a href="#uneed_H_1">H.1 Prescribing</a>
+        </dd>
+      </dl>
+    </section>
+    <section id="assert-claim">
+      <h3 id="x4-2-assert-claim"><bdi class="secno">4.2 </bdi>Assert Claim<a class="self-link" aria-label="§" href="#assert-claim"></a></h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+It <em class="rfc2119" title="MUST">MUST</em> be possible for the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> of a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>
+to restrict the amount of information exposed in a <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> they
+choose to share.  It also <em class="rfc2119" title="MUST">MUST</em> be possible for the holder to limit the
+duration for which that information is shared.
+        </dd>
+        <dt>Motivations</dt>
+        <dd>
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">Credentials</a> may be issued about a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> that include multiple
+attributes, only some of which are required when verifying a specific criteria
+is satisfied. The <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> should have the ability to satisfy the
+criteria without revealing additional attributes that are not required.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+<a href="#uneed_R_2">R.2 Adult beverages</a>, <a href="#uneed_H_4">H.4 Traveling illness</a>
+        </dd>
+      </dl>
+    </section>
+    <section id="verify-claim">
+      <h3 id="x4-3-verify-claim"><bdi class="secno">4.3 </bdi>Verify Claim<a class="self-link" aria-label="§" href="#verify-claim"></a></h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+It <em class="rfc2119" title="MUST">MUST</em> be possible for a <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a> to verify that the credential is an
+authentic statement of an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer's</a> <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> about the
+<a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>. The verifying <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> must have the capability to
+connect the issuer’s identity to its credential identifier and the
+<a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject's</a> identity to their identifier as indicated in the credential.
+The issuer’s verification information, such as its public key, must be
+discoverable from the credential record and verifiably linked to the issuer.
+It <em class="rfc2119" title="MUST">MUST</em> be possible to do this in an automated fashion.
+        </dd>
+        <dt>Motivations</dt>
+        <dd>
+In many environments (such as order processing) information such as a payer's
+address, citizenship, or age need to be automatically verified in order to
+complete the transaction.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+<a href="#uneed_F_2">F.2 Money transfer</a>, <a href="#uneed_C_1">C.1 Find a doctor</a>, <a href="#uneed_E_2">E.2 Taking a test</a>, <a href="#uneed_R_1">R.1 Address verification</a>,
+<a href="#uneed_F_5">F.5 New bank account from home</a>, <a href="#uneed_H_2">H.2 Online pharmacy</a>, <a href="#uneed_C_6">C.6 Job applicant</a>
+        </dd>
+      </dl>
+    </section>
+    <section id="store-move-claim">
+      <h3 id="x4-4-store-move-claim"><bdi class="secno">4.4 </bdi>Store / Move Claim<a class="self-link" aria-label="§" href="#store-move-claim"></a></h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+It <em class="rfc2119" title="MUST">MUST</em> be possible for the holder of a claim to store that claim in one or
+more <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>. It <em class="rfc2119" title="MUST">MUST</em> also be possible for the holder
+to move a claim among <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>, and to do so without
+requesting a new claim from the claim issuer.
+        </dd>
+        <dt>Motivation</dt>
+        <dd>
+A <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> is under the control of its <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a>. That holder will
+choose where their <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> are stored based upon a variety of factors
+(e.g., employer requirements, convenience, service levels, provider cost,
+business intelligence). The holder needs to be able to easily choose among
+various <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>, and also to be able to migrate their
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> to another without requesting new <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> from the
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+<a href="#uneed_F_4">F.4 Trying out a new service</a>, <a href="#uneed_E_3">E.3 Transferring schools</a>, <a href="#uneed_C_4">C.4 New employer</a>
+        </dd>
+      </dl>
+    </section>
+    <section id="retrieve-claim">
+      <h3 id="x4-5-retrieve-claim"><bdi class="secno">4.5 </bdi>Retrieve Claim<a class="self-link" aria-label="§" href="#retrieve-claim"></a></h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+It <em class="rfc2119" title="MUST">MUST</em> be possible for a <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> to select if and which appropriate
+credential should be sent to a <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>.
+        </dd>
+        <dt>Motivations</dt>
+        <dd>
+A <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a> may require that a <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> verify aspects of their
+suitability for a transaction.  In this case, the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> must be able
+to select which, if any, <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> stored with their
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> is used to satisfy the <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+<a href="#uneed_C_5">C.5 Social authority</a>, <a href="#uneed_E_4">E.4 Online classes</a>
+        </dd>
+      </dl>
+    </section>
+    <section id="revoke-claim">
+      <h3 id="x4-6-revoke-claim"><bdi class="secno">4.6 </bdi>Revoke Claim<a class="self-link" aria-label="§" href="#revoke-claim"></a></h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+It <em class="rfc2119" title="MUST">MUST</em> be possible for the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> of a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> to revoke it,
+after which it will no longer satisfy verification procedures.
+        </dd>
+        <dt>Motivation</dt>
+        <dd>
+An <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> (<a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>) discovers that a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> they have
+issued and are endorsing for an end user (<a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>), is no longer valid
+and wishes to revoke the issued claim.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+<a href="#uneed_F_3">F.3 Closing account</a>, <a href="#uneed_C_2">C.2 Busy doctor</a>, <a href="#uneed_C_3">C.3 Bad university</a>
+        </dd>
+      </dl>
+    </section>
+  </section>
+  <section id="focal-use-cases">
+    <h2 id="x5-focal-use-cases"><bdi class="secno">5. </bdi>Focal Use Cases<a class="self-link" aria-label="§" href="#focal-use-cases"></a></h2>
+    <p>
+Focal Use Cases are meant to provide examples where a blend of features from
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> standard may be used together to solve complex
+or challenging marketplace needs.
+    </p>
+    <section id="citizenship-by-parentage">
+      <h3 id="x5-1-citizenship-by-parentage"><bdi class="secno">5.1 </bdi>Citizenship by Parentage<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h3>
+        <h4 id="background">Background<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4>
+        <p>
+Sam wants to claim US citizenship because his mother is American. Sam has a
+digital birth certificate from Kenya, where he was born while his Mother was
+in the Peace corps. He also has a digital version of his mother's US passport.
+Because his mother’s name changed between his birth and the issuance of the
+passport, Sam also has a marriage license with her maiden and married names.
+Sam is applying for a new passport from the US Secretary of State.
+        </p>
+        <h4 id="distinction">Distinction<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4>
+        <p>
+This use case is challenging because the mother’s name changed, by marriage,
+between the issuance of the birth certificate and passport.
+        </p>
+        <h4 id="scenario">Scenario<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4>
+        <p>
+Sam’s mother emailed him the certificate, license, and passport as independent
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">Verifiable Credentials</a>. He then creates a <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a>
+which includes those credentials, a statement of their relationship to each
+other and his relationship to his mother. He then visits the US Secretary of
+State website, creates an account, starts the application for a passport, and
+uploads his new <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a> as supporting evidence. After
+processing the application, Sam is issued both a traditional passport and a
+new digital passport.
+        </p>
+        <h4 id="verifiable-credentials">Verifiable Credentials<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4>
+        <dl class="dl-horizontal">
+          <dt>
+Birth Certificate
+          </dt>
+          <dd>
+Establishes relationship to mother with maiden name
+          </dd>
+
+          <dt>
+Marriage License
+          </dt>
+          <dd>
+Establishes mother's name change
+          </dd>
+
+          <dt>
+Mother’s Passport
+          </dt>
+          <dd>
+Establishes mother's US citizenship
+          </dd>
+
+          <dt>
+Sam’s Passport
+          </dt>
+          <dd>
+Establishes Sam is the child in the birth certificate
+          </dd>
+        </dl>
+
+        <h4 id="verifiable-presentation">Verifiable Presentation<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4>
+        <p>
+A <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a> which includes those three <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>,
+adds his name, photo, and demographic data along with the assertions that —
+        </p>
+        <ul>
+          <li>
+He is the child in the birth certificate.
+          </li>
+          <li>
+The mother in the birth certificate, the person in the passport, the spouse in
+the marriage license are all the same person.
+          </li>
+        </ul>
+        <h4 id="trust-hierarchy">Trust Hierarchy<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4>
+        <p>
+Sam is legally liable for his claim to the rights of citizenship. The state
+department is on the hook for verifying the underlying credentials and Sam’s
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>, including correlating against any additional data they might
+already have.
+        </p>
+        <h4 id="threat-model">Threat model<a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4>
+        <ul>
+          <li>
+<strong>Threat: Terrorist / Identity fraud.</strong> A bad actor could be
+impersonating Sam to attain a passport. Of course, if a bad actor were to be
+able to collect the required <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>—mother’s
+passport, birth certificate, and marriage license, that actor has already
+significantly compromised the system.
+            <ul>
+              <li>
+<strong>Response:</strong> Identity assurance based on the <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentation</a>
+and other data, above and beyond what is in the <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentation</a> and the
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>.
+              </li>
+              <li>
+<strong>Response:</strong> Identity assurance based on the contents of the
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>, potentially with enhanced data embedded in the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>,
+i.e., data not currently in passports, birth certificates, or marriage license.
+For example, a biometric template could be embedded in the birth certificate
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> and that template could be used for interactive identity assurance
+at the time of submitting the <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentation</a>.
+              </li>
+            </ul>
+          </li>
+          <li>
+<strong>Threat: Exposure of private information.</strong>  By storing
+potentially compromising information in <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> and sending them
+over the network, we are increasing the attack surface for the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>
+of those credentials.
+            <ul>
+              <li>
+<strong>Response:</strong> Encrypt the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> (once by issuer, every
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a> gets the same encrypted blob)
+              </li>
+              <li>
+<strong>Response:</strong> Encrypt the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> uniquely for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>. This may leak usage data to the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>, assuming the
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> must ask for a new, encrypted <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>.
+              </li>
+              <li>
+<strong>Response:</strong> Blind the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> uniquely for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>.
+              </li>
+              <li>
+<strong>Response:</strong> Encrypt the <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentation</a> uniquely for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>. No <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> involved.
+              </li>
+            </ul>
+          </li>
+        </ul>
+    </section>
+    <section id="expert-dive-instructor">
+      <h3 id="x5-2-expert-dive-instructor"><bdi class="secno">5.2 </bdi>Expert Dive Instructor<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h3>
+        <h4 id="background-0">Background<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4>
+        <p>
+Pat earned multiple diving credentials while living and working in Fiji and
+Australia. Later, Pat is hired by NOAA as a Dive Instructor, which requires
+that they maintain certification as an instructor with additional specialist
+diver certifications in dry suit, night diving, and search and recovery. The
+dive instructor certification is public record, but the additional specialist
+certifications are private because they are for personal diving, not acting
+as an instructor.
+        </p>
+        <p>
+Part of Pat's job is logging the certifications of fellow divers during NOAA
+sanctioned dives.
+        </p>
+        <h4 id="distinction-0">Distinction<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4>
+        <p>This use case is difficult because:
+          </p><ul>
+            <li>
+Certification in Fiji and Australia. NOAA relies on an international
+certification agency, PADI, with relevance in multiple jurisdictions.
+            </li>
+            <li>
+Each of these <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> is issued by different schools in the name
+of PADI.
+            </li>
+            <li>
+Each <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> has an independent expiration cycle.
+            </li>
+            <li>
+Pat grants NOAA permission (the capability) to validate future
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> status changes.
+            </li>
+            <li>
+On each trip, Pat creates a certified log of all divers, effectively issuing
+a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verified credential</a> about other <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>.
+            </li>
+          </ul>
+        <p></p>
+        <h4 id="scenario-0">Scenario<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4>
+        <p>
+When Pat applied for his job at NOAA, he provided <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>
+issued by different dive schools licensed by PADI to do so. NOAA verifies
+cryptographically that the certifications were issued by PADI-approved dive
+schools and that the credentials were still in good standing by checking both
+the certifications' *and* the dive schools' revocation services.
+        </p>
+        <p>
+Upon accepting the job, Pat issues NOAA a revocable token that allows NOAA to
+check the current status of all of his certifications — not just the
+status of a single <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>. After any specific
+certification expires — and Pat renews it — NOAA's next check of
+Pat's certifications returns the status of the renewed certification, not just
+the status of the (now expired) <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>.
+        </p>
+        <p>
+When Pat takes a group of divers on NOAA sanctioned dives, he records the
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> for each diver (which demonstrate their diving
+certifications), creates a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> including those
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>; he signs and archives it on his laptop.
+        </p>
+        <p>
+When Pat retires from NOAA, he revokes that token and NOAA staff is no longer
+able to monitor his non-public certification status.
+        </p>
+        <h4 id="verifiable-credentials-0">Verifiable Credentials<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4>
+        <ul>
+          <li>
+Advanced Open Water Instructor
+          </li>
+          <li>
+Drysuit Dive Certification
+          </li>
+          <li>
+Night Diving Certification
+          </li>
+          <li>
+Search &amp; Recovery Dive Certification
+          </li>
+          <li>
+Fiji PADI School Affiliation Certification
+          </li>
+          <li>
+Australia PADI School Affiliation Certification
+          </li>
+          <li>
+Signed log entry of dive event
+          </li>
+        </ul>
+        <h4 id="verifiable-presentation-0">Verifiable Presentation<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4>
+        <ul>
+          <li>
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">Verifiable credentials</a> submitted with job application
+          </li>
+        </ul>
+        <h4 id="trust-hierarchy-0">Trust Hierarchy<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4>
+        <ul>
+          <li>
+PADI is liable for correctly certifying dive schools.
+          </li>
+          <li>
+Dive schools are liable for correctly certifying Pat's knowledge and skills.
+          </li>
+          <li>
+Pat is liable for representing the facts in their application and maintaining
+the revocable capability.
+          </li>
+          <li>
+NOAA is liable for verifying the <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> and Pat's assertions
+claiming them, and for assuring Pat's continued good standing for the required
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>.
+          </li>
+          <li>
+Pat is liable for making sure all divers, on each trip, have valid
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> and are properly logged.
+          </li>
+          <li>
+Diver's are liable for presenting valid <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>, specifically
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> for which they are the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>, including any formal
+identity <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>, e.g., passport or driver's license.
+          </li>
+        </ul>
+        <h4 id="threat-model-0">Threat model<a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4>
+        <ul>
+          <li>
+<strong>Threat: <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">Issuer</a> is compromised.</strong> One of the dive schools
+had their private keys stolen, but the school itself only ever issues valid
+certificates.
+          <ul>
+            <li>
+<strong>Response:</strong> Use multi-sig to prevent theft of a single key from
+relevance
+            </li>
+            <li>
+<strong>Response:</strong> Hardware wallet to minimize threat of network-based
+attack
+            </li>
+            <li>
+<strong>Response:</strong> Biometrically locked hardware wallet
+            </li>
+            <li>
+<strong>Response:</strong> Frequent rotation to minimize exposure from stolen
+keys
+            </li>
+            <li>
+<strong>Response:</strong> Enhanced background checks for all individuals with
+access to keys
+            </li>
+            <li>
+<strong>Response:</strong> Instead of institutional keys, sign certificates
+with individuals' keys plus credential from the school.
+            </li>
+          </ul>
+        </li>
+        <li>
+<strong>Threat: A dive school could issue unearned certificates</strong>.
+          <ul>
+            <li>
+<strong>Response:</strong> Audit certificate issuance. Record all issuance,
+systemically spot check for validity.
+            </li>
+            <li>
+<strong>Response:</strong> Background checks on schools prior to authorization
+            </li>
+            <li>
+<strong>Response:</strong> Limit the number of certificates that can be issued
+to limit impact of violation
+            </li>
+            <li>
+<strong>Response:</strong> Limit time horizon that the school may issue on
+behalf of PADI to require re-validation of qualifications
+            </li>
+            <li>
+<strong>Response:</strong> Use revocation mechanisms for school's authorization
+credentials
+            </li>
+          </ul>
+        </li>
+        <li>
+<strong>Threat: Dive school could issue certificates with a revoked
+authorization</strong>.
+          <ul>
+            <li>
+<strong>Response:</strong> <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">Holders</a> should verify the authorization,
+before they buy the course
+            </li>
+            <li>
+<strong>Response:</strong> <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">Holders</a> should verify the authorization at
+the point of receiving the <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a>
+            </li>
+            <li>
+<strong>Response:</strong> <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">Verifiers</a> should also verify the
+authorization of the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+<strong>Threat: Pat could send a proxy to earn their certificate</strong>.
+          <ul>
+            <li>
+<strong>Response:</strong>  School should use multi-factor identity assurance
+during registration and onsite when testing.
+            </li>
+            <li>
+<strong>Response:</strong>  Dive school retains video surveillance of event
+for future audits
+            </li>
+            <li>
+<strong>Response:</strong>  Dive boat or test center takes photos of
+participants and logs them for later audit
+            </li>
+          </ul>
+        </li>
+        <li>
+<strong>Threat: Pat or another dive master could lie about a diver being on
+the boat</strong>.
+          <ul>
+            <li>
+<strong>Response:</strong> NOAA requires divers listed to submit endorsement
+that they were there (they endorse the dive log); divers mutually sign each
+other's log entries
+            </li>
+            <li>
+<strong>Response:</strong> Boat owner signs dive log
+            </li>
+            <li>
+<strong>Response:</strong> Pre-register excursion and expected diver list
+            </li>
+            <li>
+<strong>Response:</strong> Ongoing signed provenance data about Pat's job
+assignments (location, dates, correspondence, etc) by/with NOAA Manifest
+"souls on board" before/after including crew
+            </li>
+            <li>
+<strong>Response:</strong>  Independent ID proofing of offline credentials
+(signed picture and/or photo ID)
+            </li>
+          </ul>
+        </li>
+      <li>
+<strong>Threat: Malware could take control of <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> or <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>
+agent</strong>.
+        <ul>
+          <li>
+<strong>Response:</strong> Run virus and malware scans regularly
+          </li>
+          <li>
+<strong>Response:</strong> Isolate issuer agent system to an air-gapped
+environment
+          </li>
+        </ul>
+      </li>
+      <li>
+<strong>Threat: Pat is phished, and Pat gives capability to the wrong
+person/entity</strong>.
+        <ul>
+          <li>
+<strong>Response:</strong> Use better identity assurance for the verifier,
+i.e., don't give capability to strangers.
+          </li>
+          <li>
+<strong>Response:</strong>  Use Object Capabilities based on strong
+authentication and well-known public keys.
+          </li>
+        </ul>
+      </li>
+      <li>
+<strong>Threat: <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">Issuer</a> spoofs Pat, and Pat receives VC from
+non-PADI-certified instructor</strong>.
+        <ul>
+          <li>
+<strong>Response:</strong>  Pat runs PADI's wallet software to make sure any
+certificates they receive are authentic.
+          </li>
+          <li>
+<strong>Response:</strong>  Pat checks the VC with a PADI-provided tool before
+accepting it
+          </li>
+          <li>
+<strong>Response:</strong>  Pat checks the VC with a standard tool, to see
+that (1) There really is a PADI authentication and (2) PADI authentication is
+actually from PADI
+          </li>
+        </ul>
+      </li>
+      <li>
+<strong>Threat: Pat presents a fake credential as a PADI certification</strong>.
+        <ul>
+          <li>
+<strong>Response:</strong>  NOAA verifies the signature on the certification
+credential AND on the PADI authentication credential.
+          </li>
+        </ul>
+      </li>
+      <li>
+<strong>Threat: Pat's laptop on the boat could be compromised</strong>.
+        <ul>
+          <li>
+<strong>Response:</strong>  Use air-gapping techniques, such as QR codes, to
+limit impact of compromise
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="international-travel-with-minor-and-upgrade">
+    <h3 id="x5-3-international-travel-with-minor-and-upgrade"><bdi class="secno">5.3 </bdi>International Travel with Minor and Upgrade<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h3>
+      <h4 id="background-1">Background<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4>
+        <p>
+Malathi is traveling internationally with her 8-month-old son, Anand. His
+father, Rajesh, is staying home. Malathi has enough frequent flyer miles to
+upgrade the ticket to first class.
+        </p>
+      <h4 id="distinction-1">Distinction<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4>
+        <p>
+This use case is difficult because:
+        </p>
+        <ul>
+          <li>
+Current US passports do not establish explicit relationship between parent
+and child.
+          </li>
+          <li>
+When one parent travels with a minor, the other parent is required to grant
+permission for the trip, thus implying guardianship or responsibility.
+          </li>
+          <li>
+The DID or other Digital Identity system replaces the role of the notary in
+the paper/physical world
+          </li>
+          <li>
+Credentials must be coordinated between two verifiers (agent and airline) for
+two individuals, and a digital coupon is used.
+          </li>
+          <li>
+The relationship of the minor to the non-traveling parent must be established,
+in order for the permission to be considered.
+          </li>
+          <li>
+In the minor's passport case, the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> is not the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> of
+the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>. The <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> of the passport is a
+parent, not the minor.
+          </li>
+        </ul>
+
+      <h4 id="scenario-1">Scenario<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4>
+        <p>
+Malathi obtains permission from Rajesh stating she is allowed to take the baby
+out of the country.
+        </p>
+        <p>
+Prior to booking the trips, Malathi visits HappyAir.com to request an upgrade
+to first class. HappyAir issues a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> redeemable for
+a first class upgrade on an international flight.
+        </p>
+        <p>
+She books the plane tickets through her travel agent who adds the lap child
+to the ticket.
+        </p>
+        <p>
+HappyAir verifies that Malathi has a signed statement from Anand’s other
+parent stating that she may exit the country with him.
+        </p>
+
+      <h4 id="verifiable-credentials-1">Verifiable Credentials<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4>
+        <dl class="dl-horizontal">
+          <dt>
+Malathi's passport
+          </dt>
+          <dd>
+Establishes identity of the traveling parent
+          </dd>
+
+          <dt>
+Anand's passport
+          </dt>
+          <dd>
+Establishes identity of the minor
+          </dd>
+
+          <dt>
+Anand's Birth Certificate
+          </dt>
+          <dd>
+Establishes relationship to parents and provides link from Rajesh to Anand that
+qualifies the permission to travel
+          </dd>
+
+          <dt>
+Permission to travel from Rajesh
+          </dt>
+          <dd>
+            <ul>
+              <li>
+Grants permission from non-traveling parent for minor to travel.
+              </li>
+              <li>
+Identity matches identity of the parent in the birth certificate, establishing
+relevance.
+              </li>
+            </ul>
+          </dd>
+          
+          <dt>
+Upgrade coupon for first class ticket
+          </dt>
+          <dd>
+Introduces commercial value in a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>
+          </dd>
+        </dl>
+        <p>
+For details, refer to
+<a href="#example-verifiable-credentials">Example Verifiable Credentials</a>
+in Appendix
+        </p>
+
+      <h4 id="verifiable-presentation-1">Verifiable Presentation<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4>
+        <p>
+Submitted to HappyAir, includes Malathi and Anand's passport, assertion of
+permission, birth certificate and Frequent Flyer coupon.
+        </p>
+
+      <h4 id="trust-hierarchy-1">Trust Hierarchy<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4>
+        <ul>
+          <li>
+Malathi is liable for her claim of parentage as well as securing right to
+admission for herself and her son at their destination (visa may be required).
+          </li>
+          <li>
+Malathi and Rajesh are both liable for attestation of permission to fly with
+Anand without the other parent.
+          </li>
+          <li>
+Malathi is liable for the cost of her ticket and her son’s ticket.
+          </li>
+          <li>
+The agency is liable for issuing valid tickets and for verifying the
+credentials provided by the travelers.
+          </li>
+          <li>
+The airline is liable for issuing tickets and, ultimately, fulfilling the
+terms of travel
+          </li>
+          <li>
+The airline is liable for accepting the upgrade coupons at ticketing.
+          </li>
+          <li>
+The airline is liable for verifying the credentials in the birth certificate
+match the credentials in the permission letter.
+          </li>
+          <li>
+The check-in agent, TSA agent, and passport control at the destination are
+liable for identity assurance at various points of travel, using information
+contained in the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>.
+          </li>
+        </ul>
+
+      <h4 id="threat-model-1">Threat model<a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4>
+        <ul>
+          <li>
+<strong>Threat: Stolen Key.</strong> Malathi steals Rajesh’s key in order to
+fake travel permission. (Kidnapping her own kids and fleeing Rajesh.)
+            <ul>
+              <li>
+<strong>Response:</strong> Rajesh could store his key with a trusted third
+party, such as an attorney.
+              </li>
+              <li>
+<strong>Response:</strong> Rajesh could use a hardware wallet with pin or
+biometric.
+              </li>
+              <li>
+<strong>Response:</strong> Rajesh could use a passphrase on his key
+              </li>
+            </ul>
+          </li>
+          <li>
+<strong>Threat: Stolen Key 2</strong> Ticket purchaser has Malathi’s
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>, impersonating her to purchase a ticket. This could enable
+a third-party kidnapping.
+            <ul>
+              <li>
+<strong>Response:</strong> Travel permission can be restricted to specific
+date and or trip minimizing abuse potential.
+              </li>
+              <li>
+<strong>Response:</strong> Embed identifying characteristics or biometric into
+the credentials so that verifiers can independently verify the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>
+in front of them is the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> in the <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a>.
+              </li>
+              <li>
+<strong>Response:</strong> Malathi could use a hardware wallet with pin or
+biometric.
+              </li>
+              <li>
+<strong>Response:</strong> Malathi could use a passphrase on her key
+              </li>
+            </ul>
+          </li>
+          <li>
+<strong>Threat: Exposure of private information.</strong> By storing
+potentially compromising information in credentials and sending them over the
+network, we are increasing the attack surface for the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a> of those
+credentials.
+            <ul>
+              <li>
+<strong>Response:</strong> Encrypt the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> (once by <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>;
+every <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a> gets the same encrypted blob)
+              </li>
+              <li>
+<strong>Response:</strong> Encrypt the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> uniquely for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>. This may leak usage data to the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>, assuming the
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> must ask for a new, encrypted <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>.
+              </li>
+              <li>
+<strong>Response:</strong> Blind the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> uniquely for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>.
+              </li>
+              <li>
+<strong>Response:</strong> Encrypt the <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentation</a> uniquely for each
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>. No issuer involved
+              </li>
+            </ul>
+          </li>
+          <li>
+<strong>Threat: Stolen coupon</strong> Rajesh falsifies the upgrade coupon.
+            <ul>
+              <li>
+<strong>Response:</strong> HappyAir signs the coupon with secure credentials.
+              </li>
+              <li>
+<strong>Response:</strong> Travel agent verifies the coupon through a
+distributed status registry, verifying it is still valid
+              </li>
+            </ul>
+          </li>
+        </ul>
+    </section>
+  </section>
+  <section id="user-sequences">
+    
+    <h2 id="x6-user-sequences"><bdi class="secno">6. </bdi>User Sequences<a class="self-link" aria-label="§" href="#user-sequences"></a></h2>
+    <p>
+The transaction examples in this section show basic ways in which
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> might be used. They are not meant to be
+architecturally constraining. Instead, they are meant to help illustrate the
+basic way it <em>could</em> be done in a typical commerce situation. Again
+— please remember that it is just an example, and should not be thought
+of as the canonical way such a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> environment must be implemented.
+    </p>
+    <section id="how-a-verifiable-credential-might-be-created">
+      <h3 id="x6-1-how-a-verifiable-credential-might-be-created"><bdi class="secno">6.1 </bdi>How a Verifiable Credential Might Be Created<a class="self-link" aria-label="§" href="#how-a-verifiable-credential-might-be-created"></a></h3>
+      <p>
+In this first example, a user will request a verifiable credential—a
+confirmation of their identity. Consider this illustration:
+      </p>
+
+      <figure id="fig-verifiable-credential-creation-flow-diagram">
+        <img aria-describedby="claim_flow" alt="Verifiable Credential Creation Flow Description" style="display:block; margin:auto" src="uc-issuing-claims.svg" width="605" height="556">
+        <figcaption>Figure <bdi class="figno">4</bdi> <span class="fig-title">Verifiable Credential Creation Flow Diagram</span></figcaption>
+      </figure>
+
+      <p>
+Expanding on these steps:
+      </p>
+        <ol id="claim_flow" title="Verifiable Credential Creation Flow Description">
+          <li>
+Jane asks her User Agent to help her get a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> about
+her identity.
+          </li>
+          <li>
+Her user agent connects her to a <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> that is able to
+<a href="#dfn-verify" class="internalDFN" data-link-type="dfn">verify</a> her identity.
+          </li>
+          <li>
+The issuer examines her documentation.
+          </li>
+          <li>
+They are satisfied, so the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> generates a
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> for Jane that includes information about her
+identity linked to their own trusted <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a>.
+          </li>
+          <li>
+The issuer delivers the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> back to Jane's User Agent.
+          </li>
+          <li>
+Jane views the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> to ensure it reflects her requirements.
+          </li>
+          <li>
+When she is satisfied, she instructs her User Agent to save the
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> so she can use it in the future.
+          </li>
+          <li>
+The UA communicates with her <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a>, instructing it to
+store the new <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>.
+          </li>
+          <li>
+The <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> returns a list of the 
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> it is holding for Jane to the UA.
+          </li>
+          <li>
+The UA shows Jane her <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> collection —
+confirming everything she has available.
+          </li>
+        </ol>
+    </section>
+    <section id="how-a-verifiable-credential-might-be-used">
+      <h3 id="x6-2-how-a-verifiable-credential-might-be-used"><bdi class="secno">6.2 </bdi>How a Verifiable Credential Might Be Used<a class="self-link" aria-label="§" href="#how-a-verifiable-credential-might-be-used"></a></h3>
+        <p>
+In this example, a <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> of a <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> needs to use that
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> in a typical commerce situation:
+        </p>
+        <figure id="fig-verifiable-credential-usage-flow-diagram">
+          <img aria-describedby="vf-flow" alt="Verifiable Credential Usage Flow Diagram" style="display:block; margin:auto" src="example.svg" width="730" height="491">
+          <figcaption>Figure <bdi class="figno">5</bdi> <span class="fig-title">
+Verifiable Credential Usage Flow Diagram
+          </span></figcaption>
+        </figure>
+        <ol title="Verifiable Credential Usage Flow Description" id="vf-flow">
+          <li>
+Jane decides to shop on the website WinesOfTheWorld.example.com (merchant).
+          </li>
+          <li>
+The merchant's site requires Jane be 21 years of age and requests (via a user
+agent-supported API call) that Jane prove this.
+          </li>
+          <li>
+Jane's user agent asks her <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> for the proof.
+          </li>
+          <li>
+The <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> shows Jane some <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>
+it holds that can support her age claim (e.g., her passport, driving license,
+and birth certificate).
+          </li>
+          <li>
+Jane selects one of these, and authorizes that it be shared with the merchant.
+          </li>
+          <li>
+The <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repository</a> returns the selected <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a> as a
+response to the user agent-supported API call, which in turn delivers it to
+the merchant.
+          </li>
+          <li>
+The merchant's server verifies that the <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claim</a> is valid and satisfies
+the requirement.
+          </li>
+          <li>
+The merchant redirects the user agent to the web site with appropriate
+authorization.
+          </li>
+        </ol>
+    </section>
+  </section>
+
+
+  <section class="appendix" id="terminology">
+    
+    <h2 id="a-terminology"><bdi class="secno">A. </bdi>Terminology<a class="self-link" aria-label="§" href="#terminology"></a></h2>
+
+      <em>This section is non-normative.</em>
+
+      <div data-oninclude="restrictReferences"><p>
+The following terms are used to describe concepts in this specification.
+</p>
+
+<dl class="termlist" id="terms">
+  <dt><dfn data-lt="claims|claim" id="dfn-claims" data-dfn-type="dfn">claim</dfn></dt>
+  <dd>
+An assertion made about a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>.
+  </dd>
+  <dt><dfn data-lt="credential|credentials|credential's" id="dfn-credential" data-dfn-type="dfn">credential</dfn></dt>
+  <dd>
+A set of one or more <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> made by an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>. A
+<dfn data-lt="verifiable credentials|verified credential|verifiable credential" id="dfn-verifiable-credentials" data-dfn-type="dfn">verifiable credential</dfn> is a
+tamper-evident credential that has authorship that can be cryptographically
+verified. Verifiable credentials can be used to build
+<a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a>, which can also be cryptographically verified.
+The <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> in a credential can be about different <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>.
+  </dd>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <dt><dfn data-lt="entities|entity's|entity" id="dfn-entities" data-dfn-type="dfn">entity</dfn></dt>
+  <dd>
+A thing with distinct and independent existence, such as a person,
+organization, or device that performs one or more roles in the ecosystem.
+  </dd>
+  
+  
+  <dt><dfn data-lt="holders|holder's|holders'|holder" id="dfn-holders" data-dfn-type="dfn">holder</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> might perform by possessing one or more
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> and generating <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentations</a> from them.
+A holder is usually, but not always, a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> of the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable
+credentials</a> they are holding. Holders store their <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> in
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>.
+  </dd>
+  
+  
+  
+  
+  <dt><dfn data-lt="issuers|issuer's|issuer" id="dfn-issuers" data-dfn-type="dfn">issuer</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> can perform by asserting <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> about one or
+more <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>, creating a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> from these
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>, and transmitting the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> to a
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a>.
+  </dd>
+  <dt><dfn data-lt="presentations|presentation" id="dfn-presentations" data-dfn-type="dfn">presentation</dfn></dt>
+  <dd>
+Data derived from one or more <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>, issued by one or
+more <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuers</a>, that is shared with a specific <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>. A
+<dfn data-lt="verifiable presentations|verifiable presentation" id="dfn-verifiable-presentations" data-dfn-type="dfn">verifiable presentation</dfn>
+is a tamper-evident presentation encoded in such a way that authorship of the
+data can be trusted after a process of cryptographic verification. Certain
+types of verifiable presentations might contain data that is synthesized from,
+but do not contain, the original <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> (for example,
+zero-knowledge proofs).
+  </dd>
+  <dt><dfn data-lt="credential repository|credential repositories|repositories|repository" id="dfn-credential-repository" data-dfn-type="dfn">repository</dfn></dt>
+  <dd>
+A program, such as a storage vault or personal <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>
+wallet, that stores and protects access to <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holders'</a>
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>.
+  </dd>
+  
+  
+  <dt><dfn data-lt="subjects|subject's|subject" id="dfn-subjects" data-dfn-type="dfn">subject</dfn></dt>
+  <dd>
+A thing about which <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> are made.
+  </dd>
+  
+  
+  
+  
+  
+  
+  <dt><dfn data-lt="verify|verified|verifying|verifiable|verifiability|verification" id="dfn-verify" data-dfn-type="dfn">verification</dfn></dt>
+  <dd>
+The evaluation of whether a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> or <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a> 
+is an authentic and timely statement of the issuer or presenter, respectively.  
+    This includes checking that: the credential (or presentation) conforms to the specification; the proof method is
+satisfied; and, if present, the status is successfully checked.
+
+  </dd>
+  <dt><dfn data-lt="verifier|verifiers|verifier's|verifier(s)|credential verifiers|credential verifier's" id="dfn-verifier" data-dfn-type="dfn" data-plurals="credential verifier">verifier</dfn></dt>
+  <dd>
+The <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> verifying a claim about a given subject.
+  </dd>
+  
+  
+</dl></div>
+
+  </section>
+  <section class="appendix" id="example-verifiable-credentials">
+    <h2 id="b-example-verifiable-credentials"><bdi class="secno">B. </bdi>Example Verifiable Credentials<a class="self-link" aria-label="§" href="#example-verifiable-credentials"></a></h2>
+    <h3 id="focal-use-case-international-travel-with-minor">Focal Use Case: International Travel with Minor<a class="self-link" aria-label="§" href="#example-verifiable-credentials"></a></h3>
+
+      <div class="example" id="example-1-malathi-s-passport-simple-model">
+          <div class="marker">
+      <a class="self-link" href="#example-1-malathi-s-passport-simple-model">Example<bdi> 1</bdi></a><span class="example-title">: Malathi's passport (simple model)</span>
+    </div> <pre class="nohighlight">{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:9f6878c8-73c7-11e8-ab37-23a1a3504fd0",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2028-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+    "givenName": "Malathi",
+    "familyName": "Hamal",
+    "citizenship": "US",
+    /* any other claims made by gov't */
+  },
+  "proof": {/* signature by gov't */}
+}</pre>
+        </div>
+
+      <div class="example" id="example-2-malathi-s-passport-passport-is-a-document-model">
+          <div class="marker">
+      <a class="self-link" href="#example-2-malathi-s-passport-passport-is-a-document-model">Example<bdi> 2</bdi></a><span class="example-title">: Malathi's passport (passport is a document model) </span>
+    </div> <pre class="nohighlight">{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:9f6878c8-73c7-11e8-ab37-23a1a3504fd0",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2028-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+    "passport": {
+      "id": "urn:uuid:79c181dc-73c7-11e8-8c1f-2bb1fd2d268a",
+      "type": "Passport",
+      "traveler": {
+        "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+        "givenName": "Malathi",
+        "familyName": "Hamal",
+        "citizenship": "US"
+      },
+      /* any other passport fields */
+    }
+  },
+  "proof": {/* signature by gov't */}
+}</pre>
+        </div>
+
+      <div class="example" id="example-3-anand-s-passport">
+          <div class="marker">
+      <a class="self-link" href="#example-3-anand-s-passport">Example<bdi> 3</bdi></a><span class="example-title">: Anand's passport</span>
+    </div> <pre class="nohighlight">{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:b306614c-73c7-11e8-b596-47e8c5ce9144",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2020-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "givenName": "Anand",
+    "familyName": "Hamal"
+    "citizenship": "US",
+    /* any other claims made by gov't */
+  },
+  "proof": {/* signature by gov't */}
+}</pre>
+        </div>
+
+      <div class="example" id="example-4-anand-s-birth-certificate">
+          <div class="marker">
+      <a class="self-link" href="#example-4-anand-s-birth-certificate">Example<bdi> 4</bdi></a><span class="example-title">: Anand's birth certificate</span>
+    </div> <pre class="nohighlight">{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:05a47fe2-73c8-11e8-ac1e-7fe0051a1d75",
+  "type": ["VerifiableCredential", "BirthCertificate"],
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2020-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "citizenship": "US",
+    "birthDate": "2017-10-01T00:00:00Z",
+    "birthPlace": {
+      "type": "Hospital",
+      "address": {
+        "type": "US address",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
+        "postalCode": "80209",
+        "streetAddress": "123 Main St."
+      }
+    },
+    "givenName": "Anand",
+    "familyName": "Hamal",
+    "parent": [{
+      "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+      "type": "Person",
+      "givenName": "Malathi",
+      "familyName": "Hamal",
+      "maidenName": "Holla"
+    }, {
+      "id": "did:example:BgXRjB4RPrrsUVoVNaYNwzfznKsWep7AWrZkiyVcorEN",
+      "type": "Person",
+      "givenName": "Rajesh",
+      "familyName": "Hamal"
+    }]
+  },
+  "proof": {/* signature by gov't */}
+}</pre>
+        </div>
+
+      <div class="example" id="example-5-permission-to-travel-from-rajesh-using-schema-org-vocab">
+          <div class="marker">
+      <a class="self-link" href="#example-5-permission-to-travel-from-rajesh-using-schema-org-vocab">Example<bdi> 5</bdi></a><span class="example-title">: Permission to travel from Rajesh using schema.org vocab</span>
+    </div> <pre class="nohighlight">{
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:58c08196-73c6-11e8-b030-3bd8a829a356",
+  "type": ["VerifiableCredential", "ChildTravelPass"],
+  "issuer": "did:example:BgXRjB4RPrrsUVoVNaYNwzfznKsWep7AWrZkiyVcorEN",
+  "expires": "2018-07-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "potentialAction": {
+      "type": "TravelAction",
+      "agent": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+      "participant": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+      "location": {
+        "type": "Country",
+        "address": {
+          "addressCountry": "CA"
+        }
+      }
+    }
+  },
+  "proof": {/* signature by Rajesh proving control of DID */}
+}</pre>
+        </div>
+  </section>
+
+  <section class="informative" id="acknowledgements">
+    <h2 id="c-acknowledgements"><bdi class="secno">C. </bdi>Acknowledgements<a class="self-link" aria-label="§" href="#acknowledgements"></a></h2><p><em>This section is non-normative.</em></p>
+
+    <p>
+The editors are thankful to the contributions from the Web Payments Workshop,
+the Web Payments Community Group, the Web Payments Interest Group, the
+Credentials Community Group, the Verifiable Claims Task Force, and the
+Verifiable Claims Working Group.
+    </p>
+
+  </section>
+
+
+
+
+<section id="references" class="appendix">
+      <h2 id="d-references"><bdi class="secno">D. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2>
+      
+    <section id="informative-references">
+        <h3 id="d-1-informative-references"><bdi class="secno">D.1 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
+      <dl class="bibliography">
+        <dt id="bib-rfc3986">[RFC3986]</dt><dd><a href="https://tools.ietf.org/html/rfc3986"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a></dd>
+      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
