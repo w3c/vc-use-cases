@@ -472,7 +472,7 @@ var[data-type]:hover::before {
   opacity: 1;
 }
 </style><script id="initialUserConfig" type="application/json">{
-  "specStatus": "WG-NOTE",
+  "specStatus": "NOTE",
   "useExperimentalStyles": true,
   "shortName": "vc-use-cases",
   "publishDate": "2019-09-24",
@@ -684,7 +684,7 @@ provided in order to make progress toward possible future standardization and
 interoperability of both low- and high-stakes claims with the goals of
 storing, transmitting, and receiving digitally verifiable proof of attributes
 such as qualifications and achievements. The use cases in this document focus
-on concrete scenarios that the technology defined by the group should address."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE.css"></head>
+on concrete scenarios that the technology defined by the group should address."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-NOTE"></head>
 
 <body class="h-entry informative"><div class="head">
       <a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a> <h1 id="title" class="title p-name">Verifiable Credentials Use Cases</h1>
@@ -813,13 +813,23 @@ to <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a>
       <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or
       obsoleted by other documents at any time. It is inappropriate to cite this
       document as other than work in progress.
-    </p><p data-deliverer="98922">
+    </p><p>
       
         This document was produced by a group
         operating under the
         <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
        
       
+                  <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                  <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/98922/status">public list of any patent disclosures</a>
+            made in connection with the deliverables of
+            the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual
+            knowledge of a patent which the individual believes contains
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+            must disclose the information in accordance with
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
       
     </p><p>
                   This document is governed by the
@@ -939,15 +949,8 @@ A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entit
     </p>
 
     <figure id="fig-verifiable-credentials-example-domains-for-user-needs">
-      <img alt="Verifiable Credential User Needs" style="display:block; margin:auto" src="user-needs.svg">
-      <figcaption>Figure <bdi class="figno">2</bdi> <span class="fig-title">
-Verifiable Credentials, Example Domains for User Needs
-      </span></figcaption>
-    </figure>
-
-    <figure id="fig-verifiable-credentials-example-domains-for-user-needs-0">
       <img alt="Verifiable Credential User Needs" style="display:block; margin:auto" src="VerifiableCredentialsProblemDomains.png" width="1145" height="695">
-      <figcaption>Figure <bdi class="figno">3</bdi> <span class="fig-title">
+      <figcaption>Figure <bdi class="figno">2</bdi> <span class="fig-title">
 Verifiable Credentials, Example Domains for User Needs
       </span></figcaption>
     </figure>
@@ -1455,7 +1458,7 @@ require participation of the <a href="#dfn-subjects" class="internalDFN" data-li
 
       <figure id="fig-verifiable-credential-user-tasks">
         <img alt="Verifiable Credential User Tasks" style="display:block; margin:auto" src="VerifiableCredentialsUserTasks.png" width="536" height="463">
-        <figcaption>Figure <bdi class="figno">4</bdi> <span class="fig-title">
+        <figcaption>Figure <bdi class="figno">3</bdi> <span class="fig-title">
 Verifiable Credential User Tasks
         </span></figcaption>
       </figure>
@@ -2296,7 +2299,7 @@ confirmation of their identity. Consider this illustration:
 
       <figure id="fig-verifiable-credential-creation-flow-diagram">
         <img aria-describedby="claim_flow" alt="Verifiable Credential Creation Flow Description" style="display:block; margin:auto" src="uc-issuing-claims.svg" width="605" height="556">
-        <figcaption>Figure <bdi class="figno">5</bdi> <span class="fig-title">Verifiable Credential Creation Flow Diagram</span></figcaption>
+        <figcaption>Figure <bdi class="figno">4</bdi> <span class="fig-title">Verifiable Credential Creation Flow Diagram</span></figcaption>
       </figure>
 
       <p>
@@ -2351,7 +2354,7 @@ In this example, a <a href="#dfn-holders" class="internalDFN" data-link-type="df
         </p>
         <figure id="fig-verifiable-credential-usage-flow-diagram">
           <img aria-describedby="vf-flow" alt="Verifiable Credential Usage Flow Diagram" style="display:block; margin:auto" src="example.svg" width="730" height="491">
-          <figcaption>Figure <bdi class="figno">6</bdi> <span class="fig-title">
+          <figcaption>Figure <bdi class="figno">5</bdi> <span class="fig-title">
 Verifiable Credential Usage Flow Diagram
           </span></figcaption>
         </figure>
@@ -2557,9 +2560,9 @@ The <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> 
 }</pre>
         </div>
 
-      <div class="example" id="example-3-amanda-s-passport">
+      <div class="example" id="example-3-anand-s-passport">
           <div class="marker">
-      <a class="self-link" href="#example-3-amanda-s-passport">Example<bdi> 3</bdi></a><span class="example-title">: Amanda's passport</span>
+      <a class="self-link" href="#example-3-anand-s-passport">Example<bdi> 3</bdi></a><span class="example-title">: Anand's passport</span>
     </div> <pre class="nohighlight">{
   "@context": [
     "https://w3id.org/credentials/v1",
@@ -2581,9 +2584,9 @@ The <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> 
 }</pre>
         </div>
 
-      <div class="example" id="example-4-amanda-s-birth-certificate">
+      <div class="example" id="example-4-anand-s-birth-certificate">
           <div class="marker">
-      <a class="self-link" href="#example-4-amanda-s-birth-certificate">Example<bdi> 4</bdi></a><span class="example-title">: Amanda's birth certificate</span>
+      <a class="self-link" href="#example-4-anand-s-birth-certificate">Example<bdi> 4</bdi></a><span class="example-title">: Anand's birth certificate</span>
     </div> <pre class="nohighlight">{
   "@context": [
     "https://w3id.org/credentials/v1",
