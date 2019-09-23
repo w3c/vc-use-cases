@@ -1,0 +1,9945 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xml:lang="en">
+<head>
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Linux version 5.7.27" />
+<meta http-equiv="Content-Type" content=
+"text/html; charset=utf-8" />
+<meta name="generator" content="ReSpec 24.32.2" />
+<meta name="viewport" content=
+"width=device-width, initial-scale=1, shrink-to-fit=no" />
+<style>
+<![CDATA[
+  /* --- EXAMPLES --- */
+  span.example-title {
+    text-transform: none;
+  }
+  aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+  }
+  div.illegal-example { color: red }
+  div.illegal-example p { color: black }
+  aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+  }
+
+  aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+  }
+  aside.example div.example span.example-title {
+    color: #999;
+  }
+]]>
+</style>
+
+<style>
+<![CDATA[
+  /* --- ISSUES/NOTES --- */
+  .issue-label {
+    text-transform: initial;
+  }
+
+  .warning > p:first-child { margin-top: 0 }
+  .warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+  }
+  span.warning { padding: .1em .5em .15em; }
+
+  .issue.closed span.issue-number {
+    text-decoration: line-through;
+  }
+
+  .warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+  }
+
+  .warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+  }
+
+  li.task-list-item {
+    list-style: none;
+  }
+
+  input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+  }
+
+  .issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+  }
+
+  .issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+  }
+
+  .issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+  }
+]]>
+</style>
+<title>Verifiable Credentials Use Cases</title>
+
+<style id="respec-mainstyle">
+<![CDATA[
+  /*****************************************************************
+  * ReSpec 3 CSS
+  * Robin Berjon - http://berjon.com/
+  *****************************************************************/
+
+  @keyframes pop {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1.25, 1.25);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+  }
+
+  /* Override code highlighter background */
+  .hljs {
+  background: transparent !important;
+  }
+
+  /* --- INLINES --- */
+  h1 abbr,
+  h2 abbr,
+  h3 abbr,
+  h4 abbr,
+  h5 abbr,
+  h6 abbr,
+  a abbr {
+  border: none;
+  }
+
+  dfn {
+  font-weight: bold;
+  }
+
+  a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+  }
+
+  a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+  }
+
+  a.bibref {
+  text-decoration: none;
+  }
+
+  .respec-offending-element:target {
+  animation: pop 0.25s ease-in-out 0s 1;
+  }
+
+  .respec-offending-element,
+  a[href].respec-offending-element {
+  text-decoration: red wavy underline;
+  }
+  @supports not (text-decoration: red wavy underline) {
+  .respec-offending-element:not(pre) {
+    display: inline-block;
+  }
+  .respec-offending-element {
+    /* Red squiggly line */
+    background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=)
+      bottom repeat-x;
+  }
+  }
+
+  #references :target {
+  background: #eaf3ff;
+  animation: pop 0.4s ease-in-out 0s 1;
+  }
+
+  cite .bibref {
+  font-style: normal;
+  }
+
+  code {
+  color: #c83500;
+  }
+
+  th code {
+  color: inherit;
+  }
+
+  a[href].orcid {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  a[href].orcid > svg {
+    margin-bottom: -2px;
+  }
+
+  /* --- TOC --- */
+
+  .toc a,
+  .tof a {
+  text-decoration: none;
+  }
+
+  a .secno,
+  a .figno {
+  color: #000;
+  }
+
+  ul.tof,
+  ol.tof {
+  list-style: none outside none;
+  }
+
+  .caption {
+  margin-top: 0.5em;
+  font-style: italic;
+  }
+
+  /* --- TABLE --- */
+
+  table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+  }
+
+  .simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+  }
+
+  .simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+  }
+
+  .simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+  }
+
+  .simple tr:nth-child(even) {
+  background: #f0f6ff;
+  }
+
+  /* --- DL --- */
+
+  .section dd > p:first-child {
+  margin-top: 0;
+  }
+
+  .section dd > p:last-child {
+  margin-bottom: 0;
+  }
+
+  .section dd {
+  margin-bottom: 1em;
+  }
+
+  .section dl.attrs dd,
+  .section dl.eldef dd {
+  margin-bottom: 0;
+  }
+
+  #issue-summary > ul,
+  .respec-dfn-list {
+  column-count: 2;
+  }
+
+  #issue-summary li,
+  .respec-dfn-list li {
+  list-style: none;
+  }
+
+  details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+  }
+
+  details.respec-tests-details > * {
+  padding-right: 2em;
+  }
+
+  details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+  }
+
+  details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+  }
+
+  details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+  }
+
+  details.respec-tests-details > li {
+  padding-left: 1em;
+  }
+
+  a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+  position: relative;
+  }
+
+  aside.example .marker > a.self-link {
+  color: inherit;
+  }
+
+  h2 > a.self-link,
+  h3 > a.self-link,
+  h4 > a.self-link,
+  h5 > a.self-link,
+  h6 > a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: 0.5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity 0.2s;
+  width: 2em;
+  }
+
+  h2 > a.self-link::before,
+  h3 > a.self-link::before,
+  h4 > a.self-link::before,
+  h5 > a.self-link::before,
+  h6 > a.self-link::before {
+  content: "§";
+  display: block;
+  }
+
+  @media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2 > a.self-link,
+  h3 > a.self-link,
+  h4 > a.self-link,
+  h5 > a.self-link,
+  h6 > a.self-link {
+    left: auto;
+    top: auto;
+  }
+  }
+
+  @media print {
+  .removeOnSave {
+    display: none;
+  }
+  }
+]]>
+</style>
+
+<style>
+<![CDATA[
+  dl {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  dt,
+  dd {
+    line-height: 1.42857143;
+  }
+  dl.dl-horizontal > dt {
+    font-weight: bold;
+  }
+  dl.dl-horizontal > dd {
+    padding-bottom: 10px;
+  }
+  @media (min-width: 768px), print {
+    .dl-horizontal {
+        margin-bottom: 2em;
+    }
+    .dl-horizontal dt {
+        font-weight: normal;
+        float: left;
+        width: 160px;
+        clear: left;
+        overflow: hidden;
+        text-align: right;
+    }
+    .dl-horizontal dd {
+        margin-left: 180px;
+    }
+    .dl-horizontal dd > ul {
+        padding-left: 20px;
+        margin: 0px;
+    }
+    .dl-horizontal dd + dt { border-top: solid thin grey; }
+    dl.dl-horizontal dt:not(:first-child) + dd { border-top: solid thin grey; }
+
+    .left.dl-horizontal dt {
+        text-align: left;
+    }
+  }
+  .dl-horizontal dd + dd { border-top: dotted thin grey;
+    padding-top: 0.5em; }
+]]>
+</style>
+<link rel="canonical" href="https://www.w3.org/TR/vc-use-cases/" />
+<style>
+<![CDATA[
+  var {
+  position: relative;
+  cursor: pointer;
+  }
+
+  var[data-type]::before,
+  var[data-type]::after {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  }
+
+  /* the triangle or arrow or caret or whatever */
+  var[data-type]::before {
+  content: "";
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #000;
+  }
+
+  /* actual text */
+  var[data-type]::after {
+  content: attr(data-type);
+  transform: translateX(-50%) translateY(-100%);
+  background: #000;
+  text-align: center;
+  /* additional styling */
+  font-family: "Dank Mono", "Fira Code", monospace;
+  font-style: normal;
+  padding: 6px;
+  border-radius: 3px;
+  color: #daca88;
+  text-indent: 0;
+  font-weight: normal;
+  }
+
+  var[data-type]:hover::after,
+  var[data-type]:hover::before {
+  opacity: 1;
+  }
+]]>
+</style>
+
+<script id="initialUserConfig" type="application/json">
+<![CDATA[
+  {
+  "specStatus": "NOTE",
+  "useExperimentalStyles": true,
+  "shortName": "vc-use-cases",
+  "publishDate": "2019-09-24",
+  "localBiblio": {
+    "REST": {
+      "title": "Architectural Styles and the Design of Network-based Software Architectures",
+      "date": "2000",
+      "href": "http://www.ics.uci.edu/~fielding/pubs/dissertation/",
+      "authors": [
+        "Fielding, Roy Thomas"
+      ],
+      "publisher": "University of California, Irvine."
+    },
+    "SECURE-MESSAGING": {
+      "title": "Secure Messaging",
+      "href": "https://web-payments.org/specs/source/secure-messaging",
+      "authors": [
+        "Manu Sporny"
+      ],
+      "etal": true,
+      "status": "unofficial",
+      "publisher": "Web Payments Community Group"
+    },
+    "VCTF-USECASES": {
+      "title": "Verifiable Claims Use Cases",
+      "href": "http://w3c.github.io/webpayments-ig/VCTF/use-cases/",
+      "authors": [
+        "Shane McCarron",
+        "Daniel Burnett",
+        "Gregg Kellogg",
+        "Brian Sletten",
+        "Manu Sporny"
+      ],
+      "status": "IG-DRAFT",
+      "publisher": "Web Payments Interest Group Verifiable Claims Task Force"
+    },
+    "HTTP-SIGNATURES": {
+      "aliasOf": "http-signatures"
+    },
+    "MACAROONS": {
+      "title": "Macaroons",
+      "href": "http://macaroons.io/",
+      "authors": [
+        "Arnar Birgisson",
+        "Joe Gibbs Politz",
+        "Úlfar Erlingsson",
+        "Ankur Taly",
+        "Michael Vrable",
+        "Mark Lentczner"
+      ],
+      "status": "unofficial",
+      "publisher": "Credentials Community Group"
+    },
+    "CREDENTIAL-MANAGEMENT": {
+      "title": "Credential Management Level 1",
+      "href": "https://w3c.github.io/webappsec-credential-management/",
+      "authors": [
+        "Mike West"
+      ],
+      "status": "WG-DRAFT",
+      "publisher": "Web Application Security Working Group"
+    },
+    "OPEN-BADGES": {
+      "title": "Open Badges",
+      "href": "https://github.com/openbadges/openbadges-specification",
+      "authors": [
+        "Brian Brennan",
+        "Mike Larsson",
+        "Chris McAvoy",
+        "Nate Otto",
+        "Kerri Lemoie"
+      ],
+      "status": "BA-DRAFT",
+      "publisher": "Badge Alliance Standard Working Group"
+    },
+    "IDENTITY-CREDENTIALS": {
+      "title": "Identity Credentials",
+      "href": "http://opencreds.org/specs/source/identity-credentials/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "W3C Credentials Community Group"
+    },
+    "RDF-NORMALIZATION": {
+      "title": "RDF Dataset Normalization",
+      "href": "http://json-ld.github.io/normalization/spec/",
+      "authors": [
+        "Dave Longley",
+        "Manu Sporny"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "Credentials W3C Community Group"
+    },
+    "WEB-COMMERCE": {
+      "title": "Web Commerce",
+      "href": "https://web-payments.org/specs/source/web-commerce/",
+      "authors": [
+        "Dave Longley",
+        "Manu Sporny",
+        "David I. Lehn"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "W3C Credentials Community Group"
+    },
+    "WEB-COMMERCE-API": {
+      "title": "Web Commerce API",
+      "href": "https://web-payments.org/specs/source/web-commerce-api/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley",
+        "David I. Lehn"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "W3C Credentials Community Group"
+    }
+  },
+  "github": "https://github.com/w3c/vc-use-cases",
+  "includePermalinks": false,
+  "editors": [
+    {
+      "name": "Shane McCarron",
+      "url": "http://blog.halindrome.com/",
+      "company": "Spec-Ops",
+      "companyURL": "https://spec-ops.io",
+      "w3cid": "23346"
+    },
+    {
+      "name": "Joe Andrieu",
+      "company": "Legendary Requirements",
+      "companyURL": "http://legreq.com"
+    },
+    {
+      "name": "Matt Stone",
+      "url": "https://www.lithos.me/about",
+      "company": "The Brightlink",
+      "companyURL": "http://www.thebrightlink.com"
+    },
+    {
+      "name": "Tzviya Siegman",
+      "url": "",
+      "company": "Wiley",
+      "companyURL": ""
+    },
+    {
+      "name": "Gregg Kellogg",
+      "url": "http://greggkellogg.net/",
+      "company": "Spec-Ops",
+      "companyURL": "https://spec-ops.io/",
+      "w3cid": "44770"
+    },
+    {
+      "name": "Ted Thibodeau, Jr.",
+      "url": "https://www.linkedin.com/in/macted/",
+      "company": "OpenLink Software, Inc.",
+      "companyURL": "http://www.openlinksw.com/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Nate Otto",
+      "url": "",
+      "company": "Badge Alliance",
+      "companyURL": ""
+    },
+    {
+      "name": "Sunny Lee",
+      "url": "",
+      "company": "Badge Alliance",
+      "companyURL": ""
+    },
+    {
+      "name": "Brian Sletten",
+      "url": "http://bosatsu.net",
+      "company": "Bosatsu Consulting, Inc.",
+      "companyURL": "http://bosatsu.net"
+    },
+    {
+      "name": "Daniel Burnett",
+      "company": "Standards Play",
+      "companyURL": "http://standardsplay.com/"
+    },
+    {
+      "name": "Manu Sporny",
+      "url": "http://digitalbazaar.com/",
+      "company": "Digital Bazaar, Inc.",
+      "companyURL": "http://digitalbazaar.com/"
+    },
+    {
+      "name": "Ken Ebert",
+      "url": "",
+      "company": "Sovrin Foundation",
+      "companyURL": "https://sovrin.org/"
+    }
+  ],
+  "maxTocLevel": 3,
+  "wg": "Verifiable Claims Working Group",
+  "wgURI": "https://www.w3.org/2017/vc/",
+  "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/98922/status",
+  "publishISODate": "2019-09-24T00:00:00.000Z",
+  "generatedSubtitle": "Working Group Note 24 September 2019"
+  }
+]]>
+</script>
+<meta name="description" content=
+"A verifiable claim is a qualification, achievement, quality, or piece of information about an entity's background such as a name, government ID, payment provider, home address, or university degree. Such a claim describes a quality or qualities, property or properties of an entity which establish its existence and uniqueness. The use cases outlined here are provided in order to make progress toward possible future standardization and interoperability of both low- and high-stakes claims with the goals of storing, transmitting, and receiving digitally verifiable proof of attributes such as qualifications and achievements. The use cases in this document focus on concrete scenarios that the technology defined by the group should address." />
+<link rel="stylesheet" href=
+"https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE" />
+<style type='text/css'>
+.diff-old-a {
+  font-size: smaller;
+  color: red;
+}
+
+.diff-new { background-color: yellow; }
+.diff-chg { background-color: lime; }
+.diff-new:before,
+.diff-new:after
+    { content: "\2191" }
+.diff-chg:before, .diff-chg:after
+    { content: "\2195" }
+.diff-old { text-decoration: line-through; background-color: #FBB; }
+.diff-old:before,
+.diff-old:after
+    { content: "\2193" }
+:focus { border: thin red solid}
+</style>
+</head>
+<body class="h-entry informative">
+<div class="head">
+<a class="logo" href= "https://www.w3.org/">
+<img alt="W3C" src= "https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48" />
+</a>
+<h1 id="title" class="title p-name">
+<ins class="diff-new">Verifiable
+Credentials
+Use
+Cases
+</ins></h1><h2><ins class="diff-new">
+W3C
+Working
+Group
+Note
+</ins><time class="dt-published" datetime= "2019-09-24"><ins class="diff-new">
+24
+September
+2019
+</ins></time></h2><dl><dt><ins class="diff-new">
+This
+version:
+</ins></dt><dd><a class="u-url" href= "https://www.w3.org/TR/2019/NOTE-vc-use-cases-20190924/"><ins class="diff-new">
+https://www.w3.org/TR/2019/NOTE-vc-use-cases-20190924/
+</ins></a></dd><dt><ins class="diff-new">
+Latest
+published
+version:
+</ins></dt><dd><a href= "https://www.w3.org/TR/vc-use-cases/"><ins class="diff-new">
+https://www.w3.org/TR/vc-use-cases/
+</ins></a></dd><dt><ins class="diff-new">
+Latest
+editor's
+draft:
+</ins></dt><dd><a href= "https://w3c.github.io/vc-use-cases/"><ins class="diff-new">
+https://w3c.github.io/vc-use-cases/
+</ins></a></dd><dt><ins class="diff-new">
+Previous
+version:
+</ins></dt><dd><a href= "https://www.w3.org/TR/2017/NOTE-verifiable-claims-use-cases-20170608/"><ins class="diff-new">
+https://www.w3.org/TR/2017/NOTE-verifiable-claims-use-cases-20170608/
+</ins></a></dd><dt><ins class="diff-new">
+Editors:
+</ins></dt><dd class="p-author h-card vcard" data-editor-id="23346"><a class= "u-url url p-name fn" href="http://blog.halindrome.com/"><ins class="diff-new">
+Shane
+McCarron
+</ins></a><ins class="diff-new">
+(
+</ins><a class="p-org org h-org h-card" href= "https://spec-ops.io"><ins class="diff-new">
+Spec-Ops
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dd class="p-author h-card vcard"><span class="p-name fn"><ins class="diff-new">
+Joe
+Andrieu
+</ins></span><ins class="diff-new">
+(
+</ins><a class="p-org org h-org h-card" href= "http://legreq.com"><ins class="diff-new">
+Legendary
+Requirements
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.lithos.me/about"><ins class="diff-new">
+Matt
+Stone
+</ins></a><ins class="diff-new">
+(
+</ins><a class= "p-org org h-org h-card" href="http://www.thebrightlink.com"><ins class="diff-new">
+The
+Brightlink
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dd class="p-author h-card vcard"><span class="p-name fn"><ins class="diff-new">
+Tzviya
+Siegman
+</ins></span><ins class="diff-new">
+(Wiley)
+</ins></dd><dd class="p-author h-card vcard" data-editor-id="44770"><a class= "u-url url p-name fn" href="http://greggkellogg.net/"><ins class="diff-new">
+Gregg
+Kellogg
+</ins></a><ins class="diff-new">
+(
+</ins><a class="p-org org h-org h-card" href= "https://spec-ops.io/"><ins class="diff-new">
+Spec-Ops
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.linkedin.com/in/macted/"><ins class="diff-new">
+Ted
+Thibodeau,
+Jr.
+</ins></a><ins class="diff-new">
+(
+</ins><a class="p-org org h-org h-card" href= "http://www.openlinksw.com/"><ins class="diff-new">
+OpenLink
+Software,
+Inc.
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dt><ins class="diff-new">
+Authors:
+</ins></dt><dd class="p-author h-card vcard"><span class="p-name fn"><ins class="diff-new">
+Nate
+Otto
+</ins></span><ins class="diff-new">
+(Badge
+Alliance)
+</ins></dd><dd class="p-author h-card vcard"><span class="p-name fn"><ins class="diff-new">
+Sunny
+Lee
+</ins></span><ins class="diff-new">
+(Badge
+Alliance)
+</ins></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="http://bosatsu.net"><ins class="diff-new">
+Brian
+Sletten
+</ins></a><ins class="diff-new">
+(
+</ins><a class= "p-org org h-org h-card" href="http://bosatsu.net"><ins class="diff-new">
+Bosatsu
+Consulting,
+Inc.
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dd class="p-author h-card vcard"><span class="p-name fn"><ins class="diff-new">
+Daniel
+Burnett
+</ins></span><ins class="diff-new">
+(
+</ins><a class="p-org org h-org h-card" href= "http://standardsplay.com/"><ins class="diff-new">
+Standards
+Play
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="http://digitalbazaar.com/"><ins class="diff-new">
+Manu
+Sporny
+</ins></a><ins class="diff-new">
+(
+</ins><a class= "p-org org h-org h-card" href="http://digitalbazaar.com/"><ins class="diff-new">
+Digital
+Bazaar,
+Inc.
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dd class="p-author h-card vcard"><span class="p-name fn"><ins class="diff-new">
+Ken
+Ebert
+</ins></span><ins class="diff-new">
+(
+</ins><a class="p-org org h-org h-card" href= "https://sovrin.org/"><ins class="diff-new">
+Sovrin
+Foundation
+</ins></a><ins class="diff-new">
+)
+</ins></dd><dt><ins class="diff-new">
+Participate:
+</ins></dt><dd><a href="https://github.com/w3c/vc-use-cases/"><ins class="diff-new">
+GitHub
+w3c/vc-use-cases
+</ins></a></dd><dd><a href="https://github.com/w3c/vc-use-cases/issues/"><ins class="diff-new">
+File
+a
+bug
+</ins></a></dd><dd><a href= "https://github.com/w3c/vc-use-cases/commits/gh-pages"><ins class="diff-new">
+Commit
+history
+</ins></a></dd><dd><a href="https://github.com/w3c/vc-use-cases/pulls/"><ins class="diff-new">
+Pull
+requests
+</ins></a></dd></dl><p class="copyright"><a href= "https://www.w3.org/Consortium/Legal/ipr-notice#Copyright"><ins class="diff-new">
+Copyright
+</ins></a><ins class="diff-new">
+©
+2019
+</ins><a href="https://www.w3.org/"><abbr title= "World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr></a><sup><ins class="diff-new">
+®
+</ins></sup><ins class="diff-new">
+(
+</ins><a href= "https://www.csail.mit.edu/"><abbr title= "Massachusetts Institute of Technology"><ins class="diff-new">
+MIT
+</ins></abbr></a>,<a href= "https://www.ercim.eu/"><abbr title= "European Research Consortium for Informatics and Mathematics"><ins class="diff-new">
+ERCIM
+</ins></abbr></a>,<a href="https://www.keio.ac.jp/"><ins class="diff-new">
+Keio
+</ins></a>,<a href= "https://ev.buaa.edu.cn/"><ins class="diff-new">
+Beihang
+</ins></a><ins class="diff-new">
+).
+W3C
+</ins><a href= "https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer"><ins class="diff-new">
+liability
+</ins></a>,<a href= "https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks"><ins class="diff-new">
+trademark
+</ins></a><ins class="diff-new">
+and
+</ins><a rel="license" href= "https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document"><ins class="diff-new">
+permissive
+document
+license
+</ins></a><ins class="diff-new">
+rules
+apply.
+</ins></p><hr title="Separator for header" /></div><section id="abstract" class="introductory"><h2><ins class="diff-new">
+Abstract
+</ins></h2><p><ins class="diff-new">
+A
+</ins><em><ins class="diff-new">
+verifiable
+claim
+</ins></em><ins class="diff-new">
+is
+a
+qualification,
+achievement,
+quality,
+or
+piece
+of
+information
+about
+an
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity's
+</ins></a><ins class="diff-new">
+background
+such
+as
+a
+name,
+government
+ID,
+payment
+provider,
+home
+address,
+or
+university
+degree.
+Such
+a
+claim
+describes
+a
+quality
+or
+qualities,
+property
+or
+properties
+of
+an
+</ins><a href="#dfn-entities" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+which
+establish
+its
+existence
+and
+uniqueness.
+The
+use
+cases
+outlined
+here
+are
+provided
+in
+order
+to
+make
+progress
+toward
+possible
+future
+standardization
+and
+interoperability
+of
+both
+low-
+and
+high-stakes
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+with
+the
+goals
+of
+storing,
+transmitting,
+and
+receiving
+digitally
+verifiable
+proof
+of
+attributes
+such
+as
+qualifications
+and
+achievements.
+The
+use
+cases
+in
+this
+document
+focus
+on
+concrete
+scenarios
+that
+the
+technology
+defined
+by
+the
+group
+should
+address.
+</ins></p></section><section id="sotd" class="introductory"><h2><ins class="diff-new">
+Status
+of
+This
+Document
+</ins></h2><p><em><ins class="diff-new">
+This
+section
+describes
+the
+status
+of
+this
+document
+at
+the
+time
+of
+its
+publication.
+Other
+documents
+may
+supersede
+this
+document.
+A
+list
+of
+current
+</ins><abbr title= "World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+publications
+and
+the
+latest
+revision
+of
+this
+technical
+report
+can
+be
+found
+in
+the
+</ins><a href= "https://www.w3.org/TR/"><abbr title= "World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+technical
+reports
+index
+</ins></a><ins class="diff-new">
+at
+https://www.w3.org/TR/.
+</ins></em></p><p><ins class="diff-new">
+This
+document
+represents
+a
+concise
+but
+limited
+collection
+of
+use
+cases
+readers
+should
+review
+alongside
+the
+</ins><a href= "https://www.w3.org/TR/vc-data-model/"><ins class="diff-new">
+Verifiable
+Credentials
+Data
+Model
+</ins></a>.</p><p><ins class="diff-new">
+The
+work
+on
+this
+document
+was
+carried
+out
+under
+tight
+time
+constraints
+due
+to
+limitations
+of
+the
+</ins><abbr title= "World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+process
+and
+publishing
+deadlines.
+Under
+such
+conditions,
+errors
+are
+unavoidable
+and
+some
+of
+the
+ideas
+presented
+here
+are
+incomplete.
+The
+Working
+Group
+hopes
+that
+in
+the
+future,
+</ins><abbr title= "World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+process
+can
+be
+revised
+to
+better
+support
+the
+dynamic
+nature
+of
+standards
+work
+in
+a
+more
+consistent
+way
+across
+different
+groups.
+</ins></p><p><ins class="diff-new">
+Comments
+regarding
+this
+document
+are
+welcome.
+Please
+file
+directly
+on
+</ins><a href= "https://github.com/w3c/vc-use-cases/issues/"><ins class="diff-new">
+GitHub
+</ins></a>,<ins class="diff-new">
+or
+send
+them
+to
+</ins><a href= "mailto:public-vc-comments@w3.org"><ins class="diff-new">
+public-vc-comments@w3.org
+</ins></a><ins class="diff-new">
+(
+</ins><a href= "mailto:public-vc-comments-request@w3.org?subject=subscribe"><ins class="diff-new">
+subscribe
+</ins></a>,<a href= "https://lists.w3.org/Archives/Public/public-vc-comments/"><ins class="diff-new">
+archives
+</ins></a><ins class="diff-new">
+).
+</ins></p><p><ins class="diff-new">
+This
+document
+was
+published
+by
+the
+</ins><a href= "https://www.w3.org/2017/vc/"><ins class="diff-new">
+Verifiable
+Claims
+Working
+Group
+</ins></a><ins class="diff-new">
+as
+a
+Working
+Group
+Note.
+</ins></p><p><a href="https://github.com/w3c/vc-use-cases/issues/"><ins class="diff-new">
+GitHub
+Issues
+</ins></a><ins class="diff-new">
+are
+preferred
+for
+discussion
+of
+this
+specification.
+</ins></p><p><ins class="diff-new">
+Publication
+as
+a
+Working
+Group
+Note
+does
+not
+imply
+endorsement
+by
+the
+</ins><abbr title="World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+Membership.
+This
+is
+a
+draft
+document
+and
+may
+be
+updated,
+replaced
+or
+obsoleted
+by
+other
+documents
+at
+any
+time.
+It
+is
+inappropriate
+to
+cite
+this
+document
+as
+other
+than
+work
+in
+progress.
+</ins></p><p data-deliverer="98922"><ins class="diff-new">
+This
+document
+was
+produced
+by
+a
+group
+operating
+under
+the
+</ins><a href= "https://www.w3.org/Consortium/Patent-Policy/"><abbr title= "World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+Patent
+Policy
+</ins></a>.</p><p><ins class="diff-new">
+This
+document
+is
+governed
+by
+the
+</ins><a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/"><ins class="diff-new">
+1
+March
+2019
+</ins><abbr title="World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+Process
+Document
+</ins></a>.</p></section><nav id="toc"><h2 class="introductory" id="table-of-contents"><ins class="diff-new">
+Table
+of
+Contents
+</ins></h2><ol class="toc"><li class="tocline"><a class="tocxref" href= "#introduction"><bdi class="secno"><ins class="diff-new">
+1.
+</ins></bdi><ins class="diff-new">
+Introduction
+</ins></a><ol class="toc"><li class="tocline"><a class="tocxref" href= "#importance-of-this-work"><bdi class="secno"><ins class="diff-new">
+1.1
+</ins></bdi><ins class="diff-new">
+Importance
+of
+this
+work
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#use-case-model"><bdi class="secno"><ins class="diff-new">
+1.2
+</ins></bdi><ins class="diff-new">
+Use
+case
+model
+</ins></a></li></ol></li><li class="tocline"><a class="tocxref" href= "#user-roles"><bdi class="secno"><ins class="diff-new">
+2.
+</ins></bdi><ins class="diff-new">
+User
+Roles
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#user-needs"><bdi class="secno"><ins class="diff-new">
+3.
+</ins></bdi><ins class="diff-new">
+User
+Needs
+</ins></a><ol class="toc"><li class="tocline"><a class="tocxref" href= "#education"><bdi class="secno"><ins class="diff-new">
+3.1
+</ins></bdi><ins class="diff-new">
+Education
+</ins></a></li><li class="tocline"><a class="tocxref" href="#retail"><bdi class= "secno"><ins class="diff-new">
+3.2
+</ins></bdi><ins class="diff-new">
+Retail
+</ins></a></li><li class="tocline"><a class="tocxref" href="#finance"><bdi class= "secno"><ins class="diff-new">
+3.3
+</ins></bdi><ins class="diff-new">
+Finance
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#healthcare"><bdi class="secno"><ins class="diff-new">
+3.4
+</ins></bdi><ins class="diff-new">
+Healthcare
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#professional-credentials"><bdi class="secno"><ins class="diff-new">
+3.5
+</ins></bdi><ins class="diff-new">
+Professional
+Credentials
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#legal-identity"><bdi class="secno"><ins class="diff-new">
+3.6
+</ins></bdi><ins class="diff-new">
+Legal
+Identity
+</ins></a></li><li class="tocline"><a class="tocxref" href="#devices"><bdi class= "secno"><ins class="diff-new">
+3.7
+</ins></bdi><ins class="diff-new">
+Devices
+</ins></a></li></ol></li><li class="tocline"><a class="tocxref" href= "#user-tasks"><bdi class="secno"><ins class="diff-new">
+4.
+</ins></bdi><ins class="diff-new">
+User
+Tasks
+</ins></a><ol class="toc"><li class="tocline"><a class="tocxref" href= "#issue-claim"><bdi class="secno"><ins class="diff-new">
+4.1
+</ins></bdi><ins class="diff-new">
+Issue
+Claim
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#assert-claim"><bdi class="secno"><ins class="diff-new">
+4.2
+</ins></bdi><ins class="diff-new">
+Assert
+Claim
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#verify-claim"><bdi class="secno"><ins class="diff-new">
+4.3
+</ins></bdi><ins class="diff-new">
+Verify
+Claim
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#store-move-claim"><bdi class="secno"><ins class="diff-new">
+4.4
+</ins></bdi><ins class="diff-new">
+Store
+/
+Move
+Claim
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#retrieve-claim"><bdi class="secno"><ins class="diff-new">
+4.5
+</ins></bdi><ins class="diff-new">
+Retrieve
+Claim
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#revoke-claim"><bdi class="secno"><ins class="diff-new">
+4.6
+</ins></bdi><ins class="diff-new">
+Revoke
+Claim
+</ins></a></li></ol></li><li class="tocline"><a class="tocxref" href= "#focal-use-cases"><bdi class="secno"><ins class="diff-new">
+5.
+</ins></bdi><ins class="diff-new">
+Focal
+Use
+Cases
+</ins></a><ol class="toc"><li class="tocline"><a class="tocxref" href= "#citizenship-by-parentage"><bdi class="secno"><ins class="diff-new">
+5.1
+</ins></bdi><ins class="diff-new">
+Citizenship
+by
+Parentage
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#expert-dive-instructor"><bdi class="secno"><ins class="diff-new">
+5.2
+</ins></bdi><ins class="diff-new">
+Expert
+Dive
+Instructor
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#international-travel-with-minor-and-upgrade"><bdi class= "secno"><ins class="diff-new">
+5.3
+</ins></bdi><ins class="diff-new">
+International
+Travel
+with
+Minor
+and
+Upgrade
+</ins></a></li></ol></li><li class="tocline"><a class="tocxref" href= "#user-sequences"><bdi class="secno"><ins class="diff-new">
+6.
+</ins></bdi><ins class="diff-new">
+User
+Sequences
+</ins></a><ol class="toc"><li class="tocline"><a class="tocxref" href= "#how-a-verifiable-credential-might-be-created"><bdi class= "secno"><ins class="diff-new">
+6.1
+</ins></bdi><ins class="diff-new">
+How
+a
+Verifiable
+Credential
+Might
+Be
+Created
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#how-a-verifiable-credential-might-be-used"><bdi class= "secno"><ins class="diff-new">
+6.2
+</ins></bdi><ins class="diff-new">
+How
+a
+Verifiable
+Credential
+Might
+Be
+Used
+</ins></a></li></ol></li><li class="tocline"><a class="tocxref" href= "#terminology"><bdi class="secno"><ins class="diff-new">
+A.
+</ins></bdi><ins class="diff-new">
+Terminology
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#example-verifiable-credentials"><bdi class="secno"><ins class="diff-new">
+B.
+</ins></bdi><ins class="diff-new">
+Example
+Verifiable
+Credentials
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#acknowledgements"><bdi class="secno"><ins class="diff-new">
+C.
+</ins></bdi><ins class="diff-new">
+Acknowledgements
+</ins></a></li><li class="tocline"><a class="tocxref" href= "#references"><bdi class="secno"><ins class="diff-new">
+D.
+</ins></bdi><ins class="diff-new">
+References
+</ins></a><ol class="toc"><li class="tocline"><a class="tocxref" href= "#informative-references"><bdi class="secno"><ins class="diff-new">
+D.1
+</ins></bdi><ins class="diff-new">
+Informative
+references
+</ins></a></li></ol></li></ol></nav><section id="introduction"><h2 id="x1-introduction"><bdi class="secno"><ins class="diff-new">
+1.
+</ins></bdi><ins class="diff-new">
+Introduction
+</ins><a class="self-link" aria-label="§" href= "#introduction"></a></h2><p><ins class="diff-new">
+The
+Verifiable
+Claims
+Working
+Group
+at
+the
+</ins><abbr title= "World Wide Web Consortium"><ins class="diff-new">
+W3C
+</ins></abbr><ins class="diff-new">
+is
+developing
+standards
+for
+expressing
+and
+exchanging
+"
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+"
+that
+have
+been
+verified
+by
+a
+third
+party
+and
+to
+make
+them
+easier
+and
+more
+secure
+on
+the
+Web.
+</ins></p><div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span><ins class="diff-new">
+Note
+</ins></span></div><div class=""><ins class="diff-new">
+This
+document
+does
+NOT
+attempt
+to
+define
+an
+architecture
+for
+the
+support
+of
+Verifiable
+Claims.
+Instead
+it
+expresses
+the
+sorts
+of
+needs
+that
+real
+users
+have
+that
+could
+be
+addressed
+through
+support
+for
+some
+sort
+of
+self-sovereign
+claim
+environment.
+It
+attempts
+to
+use
+terminology
+that
+is
+consistent
+with
+the
+other
+deliverables
+of
+the
+Verifiable
+Claims
+Working
+Group
+(you
+can
+see
+the
+relevant
+terms
+in
+Appendix
+A).
+</ins></div></div><section id="importance-of-this-work"><h3 id="x1-1-importance-of-this-work"><bdi class="secno"><ins class="diff-new">
+1.1
+</ins></bdi><ins class="diff-new">
+Importance
+of
+this
+work
+</ins><a class="self-link" aria-label="§" href= "#importance-of-this-work"></a></h3><p><ins class="diff-new">
+Entities
+(people,
+organizations,
+devices)
+need
+to
+make
+many
+kinds
+of
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+as
+part
+of
+their
+everyday
+activities.
+As
+more
+and
+more
+of
+these
+important
+activities
+move
+to
+the
+Internet,
+</ins><a href= "#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entities
+</ins></a><ins class="diff-new">
+need
+to
+be
+able
+to
+transmit
+instantly
+</ins><em><ins class="diff-new">
+verifiable
+</ins></em><ins class="diff-new">
+claims
+(e.g.,
+about
+their
+location,
+accomplishments,
+value,
+what-have-you).
+From
+educational
+records
+to
+payment
+account
+access,
+the
+next
+generation
+of
+web
+applications
+will
+authorize
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entities
+</ins></a><ins class="diff-new">
+to
+perform
+actions
+based
+on
+rich
+sets
+of
+credentials
+issued
+by
+trusted
+parties.
+Human-
+and
+machine-mediated
+decisions
+about
+job
+applications,
+account
+access,
+collaboration,
+and
+professional
+development
+will
+depend
+on
+filtering
+and
+analyzing
+growing
+amounts
+of
+data.
+It
+is
+essential
+that
+data
+be
+verifiable.
+</ins></p><p><ins class="diff-new">
+Standardization
+of
+digital
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+technologies
+makes
+it
+possible
+for
+many
+stakeholders
+to
+issue,
+earn,
+and
+trust
+these
+essential
+records
+about
+their
+counterparties,
+without
+being
+locked
+into
+proprietary
+platforms.
+</ins></p></section><section id="use-case-model"><h3 id="x1-2-use-case-model"><bdi class="secno"><ins class="diff-new">
+1.2
+</ins></bdi><ins class="diff-new">
+Use
+case
+model
+</ins><a class="self-link" aria-label="§" href= "#use-case-model"></a></h3><p><ins class="diff-new">
+This
+document
+presents
+an
+aggregate
+use
+case
+model,
+comprised
+of
+Needs,
+Roles,
+Tasks,
+and
+Sequences.
+Taken
+together,
+these
+models
+define
+the
+use
+cases
+that
+the
+Verifiable
+Claims
+Working
+Group
+has
+addressed.
+</ins></p><p><ins class="diff-new">
+User
+needs
+define
+the
+problem
+space
+addressed
+by
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>.<ins class="diff-new">
+User
+Roles
+specify
+the
+roles
+different
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entities
+</ins></a><ins class="diff-new">
+play
+when
+interacting
+with
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>.<ins class="diff-new">
+Tasks
+define
+the
+functions
+users
+can
+accomplish,
+and
+sequences
+demonstrate
+how
+tasks
+might
+be
+realized,
+by
+interactions
+between
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entities
+</ins></a><ins class="diff-new">
+over
+time.
+</ins></p><p><ins class="diff-new">
+As
+with
+all
+models,
+this
+use
+case
+model
+is
+neither
+exhaustive
+nor
+complete.
+The
+listed
+uses
+cannot
+capture
+all
+possible
+use
+cases.
+Similarly,
+the
+models
+do
+not
+completely
+characterize
+the
+use
+cases
+represented.
+However,
+the
+combined
+model
+is
+intended
+to
+provide
+specific,
+coherent
+guidance
+for
+the
+work
+ahead.
+</ins></p></section></section><section id="user-roles"><h2 id="x2-user-roles"><bdi class="secno"><ins class="diff-new">
+2.
+</ins></bdi><ins class="diff-new">
+User
+Roles
+</ins><a class="self-link" aria-label="§" href= "#user-roles"></a></h2><p><ins class="diff-new">
+There
+are
+four
+roles
+supported
+by
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>:<a href="#dfn-issuers" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+Issuer
+</ins></a>,<a href= "#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+Verifier
+</ins></a>,<a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+Subject
+</ins></a>,<ins class="diff-new">
+and
+</ins><a href="#dfn-holders" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+Holder
+</ins></a>.</p><figure id="fig-verifiable-credential-user-roles"><img alt= "Verifiable Credential User Roles" style= "display:block; margin:auto" src= "VerifiableCredentialsUserRoles.png" width="173" height="312" /><figcaption><ins class="diff-new">
+Figure
+</ins><bdi class="figno"><ins class="diff-new">
+1
+</ins></bdi><span class= "fig-title"><ins class="diff-new">
+Verifiable
+Credential
+User
+Roles
+</ins></span></figcaption></figure><dl><dt><ins class="diff-new">
+Issuer
+</ins></dt><dd><ins class="diff-new">
+The
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+that
+creates
+a
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+and
+associates
+it
+with
+a
+particular
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a>.</dd><dt><ins class="diff-new">
+Verifier
+</ins></dt><dd><ins class="diff-new">
+The
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+verifying
+a
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+about
+a
+given
+</ins><a href= "#dfn-subjects" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+subject
+</ins></a>.</dd><dt><ins class="diff-new">
+Subject
+</ins></dt><dd><ins class="diff-new">
+The
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+about
+whom
+a
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+is
+issued.
+</ins></dd><dt><ins class="diff-new">
+Holder
+</ins></dt><dd><ins class="diff-new">
+A
+role
+an
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+may
+perform
+by
+possessing
+one
+or
+more
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>.<ins class="diff-new">
+A
+</ins><a href= "#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+is
+usually,
+but
+not
+always,
+the
+</ins><a href="#dfn-subjects" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+of
+the
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+that
+they
+are
+holding.
+</ins><a href= "#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+Holders
+</ins></a><ins class="diff-new">
+store
+their
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+in
+</ins><a href= "#dfn-credential-repository" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+repositories
+</ins></a>.</dd></dl></section><section id="user-needs"><h2 id="x3-user-needs"><bdi class="secno"><ins class="diff-new">
+3.
+</ins></bdi><ins class="diff-new">
+User
+Needs
+</ins><a class="self-link" aria-label="§" href= "#user-needs"></a></h2><p><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+Verifiable
+credentials
+</ins></a><ins class="diff-new">
+address
+user
+needs
+in
+a
+number
+of
+key
+domains:
+</ins></p><figure id= "fig-verifiable-credentials-example-domains-for-user-needs"><img alt="Verifiable Credential User Needs" style= "display:block; margin:auto" src= "VerifiableCredentialsProblemDomains.png" width="1145" height= "695" /><figcaption><ins class="diff-new">
+Figure
+</ins><bdi class="figno"><ins class="diff-new">
+2
+</ins></bdi><span class= "fig-title"><ins class="diff-new">
+Verifiable
+Credentials,
+Example
+Domains
+for
+User
+Needs
+</ins></span></figcaption></figure><section id="education"><h3 id="x3-1-education"><bdi class="secno"><ins class="diff-new">
+3.1
+</ins></bdi><ins class="diff-new">
+Education
+</ins><a class="self-link" aria-label="§" href= "#education"></a></h3><p><ins class="diff-new">
+The
+education
+domain
+includes
+all
+levels
+of
+the
+educational
+experience;
+from
+primary
+through
+professional
+continuing
+education.
+</ins></p><dl class="left dl-horizontal"><dt><span id="uneed_E_1" class="userneed-name" title= "E.1 Digital transcript"><ins class="diff-new">
+E.1
+Digital
+transcript
+</ins></span></dt><dd><ins class="diff-new">
+Joleen
+is
+the
+registrar
+of
+Mega
+University
+and,
+by
+virtue
+of
+her
+office,
+is
+responsible
+for
+the
+integrity,
+accuracy,
+and
+security
+of
+academic
+records.
+Joleen
+has
+been
+a
+pioneering
+registrar
+in
+advocating
+an
+"extended
+transcript"
+that
+includes
+not
+only
+the
+standard
+set
+of
+course
+grades
+but
+also
+adds
+supplementary
+information
+on
+learner
+competencies.
+These
+might
+include
+work
+experiences
+and
+non-educational
+but
+marketable
+skills.
+Upon
+the
+request
+of
+her
+students,
+Joleen
+issues
+a
+digital
+credential
+that
+includes
+an
+extended
+transcript.
+</ins></dd><dt><span id="uneed_E_2" class="userneed-name" title= "E.2 Taking a test"><ins class="diff-new">
+E.2
+Taking
+a
+test
+</ins></span></dt><dd><ins class="diff-new">
+Eunice
+is
+about
+to
+take
+her
+ACT
+(a
+test
+used
+to
+evaluate
+her
+readiness
+for
+college).
+When
+she
+arrives
+at
+the
+testing
+center,
+she
+is
+required
+to
+present
+identification.
+Her
+government-issued
+identity
+certificate
+is
+acceptable,
+as
+the
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+contained
+in
+it
+reflect
+all
+of
+the
+required
+attributes
+and
+it
+is
+difficult
+to
+counterfeit.
+</ins></dd><dt><span id="uneed_E_3" class="userneed-name" title= "E.3 Transferring schools"><ins class="diff-new">
+E.3
+Transferring
+schools
+</ins></span></dt><dd><ins class="diff-new">
+Rocky
+is
+an
+undergraduate
+student
+at
+Wossamotta
+U.
+His
+school
+provides
+a
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+service
+to
+all
+students
+and
+alumni,
+so
+he
+chooses
+to
+use
+it.
+In
+his
+third
+year,
+Rocky
+decides
+to
+transfer
+to
+Moosylvania
+Tech.
+They
+do
+not
+offer
+a
+service,
+but
+he
+does
+not
+want
+to
+continue
+to
+use
+the
+service
+of
+his
+old
+(and
+now
+rival
+school)
+so
+he
+moves
+his
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+to
+the
+service
+offered
+by
+his
+bank
+without
+needing
+to
+have
+them
+reissued.
+</ins></dd><dt><span id="uneed_E_4" class="userneed-name" title= "E.4 Online classes"><ins class="diff-new">
+E.4
+Online
+classes
+</ins></span></dt><dd><ins class="diff-new">
+In
+MOOC
+and
+other
+online
+learning
+systems,
+being
+able
+to
+reliably
+identify
+participants
+is
+vital
+to
+ensure
+the
+individual
+evaluation
+and
+certification.
+Nick
+is
+participating
+in
+a
+course
+online
+and
+takes
+a
+test.
+He
+is
+required
+to
+provide
+his
+credentials
+to
+prove
+his
+identity
+before
+the
+test,
+and
+then
+to
+allow
+the
+system
+to
+issue
+a
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+regarding
+the
+results
+of
+his
+test.
+</ins></dd></dl></section><section id="retail"><h3 id="x3-2-retail"><bdi class="secno"><ins class="diff-new">
+3.2
+</ins></bdi><ins class="diff-new">
+Retail
+</ins><a class= "self-link" aria-label="§" href="#retail"></a></h3><p><ins class="diff-new">
+The
+retail
+domain
+encompasses
+all
+things
+where
+there
+is
+an
+exchange
+of
+value
+on
+an
+individual
+level.
+This
+includes
+brick-and-mortar
+store
+fronts,
+web-only
+venues,
+and
+even
+person-to-person
+sales.
+</ins></p><dl class="left dl-horizontal"><dt><span id="uneed_R_1" class="userneed-name" title= "R.1 Address verification"><ins class="diff-new">
+R.1
+Address
+verification
+</ins></span></dt><dd><ins class="diff-new">
+Francis
+has
+found
+the
+perfect
+pair
+of
+shoes.
+When
+processing
+orders,
+Giant
+Shoe
+Company
+wants
+to
+be
+certain
+that
+his
+shipping
+address
+is
+accurate
+(inaccurate
+addresses
+are
+very
+expensive
+in
+terms
+of
+customer
+service).
+They
+offer
+a
+discount
+for
+customers
+who
+make
+verifiable
+addresses
+available
+as
+part
+of
+the
+checkout
+process.
+Francis
+offers
+his
+certificate
+and
+gets
+the
+perfect
+shoes
+for
+even
+less
+than
+he
+expected.
+</ins></dd><dt><span id="uneed_R_2" class="userneed-name" title= "R.2 Adult beverages"><ins class="diff-new">
+R.2
+Adult
+beverages
+</ins></span></dt><dd><ins class="diff-new">
+June
+goes
+to
+her
+local
+beer
+and
+wine
+store
+to
+buy
+a
+bottle
+of
+wine.
+She
+submits
+her
+identity
+credential
+that
+lets
+the
+liquor
+store
+owner
+know
+that
+she
+is
+over
+21
+without
+having
+to
+reveal
+her
+actual
+date
+of
+birth,
+her
+address,
+or
+her
+state
+ID
+number.
+</ins></dd><dt><span id="uneed_R_3" class="userneed-name" title= "R.3 Fraud detection"><ins class="diff-new">
+R.3
+Fraud
+detection
+</ins></span></dt><dd><ins class="diff-new">
+On
+a
+bright
+Sunday,
+Oskar
+remembers
+that
+he
+still
+needs
+to
+buy
+his
+wife
+a
+precious
+gift
+for
+their
+wedding
+anniversary.
+However,
+he
+is
+acutely
+aware
+that
+it
+is
+precisely
+in
+weekends
+that
+gangs
+set
+up
+fraudulent
+web
+shops
+that
+claim
+to
+sell
+such
+gifts,
+while
+in
+fact
+they
+only
+take
+the
+cash,
+and
+disappear
+on
+Mondays.
+So
+before
+actually
+purchasing
+a
+gift
+from
+the
+web
+shop
+of
+his
+choice,
+he
+requests
+the
+shop
+to
+provide
+a
+credential
+issued
+by
+the
+chamber
+of
+commerce,
+that
+contains
+proof
+of
+legitimacy.
+After
+having
+verified
+that
+the
+shop
+is
+legit,
+he
+can
+purchase
+his
+gift.
+</ins></dd></dl></section><section id="finance"><h3 id="x3-3-finance"><bdi class="secno"><ins class="diff-new">
+3.3
+</ins></bdi><ins class="diff-new">
+Finance
+</ins><a class= "self-link" aria-label="§" href="#finance"></a></h3><p><ins class="diff-new">
+The
+Finance
+domain
+includes
+banking,
+brokerage,
+insurance,
+and
+other
+industries
+where
+there
+is
+a
+high
+value
+placed
+on
+knowing
+exactly
+with
+whom
+you
+are
+dealing.
+</ins></p><dl class="left dl-horizontal"><dt><span id="uneed_F_1" class="userneed-name" title= "F.1 Reuse know your customer"><ins class="diff-new">
+F.1
+Reuse
+know
+your
+customer
+</ins></span></dt><dd><ins class="diff-new">
+Jane
+is
+opening
+an
+account
+at
+MidBank
+in
+Finland.
+As
+part
+of
+that
+process,
+the
+bank
+asks
+her
+to
+provide
+two
+from
+a
+variety
+of
+possible
+sources
+to
+confirm
+her
+identity
+—
+a
+so-called
+"Know
+Your
+Customer"
+check.
+She
+selects
+government-supplied
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+that
+confirm
+she
+receives
+postal
+mail
+at
+a
+certain
+address
+and
+that
+she
+has
+a
+national
+ID
+card.
+Confirming
+these
+allows
+the
+bank
+to
+open
+her
+account
+and
+be
+confident
+in
+her
+identity
+when
+she
+conducts
+transactions.
+</ins></dd><dd><ins class="diff-new">
+Now
+that
+the
+account
+is
+open,
+Jane
+is
+issued
+a
+digitally-signed
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+for
+her
+checking
+account
+at
+MidBank.
+This
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+verifies
+that
+Jane
+has
+an
+account
+at
+MidBank
+and
+has
+access
+to
+her
+associated
+checking
+account.
+Since
+MidBank
+(and
+all
+banks
+in
+Finland)
+are
+required
+to
+perform
+"Know
+Your
+Customer"
+checks
+on
+accounts,
+this
+credential
+can
+also
+be
+used
+as
+sufficient
+verification
+by
+other
+financial
+institutions.
+This
+can
+help
+Jane
+assure
+destination
+banks
+that
+she
+is
+verified,
+thereby
+allaying
+concerns
+about
+misdirected
+transactions
+and
+money
+laundering.
+</ins></dd><dt><span id="uneed_F_2" class="userneed-name" title= "F.2 Money transfer"><ins class="diff-new">
+F.2
+Money
+transfer
+</ins></span></dt><dd><ins class="diff-new">
+Susan
+wants
+to
+send
+funds
+to
+her
+family
+in
+another
+country
+via
+a
+popular
+money
+transfer
+service.
+She
+has
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+in
+her
+</ins><a href= "#dfn-credential-repository" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+that
+can
+be
+used
+to
+share
+her
+identity
+profile.
+She
+has
+also
+been
+sent
+a
+</ins><a href= "#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+from
+her
+family
+verifying
+their
+banking
+information.
+By
+sharing
+these
+with
+the
+money
+transfer
+service,
+they
+can
+automatically
+verify
+the
+source
+and
+destination
+of
+funds,
+thus
+being
+confident
+in
+the
+delivery
+of
+those
+funds
+and
+satisfying
+various
+regulations
+regarding
+prevention
+of
+money
+laundering.
+</ins></dd><dt><span id="uneed_F_3" class="userneed-name" title= "F.3 Closing account"><ins class="diff-new">
+F.3
+Closing
+account
+</ins></span></dt><dd><ins class="diff-new">
+John
+opens
+a
+checking
+account
+at
+Big
+Bank
+Co
+and
+is
+issued
+a
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+indicating
+that
+the
+account
+exists,
+that
+the
+bank
+verified
+John's
+identity,
+and
+that
+John
+has
+access
+to
+the
+account.
+Some
+time
+later,
+John
+is
+moving
+to
+a
+new
+city
+and
+decides
+to
+close
+that
+account.
+Big
+Bank
+Co
+needs
+to
+revoke
+that
+claim
+as
+part
+of
+their
+normal
+account
+closing
+process.
+</ins></dd><dt><span id="uneed_F_4" class="userneed-name" title= "F.4 Trying out a new service"><ins class="diff-new">
+F.4
+Trying
+out
+a
+new
+service
+</ins></span></dt><dd><ins class="diff-new">
+Nikita
+has
+several
+accounts
+with
+BigBank,
+as
+well
+as
+a
+brokerage
+account
+with
+WallStreetCo.
+She
+had
+placed
+all
+of
+her
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+in
+a
+</ins><a href="#dfn-credential-repository" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+at
+BigBank
+that
+came
+free
+when
+she
+opened
+her
+accounts.
+WallStreetCo
+is
+now
+offering
+a
+new
+</ins><a href="#dfn-credential-repository" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+repository
+</ins></a><ins class="diff-new">
+that
+has
+an
+interface
+she
+thinks
+she
+will
+prefer.
+Nikita
+copies
+her
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+from
+BigBank
+into
+the
+repository
+at
+WallStreetCo
+to
+experiment
+with
+their
+service,
+but
+continues
+to
+use
+the
+service
+from
+BigBank
+while
+she
+is
+testing.
+</ins></dd><dt><span id="uneed_F_5" class="userneed-name" title= "F.5 New bank account from home"><ins class="diff-new">
+F.5
+New
+bank
+account
+from
+home
+</ins></span></dt><dd><ins class="diff-new">
+Alice
+wants
+to
+open
+a
+new
+bank
+account.
+BigOnlineBank
+offers
+the
+ability
+to
+do
+this
+from
+home
+if
+she
+can
+provide
+electronic
+credentials.
+She
+offers
+government-issued
+certificates
+that
+verify
+her
+identity
+(address,
+national
+identity
+number,
+etc.),
+and
+opens
+her
+new
+account
+from
+her
+couch.
+</ins></dd></dl></section><section id="healthcare"><h3 id="x3-4-healthcare"><bdi class="secno"><ins class="diff-new">
+3.4
+</ins></bdi><ins class="diff-new">
+Healthcare
+</ins><a class="self-link" aria-label="§" href= "#healthcare"></a></h3><p><ins class="diff-new">
+Privacy
+is
+critically
+important
+in
+the
+healthcare
+industry.
+This
+domain
+looks
+at
+everything
+from
+physical
+interaction
+to
+connecting
+patients
+and
+providers
+with
+service
+organizations.
+</ins></p><dl class="left dl-horizontal"><dt><span id="uneed_H_1" class="userneed-name" title= "H.1 Prescribing"><ins class="diff-new">
+H.1
+Prescribing
+</ins></span></dt><dd><ins class="diff-new">
+Barney
+is
+a
+physician,
+and
+has
+recently
+become
+board
+certified
+in
+his
+state.
+The
+state's
+board
+issues
+Barney
+a
+digital
+certificate
+confirming
+that
+he
+is
+certified
+to
+practice
+medicine
+in
+that
+state.
+Barney
+can
+now
+use
+this
+certificate
+when
+writing
+prescriptions
+and
+referrals,
+thereby
+improving
+accountability
+and
+verifiability.
+</ins></dd><dt><span id="uneed_H_2" class="userneed-name" title= "H.2 Online pharmacy"><ins class="diff-new">
+H.2
+Online
+pharmacy
+</ins></span></dt><dd><ins class="diff-new">
+iPharmacy
+receives
+a
+prescription
+for
+Bob
+electronically
+from
+a
+local
+clinic.
+It
+includes
+a
+certificate
+about
+the
+physician
+that
+issued
+the
+prescription
+as
+well
+as
+one
+about
+Bob.
+iPharmacy's
+system
+automatically
+verifies
+the
+ability
+of
+the
+physician
+to
+write
+prescriptions,
+as
+well
+as
+Bob's
+insurance
+coverage.
+When
+Bob
+arrives
+to
+pick
+up
+his
+medication,
+iPharmacy
+further
+correlates
+his
+identity
+with
+the
+certificate,
+thereby
+improving
+the
+end-to-end
+accountability
+of
+their
+system.
+</ins></dd><dt><span id="uneed_H_3" class="userneed-name" title= "H.3 Insurance claim"><ins class="diff-new">
+H.3
+Insurance
+claim
+</ins></span></dt><dd><ins class="diff-new">
+Tracy
+has
+a
+sore
+throat
+soon
+after
+moving
+to
+a
+new
+town.
+She
+finds
+a
+physician
+through
+her
+health
+care
+network
+and
+goes
+in
+for
+treatment.
+She
+is
+a
+new
+patient,
+so
+the
+clinic
+needs
+to
+know
+who
+she
+is
+and
+how
+she
+will
+be
+paying.
+When
+checking
+in,
+she
+presents
+her
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+that
+demonstrates
+her
+identity
+and
+her
+proof
+of
+insurance.
+When
+the
+clinic
+submits
+this
+to
+the
+insurance
+company,
+they
+can
+automatically
+ascertain
+that
+she
+submitted
+her
+proof
+of
+identity
+and
+insurance
+to
+the
+provider
+and
+granted
+the
+physician
+the
+ability
+to
+submit
+the
+claim
+for
+payment.
+</ins></dd><dt><span id="uneed_H_4" class="userneed-name" title= "H.4 Traveling illness"><ins class="diff-new">
+H.4
+Traveling
+illness
+</ins></span></dt><dd><ins class="diff-new">
+John
+is
+on
+the
+vacation
+of
+a
+lifetime,
+travelling
+the
+world.
+Falling
+ill,
+he
+visits
+a
+health
+clinic
+in
+a
+country
+in
+which
+he
+does
+not
+live.
+At
+the
+clinic,
+he
+is
+asked
+for
+proof
+of
+identity.
+He
+provides
+a
+credential
+that
+verifies
+his
+name
+and
+address,
+but
+elects
+not
+to
+disclose
+his
+marital
+status
+nor
+his
+social
+security
+number,
+as
+those
+are
+neither
+requested
+nor
+required
+at
+this
+clinic.
+He
+further
+marks
+the
+disclosure
+as
+expiring
+in
+30
+days—he
+does
+not
+want
+his
+information
+verifiable
+after
+that
+time.
+</ins></dd><dt><span id="uneed_H_5" class="userneed-name" title= "H.5 Proving Legal Disability Status"><ins class="diff-new">
+H.5
+Proving
+Legal
+Disability
+Status
+</ins></span></dt><dd><ins class="diff-new">
+Trina,
+who
+is
+legally
+blind,
+is
+currently
+unemployed,
+and
+needs
+to
+use
+the
+local
+free
+disability
+ride
+service
+to
+get
+to
+the
+employment
+office.
+To
+use
+this
+service,
+she
+is
+required
+to
+verify
+that
+she
+maintains
+legal
+disability
+status.
+Trina
+provides
+her
+government-issued
+disability
+credential
+to
+sign
+up
+for
+the
+ride
+service,
+and
+is
+not
+required
+to
+disclose
+her
+specific
+disability
+to
+the
+ride
+service,
+as
+this
+could
+put
+her
+at
+personal
+risk.
+</ins></dd></dl></section><section id="professional-credentials"><h3 id="x3-5-professional-credentials"><bdi class="secno"><ins class="diff-new">
+3.5
+</ins></bdi><ins class="diff-new">
+Professional
+Credentials
+</ins><a class="self-link" aria-label="§" href= "#professional-credentials"></a></h3><p><ins class="diff-new">
+In
+many
+aspects
+of
+life
+it
+is
+important
+to
+know
+that
+</ins><a href= "#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entities
+</ins></a><ins class="diff-new">
+are
+who
+they
+say
+they
+are,
+and
+that
+they
+can
+do
+what
+they
+say.
+Professional
+accreditation
+is
+one
+way
+of
+learning
+about
+the
+abilities
+of
+an
+</ins><a href="#dfn-entities" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a>.<ins class="diff-new">
+Being
+able
+to
+verify
+these
+credentials
+is
+essential
+to
+their
+value.
+</ins></p><dl class="left dl-horizontal"><dt><span id="uneed_C_1" class="userneed-name" title= "C.1 Find a doctor"><ins class="diff-new">
+C.1
+Find
+a
+doctor
+</ins></span></dt><dd><ins class="diff-new">
+Jason
+is
+looking
+for
+a
+new
+primary
+care
+physician.
+His
+health
+provider
+includes
+information
+on
+their
+web
+site
+about
+the
+physicians
+they
+have
+on
+staff,
+including
+</ins><a data-lt="claim" href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+about
+their
+education,
+board
+certification,
+and
+continuing
+education.
+Jason
+can
+verify
+these
+credentials
+and
+be
+confident
+that
+his
+new
+physician
+satisfies
+his
+requirements.
+</ins></dd><dt><span id="uneed_C_2" class="userneed-name" title= "C.2 Busy doctor"><ins class="diff-new">
+C.2
+Busy
+doctor
+</ins></span></dt><dd><ins class="diff-new">
+Barney
+was
+a
+board-certified
+physician,
+but
+he
+ran
+out
+of
+time
+to
+complete
+his
+continuing
+education
+requirements
+and
+his
+certification
+lapsed.
+Since
+the
+board
+can
+revoke
+his
+certification,
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+verifiers
+</ins></a><ins class="diff-new">
+will
+automatically
+be
+aware
+that
+he
+can
+no
+longer
+issue
+prescriptions
+or
+perform
+medical
+procedures.
+</ins></dd><dt><span id="uneed_C_3" class="userneed-name" title= "C.3 Bad university"><ins class="diff-new">
+C.3
+Bad
+university
+</ins></span></dt><dd><ins class="diff-new">
+Jane
+was
+issued
+a
+certificate
+by
+BigTraining
+Co.,
+indicating
+that
+she
+was
+a
+trained
+Project
+Manager.
+It
+was
+later
+discovered
+that
+BigTraining
+Co.
+was
+not
+actually
+training
+anyone,
+and
+their
+organization's
+certificate
+was
+revoked
+via
+the
+US
+Department
+of
+Education's
+Accreditation
+Database.
+Jane's
+credential
+is
+therefore
+invalid,
+and
+prospective
+employers
+will
+be
+aware
+of
+this
+when
+they
+check
+her
+certifications.
+</ins></dd><dt><span id="uneed_C_4" class="userneed-name" title= "C.4 New employer"><ins class="diff-new">
+C.4
+New
+employer
+</ins></span></dt><dd><ins class="diff-new">
+Jessica
+is
+a
+medical
+doctor
+practicing
+in
+the
+United
+States.
+She
+has
+a
+variety
+of
+digital
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+that
+explain
+her
+qualifications,
+schooling,
+continuing
+education
+achievements,
+and
+board
+certifications.
+These
+are
+all
+stored
+in
+the
+</ins><a href= "#dfn-credential-repository" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+provided
+by
+her
+employer.
+When
+she
+is
+offered
+a
+position
+with
+another
+health
+provider
+network,
+she
+can
+automatically
+transfer
+all
+of
+these
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+to
+her
+new
+employer.
+</ins></dd><dt><span id="uneed_C_5" class="userneed-name" title= "C.5 Social authority"><ins class="diff-new">
+C.5
+Social
+authority
+</ins></span></dt><dd><ins class="diff-new">
+Josie
+is
+a
+healthcare
+worker
+that
+has
+created
+a
+profile
+on
+a
+professional
+social
+network
+to
+make
+herself
+readily
+available
+for
+new
+opportunities
+in
+the
+workforce.
+She
+lists
+her
+employment
+history
+and
+credentials
+including
+degrees,
+certificates,
+and
+digital
+badges.
+The
+website
+requests
+verification
+of
+her
+credential
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+in
+order
+for
+her
+credentials
+to
+be
+visible
+when
+she
+posts
+messages.
+Josie
+authorizes
+the
+sharing
+of
+the
+relevant
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+with
+the
+website,
+and
+the
+site
+verifies
+them
+before
+allowing
+Josie
+to
+expose
+them.
+</ins></dd><dd><ins class="diff-new">
+"Freedom?"
+is
+an
+online
+forum
+that
+encourages
+free
+discussion
+about
+issues
+controversial
+in
+Freedonia.
+The
+forum
+allows
+users
+to
+register
+anonymous
+accounts,
+but
+it
+also
+allows
+users
+to
+obtain
+badges
+based
+upon
+real-world
+certifications.
+Paula
+has
+been
+certified
+as
+an
+aid
+worker,
+and
+wishes
+that
+information
+to
+be
+marked
+on
+her
+posts.
+She
+shares
+her
+certificate
+with
+the
+forum,
+but
+limits
+it
+to
+only
+verifying
+that
+she
+is
+the
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+of
+the
+certificate,
+that
+she
+is
+the
+</ins><a href="#dfn-subjects" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+of
+it,
+and
+that
+she
+is
+an
+aid
+worker.
+In
+this
+way
+she
+maintains
+her
+anonymity
+in
+this
+controversial
+forum
+while
+still
+being
+able
+to
+assist
+her
+fellow
+countrymen.
+</ins></dd><dt><span id="uneed_C_6" class="userneed-name" title= "C.6 Job applicant"><ins class="diff-new">
+C.6
+Job
+applicant
+</ins></span></dt><dd><ins class="diff-new">
+Software
+Co.
+has
+posted
+an
+open
+position
+online
+and
+they
+are
+receiving
+thousands
+of
+applications.
+Cindy
+has
+applied
+for
+the
+job.
+Unlike
+many
+applicants,
+she
+has
+attached
+her
+education
+credentials—college
+degree,
+additional
+specific
+software
+training,
+etc.
+Software
+Co.
+evaluates
+these
+credentials
+automatically
+as
+they
+receive
+her
+application.
+Because
+her
+materials
+are
+verifiable
+and
+verified,
+her
+application
+is
+immediately
+forwarded
+as
+a
+viable
+candidate.
+</ins></dd></dl></section><section id="legal-identity"><h3 id="x3-6-legal-identity"><bdi class="secno"><ins class="diff-new">
+3.6
+</ins></bdi><ins class="diff-new">
+Legal
+Identity
+</ins><a class="self-link" aria-label="§" href= "#legal-identity"></a></h3><p><ins class="diff-new">
+For
+many
+transactions,
+an
+</ins><a href="#dfn-entities" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+must
+be
+able
+to
+prove
+some
+aspect
+of
+their
+identity
+in
+a
+way
+that
+can
+be
+quickly
+verified.
+Governments
+and
+other
+widely
+recognized
+</ins><a href= "#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entities
+</ins></a><ins class="diff-new">
+are
+well
+positioned
+to
+provide
+such
+identification
+in
+a
+verifiable
+digital
+form.
+</ins></p><dl class="left dl-horizontal"><dt><span id="uneed_L_1" class="userneed-name" title= "L.1 Digital driving license"><ins class="diff-new">
+L.1
+Digital
+driving
+license
+</ins></span></dt><dd><ins class="diff-new">
+Asako
+just
+passed
+the
+final
+test
+to
+receive
+a
+drivers
+license.
+As
+she
+is
+still
+a
+new
+driver,
+and
+may
+be
+pulled
+over
+for
+a
+traffic
+violation,
+she
+would
+like
+to
+receive
+a
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+that
+asserts
+a
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+that
+she
+has
+right
+to
+drive
+a
+car.
+She
+requests
+a
+credential
+from
+the
+certifying
+authority
+(
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+)
+that
+she
+can
+use
+to
+prove
+to
+the
+officer
+(
+</ins><a href="#dfn-verifier" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+verifier
+</ins></a><ins class="diff-new">
+)
+that
+her
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+is
+valid.
+</ins></dd><dt><span id="uneed_L_2" class="userneed-name" title= "L.2 Seamless immigration"><ins class="diff-new">
+L.2
+Seamless
+immigration
+</ins></span></dt><dd><ins class="diff-new">
+Tom
+is
+a
+frequent
+international
+traveler.
+In
+order
+to
+speed
+processing
+through
+immigration
+check
+points,
+he
+applies
+for
+a
+digital
+passport
+from
+his
+governmental
+authority.
+After
+satisfying
+background
+check
+requirements,
+the
+authority
+issues
+Tom
+an
+electronic
+version
+of
+his
+passport.
+This
+version
+is
+verifiable
+and
+retains
+a
+history
+of
+all
+the
+places
+he
+visits
+so
+that
+immigration
+officials
+can
+quickly
+and
+easily
+evaluate
+his
+suitability
+as
+a
+visitor
+to
+their
+country.
+Once
+they
+are
+satisfied,
+they
+will
+automatically
+add
+the
+details
+of
+this
+new
+visit
+to
+Tom's
+passport.
+</ins></dd><dt><span id="uneed_L_3" class="userneed-name" title= "L.3 Speedy air travel"><ins class="diff-new">
+L.3
+Speedy
+air
+travel
+</ins></span></dt><dd><ins class="diff-new">
+Security
+for
+air
+travel
+is
+more
+and
+more
+rigorous,
+requiring
+more
+and
+more
+time
+to
+validate
+each
+passenger.
+Ivan
+has
+a
+collection
+of
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+that
+are
+assembled
+into
+his
+air
+travel
+</ins><em><ins class="diff-new">
+Identity
+Profile
+</ins></em>.<ins class="diff-new">
+When
+Ivan
+needs
+to
+pass
+through
+a
+security
+checkpoint
+at
+his
+airport,
+he
+presents
+this
+profile
+before
+entering
+the
+line.
+Because
+his
+identification
+can
+be
+immediately
+and
+automatically
+verified,
+he
+is
+permitted
+to
+skip
+the
+long
+line
+and
+go
+straight
+to
+the
+metal
+detector.
+</ins></dd><dt><span id="uneed_L_4" class="userneed-name" title= "L.4 Refugee crisis"><ins class="diff-new">
+L.4
+Refugee
+crisis
+</ins></span></dt><dd><ins class="diff-new">
+Thousands
+of
+people
+each
+year
+are
+displaced
+because
+of
+man-made
+and
+natural
+disasters.
+Anoushka
+is
+one
+such,
+having
+been
+forced
+to
+flee
+her
+village
+along
+with
+her
+mother
+and
+younger
+brother.
+They
+reach
+an
+IFRC
+center
+just
+across
+the
+border
+in
+a
+relatively
+safe
+area,
+but
+with
+no
+documentation.
+Since
+the
+government
+of
+her
+homeland
+is
+in
+turmoil,
+there
+is
+no
+way
+for
+the
+IFRC
+staff
+to
+easily
+establish
+their
+identities.
+Fortunately,
+Anoushka
+had
+been
+issued
+a
+self-sovereign
+proof
+of
+birth,
+attached
+to
+which
+is
+the
+proof
+of
+birth
+and
+marriage
+for
+her
+parents.
+She
+is
+able
+to
+retrieve
+this
+because
+it
+is
+available
+from
+many
+places
+often
+the
+Internet.
+Since
+it
+is
+verifiable,
+the
+IFRC
+is
+comfortable
+vouching
+for
+them
+and
+resettling
+them
+in
+a
+safer
+area
+for
+the
+duration
+of
+the
+conflict.
+</ins></dd></dl></section><section id="devices"><h3 id="x3-7-devices"><bdi class="secno"><ins class="diff-new">
+3.7
+</ins></bdi><ins class="diff-new">
+Devices
+</ins><a class= "self-link" aria-label="§" href="#devices"></a></h3><p><ins class="diff-new">
+Intelligence
+devices
+are
+created
+and
+deployed
+so
+that
+they
+can
+interact
+with
+other
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entities
+</ins></a><ins class="diff-new">
+(people,
+organizations,
+devices).
+Establishing
+trust
+and
+maintaining
+secure
+relationships
+with
+these
+devices
+is
+especially
+critical.
+</ins></p><dl class="left dl-horizontal"><dt><span id="uneed_D_1" class="userneed-name" title= "D.1 Devices during manufacturing"><ins class="diff-new">
+D.1
+Devices
+during
+manufacturing
+</ins></span></dt><dd><p><ins class="diff-new">
+Bob,
+the
+director
+of
+production
+at
+HVAC
+Manufacturing,
+issues
+a
+device-identifying
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+(e.g.
+IDevID,
+IAK)
+at
+the
+factory
+for
+an
+energy-saving
+fan
+controller
+IoT
+device.
+</ins></p><p><ins class="diff-new">
+Carol,
+senior
+quality
+engineer
+at
+Certifications
+Testing
+Lab,
+issues
+a
+certification
+of
+specification-compliance
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+to
+the
+fan-controller
+device
+at
+the
+certification
+lab
+during
+the
+manufacturing
+process.
+</ins></p><p><ins class="diff-new">
+When
+the
+fan
+controller
+is
+installed
+at
+the
+customer's
+office
+at
+Modern
+Office
+Spaces,
+the
+controller's
+identifying
+</ins><a href= "#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+can
+be
+verified
+by
+Sam,
+IT
+technician,
+to
+establish
+the
+identity
+of
+the
+controller
+as
+part
+of
+the
+on-boarding
+of
+the
+new
+controller.
+The
+controller's
+specification-compliance
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+is
+verified
+to
+demonstrate
+the
+controller's
+Energy-Star
+compliance.
+</ins></p></dd><dt><span id="uneed_D_2" class="userneed-name" title= "D.2 Devices during delivery"><ins class="diff-new">
+D.2
+Devices
+during
+delivery
+</ins></span></dt><dd><p><ins class="diff-new">
+As
+the
+fan
+controller
+leaves
+the
+factory,
+additional
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+are
+issued
+by
+Vince,
+a
+systems
+engineer
+at
+VAR
+Resellers,
+as
+he
+verifies
+the
+manufacturer's
+configuration
+matches
+the
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+accompanying
+the
+device.
+He
+then
+installs
+a
+software
+package
+specific
+to
+Modern
+Office
+Spaces
+needs
+and
+issues
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+that
+establish
+evidence
+of
+possession
+by
+VAR
+Resellers
+and
+the
+software
+additions
+Vince
+made
+to
+the
+device.
+</ins></p><p><ins class="diff-new">
+Finally,
+upon
+delivery
+to
+Sam,
+the
+end
+customer,
+the
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+show
+that
+the
+fan
+controller
+has
+been
+securely
+handled
+and
+contains
+the
+correct
+features
+and
+certifications.
+</ins></p></dd><dt><span id="uneed_D_3" class="userneed-name" title= "D.3 Devices setup for operating autonomously"><ins class="diff-new">
+D.3
+Devices
+setup
+for
+operating
+autonomously
+</ins></span></dt><dd><p><ins class="diff-new">
+Sam,
+the
+new
+device
+owner,
+needs
+to
+trust
+the
+device
+originated
+from
+HVAC
+Manufacturing
+and
+was
+handled
+correctly
+at
+Certifications
+Testing
+Lab
+and
+installed
+with
+the
+correct
+software
+package
+at
+VAR
+Resellers.
+After
+Sam
+verifies
+each
+of
+the
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>,<ins class="diff-new">
+he
+issues
+another
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+for
+fan
+controller
+#37
+which
+includes
+assertions
+relating
+to
+trust:
+device
+manufacturer
+model/version,
+software
+manufacturer
+model/version,
+security
+versions
+of
+components
+TCB,
+and
+associated
+devices
+the
+fan
+controller
+is
+authorized
+to
+interact
+with
+including
+thermostat-board-room.
+</ins></p><p><ins class="diff-new">
+The
+thermostat-board-room
+monitors
+room
+temperature.
+When
+the
+temperature
+is
+too
+hot
+it
+switches
+the
+fan
+controller
+#37
+on
+and
+later
+when
+the
+temperature
+reaches
+a
+comfortable
+level,
+off.
+The
+device
+makes
+sure
+the
+control
+signals
+from
+thermostat-board-room
+are
+authorized
+(namely,
+that
+Sam
+intended
+for
+thermostat-board-room
+to
+control
+the
+fan
+controller).
+</ins></p><p><ins class="diff-new">
+Sam
+is
+concerned
+about
+the
+security
+of
+the
+smart
+board
+room.
+He
+configures
+the
+autonomously
+interacting
+devices
+to
+re-verify
+device
+trustworthiness
+attributes
+periodically
+by
+re-checking
+that
+the
+device
+originated
+from
+HVAC
+Manufacturing
+and
+was
+handled
+correctly
+by
+Certifications
+Testing
+Lab
+and
+installed
+with
+the
+correct
+software
+package
+by
+VAR
+Resellers.
+</ins></p><p><ins class="diff-new">
+Sam
+may
+update
+the
+device’s
+software
+occasionally
+during
+its
+lifetime.
+Even
+though
+Sam
+is
+applying
+the
+update,
+VAR
+Resellers
+supplies
+the
+correct
+update.
+The
+device
+ensures
+that
+only
+VAR
+Resellers
+is
+able
+to
+supply
+the
+updated
+software
+image
+and
+that
+only
+Sam
+is
+able
+to
+apply
+the
+update.
+</ins></p></dd></dl></section></section><section id="user-tasks"><h2 id="x4-user-tasks"><bdi class="secno"><ins class="diff-new">
+4.
+</ins></bdi><ins class="diff-new">
+User
+Tasks
+</ins><a class="self-link" aria-label="§" href= "#user-tasks"></a></h2><p><ins class="diff-new">
+Use
+cases
+are
+often
+used
+as
+a
+driver
+for
+requirements.
+While
+the
+users
+of
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+have
+needs
+across
+many
+domains,
+the
+tasks
+associated
+with
+those
+needs
+span
+the
+domains.
+This
+section
+summarizes
+those
+tasks,
+as
+well
+as
+requirements
+related
+to
+the
+tasks,
+and
+maps
+the
+tasks
+and
+requirements
+back
+to
+the
+associated
+needs.
+</ins></p><div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="3"><span><ins class="diff-new">
+Note
+</ins></span></div><p class=""><ins class="diff-new">
+It
+is
+worth
+noting
+that
+the
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+may
+or
+may
+not
+be
+the
+same
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+as
+the
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a>.<ins class="diff-new">
+There
+are
+no
+tasks
+in
+these
+examples
+that
+require
+participation
+of
+the
+</ins><a href= "#dfn-subjects" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+subject
+</ins></a>.</p></div><figure id="fig-verifiable-credential-user-tasks"><img alt= "Verifiable Credential User Tasks" style= "display:block; margin:auto" src= "VerifiableCredentialsUserTasks.png" width="536" height="463" /><figcaption><ins class="diff-new">
+Figure
+</ins><bdi class="figno"><ins class="diff-new">
+3
+</ins></bdi><span class= "fig-title"><ins class="diff-new">
+Verifiable
+Credential
+User
+Tasks
+</ins></span></figcaption></figure><section id="issue-claim"><h3 id="x4-1-issue-claim"><bdi class="secno"><ins class="diff-new">
+4.1
+</ins></bdi><ins class="diff-new">
+Issue
+Claim
+</ins><a class="self-link" aria-label="§" href= "#issue-claim"></a></h3><dl class="dl-horizontal"><dt><ins class="diff-new">
+Requirement
+</ins></dt><dd><ins class="diff-new">
+It
+</ins><em class="rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+for
+any
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+to
+issue
+a
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a>.</dd><dt><ins class="diff-new">
+Motivation
+</ins></dt><dd><ins class="diff-new">
+Individuals
+and
+organizations
+need
+a
+way
+to
+issue
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+about
+themselves
+or
+others
+that
+can
+be
+verified
+and
+trusted.
+</ins></dd><dt><ins class="diff-new">
+Needs
+</ins></dt><dd><a href="#uneed_F_1"><ins class="diff-new">
+F.1
+Reuse
+know
+your
+customer
+</ins></a>,<a href= "#uneed_E_1"><ins class="diff-new">
+E.1
+Digital
+transcript
+</ins></a>,<a href="#uneed_L_1"><ins class="diff-new">
+L.1
+Digital
+driving
+license
+</ins></a>,<a href="#uneed_H_1"><ins class="diff-new">
+H.1
+Prescribing
+</ins></a></dd></dl></section><section id="assert-claim"><h3 id="x4-2-assert-claim"><bdi class="secno"><ins class="diff-new">
+4.2
+</ins></bdi><ins class="diff-new">
+Assert
+Claim
+</ins><a class="self-link" aria-label="§" href= "#assert-claim"></a></h3><dl class="dl-horizontal"><dt><ins class="diff-new">
+Requirement
+</ins></dt><dd><ins class="diff-new">
+It
+</ins><em class="rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+for
+the
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+of
+a
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+to
+restrict
+the
+amount
+of
+information
+exposed
+in
+a
+</ins><a href= "#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+they
+choose
+to
+share.
+It
+also
+</ins><em class= "rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+for
+the
+holder
+to
+limit
+the
+duration
+for
+which
+that
+information
+is
+shared.
+</ins></dd><dt><ins class="diff-new">
+Motivations
+</ins></dt><dd><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+Credentials
+</ins></a><ins class="diff-new">
+may
+be
+issued
+about
+a
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+that
+include
+multiple
+attributes,
+only
+some
+of
+which
+are
+required
+when
+verifying
+a
+specific
+criteria
+is
+satisfied.
+The
+</ins><a href="#dfn-holders" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+should
+have
+the
+ability
+to
+satisfy
+the
+criteria
+without
+revealing
+additional
+attributes
+that
+are
+not
+required.
+</ins></dd><dt><ins class="diff-new">
+Needs
+</ins></dt><dd><a href="#uneed_R_2"><ins class="diff-new">
+R.2
+Adult
+beverages
+</ins></a>,<a href= "#uneed_H_4"><ins class="diff-new">
+H.4
+Traveling
+illness
+</ins></a></dd></dl></section><section id="verify-claim"><h3 id="x4-3-verify-claim"><bdi class="secno"><ins class="diff-new">
+4.3
+</ins></bdi><ins class="diff-new">
+Verify
+Claim
+</ins><a class="self-link" aria-label="§" href= "#verify-claim"></a></h3><dl class="dl-horizontal"><dt><ins class="diff-new">
+Requirement
+</ins></dt><dd><ins class="diff-new">
+It
+</ins><em class="rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+for
+a
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a><ins class="diff-new">
+to
+verify
+that
+the
+credential
+is
+an
+authentic
+statement
+of
+an
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer's
+</ins></a><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+about
+the
+</ins><a href= "#dfn-subjects" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+subject
+</ins></a>.<ins class="diff-new">
+The
+verifying
+</ins><a href="#dfn-entities" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+must
+have
+the
+capability
+to
+connect
+the
+issuer’s
+identity
+to
+its
+credential
+identifier
+and
+the
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject's
+</ins></a><ins class="diff-new">
+identity
+to
+their
+identifier
+as
+indicated
+in
+the
+credential.
+The
+issuer’s
+verification
+information,
+such
+as
+its
+public
+key,
+must
+be
+discoverable
+from
+the
+credential
+record
+and
+verifiably
+linked
+to
+the
+issuer.
+It
+</ins><em class="rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+to
+do
+this
+in
+an
+automated
+fashion.
+</ins></dd><dt><ins class="diff-new">
+Motivations
+</ins></dt><dd><ins class="diff-new">
+In
+many
+environments
+(such
+as
+order
+processing)
+information
+such
+as
+a
+payer's
+address,
+citizenship,
+or
+age
+need
+to
+be
+automatically
+verified
+in
+order
+to
+complete
+the
+transaction.
+</ins></dd><dt><ins class="diff-new">
+Needs
+</ins></dt><dd><a href="#uneed_F_2"><ins class="diff-new">
+F.2
+Money
+transfer
+</ins></a>,<a href= "#uneed_C_1"><ins class="diff-new">
+C.1
+Find
+a
+doctor
+</ins></a>,<a href="#uneed_E_2"><ins class="diff-new">
+E.2
+Taking
+a
+test
+</ins></a>,<a href="#uneed_R_1"><ins class="diff-new">
+R.1
+Address
+verification
+</ins></a>,<a href="#uneed_F_5"><ins class="diff-new">
+F.5
+New
+bank
+account
+from
+home
+</ins></a>,<a href= "#uneed_H_2"><ins class="diff-new">
+H.2
+Online
+pharmacy
+</ins></a>,<a href="#uneed_C_6"><ins class="diff-new">
+C.6
+Job
+applicant
+</ins></a></dd></dl></section><section id="store-move-claim"><h3 id="x4-4-store-move-claim"><bdi class="secno"><ins class="diff-new">
+4.4
+</ins></bdi><ins class="diff-new">
+Store
+/
+Move
+Claim
+</ins><a class="self-link" aria-label="§" href= "#store-move-claim"></a></h3><dl class="dl-horizontal"><dt><ins class="diff-new">
+Requirement
+</ins></dt><dd><ins class="diff-new">
+It
+</ins><em class="rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+for
+the
+holder
+of
+a
+claim
+to
+store
+that
+claim
+in
+one
+or
+more
+</ins><a href= "#dfn-credential-repository" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+repositories
+</ins></a>.<ins class="diff-new">
+It
+</ins><em class="rfc2119" title= "MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+also
+be
+possible
+for
+the
+holder
+to
+move
+a
+claim
+among
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repositories
+</ins></a>,<ins class="diff-new">
+and
+to
+do
+so
+without
+requesting
+a
+new
+claim
+from
+the
+claim
+issuer.
+</ins></dd><dt><ins class="diff-new">
+Motivation
+</ins></dt><dd><ins class="diff-new">
+A
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+is
+under
+the
+control
+of
+its
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a>.<ins class="diff-new">
+That
+holder
+will
+choose
+where
+their
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+are
+stored
+based
+upon
+a
+variety
+of
+factors
+(e.g.,
+employer
+requirements,
+convenience,
+service
+levels,
+provider
+cost,
+business
+intelligence).
+The
+holder
+needs
+to
+be
+able
+to
+easily
+choose
+among
+various
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repositories
+</ins></a>,<ins class="diff-new">
+and
+also
+to
+be
+able
+to
+migrate
+their
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+to
+another
+without
+requesting
+new
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+from
+the
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><a href="#dfn-issuers" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+issuer
+</ins></a>.</dd><dt><ins class="diff-new">
+Needs
+</ins></dt><dd><a href="#uneed_F_4"><ins class="diff-new">
+F.4
+Trying
+out
+a
+new
+service
+</ins></a>,<a href= "#uneed_E_3"><ins class="diff-new">
+E.3
+Transferring
+schools
+</ins></a>,<a href="#uneed_C_4"><ins class="diff-new">
+C.4
+New
+employer
+</ins></a></dd></dl></section><section id="retrieve-claim"><h3 id="x4-5-retrieve-claim"><bdi class="secno"><ins class="diff-new">
+4.5
+</ins></bdi><ins class="diff-new">
+Retrieve
+Claim
+</ins><a class="self-link" aria-label="§" href= "#retrieve-claim"></a></h3><dl class="dl-horizontal"><dt><ins class="diff-new">
+Requirement
+</ins></dt><dd><ins class="diff-new">
+It
+</ins><em class="rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+for
+a
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+to
+select
+if
+and
+which
+appropriate
+credential
+should
+be
+sent
+to
+a
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifier
+</ins></a>.</dd><dt><ins class="diff-new">
+Motivations
+</ins></dt><dd><ins class="diff-new">
+A
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a><ins class="diff-new">
+may
+require
+that
+a
+</ins><a href="#dfn-holders" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+verify
+aspects
+of
+their
+suitability
+for
+a
+transaction.
+In
+this
+case,
+the
+</ins><a href= "#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+must
+be
+able
+to
+select
+which,
+if
+any,
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+stored
+with
+their
+</ins><a href= "#dfn-credential-repository" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+is
+used
+to
+satisfy
+the
+</ins><a href= "#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a>.</dd><dt><ins class="diff-new">
+Needs
+</ins></dt><dd><a href="#uneed_C_5"><ins class="diff-new">
+C.5
+Social
+authority
+</ins></a>,<a href= "#uneed_E_4"><ins class="diff-new">
+E.4
+Online
+classes
+</ins></a></dd></dl></section><section id="revoke-claim"><h3 id="x4-6-revoke-claim"><bdi class="secno"><ins class="diff-new">
+4.6
+</ins></bdi><ins class="diff-new">
+Revoke
+Claim
+</ins><a class="self-link" aria-label="§" href= "#revoke-claim"></a></h3><dl class="dl-horizontal"><dt><ins class="diff-new">
+Requirement
+</ins></dt><dd><ins class="diff-new">
+It
+</ins><em class="rfc2119" title="MUST"><ins class="diff-new">
+MUST
+</ins></em><ins class="diff-new">
+be
+possible
+for
+the
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+of
+a
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+to
+revoke
+it,
+after
+which
+it
+will
+no
+longer
+satisfy
+verification
+procedures.
+</ins></dd><dt><ins class="diff-new">
+Motivation
+</ins></dt><dd><ins class="diff-new">
+An
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+(
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+)
+discovers
+that
+a
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+they
+have
+issued
+and
+are
+endorsing
+for
+an
+end
+user
+(
+</ins><a href= "#dfn-subjects" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+),
+is
+no
+longer
+valid
+and
+wishes
+to
+revoke
+the
+issued
+claim.
+</ins></dd><dt><ins class="diff-new">
+Needs
+</ins></dt><dd><a href="#uneed_F_3"><ins class="diff-new">
+F.3
+Closing
+account
+</ins></a>,<a href= "#uneed_C_2"><ins class="diff-new">
+C.2
+Busy
+doctor
+</ins></a>,<a href="#uneed_C_3"><ins class="diff-new">
+C.3
+Bad
+university
+</ins></a></dd></dl></section></section><section id="focal-use-cases"><h2 id="x5-focal-use-cases"><bdi class="secno"><ins class="diff-new">
+5.
+</ins></bdi><ins class="diff-new">
+Focal
+Use
+Cases
+</ins><a class="self-link" aria-label="§" href= "#focal-use-cases"></a></h2><p><ins class="diff-new">
+Focal
+Use
+Cases
+are
+meant
+to
+provide
+examples
+where
+a
+blend
+of
+features
+from
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+standard
+may
+be
+used
+together
+to
+solve
+complex
+or
+challenging
+marketplace
+needs.
+</ins></p><section id="citizenship-by-parentage"><h3 id="x5-1-citizenship-by-parentage"><bdi class="secno"><ins class="diff-new">
+5.1
+</ins></bdi><ins class="diff-new">
+Citizenship
+by
+Parentage
+</ins><a class="self-link" aria-label="§" href= "#citizenship-by-parentage"></a></h3><h4 id="background"><ins class="diff-new">
+Background
+</ins><a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4><p><ins class="diff-new">
+Sam
+wants
+to
+claim
+US
+citizenship
+because
+his
+mother
+is
+American.
+Sam
+has
+a
+digital
+birth
+certificate
+from
+Kenya,
+where
+he
+was
+born
+while
+his
+Mother
+was
+in
+the
+Peace
+corps.
+He
+also
+has
+a
+digital
+version
+of
+his
+mother's
+US
+passport.
+Because
+his
+mother’s
+name
+changed
+between
+his
+birth
+and
+the
+issuance
+of
+the
+passport,
+Sam
+also
+has
+a
+marriage
+license
+with
+her
+maiden
+and
+married
+names.
+Sam
+is
+applying
+for
+a
+new
+passport
+from
+the
+US
+Secretary
+of
+State.
+</ins></p><h4 id="distinction"><ins class="diff-new">
+Distinction
+</ins><a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4><p><ins class="diff-new">
+This
+use
+case
+is
+challenging
+because
+the
+mother’s
+name
+changed,
+by
+marriage,
+between
+the
+issuance
+of
+the
+birth
+certificate
+and
+passport.
+</ins></p><h4 id="scenario"><ins class="diff-new">
+Scenario
+</ins><a class="self-link" aria-label="§" href= "#citizenship-by-parentage"></a></h4><p><ins class="diff-new">
+Sam’s
+mother
+emailed
+him
+the
+certificate,
+license,
+and
+passport
+as
+independent
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+Verifiable
+Credentials
+</ins></a>.<ins class="diff-new">
+He
+then
+creates
+a
+</ins><a href="#dfn-verifiable-presentations" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+presentation
+</ins></a><ins class="diff-new">
+which
+includes
+those
+credentials,
+a
+statement
+of
+their
+relationship
+to
+each
+other
+and
+his
+relationship
+to
+his
+mother.
+He
+then
+visits
+the
+US
+Secretary
+of
+State
+website,
+creates
+an
+account,
+starts
+the
+application
+for
+a
+passport,
+and
+uploads
+his
+new
+</ins><a href= "#dfn-verifiable-presentations" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+presentation
+</ins></a><ins class="diff-new">
+as
+supporting
+evidence.
+After
+processing
+the
+application,
+Sam
+is
+issued
+both
+a
+traditional
+passport
+and
+a
+new
+digital
+passport.
+</ins></p><h4 id="verifiable-credentials"><ins class="diff-new">
+Verifiable
+Credentials
+</ins><a class= "self-link" aria-label="§" href= "#citizenship-by-parentage"></a></h4><dl class="dl-horizontal"><dt><ins class="diff-new">
+Birth
+Certificate
+</ins></dt><dd><ins class="diff-new">
+Establishes
+relationship
+to
+mother
+with
+maiden
+name
+</ins></dd><dt><ins class="diff-new">
+Marriage
+License
+</ins></dt><dd><ins class="diff-new">
+Establishes
+mother's
+name
+change
+</ins></dd><dt><ins class="diff-new">
+Mother’s
+Passport
+</ins></dt><dd><ins class="diff-new">
+Establishes
+mother's
+US
+citizenship
+</ins></dd><dt><ins class="diff-new">
+Sam’s
+Passport
+</ins></dt><dd><ins class="diff-new">
+Establishes
+Sam
+is
+the
+child
+in
+the
+birth
+certificate
+</ins></dd></dl><h4 id="verifiable-presentation"><ins class="diff-new">
+Verifiable
+Presentation
+</ins><a class= "self-link" aria-label="§" href= "#citizenship-by-parentage"></a></h4><p><ins class="diff-new">
+A
+</ins><a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+presentation
+</ins></a><ins class="diff-new">
+which
+includes
+those
+three
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credentials
+</ins></a>,<ins class="diff-new">
+adds
+his
+name,
+photo,
+and
+demographic
+data
+along
+with
+the
+assertions
+that
+—
+</ins></p><ul><li><ins class="diff-new">
+He
+is
+the
+child
+in
+the
+birth
+certificate.
+</ins></li><li><ins class="diff-new">
+The
+mother
+in
+the
+birth
+certificate,
+the
+person
+in
+the
+passport,
+the
+spouse
+in
+the
+marriage
+license
+are
+all
+the
+same
+person.
+</ins></li></ul><h4 id="trust-hierarchy"><ins class="diff-new">
+Trust
+Hierarchy
+</ins><a class="self-link" aria-label="§" href="#citizenship-by-parentage"></a></h4><p><ins class="diff-new">
+Sam
+is
+legally
+liable
+for
+his
+claim
+to
+the
+rights
+of
+citizenship.
+The
+state
+department
+is
+on
+the
+hook
+for
+verifying
+the
+underlying
+credentials
+and
+Sam’s
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a>,<ins class="diff-new">
+including
+correlating
+against
+any
+additional
+data
+they
+might
+already
+have.
+</ins></p><h4 id="threat-model"><ins class="diff-new">
+Threat
+model
+</ins><a class="self-link" aria-label= "§" href="#citizenship-by-parentage"></a></h4><ul><li><strong><ins class="diff-new">
+Threat:
+Terrorist
+/
+Identity
+fraud.
+</ins></strong><ins class="diff-new">
+A
+bad
+actor
+could
+be
+impersonating
+Sam
+to
+attain
+a
+passport.
+Of
+course,
+if
+a
+bad
+actor
+were
+to
+be
+able
+to
+collect
+the
+required
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+—mother’s
+passport,
+birth
+certificate,
+and
+marriage
+license,
+that
+actor
+has
+already
+significantly
+compromised
+the
+system.
+</ins><ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Identity
+assurance
+based
+on
+the
+</ins><a href="#dfn-presentations" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+presentation
+</ins></a><ins class="diff-new">
+and
+other
+data,
+above
+and
+beyond
+what
+is
+in
+the
+</ins><a href="#dfn-presentations" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+presentation
+</ins></a><ins class="diff-new">
+and
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a>.</li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Identity
+assurance
+based
+on
+the
+contents
+of
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a>,<ins class="diff-new">
+potentially
+with
+enhanced
+data
+embedded
+in
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a>,<ins class="diff-new">
+i.e.,
+data
+not
+currently
+in
+passports,
+birth
+certificates,
+or
+marriage
+license.
+For
+example,
+a
+biometric
+template
+could
+be
+embedded
+in
+the
+birth
+certificate
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+and
+that
+template
+could
+be
+used
+for
+interactive
+identity
+assurance
+at
+the
+time
+of
+submitting
+the
+</ins><a href= "#dfn-presentations" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+presentation
+</ins></a>.</li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Exposure
+of
+private
+information.
+</ins></strong><ins class="diff-new">
+By
+storing
+potentially
+compromising
+information
+in
+</ins><a href= "#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+and
+sending
+them
+over
+the
+network,
+we
+are
+increasing
+the
+attack
+surface
+for
+the
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subjects
+</ins></a><ins class="diff-new">
+of
+those
+credentials.
+</ins><ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Encrypt
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+(once
+by
+issuer,
+every
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifier
+</ins></a><ins class="diff-new">
+gets
+the
+same
+encrypted
+blob)
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Encrypt
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+uniquely
+for
+each
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a>.<ins class="diff-new">
+This
+may
+leak
+usage
+data
+to
+the
+</ins><a href= "#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a>,<ins class="diff-new">
+assuming
+the
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+must
+ask
+for
+a
+new,
+encrypted
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+for
+each
+</ins><a href="#dfn-verifier" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifier
+</ins></a>.</li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Blind
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+uniquely
+for
+each
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a>.</li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Encrypt
+the
+</ins><a href= "#dfn-presentations" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+presentation
+</ins></a><ins class="diff-new">
+uniquely
+for
+each
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifier
+</ins></a>.<ins class="diff-new">
+No
+</ins><a href= "#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+involved.
+</ins></li></ul></li></ul></section><section id="expert-dive-instructor"><h3 id="x5-2-expert-dive-instructor"><bdi class="secno"><ins class="diff-new">
+5.2
+</ins></bdi><ins class="diff-new">
+Expert
+Dive
+Instructor
+</ins><a class="self-link" aria-label="§" href= "#expert-dive-instructor"></a></h3><h4 id="background-0"><ins class="diff-new">
+Background
+</ins><a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4><p><ins class="diff-new">
+Pat
+earned
+multiple
+diving
+credentials
+while
+living
+and
+working
+in
+Fiji
+and
+Australia.
+Later,
+Pat
+is
+hired
+by
+NOAA
+as
+a
+Dive
+Instructor,
+which
+requires
+that
+they
+maintain
+certification
+as
+an
+instructor
+with
+additional
+specialist
+diver
+certifications
+in
+dry
+suit,
+night
+diving,
+and
+search
+and
+recovery.
+The
+dive
+instructor
+certification
+is
+public
+record,
+but
+the
+additional
+specialist
+certifications
+are
+private
+because
+they
+are
+for
+personal
+diving,
+not
+acting
+as
+an
+instructor.
+</ins></p><p><ins class="diff-new">
+Part
+of
+Pat's
+job
+is
+logging
+the
+certifications
+of
+fellow
+divers
+during
+NOAA
+sanctioned
+dives.
+</ins></p><h4 id="distinction-0"><ins class="diff-new">
+Distinction
+</ins><a class="self-link" aria-label= "§" href="#expert-dive-instructor"></a></h4><p><ins class="diff-new">
+This
+use
+case
+is
+difficult
+because:
+</ins></p><ul><li><ins class="diff-new">
+Certification
+in
+Fiji
+and
+Australia.
+NOAA
+relies
+on
+an
+international
+certification
+agency,
+PADI,
+with
+relevance
+in
+multiple
+jurisdictions.
+</ins></li><li><ins class="diff-new">
+Each
+of
+these
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+is
+issued
+by
+different
+schools
+in
+the
+name
+of
+PADI.
+</ins></li><li><ins class="diff-new">
+Each
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+has
+an
+independent
+expiration
+cycle.
+</ins></li><li><ins class="diff-new">
+Pat
+grants
+NOAA
+permission
+(the
+capability)
+to
+validate
+future
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+status
+changes.
+</ins></li><li><ins class="diff-new">
+On
+each
+trip,
+Pat
+creates
+a
+certified
+log
+of
+all
+divers,
+effectively
+issuing
+a
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verified
+credential
+</ins></a><ins class="diff-new">
+about
+other
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credentials
+</ins></a>.</li></ul><h4 id="scenario-0"><ins class="diff-new">
+Scenario
+</ins><a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4><p><ins class="diff-new">
+When
+Pat
+applied
+for
+his
+job
+at
+NOAA,
+he
+provided
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+issued
+by
+different
+dive
+schools
+licensed
+by
+PADI
+to
+do
+so.
+NOAA
+verifies
+cryptographically
+that
+the
+certifications
+were
+issued
+by
+PADI-approved
+dive
+schools
+and
+that
+the
+credentials
+were
+still
+in
+good
+standing
+by
+checking
+both
+the
+certifications'
+*and*
+the
+dive
+schools'
+revocation
+services.
+</ins></p><p><ins class="diff-new">
+Upon
+accepting
+the
+job,
+Pat
+issues
+NOAA
+a
+revocable
+token
+that
+allows
+NOAA
+to
+check
+the
+current
+status
+of
+all
+of
+his
+certifications
+—
+not
+just
+the
+status
+of
+a
+single
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a>.<ins class="diff-new">
+After
+any
+specific
+certification
+expires
+—
+and
+Pat
+renews
+it
+—
+NOAA's
+next
+check
+of
+Pat's
+certifications
+returns
+the
+status
+of
+the
+renewed
+certification,
+not
+just
+the
+status
+of
+the
+(now
+expired)
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a>.</p><p><ins class="diff-new">
+When
+Pat
+takes
+a
+group
+of
+divers
+on
+NOAA
+sanctioned
+dives,
+he
+records
+the
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+for
+each
+diver
+(which
+demonstrate
+their
+diving
+certifications),
+creates
+a
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+including
+those
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+;
+he
+signs
+and
+archives
+it
+on
+his
+laptop.
+</ins></p><p><ins class="diff-new">
+When
+Pat
+retires
+from
+NOAA,
+he
+revokes
+that
+token
+and
+NOAA
+staff
+is
+no
+longer
+able
+to
+monitor
+his
+non-public
+certification
+status.
+</ins></p><h4 id="verifiable-credentials-0"><ins class="diff-new">
+Verifiable
+Credentials
+</ins><a class= "self-link" aria-label="§" href="#expert-dive-instructor"></a></h4><ul><li><ins class="diff-new">
+Advanced
+Open
+Water
+Instructor
+</ins></li><li><ins class="diff-new">
+Drysuit
+Dive
+Certification
+</ins></li><li><ins class="diff-new">
+Night
+Diving
+Certification
+</ins></li><li><ins class="diff-new">
+Search
+&amp;
+Recovery
+Dive
+Certification
+</ins></li><li><ins class="diff-new">
+Fiji
+PADI
+School
+Affiliation
+Certification
+</ins></li><li><ins class="diff-new">
+Australia
+PADI
+School
+Affiliation
+Certification
+</ins></li><li><ins class="diff-new">
+Signed
+log
+entry
+of
+dive
+event
+</ins></li></ul><h4 id="verifiable-presentation-0"><ins class="diff-new">
+Verifiable
+Presentation
+</ins><a class= "self-link" aria-label="§" href="#expert-dive-instructor"></a></h4><ul><li><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+Verifiable
+credentials
+</ins></a><ins class="diff-new">
+submitted
+with
+job
+application
+</ins></li></ul><h4 id="trust-hierarchy-0"><ins class="diff-new">
+Trust
+Hierarchy
+</ins><a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4><ul><li><ins class="diff-new">
+PADI
+is
+liable
+for
+correctly
+certifying
+dive
+schools.
+</ins></li><li><ins class="diff-new">
+Dive
+schools
+are
+liable
+for
+correctly
+certifying
+Pat's
+knowledge
+and
+skills.
+</ins></li><li><ins class="diff-new">
+Pat
+is
+liable
+for
+representing
+the
+facts
+in
+their
+application
+and
+maintaining
+the
+revocable
+capability.
+</ins></li><li><ins class="diff-new">
+NOAA
+is
+liable
+for
+verifying
+the
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+and
+Pat's
+assertions
+claiming
+them,
+and
+for
+assuring
+Pat's
+continued
+good
+standing
+for
+the
+required
+</ins><a href="#dfn-credential" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+credentials
+</ins></a>.</li><li><ins class="diff-new">
+Pat
+is
+liable
+for
+making
+sure
+all
+divers,
+on
+each
+trip,
+have
+valid
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+and
+are
+properly
+logged.
+</ins></li><li><ins class="diff-new">
+Diver's
+are
+liable
+for
+presenting
+valid
+</ins><a href= "#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credentials
+</ins></a>,<ins class="diff-new">
+specifically
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+for
+which
+they
+are
+the
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a>,<ins class="diff-new">
+including
+any
+formal
+identity
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credentials
+</ins></a>,<ins class="diff-new">
+e.g.,
+passport
+or
+driver's
+license.
+</ins></li></ul><h4 id="threat-model-0"><ins class="diff-new">
+Threat
+model
+</ins><a class="self-link" aria-label="§" href="#expert-dive-instructor"></a></h4><ul><li><strong><ins class="diff-new">
+Threat:
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+Issuer
+</ins></a><ins class="diff-new">
+is
+compromised.
+</ins></strong><ins class="diff-new">
+One
+of
+the
+dive
+schools
+had
+their
+private
+keys
+stolen,
+but
+the
+school
+itself
+only
+ever
+issues
+valid
+certificates.
+</ins><ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Use
+multi-sig
+to
+prevent
+theft
+of
+a
+single
+key
+from
+relevance
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Hardware
+wallet
+to
+minimize
+threat
+of
+network-based
+attack
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Biometrically
+locked
+hardware
+wallet
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Frequent
+rotation
+to
+minimize
+exposure
+from
+stolen
+keys
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Enhanced
+background
+checks
+for
+all
+individuals
+with
+access
+to
+keys
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Instead
+of
+institutional
+keys,
+sign
+certificates
+with
+individuals'
+keys
+plus
+credential
+from
+the
+school.
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+A
+dive
+school
+could
+issue
+unearned
+certificates
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Audit
+certificate
+issuance.
+Record
+all
+issuance,
+systemically
+spot
+check
+for
+validity.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Background
+checks
+on
+schools
+prior
+to
+authorization
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Limit
+the
+number
+of
+certificates
+that
+can
+be
+issued
+to
+limit
+impact
+of
+violation
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Limit
+time
+horizon
+that
+the
+school
+may
+issue
+on
+behalf
+of
+PADI
+to
+require
+re-validation
+of
+qualifications
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Use
+revocation
+mechanisms
+for
+school's
+authorization
+credentials
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Dive
+school
+could
+issue
+certificates
+with
+a
+revoked
+authorization
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><a href="#dfn-holders" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+Holders
+</ins></a><ins class="diff-new">
+should
+verify
+the
+authorization,
+before
+they
+buy
+the
+course
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><a href="#dfn-holders" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+Holders
+</ins></a><ins class="diff-new">
+should
+verify
+the
+authorization
+at
+the
+point
+of
+receiving
+the
+</ins><a href= "#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><a href="#dfn-verifier" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+Verifiers
+</ins></a><ins class="diff-new">
+should
+also
+verify
+the
+authorization
+of
+the
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Pat
+could
+send
+a
+proxy
+to
+earn
+their
+certificate
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+School
+should
+use
+multi-factor
+identity
+assurance
+during
+registration
+and
+onsite
+when
+testing.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Dive
+school
+retains
+video
+surveillance
+of
+event
+for
+future
+audits
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Dive
+boat
+or
+test
+center
+takes
+photos
+of
+participants
+and
+logs
+them
+for
+later
+audit
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Pat
+or
+another
+dive
+master
+could
+lie
+about
+a
+diver
+being
+on
+the
+boat
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+NOAA
+requires
+divers
+listed
+to
+submit
+endorsement
+that
+they
+were
+there
+(they
+endorse
+the
+dive
+log);
+divers
+mutually
+sign
+each
+other's
+log
+entries
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Boat
+owner
+signs
+dive
+log
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Pre-register
+excursion
+and
+expected
+diver
+list
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Ongoing
+signed
+provenance
+data
+about
+Pat's
+job
+assignments
+(location,
+dates,
+correspondence,
+etc)
+by/with
+NOAA
+Manifest
+"souls
+on
+board"
+before/after
+including
+crew
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Independent
+ID
+proofing
+of
+offline
+credentials
+(signed
+picture
+and/or
+photo
+ID)
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Malware
+could
+take
+control
+of
+</ins><a href= "#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+or
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a><ins class="diff-new">
+agent
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Run
+virus
+and
+malware
+scans
+regularly
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Isolate
+issuer
+agent
+system
+to
+an
+air-gapped
+environment
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Pat
+is
+phished,
+and
+Pat
+gives
+capability
+to
+the
+wrong
+person/entity
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Use
+better
+identity
+assurance
+for
+the
+verifier,
+i.e.,
+don't
+give
+capability
+to
+strangers.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Use
+Object
+Capabilities
+based
+on
+strong
+authentication
+and
+well-known
+public
+keys.
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+Issuer
+</ins></a><ins class="diff-new">
+spoofs
+Pat,
+and
+Pat
+receives
+VC
+from
+non-PADI-certified
+instructor
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Pat
+runs
+PADI's
+wallet
+software
+to
+make
+sure
+any
+certificates
+they
+receive
+are
+authentic.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Pat
+checks
+the
+VC
+with
+a
+PADI-provided
+tool
+before
+accepting
+it
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Pat
+checks
+the
+VC
+with
+a
+standard
+tool,
+to
+see
+that
+(1)
+There
+really
+is
+a
+PADI
+authentication
+and
+(2)
+PADI
+authentication
+is
+actually
+from
+PADI
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Pat
+presents
+a
+fake
+credential
+as
+a
+PADI
+certification
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+NOAA
+verifies
+the
+signature
+on
+the
+certification
+credential
+AND
+on
+the
+PADI
+authentication
+credential.
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Pat's
+laptop
+on
+the
+boat
+could
+be
+compromised
+</ins></strong>.<ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Use
+air-gapping
+techniques,
+such
+as
+QR
+codes,
+to
+limit
+impact
+of
+compromise
+</ins></li></ul></li></ul></section><section id="international-travel-with-minor-and-upgrade"><h3 id="x5-3-international-travel-with-minor-and-upgrade"><bdi class="secno"><ins class="diff-new">
+5.3
+</ins></bdi><ins class="diff-new">
+International
+Travel
+with
+Minor
+and
+Upgrade
+</ins><a class="self-link" aria-label="§" href= "#international-travel-with-minor-and-upgrade"></a></h3><h4 id="background-1"><ins class="diff-new">
+Background
+</ins><a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4><p><ins class="diff-new">
+Malathi
+is
+traveling
+internationally
+with
+her
+8-month-old
+son,
+Anand.
+His
+father,
+Rajesh,
+is
+staying
+home.
+Malathi
+has
+enough
+frequent
+flyer
+miles
+to
+upgrade
+the
+ticket
+to
+first
+class.
+</ins></p><h4 id="distinction-1"><ins class="diff-new">
+Distinction
+</ins><a class="self-link" aria-label= "§" href="#international-travel-with-minor-and-upgrade"></a></h4><p><ins class="diff-new">
+This
+use
+case
+is
+difficult
+because:
+</ins></p><ul><li><ins class="diff-new">
+Current
+US
+passports
+do
+not
+establish
+explicit
+relationship
+between
+parent
+and
+child.
+</ins></li><li><ins class="diff-new">
+When
+one
+parent
+travels
+with
+a
+minor,
+the
+other
+parent
+is
+required
+to
+grant
+permission
+for
+the
+trip,
+thus
+implying
+guardianship
+or
+responsibility.
+</ins></li><li><ins class="diff-new">
+The
+DID
+or
+other
+Digital
+Identity
+system
+replaces
+the
+role
+of
+the
+notary
+in
+the
+paper/physical
+world
+</ins></li><li><ins class="diff-new">
+Credentials
+must
+be
+coordinated
+between
+two
+verifiers
+(agent
+and
+airline)
+for
+two
+individuals,
+and
+a
+digital
+coupon
+is
+used.
+</ins></li><li><ins class="diff-new">
+The
+relationship
+of
+the
+minor
+to
+the
+non-traveling
+parent
+must
+be
+established,
+in
+order
+for
+the
+permission
+to
+be
+considered.
+</ins></li><li><ins class="diff-new">
+In
+the
+minor's
+passport
+case,
+the
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+is
+not
+the
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+of
+the
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a>.<ins class="diff-new">
+The
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+of
+the
+passport
+is
+a
+parent,
+not
+the
+minor.
+</ins></li></ul><h4 id="scenario-1"><ins class="diff-new">
+Scenario
+</ins><a class="self-link" aria-label="§" href="#international-travel-with-minor-and-upgrade"></a></h4><p><ins class="diff-new">
+Malathi
+obtains
+permission
+from
+Rajesh
+stating
+she
+is
+allowed
+to
+take
+the
+baby
+out
+of
+the
+country.
+</ins></p><p><ins class="diff-new">
+Prior
+to
+booking
+the
+trips,
+Malathi
+visits
+HappyAir.com
+to
+request
+an
+upgrade
+to
+first
+class.
+HappyAir
+issues
+a
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+redeemable
+for
+a
+first
+class
+upgrade
+on
+an
+international
+flight.
+</ins></p><p><ins class="diff-new">
+She
+books
+the
+plane
+tickets
+through
+her
+travel
+agent
+who
+adds
+the
+lap
+child
+to
+the
+ticket.
+</ins></p><p><ins class="diff-new">
+HappyAir
+verifies
+that
+Malathi
+has
+a
+signed
+statement
+from
+Anand’s
+other
+parent
+stating
+that
+she
+may
+exit
+the
+country
+with
+him.
+</ins></p><h4 id="verifiable-credentials-1"><ins class="diff-new">
+Verifiable
+Credentials
+</ins><a class= "self-link" aria-label="§" href= "#international-travel-with-minor-and-upgrade"></a></h4><dl class="dl-horizontal"><dt><ins class="diff-new">
+Malathi's
+passport
+</ins></dt><dd><ins class="diff-new">
+Establishes
+identity
+of
+the
+traveling
+parent
+</ins></dd><dt><ins class="diff-new">
+Anand's
+passport
+</ins></dt><dd><ins class="diff-new">
+Establishes
+identity
+of
+the
+minor
+</ins></dd><dt><ins class="diff-new">
+Anand's
+Birth
+Certificate
+</ins></dt><dd><ins class="diff-new">
+Establishes
+relationship
+to
+parents
+and
+provides
+link
+from
+Rajesh
+to
+Anand
+that
+qualifies
+the
+permission
+to
+travel
+</ins></dd><dt><ins class="diff-new">
+Permission
+to
+travel
+from
+Rajesh
+</ins></dt><dd><ul><li><ins class="diff-new">
+Grants
+permission
+from
+non-traveling
+parent
+for
+minor
+to
+travel.
+</ins></li><li><ins class="diff-new">
+Identity
+matches
+identity
+of
+the
+parent
+in
+the
+birth
+certificate,
+establishing
+relevance.
+</ins></li></ul></dd><dt><ins class="diff-new">
+Upgrade
+coupon
+for
+first
+class
+ticket
+</ins></dt><dd><ins class="diff-new">
+Introduces
+commercial
+value
+in
+a
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a></dd></dl><p><ins class="diff-new">
+For
+details,
+refer
+to
+</ins><a href= "#example-verifiable-credentials"><ins class="diff-new">
+Example
+Verifiable
+Credentials
+</ins></a><ins class="diff-new">
+in
+Appendix
+</ins></p><h4 id="verifiable-presentation-1"><ins class="diff-new">
+Verifiable
+Presentation
+</ins><a class= "self-link" aria-label="§" href= "#international-travel-with-minor-and-upgrade"></a></h4><p><ins class="diff-new">
+Submitted
+to
+HappyAir,
+includes
+Malathi
+and
+Anand's
+passport,
+assertion
+of
+permission,
+birth
+certificate
+and
+Frequent
+Flyer
+coupon.
+</ins></p><h4 id="trust-hierarchy-1"><ins class="diff-new">
+Trust
+Hierarchy
+</ins><a class="self-link" aria-label="§" href= "#international-travel-with-minor-and-upgrade"></a></h4><ul><li><ins class="diff-new">
+Malathi
+is
+liable
+for
+her
+claim
+of
+parentage
+as
+well
+as
+securing
+right
+to
+admission
+for
+herself
+and
+her
+son
+at
+their
+destination
+(visa
+may
+be
+required).
+</ins></li><li><ins class="diff-new">
+Malathi
+and
+Rajesh
+are
+both
+liable
+for
+attestation
+of
+permission
+to
+fly
+with
+Anand
+without
+the
+other
+parent.
+</ins></li><li><ins class="diff-new">
+Malathi
+is
+liable
+for
+the
+cost
+of
+her
+ticket
+and
+her
+son’s
+ticket.
+</ins></li><li><ins class="diff-new">
+The
+agency
+is
+liable
+for
+issuing
+valid
+tickets
+and
+for
+verifying
+the
+credentials
+provided
+by
+the
+travelers.
+</ins></li><li><ins class="diff-new">
+The
+airline
+is
+liable
+for
+issuing
+tickets
+and,
+ultimately,
+fulfilling
+the
+terms
+of
+travel
+</ins></li><li><ins class="diff-new">
+The
+airline
+is
+liable
+for
+accepting
+the
+upgrade
+coupons
+at
+ticketing.
+</ins></li><li><ins class="diff-new">
+The
+airline
+is
+liable
+for
+verifying
+the
+credentials
+in
+the
+birth
+certificate
+match
+the
+credentials
+in
+the
+permission
+letter.
+</ins></li><li><ins class="diff-new">
+The
+check-in
+agent,
+TSA
+agent,
+and
+passport
+control
+at
+the
+destination
+are
+liable
+for
+identity
+assurance
+at
+various
+points
+of
+travel,
+using
+information
+contained
+in
+the
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>.</li></ul><h4 id="threat-model-1"><ins class="diff-new">
+Threat
+model
+</ins><a class="self-link" aria-label="§" href= "#international-travel-with-minor-and-upgrade"></a></h4><ul><li><strong><ins class="diff-new">
+Threat:
+Stolen
+Key.
+</ins></strong><ins class="diff-new">
+Malathi
+steals
+Rajesh’s
+key
+in
+order
+to
+fake
+travel
+permission.
+(Kidnapping
+her
+own
+kids
+and
+fleeing
+Rajesh.)
+</ins><ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Rajesh
+could
+store
+his
+key
+with
+a
+trusted
+third
+party,
+such
+as
+an
+attorney.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Rajesh
+could
+use
+a
+hardware
+wallet
+with
+pin
+or
+biometric.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Rajesh
+could
+use
+a
+passphrase
+on
+his
+key
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Stolen
+Key
+2
+</ins></strong><ins class="diff-new">
+Ticket
+purchaser
+has
+Malathi’s
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credentials
+</ins></a>,<ins class="diff-new">
+impersonating
+her
+to
+purchase
+a
+ticket.
+This
+could
+enable
+a
+third-party
+kidnapping.
+</ins><ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Travel
+permission
+can
+be
+restricted
+to
+specific
+date
+and
+or
+trip
+minimizing
+abuse
+potential.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Embed
+identifying
+characteristics
+or
+biometric
+into
+the
+credentials
+so
+that
+verifiers
+can
+independently
+verify
+the
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+in
+front
+of
+them
+is
+the
+</ins><a href= "#dfn-subjects" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+in
+the
+</ins><a href="#dfn-credential" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+</ins></a>.</li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Malathi
+could
+use
+a
+hardware
+wallet
+with
+pin
+or
+biometric.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Malathi
+could
+use
+a
+passphrase
+on
+her
+key
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Exposure
+of
+private
+information.
+</ins></strong><ins class="diff-new">
+By
+storing
+potentially
+compromising
+information
+in
+credentials
+and
+sending
+them
+over
+the
+network,
+we
+are
+increasing
+the
+attack
+surface
+for
+the
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+subjects
+</ins></a><ins class="diff-new">
+of
+those
+credentials.
+</ins><ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Encrypt
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+(once
+by
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+;
+every
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifier
+</ins></a><ins class="diff-new">
+gets
+the
+same
+encrypted
+blob)
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Encrypt
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+uniquely
+for
+each
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a>.<ins class="diff-new">
+This
+may
+leak
+usage
+data
+to
+the
+</ins><a href= "#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a>,<ins class="diff-new">
+assuming
+the
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+must
+ask
+for
+a
+new,
+encrypted
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+for
+each
+</ins><a href="#dfn-verifier" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifier
+</ins></a>.</li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Blind
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+uniquely
+for
+each
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a>.</li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Encrypt
+the
+</ins><a href= "#dfn-presentations" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+presentation
+</ins></a><ins class="diff-new">
+uniquely
+for
+each
+</ins><a href="#dfn-verifier" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifier
+</ins></a>.<ins class="diff-new">
+No
+issuer
+involved
+</ins></li></ul></li><li><strong><ins class="diff-new">
+Threat:
+Stolen
+coupon
+</ins></strong><ins class="diff-new">
+Rajesh
+falsifies
+the
+upgrade
+coupon.
+</ins><ul><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+HappyAir
+signs
+the
+coupon
+with
+secure
+credentials.
+</ins></li><li><strong><ins class="diff-new">
+Response:
+</ins></strong><ins class="diff-new">
+Travel
+agent
+verifies
+the
+coupon
+through
+a
+distributed
+status
+registry,
+verifying
+it
+is
+still
+valid
+</ins></li></ul></li></ul></section></section><section id="user-sequences"><h2 id="x6-user-sequences"><bdi class="secno"><ins class="diff-new">
+6.
+</ins></bdi><ins class="diff-new">
+User
+Sequences
+</ins><a class="self-link" aria-label="§" href= "#user-sequences"></a></h2><p><ins class="diff-new">
+The
+transaction
+examples
+in
+this
+section
+show
+basic
+ways
+in
+which
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+might
+be
+used.
+They
+are
+not
+meant
+to
+be
+architecturally
+constraining.
+Instead,
+they
+are
+meant
+to
+help
+illustrate
+the
+basic
+way
+it
+</ins><em><ins class="diff-new">
+could
+</ins></em><ins class="diff-new">
+be
+done
+in
+a
+typical
+commerce
+situation.
+Again
+—
+please
+remember
+that
+it
+is
+just
+an
+example,
+and
+should
+not
+be
+thought
+of
+as
+the
+canonical
+way
+such
+a
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+environment
+must
+be
+implemented.
+</ins></p><section id="how-a-verifiable-credential-might-be-created"><h3 id="x6-1-how-a-verifiable-credential-might-be-created"><bdi class="secno"><ins class="diff-new">
+6.1
+</ins></bdi><ins class="diff-new">
+How
+a
+Verifiable
+Credential
+Might
+Be
+Created
+</ins><a class="self-link" aria-label="§" href= "#how-a-verifiable-credential-might-be-created"></a></h3><p><ins class="diff-new">
+In
+this
+first
+example,
+a
+user
+will
+request
+a
+verifiable
+credential—a
+confirmation
+of
+their
+identity.
+Consider
+this
+illustration:
+</ins></p><figure id="fig-verifiable-credential-creation-flow-diagram"><img aria-describedby="claim_flow" alt= "Verifiable Credential Creation Flow Description" style= "display:block; margin:auto" src="uc-issuing-claims.svg" width= "605" height="556" /><figcaption><ins class="diff-new">
+Figure
+</ins><bdi class="figno"><ins class="diff-new">
+4
+</ins></bdi><span class= "fig-title"><ins class="diff-new">
+Verifiable
+Credential
+Creation
+Flow
+Diagram
+</ins></span></figcaption></figure><p><ins class="diff-new">
+Expanding
+on
+these
+steps:
+</ins></p><ol id="claim_flow" title= "Verifiable Credential Creation Flow Description"><li><ins class="diff-new">
+Jane
+asks
+her
+User
+Agent
+to
+help
+her
+get
+a
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+about
+her
+identity.
+</ins></li><li><ins class="diff-new">
+Her
+user
+agent
+connects
+her
+to
+a
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+</ins></a><a href= "#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+that
+is
+able
+to
+</ins><a href="#dfn-verify" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verify
+</ins></a><ins class="diff-new">
+her
+identity.
+</ins></li><li><ins class="diff-new">
+The
+issuer
+examines
+her
+documentation.
+</ins></li><li><ins class="diff-new">
+They
+are
+satisfied,
+so
+the
+</ins><a href="#dfn-issuers" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a><ins class="diff-new">
+generates
+a
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+for
+Jane
+that
+includes
+information
+about
+her
+identity
+linked
+to
+their
+own
+trusted
+</ins><a href= "#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a>.</li><li><ins class="diff-new">
+The
+issuer
+delivers
+the
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+back
+to
+Jane's
+User
+Agent.
+</ins></li><li><ins class="diff-new">
+Jane
+views
+the
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+to
+ensure
+it
+reflects
+her
+requirements.
+</ins></li><li><ins class="diff-new">
+When
+she
+is
+satisfied,
+she
+instructs
+her
+User
+Agent
+to
+save
+the
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+so
+she
+can
+use
+it
+in
+the
+future.
+</ins></li><li><ins class="diff-new">
+The
+UA
+communicates
+with
+her
+</ins><a href= "#dfn-credential-repository" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+repository
+</ins></a>,<ins class="diff-new">
+instructing
+it
+to
+store
+the
+new
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a>.</li><li><ins class="diff-new">
+The
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+returns
+a
+list
+of
+the
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+it
+is
+holding
+for
+Jane
+to
+the
+UA.
+</ins></li><li><ins class="diff-new">
+The
+UA
+shows
+Jane
+her
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+collection
+—
+confirming
+everything
+she
+has
+available.
+</ins></li></ol></section><section id="how-a-verifiable-credential-might-be-used"><h3 id="x6-2-how-a-verifiable-credential-might-be-used"><bdi class= "secno"><ins class="diff-new">
+6.2
+</ins></bdi><ins class="diff-new">
+How
+a
+Verifiable
+Credential
+Might
+Be
+Used
+</ins><a class="self-link" aria-label="§" href= "#how-a-verifiable-credential-might-be-used"></a></h3><p><ins class="diff-new">
+In
+this
+example,
+a
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holder
+</ins></a><ins class="diff-new">
+of
+a
+</ins><a href="#dfn-claims" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+needs
+to
+use
+that
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+in
+a
+typical
+commerce
+situation:
+</ins></p><figure id="fig-verifiable-credential-usage-flow-diagram"><img aria-describedby="vf-flow" alt= "Verifiable Credential Usage Flow Diagram" style= "display:block; margin:auto" src="example.svg" width="730" height= "491" /><figcaption><ins class="diff-new">
+Figure
+</ins><bdi class="figno"><ins class="diff-new">
+5
+</ins></bdi><span class= "fig-title"><ins class="diff-new">
+Verifiable
+Credential
+Usage
+Flow
+Diagram
+</ins></span></figcaption></figure><ol title="Verifiable Credential Usage Flow Description" id= "vf-flow"><li><ins class="diff-new">
+Jane
+decides
+to
+shop
+on
+the
+website
+WinesOfTheWorld.example.com
+(merchant).
+</ins></li><li><ins class="diff-new">
+The
+merchant's
+site
+requires
+Jane
+be
+21
+years
+of
+age
+and
+requests
+(via
+a
+user
+agent-supported
+API
+call)
+that
+Jane
+prove
+this.
+</ins></li><li><ins class="diff-new">
+Jane's
+user
+agent
+asks
+her
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+for
+the
+proof.
+</ins></li><li><ins class="diff-new">
+The
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+shows
+Jane
+some
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+it
+holds
+that
+can
+support
+her
+age
+claim
+(e.g.,
+her
+passport,
+driving
+license,
+and
+birth
+certificate).
+</ins></li><li><ins class="diff-new">
+Jane
+selects
+one
+of
+these,
+and
+authorizes
+that
+it
+be
+shared
+with
+the
+merchant.
+</ins></li><li><ins class="diff-new">
+The
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repository
+</ins></a><ins class="diff-new">
+returns
+the
+selected
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credential
+</ins></a><ins class="diff-new">
+as
+a
+response
+to
+the
+user
+agent-supported
+API
+call,
+which
+in
+turn
+delivers
+it
+to
+the
+merchant.
+</ins></li><li><ins class="diff-new">
+The
+merchant's
+server
+verifies
+that
+the
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claim
+</ins></a><ins class="diff-new">
+is
+valid
+and
+satisfies
+the
+requirement.
+</ins></li><li><ins class="diff-new">
+The
+merchant
+redirects
+the
+user
+agent
+to
+the
+web
+site
+with
+appropriate
+authorization.
+</ins></li></ol></section></section><section class="appendix" id="terminology"><h2 id="a-terminology"><bdi class="secno"><ins class="diff-new">
+A.
+</ins></bdi><ins class="diff-new">
+Terminology
+</ins><a class="self-link" aria-label="§" href= "#terminology"></a></h2><em><ins class="diff-new">
+This
+section
+is
+non-normative.
+</ins></em><div data-oninclude="restrictReferences"><p><ins class="diff-new">
+The
+following
+terms
+are
+used
+to
+describe
+concepts
+in
+this
+specification.
+</ins></p><dl class="termlist" id="terms"><dt><dfn data-lt="claims|claim" id="dfn-claims" data-dfn-type= "dfn"><ins class="diff-new">
+claim
+</ins></dfn></dt><dd><ins class="diff-new">
+An
+assertion
+made
+about
+a
+</ins><a href="#dfn-subjects" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a>.</dd><dt><dfn data-lt="credential|credentials|credential's" id= "dfn-credential" data-dfn-type="dfn"><ins class="diff-new">
+credential
+</ins></dfn></dt><dd><ins class="diff-new">
+A
+set
+of
+one
+or
+more
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+made
+by
+an
+</ins><a href="#dfn-issuers" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+issuer
+</ins></a>.<ins class="diff-new">
+A
+</ins><dfn data-lt="verifiable credentials|verified credential|verifiable credential" id="dfn-verifiable-credentials" data-dfn-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></dfn><ins class="diff-new">
+is
+a
+tamper-evident
+credential
+that
+has
+authorship
+that
+can
+be
+cryptographically
+verified.
+Verifiable
+credentials
+can
+be
+used
+to
+build
+</ins><a href="#dfn-verifiable-presentations" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+presentations
+</ins></a>,<ins class="diff-new">
+which
+can
+also
+be
+cryptographically
+verified.
+The
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+in
+a
+credential
+can
+be
+about
+different
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subjects
+</ins></a>.</dd><dt><dfn data-lt="entities|entity's|entity" id="dfn-entities" data-dfn-type="dfn"><ins class="diff-new">
+entity
+</ins></dfn></dt><dd><ins class="diff-new">
+A
+thing
+with
+distinct
+and
+independent
+existence,
+such
+as
+a
+person,
+organization,
+or
+device
+that
+performs
+one
+or
+more
+roles
+in
+the
+ecosystem.
+</ins></dd><dt><dfn data-lt="holders|holder's|holders'|holder" id= "dfn-holders" data-dfn-type="dfn"><ins class="diff-new">
+holder
+</ins></dfn></dt><dd><ins class="diff-new">
+A
+role
+an
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+might
+perform
+by
+possessing
+one
+or
+more
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+and
+generating
+</ins><a href="#dfn-presentations" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+presentations
+</ins></a><ins class="diff-new">
+from
+them.
+A
+holder
+is
+usually,
+but
+not
+always,
+a
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subject
+</ins></a><ins class="diff-new">
+of
+the
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+they
+are
+holding.
+Holders
+store
+their
+</ins><a href="#dfn-credential" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+credentials
+</ins></a><ins class="diff-new">
+in
+</ins><a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+credential
+repositories
+</ins></a>.</dd><dt><dfn data-lt="issuers|issuer's|issuer" id="dfn-issuers" data-dfn-type="dfn"><ins class="diff-new">
+issuer
+</ins></dfn></dt><dd><ins class="diff-new">
+A
+role
+an
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+can
+perform
+by
+asserting
+</ins><a href= "#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+about
+one
+or
+more
+</ins><a href="#dfn-subjects" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+subjects
+</ins></a>,<ins class="diff-new">
+creating
+a
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+from
+these
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a>,<ins class="diff-new">
+and
+transmitting
+the
+</ins><a href="#dfn-verifiable-credentials" class= "internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+to
+a
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+holder
+</ins></a>.</dd><dt><dfn data-lt="presentations|presentation" id= "dfn-presentations" data-dfn-type="dfn"><ins class="diff-new">
+presentation
+</ins></dfn></dt><dd><ins class="diff-new">
+Data
+derived
+from
+one
+or
+more
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>,<ins class="diff-new">
+issued
+by
+one
+or
+more
+</ins><a href= "#dfn-issuers" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+issuers
+</ins></a>,<ins class="diff-new">
+that
+is
+shared
+with
+a
+specific
+</ins><a href= "#dfn-verifier" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifier
+</ins></a>.<ins class="diff-new">
+A
+</ins><dfn data-lt= "verifiable presentations|verifiable presentation" id= "dfn-verifiable-presentations" data-dfn-type="dfn"><ins class="diff-new">
+verifiable
+presentation
+</ins></dfn><ins class="diff-new">
+is
+a
+tamper-evident
+presentation
+encoded
+in
+such
+a
+way
+that
+authorship
+of
+the
+data
+can
+be
+trusted
+after
+a
+process
+of
+cryptographic
+verification.
+Certain
+types
+of
+verifiable
+presentations
+might
+contain
+data
+that
+is
+synthesized
+from,
+but
+do
+not
+contain,
+the
+original
+</ins><a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a><ins class="diff-new">
+(for
+example,
+zero-knowledge
+proofs).
+</ins></dd><dt><dfn data-lt= "credential repository|credential repositories|repositories|repository" id="dfn-credential-repository" data-dfn-type= "dfn"><ins class="diff-new">
+repository
+</ins></dfn></dt><dd><ins class="diff-new">
+A
+program,
+such
+as
+a
+storage
+vault
+or
+personal
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+wallet,
+that
+stores
+and
+protects
+access
+to
+</ins><a href="#dfn-holders" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+holders'
+</ins></a><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credentials
+</ins></a>.</dd><dt><dfn data-lt="subjects|subject's|subject" id="dfn-subjects" data-dfn-type="dfn"><ins class="diff-new">
+subject
+</ins></dfn></dt><dd><ins class="diff-new">
+A
+thing
+about
+which
+</ins><a href="#dfn-claims" class="internalDFN" data-link-type="dfn"><ins class="diff-new">
+claims
+</ins></a><ins class="diff-new">
+are
+made.
+</ins></dd><dt><dfn data-lt= "verify|verified|verifying|verifiable|verifiability|verification" id="dfn-verify" data-dfn-type="dfn"><ins class="diff-new">
+verification
+</ins></dfn></dt><dd><ins class="diff-new">
+The
+evaluation
+of
+whether
+a
+</ins><a href= "#dfn-verifiable-credentials" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+credential
+</ins></a><ins class="diff-new">
+or
+</ins><a href= "#dfn-verifiable-presentations" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+verifiable
+presentation
+</ins></a><ins class="diff-new">
+is
+an
+authentic
+and
+timely
+statement
+of
+the
+issuer
+or
+presenter,
+respectively.
+This
+includes
+checking
+that:
+the
+credential
+(or
+presentation)
+conforms
+to
+the
+specification;
+the
+proof
+method
+is
+satisfied;
+and,
+if
+present,
+the
+status
+is
+successfully
+checked.
+</ins></dd><dt><dfn data-lt= "verifier|verifiers|verifier's|verifier(s)|credential verifiers|credential verifier's" id="dfn-verifier" data-dfn-type="dfn" data-plurals= "credential verifier"><ins class="diff-new">
+verifier
+</ins></dfn></dt><dd><ins class="diff-new">
+The
+</ins><a href="#dfn-entities" class="internalDFN" data-link-type= "dfn"><ins class="diff-new">
+entity
+</ins></a><ins class="diff-new">
+verifying
+a
+claim
+about
+a
+given
+subject.
+</ins></dd></dl></div></section><section class="appendix" id="example-verifiable-credentials"><h2 id="b-example-verifiable-credentials"><bdi class= "secno"><ins class="diff-new">
+B.
+</ins></bdi><ins class="diff-new">
+Example
+Verifiable
+Credentials
+</ins><a class="self-link" aria-label="§" href="#example-verifiable-credentials"></a></h2><h3 id="focal-use-case-international-travel-with-minor"><ins class="diff-new">
+Focal
+Use
+Case:
+International
+Travel
+with
+Minor
+</ins><a class="self-link" aria-label="§" href="#example-verifiable-credentials"></a></h3><div class="example" id= "example-1-malathi-s-passport-simple-model"><div class="marker"><a class="self-link" href= "#example-1-malathi-s-passport-simple-model"><ins class="diff-new">
+Example
+</ins><bdi><ins class="diff-new">
+1
+</ins></bdi></a><span class="example-title">:<ins class="diff-new">
+Malathi's
+passport
+(simple
+model)
+</ins></span></div><pre class="nohighlight">{<ins class="diff-new">
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:9f6878c8-73c7-11e8-ab37-23a1a3504fd0",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2028-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+    "givenName": "Malathi",
+    "familyName": "Hamal",
+    "citizenship": "US",
+    /* any other claims made by gov't */
+  },
+  "proof": {/* signature by gov't */}
+}
+</ins></pre></div><div class="example" id= "example-2-malathi-s-passport-passport-is-a-document-model"><div class="marker"><a class="self-link" href= "#example-2-malathi-s-passport-passport-is-a-document-model"><ins class="diff-new">
+Example
+</ins><bdi><ins class="diff-new">
+2
+</ins></bdi></a><span class="example-title">:<ins class="diff-new">
+Malathi's
+passport
+(passport
+is
+a
+document
+model)
+</ins></span></div><pre class="nohighlight">{<ins class="diff-new">
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:9f6878c8-73c7-11e8-ab37-23a1a3504fd0",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2028-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+    "passport": {
+      "id": "urn:uuid:79c181dc-73c7-11e8-8c1f-2bb1fd2d268a",
+      "type": "Passport",
+      "traveler": {
+        "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+        "givenName": "Malathi",
+        "familyName": "Hamal",
+        "citizenship": "US"
+      },
+      /* any other passport fields */
+    }
+  },
+  "proof": {/* signature by gov't */}
+}
+</ins></pre></div><div class="example" id="example-3-anand-s-passport"><div class="marker"><a class="self-link" href= "#example-3-anand-s-passport"><ins class="diff-new">
+Example
+</ins><bdi><ins class="diff-new">
+3
+</ins></bdi></a><span class= "example-title">:<ins class="diff-new">
+Anand's
+passport
+</ins></span></div><pre class="nohighlight">{<ins class="diff-new">
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:b306614c-73c7-11e8-b596-47e8c5ce9144",
+  "type": ["VerifiableCredential", "PassportCredential"],
+  /* gov't DID */
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2020-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "givenName": "Anand",
+    "familyName": "Hamal"
+    "citizenship": "US",
+    /* any other claims made by gov't */
+  },
+  "proof": {/* signature by gov't */}
+}
+</ins></pre></div><div class="example" id="example-4-anand-s-birth-certificate"><div class="marker"><a class="self-link" href= "#example-4-anand-s-birth-certificate"><ins class="diff-new">
+Example
+</ins><bdi><ins class="diff-new">
+4
+</ins></bdi></a><span class="example-title">:<ins class="diff-new">
+Anand's
+birth
+certificate
+</ins></span></div><pre class="nohighlight">{<ins class="diff-new">
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:05a47fe2-73c8-11e8-ac1e-7fe0051a1d75",
+  "type": ["VerifiableCredential", "BirthCertificate"],
+  "issuer": "did:example:CCnF3zFaXkPN4zB94XaomRdvw2zX3XHPVX3aExcgo6PV",
+  "expires": "2020-01-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "citizenship": "US",
+    "birthDate": "2017-10-01T00:00:00Z",
+    "birthPlace": {
+      "type": "Hospital",
+      "address": {
+        "type": "US address",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
+        "postalCode": "80209",
+        "streetAddress": "123 Main St."
+      }
+    },
+    "givenName": "Anand",
+    "familyName": "Hamal",
+    "parent": [{
+      "id": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+      "type": "Person",
+      "givenName": "Malathi",
+      "familyName": "Hamal",
+      "maidenName": "Holla"
+    }, {
+      "id": "did:example:BgXRjB4RPrrsUVoVNaYNwzfznKsWep7AWrZkiyVcorEN",
+      "type": "Person",
+      "givenName": "Rajesh",
+      "familyName": "Hamal"
+    }]
+  },
+  "proof": {/* signature by gov't */}
+}
+</ins></pre></div><div class="example" id= "example-5-permission-to-travel-from-rajesh-using-schema-org-vocab"><div class="marker"><a class="self-link" href= "#example-5-permission-to-travel-from-rajesh-using-schema-org-vocab"><ins class="diff-new">
+Example
+</ins><bdi><ins class="diff-new">
+5
+</ins></bdi></a><span class="example-title">:<ins class="diff-new">
+Permission
+to
+travel
+from
+Rajesh
+using
+schema.org
+vocab
+</ins></span></div><pre class="nohighlight">{<ins class="diff-new">
+  "@context": [
+    "https://w3id.org/credentials/v1",
+    "https://example.com/travel-vocab/v1"
+  ],
+  "id": "urn:uuid:58c08196-73c6-11e8-b030-3bd8a829a356",
+  "type": ["VerifiableCredential", "ChildTravelPass"],
+  "issuer": "did:example:BgXRjB4RPrrsUVoVNaYNwzfznKsWep7AWrZkiyVcorEN",
+  "expires": "2018-07-01T00:00:00Z",
+  "claim": {
+    "id": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+    "potentialAction": {
+      "type": "TravelAction",
+      "agent": "did:example:8vFBbPrhBUyG6DEzVncBZpzBNsmRrbfsQKXQKPLskBCu",
+      "participant": "did:example:BcRisGnqV4QPb6bRmDCqEjyuubBarS1Y1nhDwxBMTXY4",
+      "location": {
+        "type": "Country",
+        "address": {
+          "addressCountry": "CA"
+        }
+      }
+    }
+  },
+  "proof": {/* signature by Rajesh proving control of DID */}
+}
+</ins></pre></div></section><section class="informative" id="acknowledgements"><h2 id="c-acknowledgements"><bdi class="secno"><ins class="diff-new">
+C.
+</ins></bdi><ins class="diff-new">
+Acknowledgements
+</ins><a class="self-link" aria-label="§" href= "#acknowledgements"></a></h2><p><em><ins class="diff-new">
+This
+section
+is
+non-normative.
+</ins></em></p><p><ins class="diff-new">
+The
+editors
+are
+thankful
+to
+the
+contributions
+from
+the
+Web
+Payments
+Workshop,
+the
+Web
+Payments
+Community
+Group,
+the
+Web
+Payments
+Interest
+Group,
+the
+Credentials
+Community
+Group,
+the
+Verifiable
+Claims
+Task
+Force,
+and
+the
+Verifiable
+Claims
+Working
+Group.
+</ins></p></section><section id="references" class="appendix"><h2 id="d-references"><bdi class="secno"><ins class="diff-new">
+D.
+</ins></bdi><ins class="diff-new">
+References
+</ins><a class="self-link" aria-label="§" href= "#references"></a></h2><section id="informative-references"><h3 id="d-1-informative-references"><bdi class="secno"><ins class="diff-new">
+D.1
+</ins></bdi><ins class="diff-new">
+Informative
+references
+</ins><a class="self-link" aria-label="§" href= "#informative-references"></a></h3><dl class="bibliography"><dt id="bib-rfc3986"><ins class="diff-new">
+[RFC3986]
+</ins></dt><dd><a href="https://tools.ietf.org/html/rfc3986"><cite><ins class="diff-new">
+Uniform
+Resource
+Identifier
+(URI):
+Generic
+Syntax
+</ins></cite></a>.<ins class="diff-new">
+T.
+Berners-Lee;
+R.
+Fielding;
+L.
+Masinter.
+IETF.
+January
+2005.
+Internet
+Standard.
+URL:
+</ins><a href= "https://tools.ietf.org/html/rfc3986"><ins class="diff-new">
+https://tools.ietf.org/html/rfc3986
+</ins></a></dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#toc"><abbr title= "Back to Top"><ins class="diff-new">
+↑
+</ins></abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
