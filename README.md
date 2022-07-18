@@ -1,9 +1,6 @@
-# vc-use-cases
-Verifiable Claims Use Cases
+# Verifiable Credentials Use Cases
 
-## Verifiable Claims Use Cases
-
-This describes the use cases supported by the Verifiable Claims Data Model. 
+This describes the use cases supported by the Verifiable Credentials Data Model. 
 
 We encourage contributions meeting the [Contribution
 Guidelines](CONTRIBUTING.md).  While we prefer the creation of issues
@@ -12,20 +9,12 @@ on the
 [public-vc-wg](http://lists.w3.org/Archives/Public/public-vc-wg/)
 mailing list as well.
 
-### Use Cases (this document) editor's draft:
+## Use Cases (this document) editor's draft:
 * [Use Cases](https://w3c.github.io/vc-use-cases/)
 
-## Verifiable Claims Working Group
+## Verifiable Credentials Working Group
 * Group page: [https://www.w3.org/2017/vc/WG/](https://www.w3.org/2017/vc/WG/)
-* charter: [https://www.w3.org/2017/vc/WG/charter.html](https://www.w3.org/2017/vc/WG/charter.html)
-* Chairs
-  * Matt Stone @stonematt
-  * Dan Burnet, Consensys @burnburn
+* Charter: [https://www.w3.org/2022/06/verifiable-credentials-wg-charter.html](https://www.w3.org/2017/vc/WG/charter.html)
 
-### Other Verifiable Claims github repos
-* [Data Model](https://github.com/w3c/vc-data-model)
-* [Implementation Guideline](https://github.com/w3c/vc-imp-guide)
-* [Test Suite](https://github.com/w3c/vc-test-suite)
-
-### Other useful links
+## Other useful links
 * [Public group email archive](https://lists.w3.org/Archives/Public/public-vc-wg/)
