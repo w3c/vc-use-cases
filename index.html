@@ -1631,6 +1631,129 @@ distributed status registry, verifying it is still valid
           </li>
         </ul>
     </section>
+    <section>
+      <h3>Cross-border online age restricted sales</h3>
+      <h4>Background</h4>
+      <p>
+        Anna is French and has an interest in good whiskeys. She decides to buy a whiskey from a highly touted
+        producer and online retailer based in Ireland called TradeWhiskey. Using her eID (electronic Identity),
+        Anna can attest with a predetermined required level of assurance that she is of legal drinking age and get the
+        product shipped to France.
+        Distinction
+      </p>
+      <h4>Distinction</h4>
+      <p>
+        This use case is challenging because it has to be compliant with government regulations which requires a certain
+        assurance that Anna is the rightful holder and subject of the presented eID.
+        For this Anna has to be remotely authenticated as the rightful holder of the eID that attests her legal age.
+      </p>
+      <h4>Scenario</h4>
+      <p>
+        Anna's eID has been bound to the digital wallet in which she has received the eID (holder binding).
+        Anna creates a verifiable presentation containing her eID using her digital wallet.
+        She then navigates through TradeWhiskey's online store and initiates the checkout process.
+        The webshop challenges Anna for an age attestation, at which time Anna offers the verifiable presentation as
+        evidence. Anna then has to confirm that she is the legitimate holder of the digital wallet using biometrics
+        according to a certain assurance level. After the digital wallet authenticates Anna, the digital wallet provides
+        the age attestation along with a proof that the digital wallet authenticated Anna with a certain assurance level
+        to TradeWhiskey. Because TradeWhiskey trusts the issuer of the age attestation to issue such attestations to
+        digital wallets with an appropriate assurance level, TradeWhiskey's can trust the proof provided by the digital
+        wallet.
+      </p>
+
+      <h4>Verifiable Credentials</h4>
+      <dl class="dl-horizontal">
+        <dt>
+          Governmental age attestation
+        </dt>
+        <dd>
+          Establishes that Anna is of legal drinking age.
+        </dd>
+
+        <dt>
+        </dt>
+        <dd>
+        </dd>
+
+        <h4>Verifiable Presentation</h4>
+        <p>
+          The Verifiable Presentation presented to TradeWhiskey contains the French Governmental age attestation along
+          with information that the digital wallet authenticated Anna, or a verifiable proof generated from the digital
+          identity wallet that proofs that the Governmental age attestation is bound to the digital identity wallet.
+        </p>
+
+        <h4>Trust Hierarchy</h4>
+        <ul>
+          <li>
+            Anna is liable for her age attestation
+          </li>
+          <li>
+            TradeWhiskey is liable for the verification of Anna's proof-of-possession
+          </li>
+        </ul>
+
+        <h4>Threat model</h4>
+        <ul>
+          <li>
+            <strong>Threat: Identity Fraud</strong> A bad actor could have somehow acquired control over an eID that is
+            not their own and
+            holding it in a wallet they control. The bad actor could sign an age attestation with the stolen
+            credential.)
+            <ul>
+              <li>
+                <strong>Response:</strong>Perform a biometrics based proof-of-possession. Verification of the
+                proof-of-possession will show the
+                Verifiable Credential was not originally issued to the wallet the bad actor is holding the credential
+                in.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Threat: Exposure of private information</strong> The age attestation challenge only requires Anna
+            to prove she is over
+            the legal drinking age. The eID she uses to relay that information contains other private information that
+            does not
+            need to be presented.
+            <ul>
+              <li>
+                <strong>Response:</strong> Encrypt the <a>claims</a> (once by <a>issuer</a>;
+                every <a>verifier</a> gets the same encrypted blob)
+              </li>
+              <li>
+                <strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each
+                <a>verifier</a>. This may leak usage data to the <a>issuer</a>, assuming the
+                <a>holder</a> must ask for a new, encrypted <a>credential</a> for each
+                <a>verifier</a>.
+              </li>
+              <li>
+                <strong>Response:</strong> Blind the <a>claims</a> uniquely for each
+                <a>verifier</a>.
+              </li>
+              <li>
+                <strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each
+                <a>verifier</a>. No issuer involved
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Threat: Phishing</strong> The webshop that Anna is visiting might not be TradeWhiskey's legitimate
+            webshop, but instead
+            is a fraudulent webshop that is using TradeWhiskey's logo and color schemes.
+            <ul>
+              <li>
+                <strong>Response:</strong>Anna can verify TradeWhiskey's legitimacy by challenging TradeWhiskey for e.g.
+                a Chamber of Commerce
+                registration credential.
+              </li>
+              <li>
+                <strong>Response:</strong>TradeWhiskey can obtain a (proactive) Qualified Web Authentication Certificate
+                or any valid
+                alternative to show their legitimacy in browser.
+              </li>
+            </ul>
+          </li>
+        </ul>
+    </section>
   </section>
   <section>
     <!-- Editor - @halindrome -->
