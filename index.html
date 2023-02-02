@@ -1639,17 +1639,16 @@ distributed status registry, verifying it is still valid
         producer and online retailer based in Ireland called TradeWhiskey. Using her eID (electronic Identity),
         Anna can attest with a predetermined required level of assurance that she is of legal drinking age and get the
         product shipped to France.
-        Distinction
       </p>
       <h4>Distinction</h4>
       <p>
-        This use case is challenging because it has to be compliant with government regulations which requires a certain
+        This use case is challenging because it has to be compliant with government regulations, which require a certain
         assurance that Anna is the rightful holder and subject of the presented eID.
-        For this Anna has to be remotely authenticated as the rightful holder of the eID that attests her legal age.
+        For this, Anna has to be remotely authenticated as the rightful holder of the eID that attests her legal age.
       </p>
       <h4>Scenario</h4>
       <p>
-        Anna's eID has been bound to the digital wallet in which she has received the eID (holder binding).
+        Anna's eID has been bound to the digital wallet into which she has received the eID (holder binding).
         Anna creates a verifiable presentation containing her eID using her digital wallet.
         She then navigates through TradeWhiskey's online store and initiates the checkout process.
         The webshop challenges Anna for an age attestation, at which time Anna offers the verifiable presentation as
@@ -1680,7 +1679,7 @@ distributed status registry, verifying it is still valid
         <p>
           The Verifiable Presentation presented to TradeWhiskey contains the French Governmental age attestation along
           with information that the digital wallet authenticated Anna, or a verifiable proof generated from the digital
-          identity wallet that proofs that the Governmental age attestation is bound to the digital identity wallet.
+          identity wallet that proves that the Governmental age attestation is bound to the digital identity wallet.
         </p>
 
         <h4>Trust Hierarchy</h4>
@@ -1698,14 +1697,14 @@ distributed status registry, verifying it is still valid
           <li>
             <strong>Threat: Identity Fraud</strong> A bad actor could have somehow acquired control over an eID that is
             not their own and
-            holding it in a wallet they control. The bad actor could sign an age attestation with the stolen
+            hold it in a wallet they control. The bad actor could sign an age attestation with the stolen
             credential.)
             <ul>
               <li>
-                <strong>Response:</strong>Perform a biometrics based proof-of-possession. Verification of the
+                <strong>Response:</strong>Perform a biometric-based proof-of-possession. Verification of the
                 proof-of-possession will show the
-                Verifiable Credential was not originally issued to the wallet the bad actor is holding the credential
-                in.
+                Verifiable Credential was not originally issued to the wallet in which the bad actor is holding the 
+                credential.
               </li>
             </ul>
           </li>
@@ -1723,7 +1722,7 @@ distributed status registry, verifying it is still valid
               <li>
                 <strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each
                 <a>verifier</a>. This may leak usage data to the <a>issuer</a>, assuming the
-                <a>holder</a> must ask for a new, encrypted <a>credential</a> for each
+                <a>holder</a> must ask for a newly encrypted <a>credential</a> for each
                 <a>verifier</a>.
               </li>
               <li>
@@ -1739,12 +1738,11 @@ distributed status registry, verifying it is still valid
           <li>
             <strong>Threat: Phishing</strong> The webshop that Anna is visiting might not be TradeWhiskey's legitimate
             webshop, but instead
-            is a fraudulent webshop that is using TradeWhiskey's logo and color schemes.
+            be a fraudulent webshop that is using TradeWhiskey's logo and color schemes.
             <ul>
               <li>
-                <strong>Response:</strong>Anna can verify TradeWhiskey's legitimacy by challenging TradeWhiskey for e.g.
-                a Chamber of Commerce
-                registration credential.
+                <strong>Response:</strong>Anna can verify TradeWhiskey's legitimacy by challenging TradeWhiskey for, 
+                for instance, a Chamber of Commerce registration credential.
               </li>
               <li>
                 <strong>Response:</strong>TradeWhiskey can obtain a (proactive) Qualified Web Authentication Certificate
