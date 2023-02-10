@@ -2,3 +2,4 @@
 # Unless a later match takes precedence, these people will be requested for
 # review when someone opens a pull request.
 *       @jandrieu
+*       @KDean-GS1
