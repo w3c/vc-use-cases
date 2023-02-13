@@ -1632,42 +1632,75 @@ distributed status registry, verifying it is still valid
         </ul>
     </section>
     <section>
-      <h3>Cross-border online age restricted sales</h3>
+      <h3>Boarding an intercontinental flight - holder binding</h3>
       <h4>Background</h4>
       <p>
-        Anna is French and has an interest in good whiskeys. She decides to buy a whiskey from a highly touted
-        producer and online retailer based in Ireland called TradeWhiskey. Using her eID (electronic Identity),
-        Anna can attest with a predetermined required level of assurance that she is of legal drinking age and get the
-        product shipped to France.
-        Distinction
+        Anna is preparing for her Singapore Airlines flight from Paris to Singapore. To travel to Singapore Anna needs a valid passport.
+        Therefore, she has to present her boarding pass along with her passport at the gate. 
+        Anna has heard about the new option at Charles de Gaulle airport to use a digital version of her passport (eID) for boarding and decides to try it out.
+
       </p>
       <h4>Distinction</h4>
       <p>
-        This use case is challenging because it has to be compliant with government regulations which requires a certain
-        assurance that Anna is the rightful holder and subject of the presented eID.
-        For this Anna has to be remotely authenticated as the rightful holder of the eID that attests her legal age.
+This use case is challenging because it has to be compliant with government regulations which requires a certain
+assurance that Anna is the rightful holder and subject of the presented eID.
+For this Anna has to be authenticated as the rightful holder of the eID.
       </p>
+      <p>
+Establishing trust that a credential is being presented by the rightful holder of that credential 
+can be approached in two different ways within an ecosystem. Each have their advantages and disadvantages. 
+      <p>
+In an open wallet ecosystem, a Credential Issuer would not check the security requirements of the wallets that they issue credentials into. 
+the Verifier needs to be provided by the holder with a proof that represents a Level of Assurance that the Credential has been issued with,
+as well as attestations that generate trust in the secure storage of the Credential and associated keys during their lifetime.
+      </p>
+
+      <p>
+In a Trusted Wallet ecosystem, the Verifier can trust that the Issuer has performed security checks on the wallets that they issue credentials into. 
+In this case, as the Verifier trusts the Issuer to perform holder authentication and security checks correctly, the Verifier does not need to perform holder authentication themselves. 
+The Verifier could still be interested in the Level of Assurance associated with the credential and the methods used to establish the Level of Assurance.  
+      </p>
+        
       <h4>Scenario</h4>
       <p>
-        Anna's eID has been bound to the digital wallet in which she has received the eID (holder binding).
-        Anna creates a verifiable presentation containing her eID using her digital wallet.
-        She then navigates through TradeWhiskey's online store and initiates the checkout process.
-        The webshop challenges Anna for an age attestation, at which time Anna offers the verifiable presentation as
-        evidence. Anna then has to confirm that she is the legitimate holder of the digital wallet using biometrics
-        according to a certain assurance level. After the digital wallet authenticates Anna, the digital wallet provides
-        the age attestation along with a proof that the digital wallet authenticated Anna with a certain assurance level
-        to TradeWhiskey. Because TradeWhiskey trusts the issuer of the age attestation to issue such attestations to
-        digital wallets with an appropriate assurance level, TradeWhiskey's can trust the proof provided by the digital
-        wallet.
+Open Wallet ecosystem
+Anna has downloaded a WalletApp to her mobile device and goes to get her eID issued. 
+The French government do not verify the security requirements of WalletApps before issuing credentials to them,
+but do enforce a process to provide a High Level of Assurance in the issuance of an eID. 
+Since the French government does not enforce limitations as to which wallets can receive an eID,
+Singapore Airlines can not implicitly trust that the key that an eID has been issued to has been securely stored during its lifetime.
+As such, Singapore Airline will need to authenticate the presenting holder as the rightful credential holder.
+
+Anna can prove her legitimate ownership of the credential through cryptographic holder-binding, 
+where the credential contains a public key or reference to a public key that matches the private key Anna used to sign the credential. 
+It is Singapore Airline’s responsibility to validate that the public key in the credential indeed matches the credential signature. 
+Alternatively, Anna can provide a claim-based holder binding by proving some attributes about herself with other verifiable credentials 
+that include the same claims as in her eID, such as her name and date of birth and/or biometric-based holder binding by having a 
+picture-to-person verification by an airline employee as happens with physical identity documents. 
+Additionally, Anna can provide a key attestation and an app attestation to satisfy Singapore Airlines requirements of proving securely kept Credentials and keys.
+
+Singapore Airlines can verify Anna’s credential and additional attestations and be sufficiently satisfied to let Anna board the airplane.
+      </p>
+
+      <p>
+Trusted Wallet ecosystem
+
+Anna has downloaded a recommended WalletApp to her mobile device and goes to get her eID issued. 
+In this scenario, the French government has decided that they want to ensure that eIDs are only kept in secure wallets. 
+They can do this by requiring a key attestation and an app attestation to apply for the credential. 
+If the French government is able to properly authenticate Anna through, for example, biometrics, and is satisfied with the key 
+and app attestations the Wallet includes when she requests a credential, they can now go ahead and issue the credential to Anna’s wallet. 
+Knowing the French government’s issuance process, Singapore Airlines can trust Anna’s Verifiable Presentation of 
+an eID without validating Anna’s key and app attestation. Anna can provide the level_of_assurance and methods along with her Verifiable Presentation as metadata.
       </p>
 
       <h4>Verifiable Credentials</h4>
         <dl class="dl-horizontal">
           <dt>
-            Governmental age attestation
+            Governmental eID
           </dt>
           <dd>
-            Establishes that Anna is of legal drinking age.
+            x
           </dd>
 
           <dt>
@@ -1678,18 +1711,21 @@ distributed status registry, verifying it is still valid
 
       <h4>Verifiable Presentation</h4>
         <p>
-          The Verifiable Presentation presented to TradeWhiskey contains the French Governmental age attestation along
-          with information that the digital wallet authenticated Anna, or a verifiable proof generated from the digital
-          identity wallet that proofs that the Governmental age attestation is bound to the digital identity wallet.
+The Verifiable Presentation presented to Singapore Airlines contains the French Governmental eID along
+with information that the digital wallet authenticated Anna, or a verifiable proof generated from the digital
+identity wallet that proves that the Governmental eID is bound to the holder.
         </p>
 
         <h4>Trust Hierarchy</h4>
         <ul>
           <li>
-            Anna is liable for her age attestation
+Anna is liable for her eID presentation
           </li>
           <li>
-            TradeWhiskey is liable for the verification of Anna's proof-of-possession
+The French Government/Singapore Airlines is liable for the verification of Anna's proof of possession
+          </li>
+          <li>
+Singapore Airlines is liable for verification of Anna's eID
           </li>
         </ul>
 
@@ -1698,8 +1734,8 @@ distributed status registry, verifying it is still valid
           <li>
             <strong>Threat: Identity Fraud</strong> A bad actor could have somehow acquired control over an eID that is
             not their own and
-            holding it in a wallet they control. The bad actor could sign an age attestation with the stolen
-            credential.)
+            holding it in a wallet they control. The bad actor could sign attempt to board the airplane with the stolen
+            credential.
             <ul>
               <li>
                 <strong>Response:</strong>Perform a biometrics based proof-of-possession. Verification of the
@@ -1710,11 +1746,9 @@ distributed status registry, verifying it is still valid
             </ul>
           </li>
           <li>
-            <strong>Threat: Exposure of private information</strong> The age attestation challenge only requires Anna
-            to prove she is over
-            the legal drinking age. The eID she uses to relay that information contains other private information that
-            does not
-            need to be presented.
+            <strong>Threat: Exposure of private information</strong> Boarding the airplaine only requires Anna
+            to prove she holds a valid passport. The eID she uses to relay that information contains detailed private information that
+            does not need to be presented.
             <ul>
               <li>
                 <strong>Response:</strong> Encrypt the <a>claims</a> (once by <a>issuer</a>;
@@ -1736,21 +1770,6 @@ distributed status registry, verifying it is still valid
               </li>
             </ul>
           </li>
-          <li>
-            <strong>Threat: Phishing</strong> The webshop that Anna is visiting might not be TradeWhiskey's legitimate
-            webshop, but instead
-            is a fraudulent webshop that is using TradeWhiskey's logo and color schemes.
-            <ul>
-              <li>
-                <strong>Response:</strong>Anna can verify TradeWhiskey's legitimacy by challenging TradeWhiskey for e.g.
-                a Chamber of Commerce
-                registration credential.
-              </li>
-              <li>
-                <strong>Response:</strong>TradeWhiskey can obtain a (proactive) Qualified Web Authentication Certificate
-                or any valid
-                alternative to show their legitimacy in browser.
-              </li>
             </ul>
           </li>
         </ul>
