@@ -1662,15 +1662,18 @@ The Verifier could still be interested in the Level of Assurance associated with
       </p>
         
       <h4>Scenario</h4>
-      <p>
-Open Wallet ecosystem
+        
+      <p>Open Wallet ecosystem</p>
+        <p>
 Anna has downloaded a WalletApp to her mobile device and goes to get her eID issued. 
 The French government do not verify the security requirements of WalletApps before issuing credentials to them,
 but do enforce a process to provide a High Level of Assurance in the issuance of an eID. 
 Since the French government does not enforce limitations as to which wallets can receive an eID,
 Singapore Airlines can not implicitly trust that the key that an eID has been issued to has been securely stored during its lifetime.
 As such, Singapore Airline will need to authenticate the presenting holder as the rightful credential holder.
+        </p>
 
+        <p>
 Anna can prove her legitimate ownership of the credential through cryptographic holder-binding, 
 where the credential contains a public key or reference to a public key that matches the private key Anna used to sign the credential. 
 It is Singapore Airline’s responsibility to validate that the public key in the credential indeed matches the credential signature. 
@@ -1678,13 +1681,11 @@ Alternatively, Anna can provide a claim-based holder binding by proving some att
 that include the same claims as in her eID, such as her name and date of birth and/or biometric-based holder binding by having a 
 picture-to-person verification by an airline employee as happens with physical identity documents. 
 Additionally, Anna can provide a key attestation and an app attestation to satisfy Singapore Airlines requirements of proving securely kept Credentials and keys.
-
 Singapore Airlines can verify Anna’s credential and additional attestations and be sufficiently satisfied to let Anna board the airplane.
-      </p>
+        </p>      
 
-      <p>
-Trusted Wallet ecosystem
-
+        <p>Trusted Wallet ecosystem</p> 
+        <p>
 Anna has downloaded a recommended WalletApp to her mobile device and goes to get her eID issued. 
 In this scenario, the French government has decided that they want to ensure that eIDs are only kept in secure wallets. 
 They can do this by requiring a key attestation and an app attestation to apply for the credential. 
@@ -1692,7 +1693,7 @@ If the French government is able to properly authenticate Anna through, for exam
 and app attestations the Wallet includes when she requests a credential, they can now go ahead and issue the credential to Anna’s wallet. 
 Knowing the French government’s issuance process, Singapore Airlines can trust Anna’s Verifiable Presentation of 
 an eID without validating Anna’s key and app attestation. Anna can provide the level_of_assurance and methods along with her Verifiable Presentation as metadata.
-      </p>
+        </p>
 
       <h4>Verifiable Credentials</h4>
         <dl class="dl-horizontal">
@@ -1738,10 +1739,10 @@ Singapore Airlines is liable for verification of Anna's eID
             credential.
             <ul>
               <li>
-                <strong>Response:</strong>Perform a biometrics based proof-of-possession. Verification of the
+                <strong>Response:</strong>Perform a biometric-based proof-of-possession. Verification of the
                 proof-of-possession will show the
-                Verifiable Credential was not originally issued to the wallet the bad actor is holding the credential
-                in.
+                Verifiable Credential was not originally issued to the wallet in which the bad actor is holding the 
+                credential.
               </li>
             </ul>
           </li>
@@ -1757,7 +1758,7 @@ Singapore Airlines is liable for verification of Anna's eID
               <li>
                 <strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each
                 <a>verifier</a>. This may leak usage data to the <a>issuer</a>, assuming the
-                <a>holder</a> must ask for a new, encrypted <a>credential</a> for each
+                <a>holder</a> must ask for a newly encrypted <a>credential</a> for each
                 <a>verifier</a>.
               </li>
               <li>
