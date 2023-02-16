@@ -1658,8 +1658,8 @@ as well as attestations that generate trust in the secure storage of the Credent
 
       <p>
 In a Trusted Wallet ecosystem, the Verifier can trust that the Issuer has performed security checks on the wallets that they issue credentials into. 
-In this case, as the Verifier trusts the Issuer to perform holder authentication and security checks correctly, the Verifier does not need to perform holder authentication themselves. 
-The Verifier could still be interested in the Level of Assurance associated with the credential and the methods used to establish the Level of Assurance.  
+In this case, as the Verifier trusts the Issuer to perform Holder authentication and security checks correctly, the Verifier does not need to perform Holder authentication themselves.
+The Verifier could still be interested in the Level of Assurance associated with the credential and the methods used to establish the Level of Assurance.
       </p>
         
       <h4>Scenario</h4>
@@ -1671,15 +1671,15 @@ The French government do not verify the security requirements of WalletApps befo
 but do enforce a process to provide a High Level of Assurance in the issuance of an eID. 
 Since the French government does not enforce limitations as to which wallets can receive an eID,
 Singapore Airlines can not implicitly trust that the key that an eID has been issued to has been securely stored during its lifetime.
-As such, Singapore Airline will need to authenticate the presenting holder as the rightful credential holder.
+As such, Singapore Airlines will need to authenticate the presenting Holder as the rightful credential Holder.
         </p>
 
         <p>
-Anna can prove her legitimate ownership of the credential through cryptographic holder-binding, 
+Anna can prove her legitimate ownership of the credential through cryptographic Holder binding, 
 where the credential contains a public key or reference to a public key that matches the private key Anna used to sign the credential. 
-It is Singapore Airline’s responsibility to validate that the public key in the credential indeed matches the credential signature. 
-Alternatively, Anna can provide a claim-based holder binding by proving some attributes about herself with other verifiable credentials 
-that include the same claims as in her eID, such as her name and date of birth and/or biometric-based holder binding by having a 
+It is Singapore Airlines' responsibility to validate that the public key in the credential indeed matches the credential signature. 
+Alternatively, Anna can provide a claim-based Holder binding by proving some attributes about herself with other verifiable credentials 
+that include the same claims as in her eID, such as her name, date of birth, and/or biometric-based attributes by having a 
 picture-to-person verification by an airline employee as happens with physical identity documents. 
 Additionally, Anna can provide a key attestation and an app attestation to satisfy Singapore Airlines requirements of proving securely kept Credentials and keys.
 Singapore Airlines can verify Anna’s credential and additional attestations and be sufficiently satisfied to let Anna board the airplane.
@@ -1693,7 +1693,7 @@ They can do this by requiring a key attestation and an app attestation to apply 
 If the French government is able to properly authenticate Anna through, for example, biometrics, and is satisfied with the key 
 and app attestations the Wallet includes when she requests a credential, they can now go ahead and issue the credential to Anna’s wallet. 
 Knowing the French government’s issuance process, Singapore Airlines can trust Anna’s Verifiable Presentation of 
-an eID without validating Anna’s key and app attestation. Anna can provide the level_of_assurance and methods along with her Verifiable Presentation as metadata.
+an eID without validating Anna’s key and app attestations. Anna can provide the level of assurance and methods along with her Verifiable Presentation as metadata.
         </p>
 
       <h4>Verifiable Credentials</h4>
@@ -1721,13 +1721,13 @@ identity wallet that proves that the Governmental eID is bound to the Holder.
         <h4>Trust Hierarchy</h4>
         <ul>
           <li>
-Anna is liable for her eID presentation
+Anna is liable for her eID presentation.
           </li>
           <li>
 The French Government and Singapore Airlines are liable for the verification of Anna's proof of possession.
           </li>
           <li>
-Singapore Airlines is liable for verification of Anna's eID
+Singapore Airlines is liable for verification of Anna's eID.
           </li>
         </ul>
 
@@ -1736,7 +1736,7 @@ Singapore Airlines is liable for verification of Anna's eID
           <li>
             <strong>Threat: Identity Fraud</strong> A bad actor could have somehow acquired control over an eID that is
             not their own and
-            holding it in a wallet they control. The bad actor could sign attempt to board the airplane with the stolen
+            be holding it in a wallet they control. The bad actor could attempt to board the airplane with the stolen
             credential.
             <ul>
               <li>
