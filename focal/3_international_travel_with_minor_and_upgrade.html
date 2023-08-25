@@ -1,0 +1,234 @@
+<section>
+  <h3>International Travel with Minor and Upgrade</h3>
+    <h4>Background</h4>
+    <p>
+Malathi is traveling internationally with her 8-month-old son, Anand. His
+father, Rajesh, is staying home. Malathi has enough frequent flyer miles to
+upgrade the ticket to first class.
+    </p>
+    <h4>Distinction</h4>
+    <p>
+This use case is difficult because:
+    </p>
+    <ul>
+      <li>
+Current US passports do not establish explicit relationship between parent
+and child.
+      </li>
+      <li>
+When one parent travels with a minor, the other parent is required to grant
+permission for the trip, thus implying guardianship or responsibility.
+      </li>
+      <li>
+The DID or other Digital Identity system replaces the role of the notary in
+the paper/physical world
+      </li>
+      <li>
+Credentials must be coordinated between two verifiers (agent and airline) for
+two individuals, and a digital coupon is used.
+      </li>
+      <li>
+The relationship of the minor to the non-traveling parent must be established,
+in order for the permission to be considered.
+      </li>
+      <li>
+In the minor's passport case, the <a>subject</a> is not the <a>holder</a> of
+the <a>verifiable credential</a>. The <a>holder</a> of the passport is a
+parent, not the minor.
+      </li>
+    </ul>
+
+    <h4>Scenario</h4>
+    <p>
+Malathi obtains permission from Rajesh stating she is allowed to take the baby
+out of the country.
+    </p>
+    <p>
+Prior to booking the trips, Malathi visits HappyAir.com to request an upgrade
+to first class. HappyAir issues a <a>verifiable credential</a> redeemable for
+a first class upgrade on an international flight.
+    </p>
+    <p>
+She books the plane tickets through her travel agent who adds the lap child
+to the ticket.
+    </p>
+    <p>
+HappyAir verifies that Malathi has a signed statement from Anand’s other
+parent stating that she may exit the country with him.
+    </p>
+
+    <h4>Verifiable Credentials</h4>
+    <dl class="dl-horizontal">
+      <dt>
+Malathi's passport
+      </dt>
+      <dd>
+Establishes identity of the traveling parent
+      </dd>
+
+      <dt>
+Anand's passport
+      </dt>
+      <dd>
+Establishes identity of the minor
+      </dd>
+
+      <dt>
+Anand's Birth Certificate
+      </dt>
+      <dd>
+Establishes relationship to parents and provides link from Rajesh to Anand that
+qualifies the permission to travel
+      </dd>
+
+      <dt>
+Permission to travel from Rajesh
+      </dt>
+      <dd>
+        <ul>
+          <li>
+Grants permission from non-traveling parent for minor to travel.
+          </li>
+          <li>
+Identity matches identity of the parent in the birth certificate, establishing
+relevance.
+          </li>
+        </ul>
+      </dd>
+        
+      <dt>
+Upgrade coupon for first class ticket
+      </dt>
+      <dd>
+Introduces commercial value in a <a>verifiable credential</a>
+      </dd>
+    </dl>
+    <p>
+For details, refer to
+<a href="#example-verifiable-credentials">Example Verifiable Credentials</a>
+in Appendix
+    </p>
+
+    <h4>Verifiable Presentation</h4>
+    <p>
+Submitted to HappyAir, includes Malathi and Anand's passport, assertion of
+permission, birth certificate and Frequent Flyer coupon.
+    </p>
+
+    <h4>Trust Hierarchy</h4>
+    <ul>
+      <li>
+Malathi is liable for her claim of parentage as well as securing right to
+admission for herself and her son at their destination (visa may be required).
+      </li>
+      <li>
+Malathi and Rajesh are both liable for attestation of permission to fly with
+Anand without the other parent.
+      </li>
+      <li>
+Malathi is liable for the cost of her ticket and her son’s ticket.
+      </li>
+      <li>
+The agency is liable for issuing valid tickets and for verifying the
+credentials provided by the travelers.
+      </li>
+      <li>
+The airline is liable for issuing tickets and, ultimately, fulfilling the
+terms of travel
+      </li>
+      <li>
+The airline is liable for accepting the upgrade coupons at ticketing.
+      </li>
+      <li>
+The airline is liable for verifying the credentials in the birth certificate
+match the credentials in the permission letter.
+      </li>
+      <li>
+The check-in agent, TSA agent, and passport control at the destination are
+liable for identity assurance at various points of travel, using information
+contained in the <a>verifiable credentials</a>.
+      </li>
+    </ul>
+
+    <h4>Threat model</h4>
+    <ul>
+      <li>
+<strong>Threat: Stolen Key.</strong> Malathi steals Rajesh’s key in order to
+fake travel permission. (Kidnapping her own kids and fleeing Rajesh.)
+        <ul>
+          <li>
+<strong>Response:</strong> Rajesh could store his key with a trusted third
+party, such as an attorney.
+          </li>
+          <li>
+<strong>Response:</strong> Rajesh could use a hardware wallet with pin or
+biometric.
+          </li>
+          <li>
+<strong>Response:</strong> Rajesh could use a passphrase on his key
+          </li>
+        </ul>
+      </li>
+      <li>
+<strong>Threat: Stolen Key 2</strong> Ticket purchaser has Malathi’s
+<a>credentials</a>, impersonating her to purchase a ticket. This could enable
+a third-party kidnapping.
+        <ul>
+          <li>
+<strong>Response:</strong> Travel permission can be restricted to specific
+date and or trip minimizing abuse potential.
+          </li>
+          <li>
+<strong>Response:</strong> Embed identifying characteristics or biometric into
+the credentials so that verifiers can independently verify the <a>subject</a>
+in front of them is the <a>subject</a> in the <a>credential</a>.
+          </li>
+          <li>
+<strong>Response:</strong> Malathi could use a hardware wallet with pin or
+biometric.
+          </li>
+          <li>
+<strong>Response:</strong> Malathi could use a passphrase on her key
+          </li>
+        </ul>
+      </li>
+      <li>
+<strong>Threat: Exposure of private information.</strong> By storing
+potentially compromising information in credentials and sending them over the
+network, we are increasing the attack surface for the <a>subjects</a> of those
+credentials.
+        <ul>
+          <li>
+<strong>Response:</strong> Encrypt the <a>claims</a> (once by <a>issuer</a>;
+every <a>verifier</a> gets the same encrypted blob)
+          </li>
+          <li>
+<strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each
+<a>verifier</a>. This may leak usage data to the <a>issuer</a>, assuming the
+<a>holder</a> must ask for a new, encrypted <a>credential</a> for each
+<a>verifier</a>.
+          </li>
+          <li>
+<strong>Response:</strong> Blind the <a>claims</a> uniquely for each
+<a>verifier</a>.
+          </li>
+          <li>
+<strong>Response:</strong> Encrypt the <a>presentation</a> uniquely for each
+<a>verifier</a>. No issuer involved
+          </li>
+        </ul>
+      </li>
+      <li>
+<strong>Threat: Stolen coupon</strong> Rajesh falsifies the upgrade coupon.
+        <ul>
+          <li>
+<strong>Response:</strong> HappyAir signs the coupon with secure credentials.
+          </li>
+          <li>
+<strong>Response:</strong> Travel agent verifies the coupon through a
+distributed status registry, verifying it is still valid
+          </li>
+        </ul>
+      </li>
+    </ul>
+</section>
