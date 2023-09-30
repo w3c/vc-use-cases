@@ -520,15 +520,15 @@ criteria without revealing additional attributes that are not required.
           It MUST be possible for a <a>verifier</a> to verify that the
           credential is an authentic statement of an <a>issuer's</a>
           <a>claims</a> about the
-          <a>subject</a>. Verifiers must have the capability to
+          <a>subject</a>. Verifiers MUST have the capability to
           cryptographically prove that a credential has not been tampered
           with since issuance (authenticity) and that the issuer continues
           to assert the claims as true (currency). 
-          
-          To check authenticity, the issuer's verification methods, such as
+          <br><br>
+          To check authenticity, the issuer's verification method(s), such as
           a public key, must be discoverable from the credential itself. It
           is expected that the issuer identifier either is
-          cryptographically verifiable itself or that it can be used to
+          itself cryptographically verifiable, or that it can be used to
           reliably discover the cryptographic material necessary to confirm
           that the content of a credential has not been changed since
           issuance. It is understood that verification depends on the
@@ -536,33 +536,34 @@ criteria without revealing additional attributes that are not required.
           mechanisms used for testing authenticity and for discovering
           verification methods. An untrusted verification method cannot be
           relied upon for verification.
-
-          To check the currency of a credential, verifiers must be able to
+           <br><br>
+          Verifiers must also be able to
           inquire about the current status of a credential without
           revealing to the issuer 
           <ol type="a">
-             <li>Who is requesting status</li>
-             <li>Which credential is being checked</li>
+             <li>The entity requesting that status</li>
+             <li>The credential for which status is being checked</li>
              <li>The subject of the credential being checked</li> 
           </ol>
-          This status check allows issuers to revoke, suspend, or otherwise
+          Requiring that verifiers perform this status check
+          is what enables issuers to revoke, suspend, or otherwise
           moderate the status of the credential.
-
+          <br><br>
           Similarly, if a discovery mechanism is used to retrieve
           verification methods for a given issuer, verifiers must be able
           to do so without revealing unnecessary information to the issuer.
-
+          <br><br>
           In short, it must be possible to fully verify a credential
           without leaking usage data to the issuer or anyone else. This
-          avoids the so-called "phone home" problem.          
+          is to avoid the so-called "phone home" problem.
           </dd>
         <dt>Motivations</dt>
         <dd>
-          In many environments (such as order processing) information such
-          as a payer's address, citizenship, or age need to be
-          automatically verified in order to complete the transaction. 
-          
-          It MUST be possible to verify in an automated fashion.
+          In many environments (such as order processing), information — such
+          as a payer's address, citizenship, or age — needs to be
+          automatically verified to complete the transaction. 
+          <br><br>
+          It MUST be possible to verify these in an automated fashion.
         </dd>
         <dt>Needs</dt>
         <dd>
@@ -577,44 +578,45 @@ criteria without revealing additional attributes that are not required.
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
-          It MUST be possible for a <a>verifier</a> to validate that the a
-          given claim is appropriate for particular use. That is, given the
-          credential is authentic and current, the verifier must then
+          It MUST be possible for a <a>verifier</a> to check whether a
+          given claim is appropriate for a particular use. That is, given the
+          the credential is authentic and current, the verifier must then
           interpret the claims in the context of their own 'business rules'
-          about which parties are acceptable authorities and which
-          cryptographic mechanisms are acceptable for different situations.
+          concerning, for instance, which parties are acceptable authorities, and which
+          cryptographic mechanisms are acceptable for what situations.
           <ol>
             <li>Is the issuer someone we know?</li>
-            <li>Are the claims made by this issuer appropriate for that
+            <li>Are the claims made by this issuer appropriate for this
             particular issuer's authority?</li>
             <li>Is the holder's presentation an appropriate use of the
             credential?</li>
           </ol>
-          The first and second question will be answered either because the
+          The first and second questions will be answered because either the
           verifier already knows the public identifiers for the issuers it
           recognizes for specific claims, or there is a discovery mechanism
           whereby verifiers can find appropriate issuers given their
           business requirements. 
-          
+          <br><br>
           The business rules may allow the use of certain credentials for
-          specific situations even when they are expired. For example a
-          suspended professional license may be accepted by an employer as
-          evidence of past experience without treating it as a current
+          specific situations, even when verification fails. For example, a
+          suspended or expired professional license may be accepted by an employer as
+          evidence of past experience without it being treated as a current
           qualification for roles that require that license. For this
-          reason, currency (as part of verification) only deals with the
+          reason, current status (as part of verification) only deals with the
           status of the credential as maintained by the Issuer. Timeliness
           is the domain of validation.
-
+          <br><br>
           It's important to note that the bounds of authority for a given
           issuer are specific claim types made by them and relied upon by
-          others. While the DMV might be an acceptable authority for an
+          others. While a country's DMV (Department of Motor Vehicles)
+          or equivalent agency might be an acceptable authority for an
           individual's driving privilege, it should probably not be treated
           as authoritative for an individual's hair color or current
           address, even though DMVs regularly include such claims in
           today's driver's licenses.
 
-          Unlike verification, validation cannot be guaranteed to be
-          automatable. Some use cases require human review before accepting
+          Unlike verification, it may not always be possible to
+          automate validation. Some use cases require human review before accepting
           a particular credential for a particular use. For example, a
           digital proof of age system might need a trusted human agent to
           visually compare the holder/presenter in real-space to a
@@ -624,22 +626,21 @@ criteria without revealing additional attributes that are not required.
         <dt>Motivations</dt>
         <dd>
           Verifiers need to be able to apply their own policies and rules
-          to the information they rely on to run their business. (And we
-          mean business broadly to encompass all focused activity towards a
-          goal.)
-
-          As such, any given VC could be verified but unusable in a
+          to the information they rely on to run their "business" (which we
+          mean broadly, to encompass all activity focused towards a goal.)
+          <p><p>
+          Given this need, any given VC might be verified but not usable in a
           particular situation. For example, a self-issued driver's license
           would likely not be acceptable for a car rental by most car
           rental agencies, even though the verification succeeds. 
-          
-          However, in some cases, such as at a go-cart racing facility, it
+          <br><br>
+          Even so, in other cases, such as at a go-cart racing facility, it
           may be entirely appropriate to accept the name and image from a
           self-issued license for the purpose of leaderboards,
           announcements, and correspondence.
-
-          These business rules are entirely up to the verifier. Only after
-          satisfying these rules should a verifier rely upon a claim as an
+          <br><br>
+          These business rules are entirely the province of the verifier. Only after
+          satisfying their rules should a verifier rely upon a claim as an
           accepted fact for specific use.
         </dd>
         <dt>Needs</dt>
