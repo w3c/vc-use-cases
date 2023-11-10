@@ -1,0 +1,227 @@
+<section>
+      <h3>Chain of GS1 Credentials to Identify a Trade Item</h3>
+      <h4>Background</h4>
+      <p>
+            This use case has been provided by <a href="https://www.gs1.org/" rel="nofollow">GS1</a>.
+      </p>
+      <p>
+            GS1 is the global supply chain standards development organization behind the retail barcode. The content of
+            the barcode, the Global Trade Item Number (GTIN), is a 13-digit string composed of a GS1 Company Prefix (a
+            unique string
+            of 4-12 digits), a trade item reference (a numeric string unique within the GS1 Company Prefix to bring the
+            length
+            up to 12 digits), and a check digit (a mathematical calculation to detect keying errors).
+      </p>
+      <p>
+            The GS1 Company Prefix is licensed to a user company by a local GS1 Member Organization. The license gives
+            the user company the right to issue GS1 identification keys within the range of the GS1 Company Prefix and
+            to issue Verifiable Credentials referring to the license Verifiable Credential.
+      </p>
+      <p>
+            The license Verifiable Credential may be revoked if the user company fails to abide by the terms and
+            conditions or may be transferred to another user company as part of a merger and acquisition.
+      </p>
+      <p>
+            If the license is revoked, no new Verifiable Credentials derived from it may be issued. If the license is
+            transferred, existing derived Verifiable Credentials remain valid, and the new user company may issue new
+            Verifiable Credentials, including some that refer to Verifiable Credentials issued by the previous user
+            company.
+      </p>
+      <h4>Distinction</h4>
+      <p>
+            This differs from other focal use cases in that the rights granted by a Verifiable Credential can be
+            transferred
+            to another subject, without invalidating other Verifiable Credentials created by the original subject.
+      </p>
+      <h4>Scenario</h4>
+      <p>
+            Healthy Tots, a baby food manufacturer, wishes to list its products on the Sell Anything &amp; Everything
+            (SA&amp;E) marketplace. As a global marketplace, SA&amp;E requires unique identification for products listed
+            on its site, and has chosen the GTIN as the preferred identification key. To ensure uniqueness, SA&amp;E
+            requires that companies listing products prove that they have the right to issue the GTINs they are using.
+      </p>
+      <h4>Actors</h4>
+      <ul>
+            <li>
+                  GS1 Global Office, the trusted root of the GS1 identification system
+            </li>
+            <li>
+                  GS1 Utopia, a GS1 Member Organization, a country-based member of the GS1 federation, also a GS1 Prefix
+                  licensee
+            </li>
+            <li>
+                  Healthy Tots, a baby food manufacturer, also a GS1 Company Prefix licensee
+            </li>
+            <li>
+                  Sell Anything &amp; Everything (SA&amp;E), global marketplace
+            </li>
+            <li>
+                  A trade item manufactured and sold by Healthy Tots, represented as a <a
+                        href="https://www.gs1.org/standards/gs1-digital-link" rel="nofollow">GS1 Digital Link</a> URI
+            </li>
+      </ul>
+      <h5>Issuer</h5>
+      <p>
+            For the GS1 Prefix license Verifiable Credential, the issuer is GS1 Global Office.
+      </p>
+      <p>
+            For the GS1 Company Prefix license Verifiable Credential, the issuer is GS1 Utopia, which is the subject of
+            the
+            corresponding GS1 Prefix license Verifiable Credential.
+      </p>
+      <p>
+            For the trade item Verifiable Credential, the issuer is Healthy Tots, which is the subject of the
+            corresponding
+            GS1 Company Prefix license Verifiable Credential.
+      </p>
+      <h5>Subject</h5>
+      <p>
+            For the GS1 Prefix license Verifiable Credential, the subject is GS1 Utopia.
+      </p>
+      <p>
+            For the GS1 Company Prefix license Verifiable Credential, the subject is Healthy Tots.
+      </p>
+      <p>
+            For the trade item Verifiable Credential, the subject is the GTIN represented as a <a
+                  href="https://www.gs1.org/standards/gs1-digital-link" rel="nofollow">GS1 Digital Link</a> URI.
+      </p>
+      <h5>Holder</h5>
+      <p>
+            For the GS1 Prefix license Verifiable Credential, the holder is GS1 Utopia.
+      </p>
+      <p>
+            For the GS1 Company Prefix license Verifiable Credential, the holder is Healthy Tots.
+      </p>
+      <p>
+            For the trade item Verifiable Credential, the holder is Healthy Tots.
+      </p>
+      <h5>Verifier</h5>
+      <p>
+            Sell Anything &amp; Everything, a trading partner of Healthy Tots that needs to validate the identification
+            of an object
+            (typically a trade item) and the data associated with it.
+      </p>
+      <h4>Verifiable Credentials</h4>
+      <dl class="dl-horizontal">
+            <dt>
+                  GS1 Prefix license
+            </dt>
+            <dd>
+                  Issued by GS1 Global Office to GS1 Utopia (a GS1 Member Organization). Grants GS1 Utopia the right to
+                  issue
+                  GS1 Company Prefix licenses within the range of the GS1 Prefix in the license.
+            </dd>
+            <dt>
+                  GS1 Company Prefix license
+            </dt>
+            <dd>
+                  Issued by GS1 Utopia to Healthy Tots. Grants Healthy Tots the right to issue GS1 identification keys
+                  within
+                  the range of the GS1 Company Prefix in the license.
+            </dd>
+            <dt>
+                  Key (GTIN)
+            </dt>
+            <dd>
+                  Issued by Healthy Tots to declare the existence of a GS1 identification key, typically a GTIN, within
+                  the
+                  range of the GS1 Company Prefix.
+            </dd>
+      </dl>
+      <p>
+            For details, refer to
+            <a href="#example-verifiable-credentials">Example Verifiable Credentials</a>
+            in Appendix
+      </p>
+      <h4>Validation Requirements</h4>
+      <p>
+            A GS1 Prefix license Verifiable Credential is valid if it is issued by GS1 Global Office.
+      </p>
+      <p>
+            A GS1 Company Prefix license Verifiable Credential is valid if:
+      </p>
+      <ul>
+            <li>
+                  the issuer is the same as the subject of the "extendsCredential";
+            </li>
+            <li>
+                  the GS1 Company Prefix in "licenseValue" ("9521234" in the examples) starts with the same digits as
+                  the GS1
+                  Prefix in "licenseValue" of the "extendsCredential" ("952" in the examples); and
+            </li>
+            <li>
+                  the credential was issued after the "extendsCredential" was issued and, if applicable, before the
+                  "extendsCredential" was revoked or transferred.
+            </li>
+      </ul>
+      <p>
+            A key (GTIN) Verifiable Credential is valid if:
+      </p>
+      <ul>
+            <li>
+                  the issuer is the same as the subject of the "extendsCredential";
+            </li>
+            <li>
+                  the key (GTIN) in "credentialSubject.id" ("09521234555551" in the examples) is properly based on the
+                  GS1 Company Prefix in "licenseValue" of the "extendsCredential";
+            </li>
+            <li>
+                  the credential was issued after the "extendsCredential" was issued and, if applicable, before the
+                  "extendsCredential" was revoked or transferred; and
+            </li>
+            <li>
+                  the GS1 Company Prefix license Verifiable Credential is valid.
+            </li>
+      </ul>
+      <h4>Verifiable Presentation</h4>
+      <p>
+            Healthy Tots presents the credential for the key (GTIN) that it has issued to identify its product as well as the GS1 Company
+            Prefix license credential to prove that it has the right to issue the key to SA&amp;E. To complete the
+            validation, SA&amp;E requires the GS1 Prefix license credential issued to GS1 Utopia, which is publicly
+            accessible and discoverable via the GS1 Company Prefix license credential.
+      </p>
+      <h4>Trust Hierarchy</h4>
+      <ul>
+            <li>
+                  GS1 Global Office is responsible for management of the GS1 identification system as a whole. It is
+                  liable for ensuring that the GS1 Prefix licenses that it issues are unique.
+            </li>
+            <li>
+                  GS1 Utopia is responsible for management of the GS1 identification system within the range(s) of the
+                  GS1 Prefix(es) issued to it. It is liable for ensuring that the GS1 Company Prefix licenses that it
+                  issues are unique.
+            </li>
+            <li>
+                  Healthy Tots is responsible for management of the GS1 identification system within the range(s) of the
+                  GS1 Company Prefix(es) issued to it. It is liable for ensuring that the GS1 identification keys that
+                  it issues are unique.
+            </li>
+            <li>
+                  SA&amp;E is responsible for ensuring that no two products listed on its website carry the same GTIN.
+            </li>
+      </ul>
+      <h4>Variation - License Transfer</h4>
+      <p>
+            GS1 license Verifiable Credentials are issued with a <code>validFrom</code> property but not a <code>validUntil</code> property. Licenses are renewable as long as the licensee abides by the terms and conditions of the GS1 Member Organization that issued the license, including regular license payment if required. Accordingly, the only way for a trading partner to know that a license is no longer valid is to check its status for revokation.
+      </p>
+      <p>
+            Normally, GS1 license Verifiable Credentials are non-transferrable, but the whole or partial acquisition of a company may require it. Suppose that Healthy Tots is acquired by Benevolent Conglomerate. Benevolent Conglomerate may decide on a hands-off approach and leave Healthy Tots to continue its operations much as before, with no impact on the way that the GS1 identification keys are managed. It's possible, though, that Benevolent Conglomerate will decide to discontinue Healthy Tots as a separate entity and instead absorb its products into a central catalogue. In this case, the GS1 Company Prefix license, originally issued to Healthy Tots, will be transferred by GS1 Utopia to Benvolent Conglomerate.
+      </p>
+      <p>
+            In this case, a status check of the original GS1 Company Prefix license Verifiable Credential should indicate a status of "transferred" and the ID of the replacement. The maintain continuity of supply chain management, the following must be supported:
+      </p>
+      <ul>
+            <li>
+                  The original key Verifiable Credentials issued by Healthy Tots remain valid, as they were issued prior to the transfer and the new GS1 Company Prefix license Verifiable Credential has not been revoked.
+            </li>
+            <li>
+                  Benvolent Conglomerate can issue new key Verifiable Credentials based on the GS1 Company Prefix license Verifiable Credential.
+            </li>
+            <li>
+                  A malicious actor with access to the former Verifiable Credential infrastructure belonging to Healthy Tots cannot issue any key Verifiable Credentials or any credentials based on prior key Verifiable Credentials issued by Healthy Tots, as their issuance timestamps would be after the transfer of the GS1 Company Prefix license Verifiable Credential to Benevolent Conglomerate.
+            </li>
+            <li>
+                  Benvolent Conglomerate can issue additional Verifiable Credentials based on the key Verifiable Credentials issued by Healthy Tots, as the transfer of the GS1 Company Prefix license Verifiable Credential provides an authenticated chain of responsibility.
+            </li>
+      </ul>
+</section>
