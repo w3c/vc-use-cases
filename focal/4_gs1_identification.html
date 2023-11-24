@@ -7,10 +7,8 @@
       <p>
             GS1 is the global supply chain standards development organization behind the retail barcode. The content of
             the barcode, the Global Trade Item Number (GTIN), is a 13-digit string composed of a GS1 Company Prefix (a
-            unique string
-            of 4-12 digits), a trade item reference (a numeric string unique within the GS1 Company Prefix to bring the
-            length
-            up to 12 digits), and a check digit (a mathematical calculation to detect keying errors).
+            unique string of 4-12 digits), a trade item reference (a numeric string unique within the GS1 Company Prefix to bring
+            the length up to 12 digits), and a check digit (a mathematical calculation to detect keying errors).
       </p>
       <p>
             The GS1 Company Prefix is licensed to a user company by a local GS1 Member Organization. The license gives
@@ -204,26 +202,43 @@
       </ul>
       <h4>Variation - License Transfer</h4>
       <p>
-            GS1 license Verifiable Credentials are issued with a <code>validFrom</code> property but not a <code>validUntil</code> property. Licenses are renewable as long as the licensee abides by the terms and conditions of the GS1 Member Organization that issued the license, including regular license payment if required. Accordingly, the only way for a trading partner to know that a license is no longer valid is to check its status for revokation.
+            GS1 license Verifiable Credentials are issued with a <code>validFrom</code> property but not a <code>validUntil</code>
+            property. Licenses are renewable as long as the licensee abides by the terms and conditions of the GS1 Member
+            Organization that issued the license, including regular license payment if required. Accordingly, the only way for a
+            trading partner to know that a license is no longer valid is to check its status for revocation.
       </p>
       <p>
-            Normally, GS1 license Verifiable Credentials are non-transferrable, but the whole or partial acquisition of a company may require it. Suppose that Healthy Tots is acquired by Benevolent Conglomerate. Benevolent Conglomerate may decide on a hands-off approach and leave Healthy Tots to continue its operations much as before, with no impact on the way that the GS1 identification keys are managed. It's possible, though, that Benevolent Conglomerate will decide to discontinue Healthy Tots as a separate entity and instead absorb its products into a central catalogue. In this case, the GS1 Company Prefix license, originally issued to Healthy Tots, will be transferred by GS1 Utopia to Benevolent Conglomerate.
+            Normally, GS1 license Verifiable Credentials are non-transferrable, but the whole or partial acquisition of a company
+            may require it. Suppose that Healthy Tots is acquired by Benevolent Conglomerate. Benevolent Conglomerate may decide on
+            a hands-off approach and leave Healthy Tots to continue its operations much as before, with no impact on the way that
+            the GS1 identification keys are managed. It's possible, though, that Benevolent Conglomerate will decide to discontinue
+            Healthy Tots as a separate entity and instead absorb its products into a central catalogue. In this case, the GS1
+            Company Prefix license, originally issued to Healthy Tots, will be transferred by GS1 Utopia to Benevolent Conglomerate.
       </p>
       <p>
-            In this case, a status check of the original GS1 Company Prefix license Verifiable Credential should indicate a status of "transferred" and the ID of the replacement. The maintain continuity of supply chain management, the following must be supported:
+            In this case, a status check of the original GS1 Company Prefix license Verifiable Credential should indicate a status
+            of "transferred" and the ID of the replacement. The maintain continuity of supply chain management, the following must
+            be supported:
       </p>
       <ul>
             <li>
-                  The original key Verifiable Credentials issued by Healthy Tots remain valid, as they were issued prior to the transfer and the new GS1 Company Prefix license Verifiable Credential has not been revoked.
+                  The original key Verifiable Credentials issued by Healthy Tots remain valid, as they were issued prior to the transfer
+                  and the new GS1 Company Prefix license Verifiable Credential has not been revoked.
             </li>
             <li>
-                  Benevolent Conglomerate can issue new key Verifiable Credentials based on the GS1 Company Prefix license Verifiable Credential.
+                  Benevolent Conglomerate can issue new key Verifiable Credentials based on the GS1 Company Prefix license Verifiable
+                  Credential.
             </li>
             <li>
-                  A malicious actor with access to the former Verifiable Credential infrastructure belonging to Healthy Tots cannot issue any key Verifiable Credentials or any credentials based on prior key Verifiable Credentials issued by Healthy Tots, as their issuance timestamps would be after the transfer of the GS1 Company Prefix license Verifiable Credential to Benevolent Conglomerate.
+                  A malicious actor with access to the former Verifiable Credential infrastructure belonging to Healthy Tots cannot issue
+                  any key Verifiable Credentials or any credentials based on prior key Verifiable Credentials issued by Healthy Tots, as
+                  their issuance timestamps would be after the transfer of the GS1 Company Prefix license Verifiable Credential to
+                  Benevolent Conglomerate.
             </li>
             <li>
-                  Benevolent Conglomerate can issue additional Verifiable Credentials based on the key Verifiable Credentials issued by Healthy Tots, as the transfer of the GS1 Company Prefix license Verifiable Credential provides an authenticated chain of responsibility.
+                  Benevolent Conglomerate can issue additional Verifiable Credentials based on the key Verifiable Credentials issued by
+                  Healthy Tots, as the transfer of the GS1 Company Prefix license Verifiable Credential provides an authenticated chain of
+                  responsibility.
             </li>
       </ul>
 </section>
