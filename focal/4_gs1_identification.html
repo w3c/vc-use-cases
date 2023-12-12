@@ -25,6 +25,15 @@
             Verifiable Credentials, including some that refer to Verifiable Credentials issued by the previous user
             company.
       </p>
+      <div class="note">
+            <p>
+                  The core GS1 standard is the identification of objects in the supply chain, typically trade items, but also
+                  locations, shipping containers, and much more. Every object is identified using a GS1 identification key,
+                  sometimes alongside a secondary key for higher granularity (e.g., a serial number alongside a GTIN to
+                  identify a specific instance of a trade item). Much of the text in this use case refers to keys and key
+                  credentials. These are the GS1 identification keys, <strong>not</strong> cryptographic keys.
+            </p>
+      </div>
       <h4>Distinction</h4>
       <p>
             This differs from other focal use cases in that the rights granted by a Verifiable Credential can be
@@ -202,43 +211,126 @@
       </ul>
       <h4>Variation - License Transfer</h4>
       <p>
-            GS1 license Verifiable Credentials are issued with a <code>validFrom</code> property but not a <code>validUntil</code>
+            GS1 license Verifiable Credentials are issued with a <code>validFrom</code> property but not a
+            <code>validUntil</code>
             property. Licenses are renewable as long as the licensee abides by the terms and conditions of the GS1 Member
-            Organization that issued the license, including regular license payment if required. Accordingly, the only way for a
+            Organization that issued the license, including regular license payment if required. Accordingly, the only way for
+            a
             trading partner to know that a license is no longer valid is to check its status for revocation.
       </p>
+      <h5>Revocation</h5>
       <p>
-            Normally, GS1 license Verifiable Credentials are non-transferrable, but the whole or partial acquisition of a company
-            may require it. Suppose that Healthy Tots is acquired by Benevolent Conglomerate. Benevolent Conglomerate may decide on
-            a hands-off approach and leave Healthy Tots to continue its operations much as before, with no impact on the way that
-            the GS1 identification keys are managed. It's possible, though, that Benevolent Conglomerate will decide to discontinue
-            Healthy Tots as a separate entity and instead absorb its products into a central catalogue. In this case, the GS1
-            Company Prefix license, originally issued to Healthy Tots, will be transferred by GS1 Utopia to Benevolent Conglomerate.
+            Once a license credential is revoked, any extension credentials (those that extend the revoked credential or that
+            extend other extension credentials) created after the revocation are invalid. For example, a GTIN key credential
+            created after the revocation of the underlying GS1 Company Prefix license credential is invalid because the
+            company no longer has the right to issue GTINs, or any other key, within the scope of the GS1 Company Prefix.
+            Other dependent credentials that are created after revocation may be valid, such as a product recall notice linked
+            to a GTIN key credential created before the revocation.
       </p>
       <p>
-            In this case, a status check of the original GS1 Company Prefix license Verifiable Credential should indicate a status
-            of "transferred" and the ID of the replacement. The maintain continuity of supply chain management, the following must
-            be supported:
+            Extension credentials created prior to the revocation of an extended credential may be considered valid for
+            certain use cases. The key credential used to identify a trade item with a GTIN, for example, will remain valid in
+            perpetuity, long after trade items identified by the GTIN are no longer in the supply chain. Some of the data
+            credentials associated with the GTIN, such as those that describe the product or that provide information such as
+            recycling instructions, may also be valid well beyond the revocation of the GS1 Company Prefix license credential.
+      </p>
+      <h5>Suspension</h5>
+      <p>
+            Suspension of a license is an intermediate step for some GS1 Member Organizations, to give the licensee the
+            opportunity to come back into compliance with the terms and conditions of their agreement. In general, a suspended
+            credential should be treated as revoked, with the caveat that the suspension status could be removed entirely or
+            replaced with the revocation status. Verifiers should therefore check the credential status periodically until one
+            or the other occurs.
+      </p>
+      <h5>Replacement</h5>
+      <p>
+            Replacement is similar to revocation in that it invalidates the credential, but it indicates that there is
+            another, equivalent credential available. The most common use case for this is in acquisitions and mergers, as
+            defined in the GS1 General Specifications:
+      </p>
+      <p>
+            <em>
+                  During an acquisition or merger, a company may assume responsibility for the acquired company's GS1 Company
+                  Prefix and/or individual GS1 identification key licences. In the situations where the licences transfer, the
+                  acquiring company can:
+            </em>
       </p>
       <ul>
             <li>
-                  The original key Verifiable Credentials issued by Healthy Tots remain valid, as they were issued prior to the transfer
-                  and the new GS1 Company Prefix license Verifiable Credential has not been revoked.
+                  <em>
+                        Use the acquired company's GS1 Company Prefix(es) and GS1 identification key(s
+                  </em>
             </li>
+            <li>
+                  <em>
+                        Issue GS1 identification keys using the newly acquired GS1 Company Prefix(es)
+                  </em>
+            </li>
+      </ul>
+      <p>
+            <em>
+                  For example, products that the acquired company identified using its GS1 Company Prefix or individual GS1
+                  identification key licences can still be produced using the same GTINs after the merger. Additionally,
+                  parties, locations, assets, and other objects identified with GS1 identification keys can continue to use
+                  those keys after the merger.
+            </em>
+      </p>
+      <p>
+            <em>
+                  If a partial purchase occurs, where only a segment of a larger entity is acquired, the involved companies must
+                  determine whether GS1 identification licences are transferred based on their specific business
+                  requirements.
+            </em>
+      </p>
+      <p>
+            In such a situation, the acquiring company takes over the licenses of the acquired company and should be issued
+            the appropriate credentials. Those originally issued to the acquired company are no longer valid, but simple
+            revocation could be highly disruptive as there may be thousands of extension credentials that could be invalidated
+            by the business rules that apply to revocation. Instead, the replacement status indicates that the licence
+            credential has been replaced. As with revocation, any new extension credentials that directly reference the
+            replaced credential are invalid, but pre-existing extension credentials should be validated against the
+            replacement credential using the normal business rules.
+      </p>
+      <p>
+            Suppose that Healthy Tots is acquired by Benevolent Conglomerate. Benevolent Conglomerate may decide on a
+            hands-off approach and leave Healthy Tots to continue its operations much as before, with no impact on the way
+            that the GS1 identification keys are managed. It's possible, though, that Benevolent Conglomerate will decide to
+            discontinue Healthy Tots as a separate entity and instead absorb its products into a central catalogue. The GS1
+            Company Prefix license, originally issued to Healthy Tots, will be transferred by GS1 Utopia to Benevolent
+            Conglomerate.
+      </p>
+      <p>
+            In this case, a status check of the original GS1 Company Prefix license Verifiable Credential must indicate a
+            status of "replaced" and, potentially, include the ID of the replacement. Regardless of whether the status
+            indicates the ID of the replacement credential, the replacement must reference the credential it replaced. The
+            maintain continuity of supply chain management, the following must be supported:
+      </p>
+      <ul>
+            <li>
+                  The original key credentials issued by Healthy Tots remain valid, as:
+                  <ul>
+                        <li>
+                              they were issued prior to the replacement;
+                        </li>
+                        <li>
+                              the replacement references the original license credential;
+                        </li>
+                        <li>
+                              using a combination of the original and replacement credentials, the key credentials can be validated according to
+                              the business rules; and
+                        </li>
+                        <li>
+                              the replacement GS1 Company Prefix license Verifiable Credential has not been revoked.
+                        </li>
+                  </ul>
             <li>
                   Benevolent Conglomerate can issue new key Verifiable Credentials based on the GS1 Company Prefix license Verifiable
                   Credential.
             </li>
             <li>
-                  A malicious actor with access to the former Verifiable Credential infrastructure belonging to Healthy Tots cannot issue
-                  any key Verifiable Credentials or any credentials based on prior key Verifiable Credentials issued by Healthy Tots, as
-                  their issuance timestamps would be after the transfer of the GS1 Company Prefix license Verifiable Credential to
-                  Benevolent Conglomerate.
-            </li>
-            <li>
-                  Benevolent Conglomerate can issue additional Verifiable Credentials based on the key Verifiable Credentials issued by
-                  Healthy Tots, as the transfer of the GS1 Company Prefix license Verifiable Credential provides an authenticated chain of
-                  responsibility.
+                  Benevolent Conglomerate can issue additional Verifiable Credentials based on the key Verifiable Credentials issued
+                  by Healthy Tots, as the transfer (replacement) of the GS1 Company Prefix license Verifiable Credential provides an
+                  authenticated chain of responsibility.
             </li>
       </ul>
 </section>
