@@ -95,6 +95,9 @@
                   A trade item manufactured and sold by Healthy Tots, represented as a <a
                         href="https://www.gs1.org/standards/gs1-digital-link" rel="nofollow">GS1 Digital Link</a> URI
             </li>
+            <li>
+                  Benevolent Conglomerate, a company that acquires Healthy Tots and, optionally, its GS1 licenses
+            </li>
       </ul>
       <h5>Issuer</h5>
       <ul>
@@ -143,6 +146,17 @@
             </li>
       </ul>
       <h4>Validation Requirements</h4>
+      <p>
+            The validity of a credential often depends on the validity of a prior credential and on comparison of data between
+            the credential of interest and its prior credential. The validation process is recursive, ending only when there is
+            no further prior credential and the first credential (the one with no prior credential) is issued by GS1 Global
+            Office.
+      </p>
+      <p>
+            Within the GS1 vocabularly, a credential that depends on a prior credential is said to extend the prior credential.
+            Accordingly, every such credential has an "extendsCredential" property that references the ID of the prior
+            credential; the absence of this property indicates the first credential.
+      </p>
       <p>
             A GS1 Prefix license Verifiable Credential is valid if it is issued by GS1 Global Office.
       </p>
