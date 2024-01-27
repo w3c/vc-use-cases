@@ -6,6 +6,9 @@
 <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
 <script src='https://opencreds.github.io/vc-common/common.js' class='remove'></script>
 <script src='./refs.js' class='remove'></script>
+<script class="remove"
+  src="https://cdn.jsdelivr.net/gh/w3c/respec-mermaid@1.1.0/dist/main.js"></script>
+
 <script class='remove'>
 var respecConfig = {
   // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use .
@@ -98,7 +101,10 @@ var respecConfig = {
   // This is important for Rec-track documents, do not copy a patent URI from a random
   // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
   // Team Contact.
-  wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status"
+  wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status",
+
+    // This is for the mermaid rendering
+  preProcess: [window.respecMermaid.createFigures]
 };
 </script>
 
@@ -304,14 +310,69 @@ A role an <a>entity</a> may perform by possessing one or more
     </p>
 
     <figure>
-      <img alt='Verifiable Credential User Needs'
-           style='display:block; margin:auto'
-           src="VerifiableCredentialsProblemDomains.png" />
-      <figcaption>
-Verifiable Credentials, Example Domains for User Needs
-      </figcaption>
-    </figure>
+<pre class="diagram mermaid">
+  %%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing': 10}}}%%
+    flowchart TD
+    classDef Domain stroke:#000,stroke-width:3px,padding:2px;
+    classDef Problem stroke:#222,stroke-width:1px,padding:2px;
+    classDef Education fill:#ffe4e6
+    classDef Retail fill:#ffefd6
+    classDef Finance fill:#fffdd0
+    classDef Healthcare fill:#dff6d1
+    classDef Credentials fill:#bffedb
+    classDef Legal fill:#beddfe
+    classDef Devices fill:#fcdfef
 
+  E(Education) --- E.1[E.1 Digital Transcript]
+  E.1 --- E.2[E.2 Taking a Test]
+  E.2 --- E.3[E.3 Transferring Schools]
+  E.3 --- E.4[E.4 Online Classes]
+  R(Retail) --- R.1[R.1 Digital Transcript]
+  R.1 --- R.2[R.2 Taking a Test]
+  R.2 --- R.3[R.3 Transferring Schools]
+  R.3 --- R.4[R.4 Online Classes]
+  F(Finance) --- F.1["F.1 Reuse Know
+  Your Customer"]
+  F.1 --- F.2[F.2 Money Transfer]
+  F.2 --- F.3[F.3 Closing Account]
+  F.3 --- F.4[F.4 Trying out a new service]
+  F.4 --- F.5["F.5 New Bank 
+Account from Home"]
+  H(Healthcare) --- H.1[H.1 Prescribing]
+  H.1 --- H.2[H.2 Online Pharmacy]
+  H.2 --- H.3[H.3 Insurance Claim]
+  H.3 --- H.4[H.4 Traveling Illness]
+  H.4 --- H.5["H.5 Proving Legal 
+  Disability Status"]
+  C(Professional Credentials) --- C.1[C.1 Find a Doctor]
+  C.1 --- C.2[C.2 Busy Doctor]
+  C.2 --- C.3[C.3 Bad University]
+  C.3 --- C.4[C.4 New Employer]
+  C.4 --- C.5[C.5 Social Authority]
+  C.5 --- C.6[C.6 Job Applicant]
+  L(Legal Identity) --- L.1[L.1 Digital Driver's License]
+  L.1 --- L.2[L.2 Seamless Integration]
+  L.2 --- L.3[L.3 Speedy Air Travel]
+  L.3 --- L.4[L.4 Refugee Crisis]
+  D(Devices) --- D.1["D.1 Devices 
+  During Manufacturing"]
+  D.1 --- D.2[D.2 Devices During Delivery]
+  D.2 --- D.3["D.3 Device setup for
+  operating autonomously"]
+  class E,E.1,E.2,E.3,E.4 Education
+  class R,R.1,R.2,R.3,R.4 Retail
+  class F,F.1,F.2,F.3,F.4,F.5, Finance
+  class H,H.1,H.2,H.3,H.4,H.5 Healthcare
+  class C,C.1,C.2,C.3,C.4,C.5,C.6 Credentials
+  class L,L.1,L.2,L.3,L.4 Legal
+  class D,D.1,D.2,D.3 Devices
+  class E,R,F,H,C,L,D Domain
+  class E.1,E.2,E.3,E.4,R.1,R.2,R.3,R.4,F.1,F.2,F.3,F.4,F.5,H.1,H.2,H.3,H.4,H.5,C.1,C.2,C.3,C.4,C.5,C.6,L.1,L.2,L.3,L.4,D.1,D.2,D.3 Problem
+</pre>
+<figcaption>
+  Verifiable Credentials, Example Domains for User Needs
+  </figcaption>
+</figure>
     <section>
       <h3>Education</h3>
       <p>
@@ -546,14 +607,12 @@ complete the transaction.
       </dl>
     </section>
     <section>
-      <h3>Store / Move Claim</h3>
+      <h3>Store Claim</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
 It MUST be possible for the holder of a claim to store that claim in one or
-more <a>credential repositories</a>. It MUST also be possible for the holder
-to move a claim among <a>credential repositories</a>, and to do so without
-requesting a new claim from the claim issuer.
+more <a>credential repositories</a>.
         </dd>
         <dt>Motivation</dt>
         <dd>
