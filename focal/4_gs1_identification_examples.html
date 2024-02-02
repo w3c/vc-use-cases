@@ -1,0 +1,94 @@
+<section>
+      <h3>Focal Use Case: Chain of GS1 Credentials to Identify a Trade Item</h3>
+
+      <p>
+            These examples are based on the document <a href="https://ref.gs1.org/gs1/vc/data-model/" rel="nofollow">"GS1 Verifiable Credentials - Data Model and Validations"</a>. The examples use Verifiable Credentials Data Model 2.0.
+      </p>
+      <p>
+            The key artefact is the last one; it declares the existence of a GTIN, around which other Verifiable Credentials may be issued to declare data about the trade item (brand, size and unit of measure, ingredients, dimensions and weights, etc.). Validation of the artefact requires validating all the credentials that come before it, identified in each case by "extendsCredential".
+      </p>
+      
+      <pre class="example" title="GS1 Prefix 952 Licensed by GS1 Global Office to GS1 Utopia">
+{
+      "@context": [
+            "https://www.w3.org/ns/credentials/v2",
+            "https://ref.gs1.org/gs1/vc/license-context/"
+      ],
+      "id": "did:example:079713e6-9646-4de1-a89d-573dfbd77968",
+      "type": [
+            "VerifiableCredential",
+            "GS1PrefixLicenseCredential"
+      ],
+      "issuer": "did:web:id.gs1.org",
+      "validFrom": "2005-01-01T00:00:00Z",
+      "credentialSubject": {
+            "id": "did:web:www.gs1utopia.example",
+            "organization": {
+            "gs1:partyGLN": "9521230000000",
+            "gs1:organizationName": "GS1 Utopia",
+            ...
+            },
+            "licenseValue": "952"
+      },
+      "credentialStatus": {
+            "id": "https://id.gs1.org/vc/license/status/079713e6-9646-4de1-a89d-573dfbd77968",
+            "type": "StatusList2021Entry"
+      },
+      "proof": { ... }
+}
+      </pre>
+      <pre class="example" title="GS1 Company Prefix 9521234 Licensed by GS1 Utopia to Healthy Tots">
+{
+      "@context": [
+            "https://www.w3.org/ns/credentials/v2",
+            "https://ref.gs1.org/gs1/vc/license-context/"
+      ],
+      "id": "did:example:b6d13abe-464d-4bb9-a568-b6d81efd57e3",
+      "type": [
+            "VerifiableCredential",
+            "GS1CompanyPrefixLicenseCredential"
+      ],
+      "issuer": "did:web:www.gs1utopia.example",
+      "validFrom": "2023-11-19T14:56:37Z",
+      "credentialSubject": {
+            "id": "did:web:www.healthytots.example",
+            "organization": {
+            "gs1:partyGLN": "9521234000006",
+            "gs1:organizationName": "Healthy Tots",
+            ...
+            },
+            "extendsCredential": "did:example:079713e6-9646-4de1-a89d-573dfbd77968",
+            "licenseValue": "9521234"
+      },
+      "credentialStatus": {
+            "id": "https://www.gs1utopia.example/credentials/gcp/status/b6d13abe-464d-4bb9-a568-b6d81efd57e3",
+            "type": "StatusList2021Entry"
+      },
+      "proof": { ... }
+}
+      </pre>
+      <pre class="example" title="GTIN 9521234555551, Issued by Healthy Tots">
+{
+      "@context": [
+            "https://www.w3.org/ns/credentials/v2",
+            "https://ref.gs1.org/gs1/vc/declaration-context/"
+      ],
+      "id": "did:example:60cda318-a0a7-4e39-b600-ea38bf68a31f",
+      "type": [
+            "VerifiableCredential",
+            "KeyCredential"
+      ],
+      "issuer": "did:web:www.healthytots.example",
+      "validFrom": "2023-12-02T09:48:11Z",
+      "credentialSubject": {
+            "id": "https://id.gs1.org/01/09521234555551",
+            "extendsCredential": "did:example:b6d13abe-464d-4bb9-a568-b6d81efd57e3"
+      },
+      "credentialStatus": {
+            "id": "https://www.example.com/mycreds/status/60cda318-a0a7-4e39-b600-ea38bf68a31f",
+            "type": "StatusList2021Entry"
+      },
+      "proof": { ... }
+}
+      </pre>
+</section>
