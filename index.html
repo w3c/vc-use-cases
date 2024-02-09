@@ -6,6 +6,9 @@
 <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
 <script src='https://opencreds.github.io/vc-common/common.js' class='remove'></script>
 <script src='./refs.js' class='remove'></script>
+<script class="remove"
+  src="https://cdn.jsdelivr.net/gh/w3c/respec-mermaid@1.1.0/dist/main.js"></script>
+
 <script class='remove'>
 var respecConfig = {
   // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use .
@@ -98,7 +101,10 @@ var respecConfig = {
   // This is important for Rec-track documents, do not copy a patent URI from a random
   // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
   // Team Contact.
-  wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status"
+  wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status",
+
+    // This is for the mermaid rendering
+  preProcess: [window.respecMermaid.createFigures]
 };
 </script>
 
@@ -304,14 +310,69 @@ A role an <a>entity</a> may perform by possessing one or more
     </p>
 
     <figure>
-      <img alt='Verifiable Credential User Needs'
-           style='display:block; margin:auto'
-           src="VerifiableCredentialsProblemDomains.png" />
-      <figcaption>
-Verifiable Credentials, Example Domains for User Needs
-      </figcaption>
-    </figure>
+<pre class="diagram mermaid">
+  %%{init:{'flowchart':{'nodeSpacing': 20, 'rankSpacing': 10}}}%%
+    flowchart TD
+    classDef Domain stroke:#000,stroke-width:3px,padding:2px;
+    classDef Problem stroke:#222,stroke-width:1px,padding:2px;
+    classDef Education fill:#ffe4e6
+    classDef Retail fill:#ffefd6
+    classDef Finance fill:#fffdd0
+    classDef Healthcare fill:#dff6d1
+    classDef Credentials fill:#bffedb
+    classDef Legal fill:#beddfe
+    classDef Devices fill:#fcdfef
 
+  E(Education) --- E.1[E.1 Digital Transcript]
+  E.1 --- E.2[E.2 Taking a Test]
+  E.2 --- E.3[E.3 Transferring Schools]
+  E.3 --- E.4[E.4 Online Classes]
+  R(Retail) --- R.1[R.1 Digital Transcript]
+  R.1 --- R.2[R.2 Taking a Test]
+  R.2 --- R.3[R.3 Transferring Schools]
+  R.3 --- R.4[R.4 Bona-fide Shopper]
+  F(Finance) --- F.1["F.1 Reuse Know
+  Your Customer"]
+  F.1 --- F.2[F.2 Money Transfer]
+  F.2 --- F.3[F.3 Closing Account]
+  F.3 --- F.4[F.4 Trying out a new service]
+  F.4 --- F.5["F.5 New Bank 
+Account from Home"]
+  H(Healthcare) --- H.1[H.1 Prescribing]
+  H.1 --- H.2[H.2 Online Pharmacy]
+  H.2 --- H.3[H.3 Insurance Claim]
+  H.3 --- H.4[H.4 Traveling Illness]
+  H.4 --- H.5["H.5 Proving Legal 
+  Disability Status"]
+  C(Professional Credentials) --- C.1[C.1 Find a Doctor]
+  C.1 --- C.2[C.2 Busy Doctor]
+  C.2 --- C.3[C.3 Bad University]
+  C.3 --- C.4[C.4 New Employer]
+  C.4 --- C.5[C.5 Social Authority]
+  C.5 --- C.6[C.6 Job Applicant]
+  L(Legal Identity) --- L.1[L.1 Digital Driver's License]
+  L.1 --- L.2[L.2 Seamless Integration]
+  L.2 --- L.3[L.3 Speedy Air Travel]
+  L.3 --- L.4[L.4 Refugee Crisis]
+  D(Devices) --- D.1["D.1 Devices 
+  During Manufacturing"]
+  D.1 --- D.2[D.2 Devices During Delivery]
+  D.2 --- D.3["D.3 Device setup for
+  operating autonomously"]
+  class E,E.1,E.2,E.3,E.4 Education
+  class R,R.1,R.2,R.3,R.4 Retail
+  class F,F.1,F.2,F.3,F.4,F.5, Finance
+  class H,H.1,H.2,H.3,H.4,H.5 Healthcare
+  class C,C.1,C.2,C.3,C.4,C.5,C.6 Credentials
+  class L,L.1,L.2,L.3,L.4 Legal
+  class D,D.1,D.2,D.3 Devices
+  class E,R,F,H,C,L,D Domain
+  class E.1,E.2,E.3,E.4,R.1,R.2,R.3,R.4,F.1,F.2,F.3,F.4,F.5,H.1,H.2,H.3,H.4,H.5,C.1,C.2,C.3,C.4,C.5,C.6,L.1,L.2,L.3,L.4,D.1,D.2,D.3 Problem
+</pre>
+<figcaption>
+  Verifiable Credentials, Example Domains for User Needs
+  </figcaption>
+</figure>
     <section>
       <h3>Education</h3>
       <p>
@@ -519,41 +580,151 @@ criteria without revealing additional attributes that are not required.
       </dl>
     </section>
     <section>
-      <h3>Verify Claim</h3>
+      <h3>Verify Credential</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
-It MUST be possible for a <a>verifier</a> to verify that the credential is an
-authentic statement of an <a>issuer's</a> <a>claims</a> about the
-<a>subject</a>. The verifying <a>entity</a> must have the capability to
-connect the issuer’s identity to its credential identifier and the
-<a>subject's</a> identity to their identifier as indicated in the credential.
-The issuer’s verification information, such as its public key, must be
-discoverable from the credential record and verifiably linked to the issuer.
-It MUST be possible to do this in an automated fashion.
-        </dd>
+          It is expected to be possible for a <a>verifier</a> to verify that the
+          credential is an authentic statement of an <a>issuer's</a>
+          <a>claims</a> about the
+          <a>subject</a>. Verifiers MUST have the capability to
+          cryptographically prove that a credential has not been tampered
+          with since issuance (authenticity) and that the issuer continues
+          to assert the claims as true (currency). 
+          <br><br>
+          To check authenticity, the issuer's verification method(s), such as
+          a public key, must be discoverable from the credential itself. It
+          is expected that the issuer identifier either is
+          itself cryptographically verifiable, or that it can be used to
+          reliably discover the cryptographic material necessary to confirm
+          that the content of a credential has not been changed since
+          issuance. It is understood that verification depends on the
+          verifier's acceptance of the robustness of the cryptographic
+          mechanisms used for testing authenticity and for discovering
+          verification methods. An untrusted verification method cannot be
+          relied upon for verification.
+           <br><br>
+          Verifiers must also be able to
+          inquire about the current status of a credential without
+          revealing to the issuer 
+          <ol type="a">
+             <li>The entity requesting that status</li>
+             <li>The credential for which status is being checked</li>
+             <li>The subject of the credential being checked</li> 
+          </ol>
+          Requiring that verifiers perform this status check
+          is what enables issuers to revoke, suspend, or otherwise
+          moderate the status of the credential.
+          <br><br>
+          Similarly, if a discovery mechanism is used to retrieve
+          verification methods for a given issuer, verifiers must be able
+          to do so without revealing unnecessary information to the issuer.
+          <br><br>
+          In short, it must be possible to fully verify a credential
+          without leaking usage data to the issuer or anyone else. This
+          is to avoid the so-called "phone home" problem.
+          </dd>
         <dt>Motivations</dt>
         <dd>
-In many environments (such as order processing) information such as a payer's
-address, citizenship, or age need to be automatically verified in order to
-complete the transaction.
+          In many environments (such as order processing), information — such
+          as a payer's address, citizenship, or age — needs to be
+          automatically verified to complete the transaction. 
+          <br><br>
+          It MUST be possible to verify these in an automated fashion.
         </dd>
         <dt>Needs</dt>
         <dd>
-<uref>F.2</uref>, <uref>C.1</uref>, <uref>E.2</uref>, <uref>R.1</uref>,
-<uref>F.5</uref>, <uref>H.2</uref>, <uref>C.6</uref>
+          <uref>F.2</uref>, <uref>C.1</uref>, <uref>E.2</uref>, <uref>R.1
+          </uref>,
+          <uref>F.5</uref>, <uref>H.2</uref>, <uref>C.6</uref>
         </dd>
       </dl>
     </section>
     <section>
-      <h3>Store / Move Claim</h3>
+      <h3>Validate Claim</h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+          It MUST be possible for a <a>verifier</a> to check whether a
+          given claim is appropriate for a particular use. That is, given 
+          a credential that is authentic and current, the verifier needs to
+          interpret the claims in the context of their own 'business rules'
+          concerning, for instance, which parties are acceptable authorities, and which
+          cryptographic mechanisms are acceptable for what situations.
+          <ol>
+            <li>Is the issuer someone we know?</li>
+            <li>Are the claims made by this issuer appropriate for this
+            particular issuer's authority?</li>
+            <li>Is the holder's presentation an appropriate use of the
+            credential?</li>
+          </ol>
+          The first and second questions will be answered because either the
+          verifier already knows the public identifiers for the issuers it
+          recognizes for specific claims, or there is a discovery mechanism
+          whereby verifiers can find appropriate issuers given their
+          business requirements. 
+          <br><br>
+          The business rules may allow the use of certain credentials for
+          specific situations, even when verification fails. For example, a
+          suspended or expired professional license may be accepted by an employer as
+          evidence of past experience without it being treated as a current
+          qualification for roles that require that license. For this
+          reason, current status (as part of verification) only deals with the
+          status of the credential as maintained by the Issuer. Timeliness
+          is the domain of validation.
+          <br><br>
+          It's important to note that the bounds of authority for a given
+          issuer are specific claim types made by them and relied upon by
+          others. While a region's DMV (Department of Motor Vehicles)
+          or equivalent agency might be an acceptable authority for an
+          individual's driving privilege, it should probably not be treated
+          as authoritative for an individual's hair color or current
+          address, even though DMVs regularly include such claims in
+          today's driver's licenses.
+          <br><br>
+          Unlike verification, it may not always be possible to
+          automate validation. Some use cases require human review before accepting
+          a particular credential for a particular use. For example, a
+          digital proof of age system might need a trusted human agent to
+          visually compare the holder/presenter in real-space to a
+          reference photo securely referenced in the VC, before accepting a
+          credential as valid.
+        </dd>
+        <dt>Motivations</dt>
+        <dd>
+          Verifiers need to be able to apply their own policies and rules
+          to the information they rely on to run their "business" (which we
+          mean broadly, to encompass all activity focused towards a goal).
+          <br><br>
+          Given this need, any given VC might be verified but not usable in a
+          particular situation. For example, a self-issued driver's license
+          would likely not be acceptable for a car rental by most car
+          rental agencies, even though the verification succeeds. 
+          <br><br>
+          Even so, in other cases, such as at a go-cart racing facility, it
+          may be entirely appropriate to accept the name and image from a
+          self-issued license for the purpose of leaderboards,
+          announcements, and correspondence.
+          <br><br>
+          These business rules are entirely the province of the verifier. Only after
+          satisfying their rules should a verifier rely upon a claim as an
+          accepted fact for specific use.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+          <uref>F.2</uref>, <uref>C.1</uref>, <uref>E.2</uref>, <uref>R.1
+          </uref>,
+          <uref>F.5</uref>, <uref>H.2</uref>, <uref>C.6</uref>
+        </dd>
+      </dl>
+    </section>
+    <section>
+      <h3>Store Claim</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
 It MUST be possible for the holder of a claim to store that claim in one or
-more <a>credential repositories</a>. It MUST also be possible for the holder
-to move a claim among <a>credential repositories</a>, and to do so without
-requesting a new claim from the claim issuer.
+more <a>credential repositories</a>.
         </dd>
         <dt>Motivation</dt>
         <dd>
