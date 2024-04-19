@@ -616,7 +616,7 @@ and wishes to revoke the issued claim.
       <h3>Lifecycle Example</h3>
       <p>
 This section provides a concrete set of simple but complete lifecycle examples
-of [=verifiable credentials=] and [=verifiable presentations=]:
+of <a>verifiable credentials</a> and <a>verifiable presentations</a>:
       </p>
       <figure id="life-cycle-details">
         <img style="margin: auto; display: block; width: 85%;"
@@ -633,31 +633,31 @@ of [=verifiable credentials=] and [=verifiable presentations=]:
 
       <ol>
         <li>
-        Issuance of one or more [=verifiable credentials=].
+        Issuance of one or more <a>verifiable credentials</a>.
         </li>
         <li>
-        Storage of [=verifiable credentials=] in a [=credential repository=]
+        Storage of <a>verifiable credentials</a> in a <a>credential repository</a>
         (such as a digital wallet).
         </li>
         <li>
-        Composition of [=verifiable credentials=] into a
-        [=verifiable presentation=] for [=verifiers=].
+        Composition of <a>verifiable credentials</a> into a
+        <a>verifiable presentation</a> for <a>verifiers</a>.
         </li>
         <li>
-        [=Verification=] of the [=verifiable presentation=] by the
-        [=verifier=].
+        <a>Verification</a> of the <a>verifiable presentation</a> by the
+        <a>verifier</a>.
         </li>
         <li>
-        [=Validation=] by the [=verifier=] of relevant [=claims=] contained in
-        the [=verifiable presentation=].
+        <a>Validation</a> by the <a>verifier</a> of relevant <a>claims</a> contained in
+        the <a>verifiable presentation</a>.
         </li>
       </ol>
 
       <p>
 To illustrate this lifecycle, we will use the example of redeeming an alumni
 discount from a university. In the example below, Pat receives an alumni
-[=verifiable credential=] from a university, and Pat stores the
-[=verifiable credential=] in a digital wallet.
+<a>verifiable credential</a> from a university, and Pat stores the
+<a>verifiable credential</a> in a digital wallet.
       </p>
 
       <pre class="example nohighlight" title="A simple example of the contents of a verifiable credential">
@@ -692,29 +692,29 @@ discount from a university. In the example below, Pat receives an alumni
       </pre>
 
       <p>
-Pat then attempts to redeem the alumni discount. The [=verifier=], a ticket
+Pat then attempts to redeem the alumni discount. The <a>verifier</a>, a ticket
 sales system, states that alumni of "Example University" receive a discount
 on season tickets to sporting events. Using a mobile device, Pat starts the
 process of purchasing a season ticket. A step in this process requests an alumni
-[=verifiable credential=], and this request is routed to Pat's digital wallet.
+<a>verifiable credential</a>, and this request is routed to Pat's digital wallet.
 The digital wallet asks Pat if they would like to provide a previously issued
-[=verifiable credential=]. Pat selects the alumni
-[=verifiable credential=], which is then composed into a
-[=verifiable presentation=]. The [=verifiable presentation=] is sent to the
-[=verifier=] and [=verified=].
+<a>verifiable credential</a>. Pat selects the alumni
+<a>verifiable credential</a>, which is then composed into a
+<a>verifiable presentation</a>. The <a>verifiable presentation</a> is sent to the
+<a>verifier</a> and <a>verified</a>.
       </p>
       <p>
-Once [=verified=] as authentic and current, the seller of the season ticket then
-validates that the [=issuer=] of the [=verifiable credential=] is recognized for
+Once <a>verified</a> as authentic and current, the seller of the season ticket then
+validates that the <a>issuer</a> of the <a>verifiable credential</a> is recognized for
 the claim of alumni status &mdash; it is, as it was issued by Example
 University &mdash; and that today's date lies within the validity period defined
 by the values of the `validFrom` and `validUntil` properties. Since the
-[=holder=] is expected to be the [=subject=] of the [=verifiable credential=],
-the [=verifier=] also confirms that the `id` for the alumni claim matches the
-`id` of the creator of the [=verifiable presentation=].
+<a>holder</a> is expected to be the <a>subject</a> of the <a>verifiable credential</a>,
+the <a>verifier</a> also confirms that the `id` for the alumni claim matches the
+`id` of the creator of the <a>verifiable presentation</a>.
       </p>
       <p>
-Having [=verified=] the credential and the presentation, and validated the
+Having <a>verified</a> the credential and the presentation, and validated the
 relevant claims, the ticket seller safely enables the alumni discount for Pat,
 confident that Pat is legitimately entitled to it.
       </p>
@@ -748,7 +748,7 @@ confident that Pat is legitimately entitled to it.
 
       <p class="note">
 The examples above are unsecured. Implementers that are interested in
-understanding more about securing [=verifiable credentials=] can see the
+understanding more about securing <a>verifiable credentials</a> can see the
 specifications [[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]] and [[[VC-DATA-INTEGRITY]]]
 [[VC-DATA-INTEGRITY]] and the "Proofs" section of the [[[VC-SPECS]]]
 [[VC-SPECS]].
