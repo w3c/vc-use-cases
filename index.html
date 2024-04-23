@@ -612,150 +612,6 @@ and wishes to revoke the issued claim.
         </dd>
       </dl>
     </section>
-    <section>
-      <h3>Lifecycle Example</h3>
-      <p>
-This section provides a concrete set of simple but complete lifecycle examples
-of <a>verifiable credentials</a> and <a>verifiable presentations</a>:
-      </p>
-      <figure id="life-cycle-details">
-        <img style="margin: auto; display: block; width: 85%;"
-             src="ecosystemdetail.svg" alt="diagram showing how
-         credentials flow from issuer to holder, and optionally
-         from one holder to another; and how presentations flow from holder to
-         verifier. The verifier verifies and validates the presentation.
-         All parties can use information from a logical
-         verifiable data registry. Holder may also delete credential.">
-        <figcaption style="text-align: center;">
-          Lifecycle of a single Verifiable Credential.
-        </figcaption>
-      </figure>
-
-      <ol>
-        <li>
-        Issuance of one or more <a>verifiable credentials</a>.
-        </li>
-        <li>
-        Storage of <a>verifiable credentials</a> in a <a>credential repository</a>
-        (such as a digital wallet).
-        </li>
-        <li>
-        Composition of <a>verifiable credentials</a> into a
-        <a>verifiable presentation</a> for <a>verifiers</a>.
-        </li>
-        <li>
-        <a>Verification</a> of the <a>verifiable presentation</a> by the
-        <a>verifier</a>.
-        </li>
-        <li>
-        <a>Validation</a> by the <a>verifier</a> of relevant <a>claims</a> contained in
-        the <a>verifiable presentation</a>.
-        </li>
-      </ol>
-
-      <p>
-To illustrate this lifecycle, we will use the example of redeeming an alumni
-discount from a university. In the example below, Pat receives an alumni
-<a>verifiable credential</a> from a university, and Pat stores the
-<a>verifiable credential</a> in a digital wallet.
-      </p>
-
-      <pre class="example nohighlight" title="A simple example of the contents of a verifiable credential">
-{
-  <span class='comment'>// set the context, which establishes the special terms we will be using
-  // such as 'issuer' and 'alumniOf'.</span>
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2",
-    "https://www.w3.org/ns/credentials/examples/v2"
-  ],
-  <span class='comment'>// specify the identifier for the credential</span>
-  "id": "urn:uuid:6a9c92a9-2530-4e2b-9776-530467e9bbe0",
-  <span class='comment'>// the credential types, which declare what data to expect in the credential</span>
-  "type": ["VerifiableCredential", "ExampleAlumniCredential"],
-  <span class='comment'>// the entity that issued the credential</span>
-  "issuer": "https://university.example/issuers/565049",
-  <span class='comment'>// when the credential was issued</span>
-  "validFrom": "2010-01-01T19:23:24Z",
-  <span class='comment'>// claims about the subjects of the credential</span>
-  "credentialSubject": {
-    <span class='comment'>// identifier for the only subject of the credential</span>
-    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-    <span class='comment'>// assertion about the only subject of the credential</span>
-    "alumniOf": {
-      <span class='comment'>// identifier for the university</span>
-      "id": "did:example:c276e12ec21ebfeb1f712ebc6f1",
-      <span class='comment'>// name of the university</span>
-      "name": "Example University"
-    }
-  }
-}
-      </pre>
-
-      <p>
-Pat then attempts to redeem the alumni discount. The <a>verifier</a>, a ticket
-sales system, states that alumni of "Example University" receive a discount
-on season tickets to sporting events. Using a mobile device, Pat starts the
-process of purchasing a season ticket. A step in this process requests an alumni
-<a>verifiable credential</a>, and this request is routed to Pat's digital wallet.
-The digital wallet asks Pat if they would like to provide a previously issued
-<a>verifiable credential</a>. Pat selects the alumni
-<a>verifiable credential</a>, which is then composed into a
-<a>verifiable presentation</a>. The <a>verifiable presentation</a> is sent to the
-<a>verifier</a> and <a>verified</a>.
-      </p>
-      <p>
-Once <a>verified</a> as authentic and current, the seller of the season ticket then
-validates that the <a>issuer</a> of the <a>verifiable credential</a> is recognized for
-the claim of alumni status &mdash; it is, as it was issued by Example
-University &mdash; and that today's date lies within the validity period defined
-by the values of the `validFrom` and `validUntil` properties. Since the
-<a>holder</a> is expected to be the <a>subject</a> of the <a>verifiable credential</a>,
-the <a>verifier</a> also confirms that the `id` for the alumni claim matches the
-`id` of the creator of the <a>verifiable presentation</a>.
-      </p>
-      <p>
-Having <a>verified</a> the credential and the presentation, and validated the
-relevant claims, the ticket seller safely enables the alumni discount for Pat,
-confident that Pat is legitimately entitled to it.
-      </p>
-      <pre class="example nohighlight" title="A simple example of a verifiable presentation">
-{
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2",
-    "https://www.w3.org/ns/credentials/examples/v2"
-  ],
-  "type": "VerifiablePresentation",
-  <span class='comment'>// the verifiable credential issued in the previous example</span>
-  "verifiableCredential": [{
-    "@context": [
-      "https://www.w3.org/ns/credentials/v2",
-      "https://www.w3.org/ns/credentials/examples/v2"
-    ],
-    "id": "http://university.example/credentials/1872",
-    "type": ["VerifiableCredential", "ExampleAlumniCredential"],
-    "issuer": "https://university.example/issuers/565049",
-    "validFrom": "2010-01-01T19:23:24Z",
-    "credentialSubject": {
-      "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-      "alumniOf": {
-        "id": "did:example:c276e12ec21ebfeb1f712ebc6f1",
-        "name": "Example University"
-      }
-    }
-  }]
-}
-        </pre>
-
-      <p class="note">
-The examples above are unsecured. Implementers that are interested in
-understanding more about securing <a>verifiable credentials</a> can see the
-specifications
-<a href="https://www.w3.org/TR/vc-jose-cose/"> Securing Verifiable Credentials using JOSE and COSE</a>,
-<a href="https://www.w3.org/TR/vc-data-integrity/">Verifiable Credential Data Integrity</a>,
-and the "Securing Mechanisms" section of the
-<a href="https://www.w3.org/TR/vc-specs-dir/#securing-mechanisms">VC Specifications Directory</a>.
-      </p>
-    </section>
   </section>
   <section>
     <h2>Focal Use Cases</h2>
@@ -901,6 +757,150 @@ authorization.
     </section>
   </section>
 
+  <section>
+    <h2>Lifecycle Example</h2>
+    <p>
+    This section provides a concrete set of simple but complete lifecycle examples
+    of <a>verifiable credentials</a> and <a>verifiable presentations</a>:
+    </p>
+    <figure id="life-cycle-details">
+      <img style="margin: auto; display: block; width: 85%;"
+           src="ecosystemdetail.svg" alt="diagram showing how
+         credentials flow from issuer to holder, and optionally
+         from one holder to another; and how presentations flow from holder to
+         verifier. The verifier verifies and validates the presentation.
+         All parties can use information from a logical
+         verifiable data registry. Holder may also delete credential.">
+      <figcaption style="text-align: center;">
+        Lifecycle of a single Verifiable Credential.
+      </figcaption>
+    </figure>
+
+    <ol>
+      <li>
+      Issuance of one or more <a>verifiable credentials</a>.
+      </li>
+      <li>
+      Storage of <a>verifiable credentials</a> in a <a>credential repository</a>
+      (such as a digital wallet).
+      </li>
+      <li>
+      Composition of <a>verifiable credentials</a> into a
+      <a>verifiable presentation</a> for <a>verifiers</a>.
+      </li>
+      <li>
+      <a>Verification</a> of the <a>verifiable presentation</a> by the
+      <a>verifier</a>.
+      </li>
+      <li>
+      <a>Validation</a> by the <a>verifier</a> of relevant <a>claims</a> contained in
+      the <a>verifiable presentation</a>.
+      </li>
+    </ol>
+
+    <p>
+    To illustrate this lifecycle, we will use the example of redeeming an alumni
+    discount from a university. In the example below, Pat receives an alumni
+    <a>verifiable credential</a> from a university, and Pat stores the
+    <a>verifiable credential</a> in a digital wallet.
+    </p>
+
+    <pre class="example nohighlight" title="A simple example of the contents of a verifiable credential">
+{
+  <span class='comment'>// set the context, which establishes the special terms we will be using
+  // such as 'issuer' and 'alumniOf'.</span>
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  <span class='comment'>// specify the identifier for the credential</span>
+  "id": "urn:uuid:6a9c92a9-2530-4e2b-9776-530467e9bbe0",
+  <span class='comment'>// the credential types, which declare what data to expect in the credential</span>
+  "type": ["VerifiableCredential", "ExampleAlumniCredential"],
+  <span class='comment'>// the entity that issued the credential</span>
+  "issuer": "https://university.example/issuers/565049",
+  <span class='comment'>// when the credential was issued</span>
+  "validFrom": "2010-01-01T19:23:24Z",
+  <span class='comment'>// claims about the subjects of the credential</span>
+  "credentialSubject": {
+    <span class='comment'>// identifier for the only subject of the credential</span>
+    "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+    <span class='comment'>// assertion about the only subject of the credential</span>
+    "alumniOf": {
+      <span class='comment'>// identifier for the university</span>
+      "id": "did:example:c276e12ec21ebfeb1f712ebc6f1",
+      <span class='comment'>// name of the university</span>
+      "name": "Example University"
+    }
+  }
+}
+      </pre>
+
+    <p>
+    Pat then attempts to redeem the alumni discount. The <a>verifier</a>, a ticket
+    sales system, states that alumni of "Example University" receive a discount
+    on season tickets to sporting events. Using a mobile device, Pat starts the
+    process of purchasing a season ticket. A step in this process requests an alumni
+    <a>verifiable credential</a>, and this request is routed to Pat's digital wallet.
+    The digital wallet asks Pat if they would like to provide a previously issued
+    <a>verifiable credential</a>. Pat selects the alumni
+    <a>verifiable credential</a>, which is then composed into a
+    <a>verifiable presentation</a>. The <a>verifiable presentation</a> is sent to the
+    <a>verifier</a> and <a>verified</a>.
+    </p>
+    <p>
+    Once <a>verified</a> as authentic and current, the seller of the season ticket then
+    validates that the <a>issuer</a> of the <a>verifiable credential</a> is recognized for
+    the claim of alumni status &mdash; it is, as it was issued by Example
+    University &mdash; and that today's date lies within the validity period defined
+    by the values of the `validFrom` and `validUntil` properties. Since the
+    <a>holder</a> is expected to be the <a>subject</a> of the <a>verifiable credential</a>,
+    the <a>verifier</a> also confirms that the `id` for the alumni claim matches the
+    `id` of the creator of the <a>verifiable presentation</a>.
+    </p>
+    <p>
+    Having <a>verified</a> the credential and the presentation, and validated the
+    relevant claims, the ticket seller safely enables the alumni discount for Pat,
+    confident that Pat is legitimately entitled to it.
+    </p>
+    <pre class="example nohighlight" title="A simple example of a verifiable presentation">
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "type": "VerifiablePresentation",
+  <span class='comment'>// the verifiable credential issued in the previous example</span>
+  "verifiableCredential": [{
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://www.w3.org/ns/credentials/examples/v2"
+    ],
+    "id": "http://university.example/credentials/1872",
+    "type": ["VerifiableCredential", "ExampleAlumniCredential"],
+    "issuer": "https://university.example/issuers/565049",
+    "validFrom": "2010-01-01T19:23:24Z",
+    "credentialSubject": {
+      "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+      "alumniOf": {
+        "id": "did:example:c276e12ec21ebfeb1f712ebc6f1",
+        "name": "Example University"
+      }
+    }
+  }]
+}
+        </pre>
+
+    <p class="note">
+    The examples above are unsecured. Implementers that are interested in
+    understanding more about securing <a>verifiable credentials</a> can see the
+    specifications
+    <a href="https://www.w3.org/TR/vc-jose-cose/"> Securing Verifiable Credentials using JOSE and COSE</a>,
+    <a href="https://www.w3.org/TR/vc-data-integrity/">Verifiable Credential Data Integrity</a>,
+    and the "Securing Mechanisms" section of the
+    <a href="https://www.w3.org/TR/vc-specs-dir/#securing-mechanisms">VC Specifications Directory</a>.
+    </p>
+  </section>
 
   <section class="appendix">
     <!-- Editor - @halindrome -->
