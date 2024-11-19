@@ -1,0 +1,111 @@
+<section>
+    <h3>Exchange of Electronic Certificate of Origin to facilitate Cross Border Trade</h3>
+    <h4>Background</h4>
+    <p>
+        This use case has been provided by <a href="https://www.tradetrust.io/" rel="nofollow">TradeTrust</a>, launched
+        by Infocomm Media Development Authority (IMDA), a statutory board in the Singapore government.
+    </p>
+    <p>
+        Today, cross-border trade and transport of goods take place on the basis of many documents and processes that
+        are paper-based (hence manual), time-consuming, and resource-intensive process for all stakeholders. Another
+        downside of such paper-based processes is that there is no easy way to verify the accuracy and authenticity of
+        the trade documents. This results in inefficiencies and delays as the time required to process such paper
+        documents far exceeds the actual time taken for the physical movement of goods.
+        <a href=" https://www.mckinsey.com/industries/travel-logistics-and-infrastructure/our-insights/the-multi-billion-dollar-paper-jam-unlocking-trade-by-digitalizing-documentation">
+        According to a study by McKinsey in 2022</a>, documentation for a single shipment can require up to 50 sheets of
+        paper that are exchanged with up to 30 different stakeholders.
+    </p>
+    <p>
+        TradeTrust, which is built upon the <a href="https://www.openattestation.com">OpenAttestation</a> framework,
+        comprises globally accepted standards and frameworks that allow governments and businesses to issue, verify and
+        effect title transfer of electronic documents across different digital platforms. TradeTrust uses cryptography
+        and decentralised identifier (DID) technical methods to assure the authenticity and provenance of these
+        electronic documents.
+    </p>
+    <p>
+        As a framework, TradeTrust is designed and developed to support the digitalization of documents used for
+        cross-border trade processes. Such documents could include those that are used to convey information such as a
+        packing list or Certificate of Origin (CO), making them verifiable with respect to their authenticity and
+        provenance.
+    </p>
+    <p>
+        A CO is a document commonly used to attest that a product originates from a particular country. The standards
+        and guidelines for the CO are <a href="https://iccwbo.org/business-solutions/certificates-of-origin/">defined by
+        the International Chamber of Commerce</a>.
+    </p>
+    <h4>Distinction</h4>
+    <p>
+        Existing trade documents are typically printed hard copies secured with wet ink stamps. These documents are
+        susceptible to forgery and manipulation. A digital verifiable document would allow for:
+    </p>
+    <ul>
+        <li>Assurance that the document has not been tampered with.<li>
+        <li>Assurance that the document was issued by a particular Issuer<.li>
+    </ul>
+    <p>
+        As these trade documents are shared across different parties in a long chain that may cross many borders,
+        the holders of these documents may want control over what information is shared downstream. A shipper may choose
+        to selectively redact commercially sensitive information (such as suppliers' names or products' pricing) before
+        sharing it onto the next receiving party. This is based on a lossy selective redaction, removing the need to
+        re-issue 'a version sans the commercially sensitive information'.
+    </p>
+    <h4>Actors</h4>
+    <p>
+        Using an electronic Certificate of Origin (eCO) as an example of a digital document that is issued via the
+        TradeTrust framework, below are the typical actors involved in its processing.
+    </p>
+    <h5>Customs Administration or duly licensed parties like Chambers of Commerce</h5>
+    <p>
+        Customs Administration and/or Chamber of Commerce are the typical authorities responsible for producing an eCO.
+        It is typically required by importers/buyers to claim tariff exemptions from the importing customs authority or
+        to provide assurance that the goods are indeed from a particular country. It is provided to importers/buyers by
+        the exporters/sellers whom they buy from and often used in financing arrangements with banks.
+    </p>
+    <h5>Bank</h5>
+    <p>
+        In cross-border trade, sometimes buyers and sellers may arrange for trade financing services to mitigate the
+        risks of non-payment or non-delivery. Banks and other Financial Institutions are often engaged as intermediaries
+        to mitigate these risks using financing instruments such as a Letter of Credit (L/C). A L/C is applied for by
+        the Buyer and will specify a list of trade documents that the Banks will need to sight and verify on behalf of
+        their clients. One of the often-required documents can be an eCO.
+    </p>
+    <h5>Importer/Buyer</h5>
+    <p>
+        An Importer/Buyer is the party who purchases and receives products from the seller. If there is a Free Trade
+        Agreement between the importing country and the goods’ origin country, the Importer can provide the eCO during
+        importation clearance procedures to obtain tariff exemptions for the goods.
+    </p>
+    <h5>Exporter/Seller</h5>
+    <p>
+        An Exporter/Seller is the party who sells and transports products to his buyer. The Exporter is the party who
+        applies for the eCO from the Customs Administration or duly licensed parties like Chambers of Commerce within
+        the exporting country, upon the request of the Importer.
+    </p>
+    <h5>Issuer</h5>
+    <p>
+        A Customs Administration and/or Chamber of Commerce are the typical authorities responsible for issuing an eCO.
+    </p>
+    <h5>Subject</h5>
+    <p>
+        The eCO attests that the origin of the goods is a particular country. It is used to claim tariff exemptions from
+        the importing customs authority or to provide assurance that the goods are indeed from a particular country.
+    </p>
+    <h5>Holder</h5>
+    <p>
+        The eCO can be held by the Importer (and/or their appointed customs broker) and presented to the importing
+        country’s customs administration for import tariff exemption if there is an in-force Free Trade Agreement
+        between the goods’ origin country and the importing country. The eCO can also be held by the Exporter and Banks
+        for trade financing purposes.
+    </p>
+    <h5>Verifier</h5>
+    <p>
+        The eCO is verified by the importing country’s Custom Authority during the importation of goods. It is also
+        verified by Banks if the Exporter and/or Importer has financing arrangements that call for it. It is also
+        verified by the importer to assure that the goods originated from the expected country.
+    </p>
+    <h4>Validation Requirements</h4>
+    <p>
+        Document verification can be initiated by invoking the open-sourced verification library, or via the trusted
+        verification portals which run the open-sourced verification library.
+    </p>
+</section>

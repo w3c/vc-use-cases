@@ -1,0 +1,71 @@
+<section>
+      <h3>Electronic Certificate of Origin</h3>
+      <p>
+            Based on older OpenAttestation v2. Latest OpenAttestation v4 Alpha is now W3C VC Data Model 2.0 compliant.
+      </p>
+
+      <pre class="example" title="Electronic Certificate of Origin">
+{
+    "version": "https://schema.openattestation.com/2.0/schema.json",
+    "data": {
+        "firstSignatoryAuthentication": {},
+        "supplyChainConsignment": {
+            "exportCountry": {},
+            "exporter": {
+                "postalAddress": {}
+            },
+            "importCountry": {},
+            "importer": {
+                "postalAddress": {}
+            },
+            "loadingBaseportLocation": {},
+            "mainCarriageTransportMovement": {
+                "usedTransportMeans": {},
+                "departureEvent": {}
+            },
+            "unloadingBaseportLocation": {}
+        },
+        "$template": {
+            "type": "7a29f8c9-47a0-429d-a043-0eceee351090:string:EMBEDDED_RENDERER",
+            "name": "907e4a2d-0d16-491d-99a6-531eb4a5d06f:string:CHAFTA_COO",
+            "url": "7a149cd6-33d9-4813-9a6c-f7ea00b2683c:string:https://generic-templates.tradetrust.io"
+        },
+        "issuers": [
+            {
+                "name": "eef12038-1f5f-40de-9491-fea8a3c3771e:string:Demo Issuer",
+                "documentStore": "b75454f5-79c8-4f8c-9e92-77626b6871d2:string:0x70f83193bE363348Ec769c8752690eB915E640A4",
+                "identityProof": {
+                    "type": "b4aee06a-d226-4f0e-8bf4-b0f125735a14:string:DNS-TXT",
+                    "location": "4d830cea-5332-4cd7-91dd-0187c096e3af:string:sandbox.tradetrust.io"
+                },
+                "revocation": {
+                    "type": "59cf4245-6d93-4b63-91b1-f9b100e8f304:string:NONE"
+                }
+            }
+        ],
+        "network": {
+            "chain": "2d9f5493-416e-448c-8404-e308a6093bd7:string:FREE",
+            "chainId": "bf39e664-b37c-4e0c-bf9b-e74c257da7bd:string:101010"
+        }
+    },
+    "signature": {
+        "type": "SHA3MerkleProof",
+        "targetHash": "cff3db9808786f9ad214f3ae79cb83fccc74103a9db78f786335f85871b517cd",
+        "proof": [],
+        "merkleRoot": "cff3db9808786f9ad214f3ae79cb83fccc74103a9db78f786335f85871b517cd"
+    }
+}
+      </pre>
+      <h4>Trust Hierarchy</h4>
+      <p>
+            The trust can be separated into two parts:
+      </p>
+      <ol>
+            <li>The issuer’s identity is based on the ownership of the DNS.
+            <ol type="a">
+                  <li>This is where TradeTrust intends to have an alternative identity provided by the Trust Anchors</li>
+            </ol>
+            </li>
+            <li>Data integrity is based on the hash that is written on blockchain OR signed by the issuer.</li>
+      </ol>
+</section>
