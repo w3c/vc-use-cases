@@ -88,7 +88,7 @@ var respecConfig = {
   maxTocLevel: 3,
 
   // name of the WG
-  wg:           "Verifiable Claims Working Group",
+  wg:           "Verifiable Credentials Working Group",
 
   // URI of the public WG page
   wgURI:        "https://www.w3.org/2017/vc/",
@@ -158,13 +158,16 @@ dl.dl-horizontal > dd {
 <body>
   <section id='abstract'>
     <p>
-A <em>verifiable claim</em> is a qualification, achievement, quality, or piece
+A <em>verifiable credential</em> is a qualification, achievement, quality, or piece
 of information about an <a>entity's</a> background such as a name, government
-ID, payment provider, home address, or university degree. Such a claim
+ID, payment provider, home address, or university degree, provided in an
+electronic form whose integrity can be verified and whose content can be
+validated against a set of business rules appropriate to the <a>claims</a>
+that the content makes. Such a credential
 describes a quality or qualities, property or properties of an <a>entity</a>
 which establish its existence and uniqueness. The use cases outlined here are
 provided in order to make progress toward possible future standardization and
-interoperability of both low- and high-stakes <a>claims</a> with the goals of
+interoperability of both low- and high-stakes <a>credentials</a> with the goals of
 storing, transmitting, and receiving digitally verifiable proof of attributes
 such as qualifications and achievements. The use cases in this document focus
 on concrete scenarios that the technology defined by the group should address.
@@ -197,25 +200,25 @@ to <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a>
     <!-- Editor - @halindrome -->
     <h2>Introduction</h2>
       <p>
-The Verifiable Claims Working Group at the W3C is developing standards for
-expressing and exchanging "<a>claims</a>" that have been verified by a third
+The Verifiable Credentials Working Group at the W3C develops standards for
+expressing and exchanging "<a>credentials</a>" that have been issued by a third
 party and to make them easier and more secure on the Web.
     </p>
     <div class="note">
 This document does NOT attempt to define an architecture for the support of
-Verifiable Claims.  Instead it expresses the sorts of needs that real users have
-that could be addressed through support for some sort of self-sovereign claim
+Verifiable Credentials.  Instead it expresses the sorts of needs that real users have
+that could be addressed through support for some sort of self-sovereign credential
 environment.  It attempts to use terminology that is consistent with the other
-deliverables of the Verifiable Claims Working Group (you can see the relevant
+deliverables of the Verifiable Credentials Working Group (you can see the relevant
 terms in Appendix A).
     </div>
     <section>
       <h3>Importance of this work</h3>
       <p>
-Entities (people, organizations, devices) need to make many kinds of
-<a>claims</a> as part of their everyday activities. As more and more of these
+Entities (people, organizations, devices) need to present many kinds of
+<a>credentials</a> as part of their everyday activities. As more and more of these
 important activities move to the Internet, <a>entities</a> need to be able to
-transmit instantly <em>verifiable</em> claims (e.g., about their location,
+transmit instantly <em>verifiable</em> credentials (e.g., about their location,
 accomplishments, value, what-have-you). From educational records to payment
 account access, the next generation of web applications will authorize
 <a>entities</a> to perform actions based on rich sets of credentials issued by
@@ -225,7 +228,7 @@ filtering and analyzing growing amounts of data. It is essential that data be
 verifiable.
       </p>
       <p>
-Standardization of digital <a>claim</a> technologies makes it possible for many
+Standardization of digital <a>credential</a> technologies makes it possible for many
 stakeholders to issue, earn, and trust these essential records about their
 counterparties, without being locked into proprietary platforms.
       </p>
@@ -235,7 +238,7 @@ counterparties, without being locked into proprietary platforms.
       <p>
 This document presents an aggregate use case model, composed of Needs, Roles,
 Tasks, and Sequences. Taken together, these models define the use cases that
-the Verifiable Claims Working Group has addressed.
+the Verifiable Credentials Working Group has addressed.
       </p>
       <p>
 User needs define the problem space addressed by <a>verifiable credentials</a>.
@@ -275,20 +278,20 @@ Verifiable Credential User Roles
 Issuer
       </dt>
       <dd>
-The <a>entity</a> that creates a <a>claim</a> and associates it with a
+The <a>entity</a> that creates a <a>credential</a> and associates it with a
 particular <a>subject</a>.
       </dd>
       <dt>
 Verifier
       </dt>
       <dd>
-The <a>entity</a> verifying a <a>claim</a> about a given <a>subject</a>.
+The <a>entity</a> verifying a <a>credential</a> about a given <a>subject</a>.
       </dd>
       <dt>
 Subject
       </dt>
       <dd>
-The <a>entity</a> about whom a <a>claim</a> is issued.
+The <a>entity</a> about whom a <a>credential</a> is issued.
       </dd>
       <dt>
 Holder
@@ -539,7 +542,7 @@ Verifiable Credential User Tasks
       </figure>
 
     <section>
-      <h3>Issue Claim</h3>
+      <h3>Issue Credential</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
@@ -547,7 +550,7 @@ It MUST be possible for any <a>entity</a> to issue a <a>verifiable credential</a
         </dd>
         <dt>Motivation</dt>
         <dd>
-Individuals and organizations need a way to issue <a>claims</a> about
+Individuals and organizations need a way to issue <a>credentials</a> about
 themselves or others that can be verified and trusted.
         </dd>
         <dt>Needs</dt>
@@ -557,7 +560,7 @@ themselves or others that can be verified and trusted.
       </dl>
     </section>
     <section>
-      <h3>Assert Claim</h3>
+      <h3>Assert Credential</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
@@ -641,12 +644,12 @@ criteria without revealing additional attributes that are not required.
       </dl>
     </section>
     <section>
-      <h3>Validate Claim</h3>
+      <h3>Validate Credential</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
           It MUST be possible for a <a>verifier</a> to check whether a
-          given claim is appropriate for a particular use. That is, given 
+          given credential is appropriate for a particular use. That is, given
           a credential that is authentic and current, the verifier needs to
           interpret the claims in the context of their own 'business rules'
           concerning, for instance, which parties are acceptable authorities, and which
@@ -660,7 +663,7 @@ criteria without revealing additional attributes that are not required.
           </ol>
           The first and second questions will be answered because either the
           verifier already knows the public identifiers for the issuers it
-          recognizes for specific claims, or there is a discovery mechanism
+          recognizes for specific credentials, or there is a discovery mechanism
           whereby verifiers can find appropriate issuers given their
           business requirements. 
           <br><br>
@@ -674,12 +677,12 @@ criteria without revealing additional attributes that are not required.
           is the domain of validation.
           <br><br>
           It's important to note that the bounds of authority for a given
-          issuer are specific claim types made by them and relied upon by
+          issuer are specific credential types made by them and relied upon by
           others. While a region's DMV (Department of Motor Vehicles)
           or equivalent agency might be an acceptable authority for an
           individual's driving privilege, it should probably not be treated
           as authoritative for an individual's hair color or current
-          address, even though DMVs regularly include such claims in
+          address, even though such information is regularly included in
           today's driver's licenses.
           <br><br>
           Unlike verification, it may not always be possible to
@@ -707,7 +710,7 @@ criteria without revealing additional attributes that are not required.
           announcements, and correspondence.
           <br><br>
           These business rules are entirely the province of the verifier. Only after
-          satisfying their rules should a verifier rely upon a claim as an
+          satisfying their rules should a verifier rely upon claims within a credential as an
           accepted fact for specific use.
         </dd>
         <dt>Needs</dt>
@@ -719,22 +722,22 @@ criteria without revealing additional attributes that are not required.
       </dl>
     </section>
     <section>
-      <h3>Store Claim</h3>
+      <h3>Store Credential</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
-It MUST be possible for the holder of a claim to store that claim in one or
+It MUST be possible for the holder of a credential to store that credential in one or
 more <a>credential repositories</a>.
         </dd>
         <dt>Motivation</dt>
         <dd>
-A <a>claim</a> is under the control of its <a>holder</a>. That holder will
-choose where their <a>claims</a> are stored based upon a variety of factors
+A <a>credential</a> is under the control of its <a>holder</a>. That holder will
+choose where their <a>credentials</a> are stored based upon a variety of factors
 (e.g., employer requirements, convenience, service levels, provider cost,
 business intelligence). The holder needs to be able to easily choose among
 various <a>credential repositories</a>, and also to be able to migrate their
-<a>claims</a> to another without requesting new <a>claims</a> from the
-<a>claim</a> <a>issuer</a>.
+<a>credentials</a> to another without requesting new <a>credentials</a> from the
+<a>credential</a> <a>issuer</a>.
         </dd>
         <dt>Needs</dt>
         <dd>
@@ -743,7 +746,7 @@ various <a>credential repositories</a>, and also to be able to migrate their
       </dl>
     </section>
     <section>
-      <h3>Retrieve Claim</h3>
+      <h3>Retrieve Credential</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
@@ -764,18 +767,18 @@ to select which, if any, <a>verifiable credential</a> stored with their
       </dl>
     </section>
     <section>
-      <h3>Revoke Claim</h3>
+      <h3>Revoke Credential</h3>
       <dl class="dl-horizontal">
         <dt>Requirement</dt>
         <dd>
-It MUST be possible for the <a>issuer</a> of a <a>claim</a> to revoke it,
+It MUST be possible for the <a>issuer</a> of a <a>credential</a> to revoke it,
 after which it will no longer satisfy verification procedures.
         </dd>
         <dt>Motivation</dt>
         <dd>
-An <a>entity</a> (<a>issuer</a>) discovers that a <a>claim</a> they have
+An <a>entity</a> (<a>issuer</a>) discovers that a <a>credential</a> they have
 issued and are endorsing for an end user (<a>subject</a>), is no longer valid
-and wishes to revoke the issued claim.
+and wishes to revoke the issued credential.
         </dd>
         <dt>Needs</dt>
         <dd>
@@ -816,7 +819,7 @@ The transaction examples in this section show basic ways in which
 architecturally constraining. Instead, they are meant to help illustrate the
 basic way it <em>could</em> be done in a typical commerce situation. Again
 &mdash; please remember that it is just an example, and should not be thought
-of as the canonical way such a <a>claims</a> environment must be implemented.
+of as the canonical way such a <a>credentials</a> environment must be implemented.
     </p>
     <section>
       <h3>How a Verifiable Credential Might Be Created</h3>
@@ -826,17 +829,17 @@ confirmation of their identity. Consider this illustration:
       </p>
 
       <figure>
-        <img aria-describedby="claim_flow"
+        <img aria-describedby="credential_flow"
              alt="Verifiable Credential Creation Flow Description"
              style="display:block; margin:auto"
-             src="uc-issuing-claims.svg" />
+             src="uc-issuing-credentials.svg" />
         <figcaption>Verifiable Credential Creation Flow Diagram</figcaption>
       </figure>
 
       <p>
 Expanding on these steps:
       </p>
-        <ol id="claim_flow" title="Verifiable Credential Creation Flow Description">
+        <ol id="credential_flow" title="Verifiable Credential Creation Flow Description">
           <li>
 Jane asks her User Agent to help her get a <a>verifiable credential</a> about
 her identity.
@@ -880,8 +883,8 @@ confirming everything she has available.
     <section>
       <h3>How a Verifiable Credential Might Be Used</h3>
         <p>
-In this example, a <a>holder</a> of a <a>claim</a> needs to use that
-<a>claim</a> in a typical commerce situation:
+In this example, a <a>holder</a> of a <a>credential</a> needs to use that
+<a>credential</a> in a typical commerce situation:
         </p>
         <figure>
           <img aria-describedby="vf-flow"
@@ -954,8 +957,8 @@ authorization.
     <p>
 The editors are thankful to the contributions from the Web Payments Workshop,
 the Web Payments Community Group, the Web Payments Interest Group, the
-Credentials Community Group, the Verifiable Claims Task Force, and the
-Verifiable Claims Working Group.
+Credentials Community Group, the Verifiable Credentials Task Force, and the
+Verifiable Credentials Working Group.
     </p>
 
   </section>
