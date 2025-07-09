@@ -89,14 +89,14 @@ significantly compromised the system.
           <li>
 <strong>Response:</strong> Identity assurance based on the <a>presentation</a>
 and other data, above and beyond what is in the <a>presentation</a> and the
-<a>claims</a>.
+<a>credentials</a>.
           </li>
           <li>
 <strong>Response:</strong> Identity assurance based on the contents of the
-<a>claims</a>, potentially with enhanced data embedded in the <a>claims</a>,
+<a>credentials</a>, potentially with enhanced data embedded in the <a>credentials</a>,
 i.e., data not currently in passports, birth certificates, or marriage license.
 For example, a biometric template could be embedded in the birth certificate
-<a>claim</a> and that template could be used for interactive identity assurance
+<a>credential</a> and that template could be used for interactive identity assurance
 at the time of submitting the <a>presentation</a>.
           </li>
         </ul>
@@ -108,17 +108,17 @@ over the network, we are increasing the attack surface for the <a>subjects</a>
 of those credentials.
         <ul>
           <li>
-<strong>Response:</strong> Encrypt the <a>claims</a> (once by issuer, every
+<strong>Response:</strong> Encrypt the <a>credentials</a> (once by issuer, every
 <a>verifier</a> gets the same encrypted blob)
           </li>
           <li>
-<strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each
+<strong>Response:</strong> Encrypt the <a>credentials</a> uniquely for each
 <a>verifier</a>. This may leak usage data to the <a>issuer</a>, assuming the
 <a>holder</a> must ask for a new, encrypted <a>credential</a> for each
 <a>verifier</a>.
           </li>
           <li>
-<strong>Response:</strong> Blind the <a>claims</a> uniquely for each
+<strong>Response:</strong> Blind the <a>credentials</a> uniquely for each
 <a>verifier</a>.
           </li>
           <li>

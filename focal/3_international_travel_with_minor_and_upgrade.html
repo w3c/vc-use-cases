@@ -199,17 +199,17 @@ network, we are increasing the attack surface for the <a>subjects</a> of those
 credentials.
         <ul>
           <li>
-<strong>Response:</strong> Encrypt the <a>claims</a> (once by <a>issuer</a>;
+<strong>Response:</strong> Encrypt the <a>credentials</a> (once by <a>issuer</a>;
 every <a>verifier</a> gets the same encrypted blob)
           </li>
           <li>
-<strong>Response:</strong> Encrypt the <a>claims</a> uniquely for each
+<strong>Response:</strong> Encrypt the <a>credentials</a> uniquely for each
 <a>verifier</a>. This may leak usage data to the <a>issuer</a>, assuming the
 <a>holder</a> must ask for a new, encrypted <a>credential</a> for each
 <a>verifier</a>.
           </li>
           <li>
-<strong>Response:</strong> Blind the <a>claims</a> uniquely for each
+<strong>Response:</strong> Blind the <a>credentials</a> uniquely for each
 <a>verifier</a>.
           </li>
           <li>
