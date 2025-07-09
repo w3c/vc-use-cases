@@ -24,15 +24,18 @@
       "credentialSubject": {
             "id": "did:web:www.gs1utopia.example",
             "organization": {
-            "gs1:partyGLN": "9521230000000",
-            "gs1:organizationName": "GS1 Utopia",
-            ...
+                  "gs1:partyGLN": "9521230000000",
+                  "gs1:organizationName": "GS1 Utopia",
+                  ...
             },
             "licenseValue": "952"
       },
       "credentialStatus": {
-            "id": "https://id.gs1.org/vc/license/status/079713e6-9646-4de1-a89d-573dfbd77968",
-            "type": "StatusList2021Entry"
+            "id": "https://id.gs1.org/vc/license/status#79713",
+            "type": "BitstringStatusListEntry",
+            "statusPurpose": "revocation",
+            "statusListIndex": "79713",
+            "statusListCredential": "https://id.gs1.org/vc/license/status"
       },
       "proof": { ... }
 }
@@ -53,16 +56,19 @@
       "credentialSubject": {
             "id": "did:web:www.healthytots.example",
             "organization": {
-            "gs1:partyGLN": "9521234000006",
-            "gs1:organizationName": "Healthy Tots",
-            ...
+                  "gs1:partyGLN": "9521234000006",
+                  "gs1:organizationName": "Healthy Tots",
+                  ...
             },
             "extendsCredential": "did:example:079713e6-9646-4de1-a89d-573dfbd77968",
             "licenseValue": "9521234"
       },
       "credentialStatus": {
-            "id": "https://www.gs1utopia.example/credentials/gcp/status/b6d13abe-464d-4bb9-a568-b6d81efd57e3",
-            "type": "StatusList2021Entry"
+            "id": "https://www.gs1utopia.example/credentials/gcp/status#613464",
+            "type": "BitstringStatusListEntry",
+            "statusPurpose": "revocation",
+            "statusListIndex": "613464",
+            "statusListCredential": "https://www.gs1utopia.example/credentials/gcp/status"
       },
       "proof": { ... }
 }
@@ -85,8 +91,11 @@
             "extendsCredential": "did:example:b6d13abe-464d-4bb9-a568-b6d81efd57e3"
       },
       "credentialStatus": {
-            "id": "https://www.example.com/mycreds/status/60cda318-a0a7-4e39-b600-ea38bf68a31f",
-            "type": "StatusList2021Entry"
+            "id": "https://www.example.com/mycreds/status#60318",
+            "type": "BitstringStatusListEntry",
+            "statusPurpose": "revocation",
+            "statusListIndex": "60318",
+            "statusListCredential": "https://www.example.com/mycreds/status"
       },
       "proof": { ... }
 }
