@@ -1,0 +1,146 @@
+<section>
+    <h3>Exchange of Electronic Certificate of Origin</h3>
+    <h4>Background</h4>
+    <p>
+        This use case has been provided by <a href="https://iccwbo.org/" rel="nofollow">International Chamber of Commerce</a>.
+    </p>
+    <p>
+        An Exporter sources and buys products from a Manufacturer for export to a destination country. At the
+        destination country, the Importer, who is the Exporter's customer in turn distributes the products to many
+        retailers in the destination country.
+    </p>
+    <p>
+        To clear Customs at the destination country, the Importer may require the following documents from the
+        Exporter to be presented:
+    </p>
+    <ol>
+        <li>Exporter's Invoice</li>
+        <li>Bill of Lading issued by shipping company</li>
+        <li>Certificate of Origin issued by an authorised issuing authority (e.g., a Chamber of Commerce)</li>
+        <li>Product Test Report issued by a testing laboratory from manufacturer</li>
+    </ol>
+    <p>
+        Selective Redaction is used to mask sensitive information in a lossy manner that the upstream party does not
+        want to share with downstream parties. For example, the Exporter may redact the manufacturer's details from
+        the Product Test Report and Certificate of Origin before sending the report to the Importer. The Importer may
+        further redact the Exporter's details from the Certificate of Origin when sharing copies of the certificate
+        with its retailers.
+    </p>
+    <div class="note">
+        <p>
+            Note: The scenario above is highly simplified and the list of documents listed are not exhaustive. They are
+            included solely for the purpose of illustrating this use case for Selective Redaction.]
+        </p>
+    </div>
+    <img src="5_electronic_certificate_of_origin.png" alt="Exchange of electronic certificate of origin">
+    <h4>Roles in Cross Border Trade</h4>
+    <p>
+        Roles in the above diagram are in blue.
+    </p>
+    <h5>Professional Testing, Inspection, and Certification Lab</h5>
+    <ul>
+        <li>Responsible for inspecting, testing, and certifying the products to ensure they meet quality and safety
+            standards.</li>
+    </ul>
+    <h5>Manufacturer</h5>
+    <ul>
+        <li>The company that produces and supplies the products.</li>
+    </ul>
+    <h5>Exporter</h5>
+    <ul>
+        <li>The company that sells and exports the products to the Importer.</li>
+    </ul>
+    <h5>Chamber of Commerce</h5>
+    <ul>
+        <li>An organisation authorised to issue the Certificate of Origin, attesting the origin of the goods.</li>
+    </ul>
+    <h5>Importing Customs</h5>
+    <ul>
+        <li>The governmental body in importing country that validates the Certificate of Origin and review mandatory
+            documents to ensure the goods comply with import regulations.</li>
+    </ul>
+    <h5>Importer</h5>
+    <ul>
+        <li>The company that purchases and imports the goods from the Exporter.</li>
+    </ul>
+    <h5>Shipping Company</h5>
+    <ul>
+        <li>A company that transports goods internationally, facilitating import and export operations.</li>
+    </ul>
+    <h5>Retailers</h5>
+    <ul>
+        <li>Businesses that distribute goods to consumers after they are imported and cleared through customs.</li>
+    </ul>
+    <h4>Trade Flow</h4>
+    <ol>
+        <li>The Manufacturer requests a product test report from a professional testing lab to certify that their goods
+            meet the required safety and quality standards.</li>
+        <li>The Test Lab sends the product test report to Manufacturer upon completion of testing.</li>
+        <li>Manufacturer sends the Product Test Report to Exporter.</li>
+        <li>Exporter submit the necessary documents to Chamber of Commerce to apply for the Cert of Origin.</li>
+        <li>The Chamber of Commerce (Issuer) will review, approve, and issue Certificate of Origin (Subject) to the
+            exporter, certifying the product's origin.</li>
+        <li>The Exporter arranges shipment of goods with the Shipping Company.</li>
+        <li>The Shipping Company issues a Bill of Lading to the Exporter for claiming goods in the importing
+            country.</li>
+        <li>The Exporter (Recipient) sends the redacted Certificate of Origin (redacting the Manufacturer Details), a
+            Bill of Lading, Exporter Invoice and a redacted Product Test Report (redacting the Manufacturer Details) to
+            the importer.
+            <ul>
+                <li>It is essential for the Exporter to provide the Importer with the Cert of Origin, Bill of Lading,
+                    Exporter Invoice, and Product Test Report for the Import Customs Declaration, as this helps
+                    facilitate faster cargo clearance and approval for importing goods.</li>
+                <li>The Exporter has the option to redact commercially sensitive information, such as the manufacturer's
+                    details or pricing, to prevent the importer from bypassing him for future business.</li>
+            </ul>
+        </li>
+        <li>The Importer (Recipient/Verifier) will verify the Certificate of Origin (CO) to authenticate the document
+            and review the remaining documents to prepare for the Import Declaration.
+            <ul>
+                <li>The CO provides a link to the issuer, which is crucial for verifying that the issuer is a recognized
+                    authority and ensuring the authenticity of the document.</li>
+            </ul>
+        </li>
+        <li>The Importer submits the Import Declaration, redacted Cert of Origin, Bill of Lading, Exporter Invoice, and
+            redacted Product Test Report to Import Customs.</li>
+        <li>Import Customs (Verifier) verifies the CO and reviews the other supporting documents to ensure the imported
+            goods meet their importing regulations.
+            <ul>
+                <li>Customs authorities primarily focus on verifying the authenticity of the CO, and essential
+                    information provided such as product details, quality, and safety report. The redacted documentation
+                    (which redacts the Manufacturer's name and pricing) will still meet Customs' requirements.</li>
+            </ul>
+        </li>
+        <li>After clearance by the Import Customs, the Importer can distribute the goods to retailers, providing the
+            redacted Product Test Report and a further-redacted Cert of Origin (with Exporter details redacted).</li>
+    </ol>
+    <h4>Actors</h4>
+    <h5>Issuer</h5>
+    <ul>
+        <li>The Issuer is typically the Issuing Authority in the exporting country. These authorities are responsible
+            for issuing the CO, which attests to the origin of the goods. The issuer plays a key role in validating that
+            the goods comply with the necessary requirements for certification.</li>
+    </ul>
+    <h5>Subject</h5>
+    <ul>
+        <li>The Subject of the CO is the certificate itself, which confirms that the goods being exported originate from
+            a specific country. The CO serves as proof of origin, which is used by importers to claim tariff exemptions,
+            demonstrate compliance with trade agreements like Free Trade Agreements (FTAs) or to meet the importing
+            regulations.</li>
+    </ul>
+    <h5>Verifier</h5>
+    <ul>
+        <li>The Verifier is the party responsible for validating the authenticity of the CO. In the importing country,
+            the Customs Authority will typically verify the CO during the importation process. Banks may also act as
+            verifiers in situations where trade financing is involved, especially when using instruments like a Letter
+            of Credit (L/C). Additionally, the importer themselves may verify the CO to ensure that the goods originated
+            from the country they expect.</li>
+    </ul>
+    <h5>Recipient</h5>
+    <ul>
+        <li>The Recipient of the CO could be the Importer (and/or their appointed customs broker), who presents it to
+            the importing country's Customs Authority during import clearance to secure tariff exemptions or to
+            facilitate cargo clearance. In some cases, the CO may also be verified by the Exporter or by Banks,
+            particularly when it is used in trade financing arrangements.</li>
+    </ul>
+</section>
