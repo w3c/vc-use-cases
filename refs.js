@@ -10,7 +10,7 @@ require(["core/pubsubhub"], function( respecEvents ) {
         var needs = {} ;
 
         if (message === 'core/link-to-dfn') {
-            $.each(document.querySelectorAll("udef"), function(i, item) {
+            $.each(document.querySelectorAll("span.udef"), function(i, item) {
                 var container = item.parentNode;
                 var content = item.innerHTML;
                 var sp = document.createElement("span");
@@ -31,7 +31,7 @@ require(["core/pubsubhub"], function( respecEvents ) {
                 needs[id] = content;
             });
 
-            $("uref").each(function() {
+            $("span.uref").each(function() {
                 var p = this.parentNode;
                 var item = this.innerHTML;
                 var id = item.replace(/\./, "_");
