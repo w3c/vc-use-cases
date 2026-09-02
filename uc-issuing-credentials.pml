@@ -22,7 +22,7 @@ Participant "Issuer" as Issuer
 
 Holder->UA: Navigate to\nweb site
 UA->Issuer: Request Credential
-Issuer->Issuer: Verify\nidentity
+Issuer->Issuer: Validate\nrequest
 Issuer->Issuer: Generate credential
 Issuer->UA: Issue credential
 UA->Holder: Display credential
