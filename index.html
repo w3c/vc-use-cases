@@ -912,12 +912,37 @@ after which it will no longer satisfy verification procedures.
         <dt>Motivation</dt>
         <dd>
 An <a>entity</a> (<a>issuer</a>) discovers that a <a>credential</a> they have
-issued and are endorsing for an end user (<a>subject</a>), is no longer valid
+issued and are endorsing for an end user (<a>subject</a>) is no longer valid
 and wishes to revoke the issued credential.
         </dd>
         <dt>Needs</dt>
         <dd>
 <span class="uref">F.3</span>, <span class="uref">C.2</span>, <span class="uref">C.3</span>
+        </dd>
+      </dl>
+    </section>
+    <section>
+      <h3>Amend Credential</h3>
+      <dl class="dl-horizontal">
+        <dt>Requirement</dt>
+        <dd>
+It MUST be possible for the <a>issuer</a> of a <a>credential</a> to amend it,
+after which the original will no longer satisfy verification procedures but the
+amended will.
+        </dd>
+        <dt>Motivation</dt>
+        <dd>
+An <a>entity</a> (<a>issuer</a>) discovers that a <a>credential</a> they have
+issued and are endorsing for an end user (<a>subject</a>) is no longer valid
+(e.g., due to changes in underlying source data) and wishes to amend it.
+Although similar to revocation, in that the original <a>credential</a> will no
+longer satisfy verification procedures, the indication that an amended
+<a>credential</a> is available may trigger different processes or messaging by
+a <a>verifier</a>.
+        </dd>
+        <dt>Needs</dt>
+        <dd>
+<span class="uref">E.1</span>, <span class="uref">R.1</span>, <span class="uref">R.2</span>, <span class="uref">H.5</span>, <span class="uref">L.1</span>, <span class="uref">D.3</span>
         </dd>
       </dl>
     </section>
